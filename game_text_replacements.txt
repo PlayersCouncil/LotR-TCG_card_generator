@@ -1,0 +1,188 @@
+;;Replacement keys so that card writers don't have to include so many
+;; html tags for repetitive elements.
+
+;; This is not regex based, only simple search/replace.
+;; You could utilize this to add more than just bold tags if you want,
+;; it's just that bolded keywords are about the only systematic tags.
+
+;;Numeric loaded keywords
+HTMLKEY=,"Aid - ","<b>Aid — </b>",,C
+HTMLKEY=,"Ambush","<b>Ambush</b>",,C
+HTMLKEY=,"Damage +1.","<b>Damage +1.</b>",,C
+HTMLKEY=,"Damage +2.","<b>Damage +2.</b>",,C
+HTMLKEY=,"Damage +3.","<b>Damage +3.</b>",,C
+HTMLKEY=,"Damage +4.","<b>Damage +4.</b>",,C
+HTMLKEY=,"Damage +5.","<b>Damage +5.</b>",,C
+HTMLKEY=,"Damage +6.","<b>Damage +6.</b>",,C
+HTMLKEY=,"Damage +7.","<b>Damage +7.</b>",,C
+HTMLKEY=,"Damage +8.","<b>Damage +8.</b>",,C
+HTMLKEY=,"Damage +9.","<b>Damage +9.</b>",,C
+HTMLKEY=,"damage +1","<b>damage +1</b>",,C
+HTMLKEY=,"damage +2","<b>damage +2</b>",,C
+HTMLKEY=,"damage +3","<b>damage +3</b>",,C
+HTMLKEY=,"damage +4","<b>damage +4</b>",,C
+HTMLKEY=,"damage +5","<b>damage +5</b>",,C
+HTMLKEY=,"damage +6","<b>damage +6</b>",,C
+HTMLKEY=,"damage +7","<b>damage +7</b>",,C
+HTMLKEY=,"damage +8","<b>damage +8</b>",,C
+HTMLKEY=,"damage +9","<b>damage +9</b>",,C
+HTMLKEY=,"damage +X","<b>damage +X</b>",,C
+HTMLKEY=,"Defender +1.","<b>Defender +1.</b>",,C
+HTMLKEY=,"Defender +2.","<b>Defender +2.</b>",,C
+HTMLKEY=,"Defender +3.","<b>Defender +3.</b>",,C
+HTMLKEY=,"Defender +4.","<b>Defender +4.</b>",,C
+HTMLKEY=,"Defender +5.","<b>Defender +5.</b>",,C
+HTMLKEY=,"Defender +6.","<b>Defender +6.</b>",,C
+HTMLKEY=,"Defender +7.","<b>Defender +7.</b>",,C
+HTMLKEY=,"Defender +8.","<b>Defender +8.</b>",,C
+HTMLKEY=,"Defender +9.","<b>Defender +9.</b>",,C
+HTMLKEY=,"defender +1","<b>defender +1</b>",,C
+HTMLKEY=,"defender +2","<b>defender +2</b>",,C
+HTMLKEY=,"defender +3","<b>defender +3</b>",,C
+HTMLKEY=,"defender +4","<b>defender +4</b>",,C
+HTMLKEY=,"defender +5","<b>defender +5</b>",,C
+HTMLKEY=,"defender +6","<b>defender +6</b>",,C
+HTMLKEY=,"defender +7","<b>defender +7</b>",,C
+HTMLKEY=,"defender +8","<b>defender +8</b>",,C
+HTMLKEY=,"defender +9","<b>defender +9</b>",,C
+HTMLKEY=,"defender +X","<b>defender +X</b>",,C
+HTMLKEY=,"Hunter 1.","<b>Hunter 1.</b>",,C
+HTMLKEY=,"Hunter 2.","<b>Hunter 2.</b>",,C
+HTMLKEY=,"Hunter 3.","<b>Hunter 3.</b>",,C
+HTMLKEY=,"Hunter 4.","<b>Hunter 4.</b>",,C
+HTMLKEY=,"Hunter 5.","<b>Hunter 5.</b>",,C
+HTMLKEY=,"Hunter 6.","<b>Hunter 6.</b>",,C
+HTMLKEY=,"Hunter 7.","<b>Hunter 7.</b>",,C
+HTMLKEY=,"Hunter 8.","<b>Hunter 8.</b>",,C
+HTMLKEY=,"Hunter 9.","<b>Hunter 9.</b>",,C
+HTMLKEY=,"hunter 1","<b>hunter 1</b>",,C
+HTMLKEY=,"hunter 2","<b>hunter 2</b>",,C
+HTMLKEY=,"hunter 3","<b>hunter 3</b>",,C
+HTMLKEY=,"hunter 4","<b>hunter 4</b>",,C
+HTMLKEY=,"hunter 5","<b>hunter 5</b>",,C
+HTMLKEY=,"hunter 6","<b>hunter 6</b>",,C
+HTMLKEY=,"hunter 7","<b>hunter 7</b>",,C
+HTMLKEY=,"hunter 8","<b>hunter 8</b>",,C
+HTMLKEY=,"hunter 9","<b>hunter 9</b>",,C
+HTMLKEY=,"hunter X","<b>hunter X</b>",,C
+HTMLKEY=,"Toil 1.","<b>Toil 1.</b>",,C
+HTMLKEY=,"Toil 2.","<b>Toil 2.</b>",,C
+HTMLKEY=,"Toil 3.","<b>Toil 3.</b>",,C
+HTMLKEY=,"Toil 4.","<b>Toil 4.</b>",,C
+HTMLKEY=,"Toil 5.","<b>Toil 5.</b>",,C
+HTMLKEY=,"Toil 6.","<b>Toil 6.</b>",,C
+HTMLKEY=,"Toil 7.","<b>Toil 7.</b>",,C
+HTMLKEY=,"Toil 8.","<b>Toil 8.</b>",,C
+HTMLKEY=,"Toil 9.","<b>Toil 9.</b>",,C
+HTMLKEY=,"toil 1","<b>toil 1</b>",,C
+HTMLKEY=,"toil 2","<b>toil 2</b>",,C
+HTMLKEY=,"toil 3","<b>toil 3</b>",,C
+HTMLKEY=,"toil 4","<b>toil 4</b>",,C
+HTMLKEY=,"toil 5","<b>toil 5</b>",,C
+HTMLKEY=,"toil 6","<b>toil 6</b>",,C
+HTMLKEY=,"toil 7","<b>toil 7</b>",,C
+HTMLKEY=,"toil 8","<b>toil 8</b>",,C
+HTMLKEY=,"toil 9","<b>toil 9</b>",,C
+HTMLKEY=,"toil X","<b>toil X</b>",,C
+
+;; Loaded keywords
+HTMLKEY=,"Archer.","<b>Archer.</b>",,C
+HTMLKEY=,"Enduring.","<b>Enduring.</b>",,C
+HTMLKEY=,"Fierce.","<b>Fierce.</b>",,C
+HTMLKEY=,"Lurker.","<b>Lurker.</b>",,C
+HTMLKEY=,"Muster.","<b>Muster.</b>",,C
+HTMLKEY=,"Sanctuary.","<b>Sanctuary.</b>",,C
+HTMLKEY=,"Unhasty.","<b>Unhasty.</b>",,C
+
+;; Unloaded keywords
+HTMLKEY=,"Battleground.","<b>Battleground.</b>",,C
+HTMLKEY=,"Besieger.","<b>Besieger.</b>",,C
+HTMLKEY=,"Corsair.","<b>Corsair.</b>",,C
+HTMLKEY=,"Dwelling.","<b>Dwelling.</b>",,C
+HTMLKEY=,"Easterling.","<b>Easterling.</b>",,C
+HTMLKEY=,"Engine.","<b>Engine.</b>",,C
+HTMLKEY=,"Fellowship.","<b>Fellowship.</b>",,C
+HTMLKEY=,"Forest.","<b>Forest.</b>",,C
+HTMLKEY=,"Fortification.","<b>Fortification.</b>",,C
+HTMLKEY=,"Knight.","<b>Knight.</b>",,C
+HTMLKEY=,"Machine.","<b>Machine.</b>",,C
+HTMLKEY=,"Marsh.","<b>Marsh.</b>",,C
+HTMLKEY=,"Mountain.","<b>Mountain.</b>",,C
+HTMLKEY=,"Plains.","<b>Plains.</b>",,C
+HTMLKEY=,"Pipeweed.","<b>Pipeweed.</b>",,C
+HTMLKEY=,"Ranger.","<b>Ranger.</b>",,C
+HTMLKEY=,"Ring-bound.","<b>Ring-bound.</b>",,C
+HTMLKEY=,"River.","<b>River.</b>",,C
+HTMLKEY=,"Search.","<b>Search.</b>",,C
+HTMLKEY=,"Southron.","<b>Southron.</b>",,C
+HTMLKEY=,"Spell.","<b>Spell.</b>",,C
+HTMLKEY=,"Stealth.","<b>Stealth.</b>",,C
+HTMLKEY=,"Tale.","<b>Tale.</b>",,C
+HTMLKEY=,"Tentacle.","<b>Tentacle.</b>",,C
+HTMLKEY=,"Tracker.","<b>Tracker.</b>",,C
+HTMLKEY=,"Twilight.","<b>Twilight.</b>",,C
+HTMLKEY=,"Underground.","<b>Underground.</b>",,C
+HTMLKEY=,"Valiant.","<b>Valiant.</b>",,C
+HTMLKEY=,"Villager.","<b>Villager.</b>",,C
+HTMLKEY=,"Weather.","<b>Weather.</b>",,C
+HTMLKEY=,"Warg-rider.","<b>Warg-rider.</b>",,C
+
+;; Phase actions
+HTMLKEY=,"Fellowship:","<b>Fellowship:</b>",,C
+HTMLKEY=,"Shadow:","<b>Shadow:</b>",,C
+HTMLKEY=,"Manuever:","<b>Manuever:</b>",,C
+HTMLKEY=,"Archery:","<b>Archery:</b>",,C
+HTMLKEY=,"Assignment:","<b>Assignment:</b>",,C
+HTMLKEY=,"Skirmish:","<b>Skirmish:</b>",,C
+HTMLKEY=,"Regroup:","<b>Regroup:</b>",,C
+
+
+
+;; Now for replacing regular quotes into smart quotes in the lore
+;; this code will not work on its own and is intended to be included
+;; into lotr-tcg_virtual_cards.nde.  REPLACE is used instead of HTMLKEY
+;; because HTMLKEY does not appear to recognize /dd/ ascii codes.
+
+
+;; beginning and end of lore string are unambiguous
+[card_full_text] = REPLACE([card_full_text],">\34\",">“")
+[card_full_text] = REPLACE([card_full_text],"\34\<","”<")
+[card_full_text] = REPLACE([card_full_text],">'",">‘")
+[card_full_text] = REPLACE([card_full_text],"'<","’<")
+
+;; if a space is on one side, also unambiguous
+[card_full_text] = REPLACE([card_full_text]," \34\"," “")
+[card_full_text] = REPLACE([card_full_text],"\34\ ","” ")
+[card_full_text] = REPLACE([card_full_text]," '"," ‘")
+[card_full_text] = REPLACE([card_full_text],"' ","’ ")
+
+;; when next to punctuation, it must be an end quote
+[card_full_text] = REPLACE([card_full_text],".\34\",".”")
+[card_full_text] = REPLACE([card_full_text],",\34\",",”")
+[card_full_text] = REPLACE([card_full_text],"?\34\","?”")
+[card_full_text] = REPLACE([card_full_text],"!\34\","!”")
+[card_full_text] = REPLACE([card_full_text],"/\34\","/”")
+[card_full_text] = REPLACE([card_full_text],".'",".’")
+[card_full_text] = REPLACE([card_full_text],",'",",’")
+[card_full_text] = REPLACE([card_full_text],"?'","?’")
+[card_full_text] = REPLACE([card_full_text],"!'","!’")
+[card_full_text] = REPLACE([card_full_text],"/'","/’")
+
+;; if we figured out one of the smart quotes and it's right next
+;; to a dumb quote, we can use that to figure out the other
+[card_full_text] = REPLACE([card_full_text],"\34\‘","“‘")
+[card_full_text] = REPLACE([card_full_text],"\34\’","”’")
+[card_full_text] = REPLACE([card_full_text],"‘\34\","‘“")
+[card_full_text] = REPLACE([card_full_text],"’\34\","’”")
+[card_full_text] = REPLACE([card_full_text],"'“","‘“")
+[card_full_text] = REPLACE([card_full_text],"'”","’”")
+[card_full_text] = REPLACE([card_full_text],"“'","“‘")
+[card_full_text] = REPLACE([card_full_text],"”'","”’")
+
+;; possessive apostrophes
+[card_full_text] = REPLACE([card_full_text],"'s","’s")
+
+;; finally, if anything evaded all the above, we'll just assume a
+;; pair of dumb quotes is either open or closed depending on order
+[card_full_text] = REPLACE([card_full_text],"\34\'","“‘")
+[card_full_text] = REPLACE([card_full_text],"'\34\","’”")

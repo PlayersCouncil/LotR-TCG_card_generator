@@ -1,0 +1,44 @@
+﻿;;#####################################
+;; nanDeck LotR-TCG Settings
+;;#####################################
+
+;; A path pointing to the location to use for card template images.
+;; Can be the name of a folder in the same folder as this script, or
+;; else a full path with quotes such as "C:/users/me/my_templates"
+[card_template_path] = "X:/Projects/lotr-tcg/templates/new_templates"
+
+;; A path pointing to the location to use for card portrait images.
+;; Can be the name of a folder in the same folder as this script, or
+;; else a full path with quotes such as "C:/users/me/my_images"
+[card_image_path] = "X:/Projects/lotr-tcg/templates/new_templates/images"
+
+;; The size of template to use.
+;; Can be one of: huge, double, original
+;; Whichever one you select must be present in the same folder;
+;; for instance, if you select "huge", then a "huge_res_export" folder
+;; must be present.
+[card_size] = double
+
+;;Whether the card_size name chosen above will be appended to the
+;; end of the card file name.
+;; Can be one of: _True_, _False_
+[include_size_in_card_output] = _True_
+
+;;If _True_, sites will be exported in landscape mode (text is right-side-up).
+;; Otherwise, sites will be exported in portrait mode (text is sideways).
+;; Can be one of: _True_, _False_
+[export_sites_as_landscape] = _True_
+
+;; The color to use for regular game text.  This includes the title/subtitle,
+;; card type, lore, and collector's info.
+;; Can be any standard HTML-formatted color string.
+[game_text_color] = #000000
+
+;; The color to use for icon text.  This includes the twilight cost,
+;; strength, vitality, site number, and resistance.
+;; Can be any standard HTML-formatted color string.
+[icon_text_color] = #FFFFFF
+
+;; The PNG to be used for masking the card.  Every transparent pixel will be
+;; transparent in the output, and the rest will be opaque.
+[card_mask_path] = card_mask.png

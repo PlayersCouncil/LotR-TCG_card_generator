@@ -1,0 +1,3 @@
+id,image_name,unique,title,subtitle,culture,template,card_type,card_subtype,twilight,strength,vitality,resistance,ring_bearer,signet,site,block,set_num,rarity,card_num,game_text,lore,tags,notes
+1,Gimli_OV.png,T,Gimli,Obstinate Visitor,dwarf,character,Companion,Dwarf,2,6,3,,,frodo,,,,,,Fellowship.  Damage +1.<br>Regroup: Exert an Elf ally whose home site is 6 and add (1) to heal Gimli.,"""'I will go forward free,' he said, 'or I will go back and seek my own land, where I am known to be true of word, though I perish alone in the wilderness.'""",,totally rad
+2,medium_enhance.png,T,Gimli,Son of Glóin,elf,character,Companion,Dwarf,5,9,1,,,aragorn,,,1,R,13,Damage +8.<br>Skirmish: Exert Gimli to make him fart.,"""There was a younger dwarf at Glóin's side: his son Gimli.""",,
