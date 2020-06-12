@@ -7,6 +7,10 @@ INCLUDE = settings.txt
 BORDER=ROUNDED,#000000,0.15
 UNIT=INCH
 PAGE=8.5,11,PORTRAIT,HV
+FONTALIAS = , ON
+
+LINKENCCSV= []
+
 
 IF= [card_size] = huge
     DPI=568
@@ -26,27 +30,28 @@ LINK= vset1.csv
 
 [debug_image_path] = examples/
 
+;; If certain values are not filled in, we will use these values instead
+[default_game_text_spacing] = 100
+[default_lore_spacing] = 98
+[default_game_text_width] = 69%
+
+;; Systematic clean-up
+[unique] = CASESTRING([unique], U)
+[culture] = CASESTRING([culture], L)
+[card_type] = CASESTRING([card_type], F)
+[tags] = CASESTRING([tags], L)
+
+;; Starts with black background as our canvas
 RECTANGLE=,0,0,100%,100%,#000000
 
-;;FONT = LOTR_TCG, 24, , #000000
-;;FONT = LOTR_TCG-Lore, 24, , #000000
-;;FONT = LOTR_TCG-SmallCaps, 24, , #000000
 
-FONTALIAS = , ON
-
+;; Debug drawing options for various purposes.
 ;;TEXT = , [id], 0, 0, 100%, 20%
 ;;IMAGE = , JOIN([debug_image_path],[image_name]), 0, 0, 100%, 100%, 0, PN
 ;;GRID = , 0, 0, 100%, 100%, #FF77FF, 0.025, 10, 14
 
 
-
-
-;; Insert the card portrait, since this is "beneath" everything else
-<character_card_portrait> = 10.5%, 14.5%, 78.5%, 42%
-IMAGE = , JOIN([card_image_path],/,[image_name]), <character_card_portrait>, 0, PN
-
-;;RECTANGLE=,<card_portrait>,#00FFFF
-
+;; Translating the settings file variables into logical paths
 [full_template_path] = JOIN([card_template_path],/,[card_size],_res_export/)
 [icon_path] = JOIN([full_template_path], components/)
 [positioned_icon_path] = JOIN([icon_path], positioned/)
@@ -62,12 +67,74 @@ IMAGE = , JOIN([card_image_path],/,[image_name]), <character_card_portrait>, 0, 
 [site_standard_template] = JOIN([full_template_path],site_standard_,[card_size],.png)
 [site_sanctuary_template] = JOIN([full_template_path],site_sanctuary_,[card_size],.png)
 
+
+;; Various named regions used in multiple places
+
 ;;<card_background> = 0, -2%, 100%, 104%
 <card_background> = 0, 0, 100%, 100%
 ;;RECTANGLE=,<card_background>,#00FFFF
 
-;; Figure out the card template and put it down to be drawn on by all future steps
+<character_card_portrait> = 10.5%, 14.5%, 78.5%, 42%
+<modifier_card_portrait> = 21.2%, 11.9%, 69.7%, 37%
+<site_card_portrait> = 10.5%, 14.5%, 78.5%, 42%
+<full_card_portrait> = 10.5%, 14.5%, 78.5%, 42%
+
+;;RECTANGLE=,<card_portrait>,#00FFFF
+
+<character_title> = 19.5%, 1.7%, 90%, 10%
+<character_subtitle> = 21.6%, 5.8%, 90%, 10%
+<modifier_title> = 6%, 16%, 10.3%, 40%
+
+<character_type_panel> = 15%,58.5%,70%,3.8%
+<modifier_type_panel> = 25%,58.5%,65%,3.8%
+
+<twilight_cost_icon> = 6.3%,3.5%,10%,10%
+<strength_icon> = 7.5%,62.5%,10%,10%
+<vitality_icon> = 7.5%,74%,10%,10%
+<third_icon> = 7.5%,84.5%,10%,10%
+
+;; Set up our fonts for when we use HTML rendering (which is most everywhere).
+;; Line spacing can be defined per card in the CSV, so we integrate it here.
+
+HTMLFONT=gametext,LOTR_TCG,7.3,D,[game_text_color],LEFT
+HTMLFONT=chartitle,LOTR_TCG-SmallCaps,10,BD,[game_text_color],LEFT
+HTMLFONT=charsubtitle,LOTR_TCG-SmallCaps,8,BD,[game_text_color],LEFT
+HTMLFONT=modtitle,LOTR_TCG-SmallCaps,9,BD,[game_text_color],RIGHT
+HTMLFONT=typeplate,LOTR_TCG-SmallCaps,8.9,BD,[game_text_color],CENTER
+HTMLFONT=typesymbol,LOTR_TCG,8.9,D,[game_text_color]
+HTMLFONT=lore,LOTR_TCG-Lore,7.6,D,[game_text_color],LEFT
+HTMLFONT=numbers,LOTR_TCG_Icons,14,D,[icon_text_color],CENTER,0%, 0.5%,0.03,#000000
+
+HTMLMARGINS=chartitle,0,0,0,0,CENTER
+HTMLMARGINS=charsubtitle,0,0,0,0,CENTER
+HTMLMARGINS=numbers,0,0,0,0,CENTER
+HTMLMARGINS=typeplate,0,0,0,0,CENTER
+
+IF= [game_text_spacing] <> ""
+    HTMLMARGINS=gametext,0,0,0,0,TOP,[game_text_spacing]
+    HTMLMARGINS=modtitle,0,0,0,0,CENTER,[game_text_spacing]
+ELSE
+    HTMLMARGINS=gametext,0,0,0,0,TOP,[default_game_text_spacing]
+    HTMLMARGINS=modtitle,0,0,0,0,CENTER,[default_game_text_spacing]
+ENDIF
+
+IF= [lore_spacing] <> ""
+    HTMLMARGINS=lore,2%,0,0,0,,[lore_spacing]
+ELSE
+    HTMLMARGINS=lore,2%,0,0,0,,[default_lore_spacing]
+ENDIF
+
+;; including this file will perform a ton of find-replaces on all HTML-
+;; displayed text, which is mostly used for obnoxious accents.
+INCLUDE=all_text_replacements.txt
+
+;; Now we get to card rendering.  Start with card-template-sensitive elements.
 IF= ([card_type] = "Companion") _OR_ ([card_type] = Minion) _OR_ ([card_type] = Ally) _OR_ ([card_type] = Follower)
+
+    ;; Insert the card portrait, since this is "beneath" everything else
+    IMAGE = , JOIN([card_image_path],/,[image_name]), <character_card_portrait>, 0, PN
+
+    ;; which template to use for gollum is stored in the [tags] column
     IF=[culture] = "gollum"
         IF=[tags] @ "shadow"
             IMAGE = , [gollum_shadow_character_template], <card_background>, 0, PN
@@ -77,7 +144,58 @@ IF= ([card_type] = "Companion") _OR_ ([card_type] = Minion) _OR_ ([card_type] = 
     ELSE
         IMAGE = , [character_template], <card_background>, 0, PN
     ENDIF
+
+    ;; Character Title
+    IF=([unique] = T) _OR_ ([unique] = Y)
+        HTMLTEXT=,"•[title]",<character_title>,,0,BE,100,chartitle
+    ELSE
+        HTMLTEXT=," [title]",<character_title>,,0,BE,100,chartitle
+    ENDIF
+
+    ;; Character Subtitle
+    IF= [subtitle] <> ""
+        HTMLTEXT=," [subtitle]",<character_subtitle>,,0,BE,100,charsubtitle
+    ENDIF
+
+    ;; Character Card Type
+    IF= [card_type] = Ally
+        IF= ([site] <> "") _AND_ ([card_subtype] <> "")
+            HTMLTEXT=,"[card_type] • Home [site] • [card_subtype]",<character_type_panel>,,0,BE,100,typeplate
+            ;;HTMLTEXT=,"[card_type] • Home [site] • [card_subtype]",15%,58.5%,80%,15%,,0,BEY,100,typeplate
+        ELSEIF= [site] <> ""
+            HTMLTEXT=,"[card_type] • Home [site]",<character_type_panel>,,0,BE,100,typeplate
+        ELSEIF= [card_subtype] <> ""
+            HTMLTEXT=,"[card_type] • [card_subtype]",<character_type_panel>,,0,BE,100,typeplate
+        ELSE
+            HTMLTEXT=,"[card_type]",<character_type_panel>,,0,BE,100,typeplate
+        ENDIF
+    ELSEIF= [card_subtype] = ""
+        HTMLTEXT=,"[card_type]",<character_type_panel>,,0,BE,100,typeplate
+    ELSE
+        HTMLTEXT=,"[card_type] • [card_subtype]",<character_type_panel>,,0,BE,100,typeplate
+    ENDIF
+
+    ;; Minion Site Number
+    IF= ([card_type] <> Ally) _AND_ ([site] <> "")
+        IMAGE = , JOIN([positioned_icon_path],minion_site_number_position_,[card_size],.png), <card_background>, 0, PN
+        HTMLTEXT=,"[site]",<third_icon>,,0,BE,100,numbers
+    ENDIF
+
+    ;; Resistance and ring-bearer
+    IF= ([card_type] <> Minion) _AND_ ([resistance] <> "")
+        IF= [tags] @ "ring-bearer"
+            IMAGE = , JOIN([positioned_icon_path],resistance_ring_combined_position_,[card_size],.png), <card_background>, 0, PN
+        ELSE
+            IMAGE = , JOIN([positioned_icon_path],resistance_position_,[card_size],.png), <card_background>, 0, PN
+        ENDIF
+        HTMLTEXT=,"[resistance]",<third_icon>,,0,BE,100,numbers
+    ENDIF
+
 ELSEIF= ([card_type] = Condition) _OR_ ([card_type] = Event) _OR_ ([card_type] = Possession) _OR_ ([card_type] = Artifact)
+
+    ;; Insert the card portrait, since this is "beneath" everything else
+    IMAGE = , JOIN([card_image_path],/,[image_name]), <modifier_card_portrait>, 0, PN
+
     IF=[culture] = "gollum"
         IF=[tags] @ "shadow"
             IMAGE = , [gollum_shadow_modifier_template], <card_background>, 0, PN
@@ -87,6 +205,21 @@ ELSEIF= ([card_type] = Condition) _OR_ ([card_type] = Event) _OR_ ([card_type] =
     ELSE
         IMAGE = , [modifier_template], <card_background>, 0, PN
     ENDIF
+
+    ;; Modifier Title
+    IF=([unique] = T) _OR_ ([unique] = Y)
+        HTMLTEXT=,"•[title]",<modifier_title>,,270,BE,100,modtitle
+    ELSE
+        HTMLTEXT=,"[title]",<modifier_title>,,270,BE,100,modtitle
+    ENDIF
+
+    ;; Card Type
+    IF= [card_subtype] = ""
+        HTMLTEXT=,"[card_type]",<modifier_type_panel>,,0,BE,100,typeplate
+    ELSE
+        HTMLTEXT=,"[card_type] • [card_subtype]",<modifier_type_panel>,,0,BE,100,typeplate
+    ENDIF
+
 ELSEIF= ([card_type] = Site)
     IF= [tags] @ "sanctuary"
         IMAGE = , [site_sanctuary_template], <card_background>, 0, PN
@@ -97,56 +230,35 @@ ELSE=
     RECTANGLE=,0,0,100%,100%,#9C2542
 ENDIF
 
-;;RECTANGLE=,<card_portrait>,#FF00FF
+;;RECTANGLE=,<modifier_type_panel>,#FF00FF
+;;RECTANGLE=,<modifier_title>,#00FFFF
+
 
 
 ;;Twilight Cost
-FONT = LOTR_TCG, 15, BT, [icon_text_color]
+FONT = LOTR_TCG_Icons, 15, T, [icon_text_color]
 TEXT=,[twilight],6.3%,3.5%,10%,10%
 
-;;Title
-FONT = LOTR_TCG-SmallCaps, 10, BT, [game_text_color]
-IF=([unique] = T) _OR_ ([unique] = Y)
-    TEXT=,"•[title]",19.5%,1.7%,90%,10%,LEFT
-ELSE
-    TEXT=," [title]",19.5%,1.7%,90%,10%,LEFT
-ENDIF
-
-;; Card Type
-IF= [card_type] = Ally
-
-ELSE
-    FONT = LOTR_TCG-SmallCaps, 8.9, BT, [game_text_color]
-    TEXT=,"[card_type] • [card_subtype]",10%,55.3%,80%,10%,CENTER
-ENDIF
-
-
-;;Subtitle
-FONT = LOTR_TCG-SmallCaps, 8, BT, [game_text_color]
-TEXT=,[subtitle],21.6%,5.8%,90%,10%,LEFT
 
 
 ;;Strength
 
 IF= [strength] <> ""
     IMAGE = , JOIN([positioned_icon_path],strength_position_,[card_size],.png), <card_background>, 0, PN
-    FONT = LOTR_TCG, 14, BT, [icon_text_color]
-    TEXT=,[strength],7.5%,62.5%,10%,10%
+    HTMLTEXT=,"[strength]",<strength_icon>,,0,BE,100,numbers
 ENDIF
 
 ;;Vitality
 IF= [vitality] <> ""
     IMAGE = , JOIN([positioned_icon_path],vitality_position_,[card_size],.png), <card_background>, 0, PN
-    FONT = LOTR_TCG, 14, BT, [icon_text_color]
-    TEXT=,[vitality],7.5%,74%,10%,10%
+    HTMLTEXT=,"[vitality]",<vitality_icon>,,0,BE,100,numbers
 ENDIF
 
 ;; Signets
-IF= [signet] <> ''[LORE]
+IF= [signet] <> ""
     IMAGE = , JOIN([positioned_icon_path],signet_,[signet],_position_,[card_size],.png), <card_background>, 0, PN
 ENDIF
 
-;;TODO: Site Number, Resistance
 
 ;;Collector's Info
 FONT = LOTR_TCG, 4.2, BT, [game_text_color]
@@ -157,24 +269,43 @@ TEXT=,JOIN([set_num]," ",[rarity]," ", [card_num]),84.7%,87.7%,10%,10%,CENTER
 
 
 
+;; Debug drawing the game text area, before the drawing of the text so it remains visible
+IF= [debug_game_text_area] = "True"
+    IF= [game_text_width] <> ""
+        RECTANGLE=,23.5%,67%,[game_text_width],25%,#ff00ff
+    ELSE
+        RECTANGLE=,23.5%,67%,[default_game_text_width],25%,#ff00ff
+    ENDIF
+ENDIF
 
-HTMLFONT=fnt,LOTR_TCG,7.59,,[game_text_color],LEFT
-HTMLMARGINS=fnt,0,0,0,0,TOP,100
 
-HTMLFONT=lore,LOTR_TCG-Lore,7.599,,[game_text_color],LEFT
-HTMLMARGINS=lore,2%,0,0,0,,98
-
-<game_text_area> = 23.5%,67%,63%,25%
+;; First combine the game text and lore into a single contiguous set of text
+;; with the lore marked as a separate font.
 [card_full_text] = JOIN([game_text],<br><lore>,[lore],</lore>)
-;;[card_full_text] = REPLACE([card_full_text], "\34\", XXXX)
 
+;; including this file will perform a ton of find-replaces on the text, including
+;; for symbols, bolding, and smart quote handling.
 INCLUDE=game_text_replacements.txt
-HTMLTEXT=,[card_full_text],<game_text_area>,,0,BE,100,fnt
 
-;; Uncommment this to reveal the game text area
-;;RECTANGLE=,<game_text_area>,#ff00ff
+;; Finally, draw the game text itself.  Remember that if you alter the proportions
+;; of the game text in these two clauses to also do it above in the debug draw.
+;; This isn't stored in a frame because frames can't have their value switch on
+;; CSV column data like HTMLTEXT can, so we're forced to copy-paste.
+
+IF= [game_text_width] <> ""
+    HTMLTEXT=,[card_full_text],23.5%,67%,[game_text_width],25%,,0,BE,100,gametext
+ELSE
+    HTMLTEXT=,[card_full_text],23.5%,67%,[default_game_text_width],25%,,0,BE,100,gametext
+ENDIF
 
 
 
 
-SAVE=,card_export/[title]_[subtitle].png,0,0,100%,100%,,,[card_mask_path]
+;; Last but not least, finally write the file (if not configured to do otherwise).
+IF= [auto_write_files] = True
+    IF= [include_size_in_card_output] = "True"
+        SAVE=,JOIN([output_path],/,[id],_,[card_size],.png),0,0,100%,100%,,,[card_mask_path]
+    ELSE
+        SAVE=,JOIN([output_path],/,[id],.png),0,0,100%,100%,,,[card_mask_path]
+    ENDIF
+ENDIF

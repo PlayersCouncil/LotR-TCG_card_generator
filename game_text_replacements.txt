@@ -1,5 +1,6 @@
 ;;Replacement keys so that card writers don't have to include so many
-;; html tags for repetitive elements.
+;; html tags for repetitive elements.  The pairs in this file only
+;; affect game text, not other text such as title, subtitle, or card type.
 
 ;; This is not regex based, only simple search/replace.
 ;; You could utilize this to add more than just bold tags if you want,
@@ -137,11 +138,93 @@ HTMLKEY=,"Skirmish:","<b>Skirmish:</b>",,C
 HTMLKEY=,"Regroup:","<b>Regroup:</b>",,C
 
 
+;; Culture symbol replacements.  These have to exist within the LotR_TCG font
+;; or this won't work.
+HTMLKEY=,"(dwarf)","&#9786"
+HTMLKEY=,"(dwarven)","&#9786"
+HTMLKEY=,"(elf)","&#9787"
+HTMLKEY=,"(elven)","&#9787"
+HTMLKEY=,"(gandalf)","&#9829"
+HTMLKEY=,"(shire)","&#9830"
+HTMLKEY=,"(rohan)","&#9827"
+HTMLKEY=,"(gondor)","&#9824"
+HTMLKEY=,"(gollum)","&#9688"
+HTMLKEY=,"(dunland)","&#9794"
+HTMLKEY=,"(raider)","&#9792"
+HTMLKEY=,"(isengard)","&#9834"
+HTMLKEY=,"(uruk)","&#9835"
+HTMLKEY=,"(urukhai)","&#9835"
+HTMLKEY=,"(uruk-hai)","&#9835"
+HTMLKEY=,"(moria)","&#9788"
+HTMLKEY=,"(orc)","&#9658"
+HTMLKEY=,"(sauron)","&#9668"
+HTMLKEY=,"(mordor)","&#9668"
+HTMLKEY=,"(ringwraith)","&#8597"
+HTMLKEY=,"(wraith)","&#8597"
+HTMLKEY=,"(men)","&#8252"
+HTMLKEY=,"(evil men)","&#8252"
+HTMLKEY=,"(evilmen)","&#8252"
+
+
+
+;;Label unknown: <[ORC]>
+
+[card_full_text] = REPLACE([card_full_text],"\91\dwarf\93\","&#9786")
+[card_full_text] = REPLACE([card_full_text],"\91\dwarven\93\","&#9786")
+[card_full_text] = REPLACE([card_full_text],"\91\elf\93\","&#9787")
+[card_full_text] = REPLACE([card_full_text],"\91\elven\93\","&#9787")
+[card_full_text] = REPLACE([card_full_text],"\91\gandalf\93\","&#9829")
+[card_full_text] = REPLACE([card_full_text],"\91\shire\93\","&#9830")
+[card_full_text] = REPLACE([card_full_text],"\91\rohan\93\","&#9827")
+[card_full_text] = REPLACE([card_full_text],"\91\gondor\93\","&#9824")
+[card_full_text] = REPLACE([card_full_text],"\91\gollum\93\","&#9688")
+[card_full_text] = REPLACE([card_full_text],"\91\dunland\93\","&#9794")
+[card_full_text] = REPLACE([card_full_text],"\91\raider\93\","&#9792")
+[card_full_text] = REPLACE([card_full_text],"\91\isengard\93\","&#9834")
+[card_full_text] = REPLACE([card_full_text],"\91\uruk\93\","&#9835")
+[card_full_text] = REPLACE([card_full_text],"\91\urukhai\93\","&#9835")
+[card_full_text] = REPLACE([card_full_text],"\91\uruk-hai\93\","&#9835")
+[card_full_text] = REPLACE([card_full_text],"\91\moria\93\","&#9788")
+[card_full_text] = REPLACE([card_full_text],"\91\orc\93\","&#9658")
+;;[card_full_text] = REPLACE([card_full_text],"\91\Sauron\93\","&#9668")
+[card_full_text] = REPLACE([card_full_text],"\91\mordor\93\","&#9668")
+[card_full_text] = REPLACE([card_full_text],"\91\ringwraith\93\","&#8597")
+[card_full_text] = REPLACE([card_full_text],"\91\wraith\93\","&#8597")
+[card_full_text] = REPLACE([card_full_text],"\91\men\93\","&#8252")
+[card_full_text] = REPLACE([card_full_text],"\91\evil men\93\","&#8252")
+[card_full_text] = REPLACE([card_full_text],"\91\evilmen\93\","&#8252")
+
+;; Twilight symbol replacements.  These have to exist within the LotR_TCG font
+;; or this won't work.
+HTMLKEY=,"(1)","!"
+HTMLKEY=,"(2)","@"
+HTMLKEY=,"(3)","#"
+HTMLKEY=,"(4)","$"
+HTMLKEY=,"(5)","%"
+HTMLKEY=,"(6)","^"
+HTMLKEY=,"(7)","&"
+HTMLKEY=,"(8)","*"
+HTMLKEY=,"(9)","_"
+HTMLKEY=,"(X)","="
+
+[card_full_text] = REPLACE([card_full_text],"\91\1\93\","!")
+[card_full_text] = REPLACE([card_full_text],"\91\2\93\","@")
+[card_full_text] = REPLACE([card_full_text],"\91\3\93\","#")
+[card_full_text] = REPLACE([card_full_text],"\91\4\93\","$")
+[card_full_text] = REPLACE([card_full_text],"\91\5\93\","%")
+[card_full_text] = REPLACE([card_full_text],"\91\6\93\","^")
+[card_full_text] = REPLACE([card_full_text],"\91\7\93\","&")
+[card_full_text] = REPLACE([card_full_text],"\91\8\93\","*")
+[card_full_text] = REPLACE([card_full_text],"\91\9\93\","_")
+[card_full_text] = REPLACE([card_full_text],"\91\X\93\","=")
+
+
 
 ;; Now for replacing regular quotes into smart quotes in the lore
 ;; this code will not work on its own and is intended to be included
 ;; into lotr-tcg_virtual_cards.nde.  REPLACE is used instead of HTMLKEY
-;; because HTMLKEY does not appear to recognize /dd/ ascii codes.
+;; because HTMLKEY does not appear to recognize /dd/ ascii codes (or
+;; work with single/double quotes in general).
 
 
 ;; beginning and end of lore string are unambiguous
@@ -186,3 +269,9 @@ HTMLKEY=,"Regroup:","<b>Regroup:</b>",,C
 ;; pair of dumb quotes is either open or closed depending on order
 [card_full_text] = REPLACE([card_full_text],"\34\'","“‘")
 [card_full_text] = REPLACE([card_full_text],"'\34\","’”")
+
+
+
+
+
+

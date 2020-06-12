@@ -12,33 +12,66 @@
 ;; else a full path with quotes such as "C:/users/me/my_images"
 [card_image_path] = "X:/Projects/lotr-tcg/templates/new_templates/images"
 
+;; A path pointing to the location to use for the resulting card images.
+;; Can be the name of a folder in the same folder as this script, or
+;; else a full path with quotes such as "C:/users/me/my_cards"
+[output_path] = "card_export"
+
+;; A path pointing to the spreadsheet to read for card data.
+;; Can be the name of a file in the same folder as this script, or
+;; else a full path with quotes such as "C:/users/me/my_cards/test.csv"
+;; This can be an excel *.xls or *.xlsx file, an OpenOffice/LibreOffice
+;; *.ods file, or a comma-separated *.csv file.
+[spreadsheet_path] = "vset1.csv"
+
 ;; The size of template to use.
-;; Can be one of: huge, double, original
 ;; Whichever one you select must be present in the same folder;
 ;; for instance, if you select "huge", then a "huge_res_export" folder
 ;; must be present.
+;; Card output sizes:
+;;
+;; huge     : 1420 x 1988
+;; double   :  710 x 994
+;; original :  355 x 497
+;;
+;; HUGE IS OVERKILL, I PROMISE.  Even if you're printing, do a trial
+;; run and see if Double doesn't do it for you.  Remember that this is
+;; getting scaled down to a 3.5" x 2.5" card, there's not much physical
+;; size to pack all the detail in that huge provides.
+;;
+;; Can be one of: huge, double, original
 [card_size] = double
 
-;;Whether the card_size name chosen above will be appended to the
+;; Whether the card_size name chosen above will be appended to the
 ;; end of the card file name.
-;; Can be one of: _True_, _False_
-[include_size_in_card_output] = _True_
-
-;;If _True_, sites will be exported in landscape mode (text is right-side-up).
-;; Otherwise, sites will be exported in portrait mode (text is sideways).
-;; Can be one of: _True_, _False_
-[export_sites_as_landscape] = _True_
+;; Can be one of: True, False
+[include_size_in_card_output] = True
 
 ;; The color to use for regular game text.  This includes the title/subtitle,
 ;; card type, lore, and collector's info.
-;; Can be any standard HTML-formatted color string.
+;; Can be any standard HTML-formatted hex color string (#RRGGBB).
 [game_text_color] = #000000
 
 ;; The color to use for icon text.  This includes the twilight cost,
 ;; strength, vitality, site number, and resistance.
-;; Can be any standard HTML-formatted color string.
+;; Can be any standard HTML-formatted hex color string (#RRGGBB).
 [icon_text_color] = #FFFFFF
 
 ;; The PNG to be used for masking the card.  Every transparent pixel will be
 ;; transparent in the output, and the rest will be opaque.
 [card_mask_path] = card_mask.png
+
+;; If this is set to True, a pink rectangle will be drawn in the card image
+;; corresponding to the valid game text area, as modified by the
+;; game_text_width column for that card in the CSV.
+;; Can be one of: True, False
+[debug_game_text_area] = False
+
+;; If this is set to False, exporting to file will be skipped when the deck
+;; is built.  This will noticably speed up card generation (since each card
+;; is written to disk as it is generated.  This is mostly useful if you are
+;; rapidly testing changes or getting wording/formatting right, and so don't
+;; care about getting a full set of images each time.
+;; If this is False you can still manually export from nanDECK.
+;; Can be one of: True, False
+[auto_write_files] = True

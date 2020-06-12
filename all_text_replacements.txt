@@ -1,0 +1,38 @@
+;;Replacement keys so that card writers don't have to include so many
+;; html tags for repetitive elements.  The replacements in this file
+;; are ran against all text, including title, subtitle, card type,
+;; game text, collector's info, and stats, so tread lightly.
+
+;; This is not regex based, only simple search/replace.
+;; You could utilize this to add more than just bold tags if you want,
+;; it's just that bolded keywords are about the only systematic tags.
+
+
+;; Site block replacements
+HTMLKEY=,"(T)","`",typesymbol
+HTMLKEY=,"1T","1`",typesymbol
+HTMLKEY=,"2T","2`",typesymbol
+HTMLKEY=,"3T","3`",typesymbol
+HTMLKEY=,"4T","4`",typesymbol
+HTMLKEY=,"5T","5`",typesymbol
+HTMLKEY=,"6T","6`",typesymbol
+HTMLKEY=,"7T","7`",typesymbol
+HTMLKEY=,"8T","8`",typesymbol
+HTMLKEY=,"9T","9`",typesymbol
+
+HTMLKEY=,"(K)","~",typesymbol
+HTMLKEY=,"1K","1~",typesymbol
+HTMLKEY=,"2K","2~",typesymbol
+HTMLKEY=,"3K","3~",typesymbol
+HTMLKEY=,"4K","4~",typesymbol
+HTMLKEY=,"5K","5~",typesymbol
+HTMLKEY=,"6K","6~",typesymbol
+HTMLKEY=,"7K","7~",typesymbol
+HTMLKEY=,"8K","8~",typesymbol
+HTMLKEY=,"9K","9~",typesymbol
+
+;; Replacements of names with obnoxious accented characters, so we don't have
+;; to be so vigilant all the time in a csv of all things.
+
+HTMLKEY=,"rumil","R&#250mil"
+HTMLKEY=,"smeagol","Sm&#233agol"
