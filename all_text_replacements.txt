@@ -34,5 +34,6 @@ HTMLKEY=,"9K","9~",typesymbol
 ;; Replacements of names with obnoxious accented characters, so we don't have
 ;; to be so vigilant all the time in a csv of all things.
 
+HTMLKEY=,"khazad-dum","Khazad-d&#251m"
 HTMLKEY=,"rumil","R&#250mil"
 HTMLKEY=,"smeagol","Sm&#233agol"

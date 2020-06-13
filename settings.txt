@@ -61,11 +61,11 @@
 ;; transparent in the output, and the rest will be opaque.
 [card_mask_path] = card_mask.png
 
-;; If this is set to True, a pink rectangle will be drawn in the card image
-;; corresponding to the valid game text area, as modified by the
-;; game_text_width column for that card in the CSV.
+;; If this is set to True, a colored rectangle will be drawn in the card image
+;; corresponding to the title, subtitle, and valid game text area
+;; (as modified by the game_text_width column for that card in the CSV).
 ;; Can be one of: True, False
-[debug_game_text_area] = False
+[debug_regions] = False
 
 ;; If this is set to False, exporting to file will be skipped when the deck
 ;; is built.  This will noticably speed up card generation (since each card

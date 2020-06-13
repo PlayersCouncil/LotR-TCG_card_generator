@@ -28,18 +28,28 @@ CARDSIZE=2.5,3.5
 
 LINK= vset1.csv
 
-[debug_image_path] = examples/
+[debug_print] = False
+[debug_image_path] = "X:\Projects\lotr-tcg\templates\new_templates\examples\"
 
 ;; If certain values are not filled in, we will use these values instead
 [default_game_text_spacing] = 100
 [default_lore_spacing] = 98
 [default_game_text_width] = 69%
+[default_site_game_text_width] = 74%
+[default_character_title_font_size] = 10
+[default_character_subtitle_font_size] = 8
+[default_modifier_title_font_size] = 9
+[default_modifier_subtitle_font_size] = 8
 
 ;; Systematic clean-up
+[template] = CASESTRING([template], L)
 [unique] = CASESTRING([unique], U)
 [culture] = CASESTRING([culture], L)
 [card_type] = CASESTRING([card_type], F)
 [tags] = CASESTRING([tags], L)
+
+;; Some site processing to get us the non-block site number
+[sitenum] = [site:1,1]
 
 ;; Starts with black background as our canvas
 RECTANGLE=,0,0,100%,100%,#000000
@@ -76,46 +86,78 @@ RECTANGLE=,0,0,100%,100%,#000000
 
 <character_card_portrait> = 10.5%, 14.5%, 78.5%, 42%
 <modifier_card_portrait> = 21.2%, 11.9%, 69.7%, 37%
-<site_card_portrait> = 10.5%, 14.5%, 78.5%, 42%
+<site_card_portrait> = 12%, 10%, 64.2%, 79.4%
 <full_card_portrait> = 10.5%, 14.5%, 78.5%, 42%
 
 ;;RECTANGLE=,<card_portrait>,#00FFFF
 
-<character_title> = 19.5%, 1.7%, 90%, 10%
-<character_subtitle> = 21.6%, 5.8%, 90%, 10%
-<modifier_title> = 6%, 16%, 10.3%, 40%
+<character_unique> = 19.5%, 4.2%, 3%, 5%
+<character_title> = 21.5%, 4.7%, 58%, 4%
+<character_subtitle> = 21.6%, 9.3%, 58%, 3%
+<modifier_title> = 6.5%, 15.7%, 9.6%, 38%
+<site_title> = 7.5%, 24.9%, 4.5%, 50%
 
 <character_type_panel> = 15%,58.5%,70%,3.8%
 <modifier_type_panel> = 25%,58.5%,65%,3.8%
 
 <twilight_cost_icon> = 6.3%,3.5%,10%,10%
+<site_twilight_cost_icon> = 7.5%,3.9%,10%,10%
+<site_site_number_icon> = 8.4%,85.9%,10%,10%
+<site_tower_site_number_icon> = 23.2%,85.9%,10%,10%
+<site_king_site_number_icon> = 23.2%,85.9%,10%,10%
 <strength_icon> = 7.5%,62.5%,10%,10%
 <vitality_icon> = 7.5%,74%,10%,10%
 <third_icon> = 7.5%,84.5%,10%,10%
 
+<game_text> = 23.5%,67%,[game_text_width],25%
+<game_text_default> = 23.5%,67%,[default_game_text_width],25%
+<site_game_text> = 77.5%,13%,8.7%,[game_text_width]
+<site_game_text_default> = 77.5%,12.5%,8.7%,[default_site_game_text_width]
+
+
 ;; Set up our fonts for when we use HTML rendering (which is most everywhere).
 ;; Line spacing can be defined per card in the CSV, so we integrate it here.
 
-HTMLFONT=gametext,LOTR_TCG,7.3,D,[game_text_color],LEFT
-HTMLFONT=chartitle,LOTR_TCG-SmallCaps,10,BD,[game_text_color],LEFT
-HTMLFONT=charsubtitle,LOTR_TCG-SmallCaps,8,BD,[game_text_color],LEFT
-HTMLFONT=modtitle,LOTR_TCG-SmallCaps,9,BD,[game_text_color],RIGHT
+HTMLFONT=gametext,LOTR_TCG,7.4,D,[game_text_color],LEFT
+HTMLFONT=sitetitle,LOTR_TCG-SmallCaps,9,BDZ,[game_text_color],CENTER
+
+
+IF= [title_font_size] <> ""
+    HTMLFONT=chartitle,LOTR_TCG-SmallCaps,[default_character_title_font_size],BD,[game_text_color],LEFT
+    HTMLFONT=modtitle,LOTR_TCG-SmallCaps,[default_character_title_font_size],BD,[game_text_color],RIGHT
+    HTMLFONT=modtitletop,LOTR_TCG-SmallCaps,[default_character_title_font_size],BD,[game_text_color],RIGHT
+ELSE
+    HTMLFONT=chartitle,LOTR_TCG-SmallCaps,[default_character_title_font_size],BD,[game_text_color],LEFT
+    HTMLFONT=modtitle,LOTR_TCG-SmallCaps,[default_modifier_title_font_size],BD,[game_text_color],RIGHT
+    HTMLFONT=modtitletop,LOTR_TCG-SmallCaps,[default_modifier_title_font_size],BD,[game_text_color],RIGHT
+ENDIF
+
+IF= [subtitle_font_size] <> ""
+    HTMLFONT=charsubtitle,LOTR_TCG-SmallCaps,[default_character_subtitle_font_size],BD,[game_text_color],LEFT
+    HTMLFONT=modsubtitle,LOTR_TCG-SmallCaps,[default_character_subtitle_font_size],BD,[game_text_color],RIGHT
+ELSE
+    HTMLFONT=charsubtitle,LOTR_TCG-SmallCaps,[default_character_subtitle_font_size],BD,[game_text_color],LEFT
+    HTMLFONT=modsubtitle,LOTR_TCG-SmallCaps,[default_modifier_subtitle_font_size],BD,[game_text_color],RIGHT
+ENDIF
+
 HTMLFONT=typeplate,LOTR_TCG-SmallCaps,8.9,BD,[game_text_color],CENTER
 HTMLFONT=typesymbol,LOTR_TCG,8.9,D,[game_text_color]
-HTMLFONT=lore,LOTR_TCG-Lore,7.6,D,[game_text_color],LEFT
+HTMLFONT=lore,LOTR_TCG-Lore,7.5,D,[game_text_color],LEFT
 HTMLFONT=numbers,LOTR_TCG_Icons,14,D,[icon_text_color],CENTER,0%, 0.5%,0.03,#000000
 
 HTMLMARGINS=chartitle,0,0,0,0,CENTER
 HTMLMARGINS=charsubtitle,0,0,0,0,CENTER
+HTMLMARGINS=modtitle,0,0,0,0,CENTER,94
+HTMLMARGINS=modtitletop,0,0,0,0,TOP,94
+HTMLMARGINS=modsubtitle,-1%,0,0,0,
+HTMLMARGINS=sitetitle,0,0,0,0,CENTER
 HTMLMARGINS=numbers,0,0,0,0,CENTER
 HTMLMARGINS=typeplate,0,0,0,0,CENTER
 
 IF= [game_text_spacing] <> ""
     HTMLMARGINS=gametext,0,0,0,0,TOP,[game_text_spacing]
-    HTMLMARGINS=modtitle,0,0,0,0,CENTER,[game_text_spacing]
 ELSE
     HTMLMARGINS=gametext,0,0,0,0,TOP,[default_game_text_spacing]
-    HTMLMARGINS=modtitle,0,0,0,0,CENTER,[default_game_text_spacing]
 ENDIF
 
 IF= [lore_spacing] <> ""
@@ -129,32 +171,45 @@ ENDIF
 INCLUDE=all_text_replacements.txt
 
 ;; Now we get to card rendering.  Start with card-template-sensitive elements.
-IF= ([card_type] = "Companion") _OR_ ([card_type] = Minion) _OR_ ([card_type] = Ally) _OR_ ([card_type] = Follower)
+IF= [template] = "character"
 
-    ;; Insert the card portrait, since this is "beneath" everything else
-    IMAGE = , JOIN([card_image_path],/,[image_name]), <character_card_portrait>, 0, PN
-
-    ;; which template to use for gollum is stored in the [tags] column
-    IF=[culture] = "gollum"
-        IF=[tags] @ "shadow"
-            IMAGE = , [gollum_shadow_character_template], <card_background>, 0, PN
-        ELSE
-            IMAGE = , [gollum_freeps_character_template], <card_background>, 0, PN
-        ENDIF
+    ;; Debug printing is used to put a full-sized card in the background for
+    ;; the purposes of checking exact alignment of text, etc
+    IF= [debug_print] = True
+        IMAGE = , JOIN([debug_image_path],[debug_image_name]), <card_background>, 0, PN
     ELSE
-        IMAGE = , [character_template], <card_background>, 0, PN
+        ;; Insert the card portrait, since this is "beneath" everything else
+        IMAGE = , JOIN([card_image_path],/,[image_name]), <character_card_portrait>, 0, PN
+
+        ;; Now for the actual card template
+        IF=[culture] = "gollum"
+            ;; which template to use for gollum is stored in the [tags] column
+            IF= "shadow" @ [tags]
+                IMAGE = , [gollum_shadow_character_template], <card_background>, 0, PN
+            ELSE
+                IMAGE = , [gollum_freeps_character_template], <card_background>, 0, PN
+            ENDIF
+        ELSE
+            IMAGE = , [character_template], <card_background>, 0, PN
+        ENDIF
+    ENDIF
+
+    ;; Debug drawing the title/subtitle area, before the drawing of the text so it remains visible
+    IF= [debug_regions] = "True"
+        RECTANGLE=,<character_title>,#00FFFF
+        RECTANGLE=,<character_subtitle>,#00FFFF
     ENDIF
 
     ;; Character Title
     IF=([unique] = T) _OR_ ([unique] = Y)
-        HTMLTEXT=,"•[title]",<character_title>,,0,BE,100,chartitle
-    ELSE
-        HTMLTEXT=," [title]",<character_title>,,0,BE,100,chartitle
+        HTMLTEXT=,"•",<character_unique>,,0,BE,100,chartitle
     ENDIF
+    HTMLTEXT=,[title],<character_title>,,0,BE,100,chartitle
+    
 
     ;; Character Subtitle
     IF= [subtitle] <> ""
-        HTMLTEXT=," [subtitle]",<character_subtitle>,,0,BE,100,charsubtitle
+        HTMLTEXT=,"[subtitle]",<character_subtitle>,,0,BE,100,charsubtitle
     ENDIF
 
     ;; Character Card Type
@@ -183,7 +238,7 @@ IF= ([card_type] = "Companion") _OR_ ([card_type] = Minion) _OR_ ([card_type] = 
 
     ;; Resistance and ring-bearer
     IF= ([card_type] <> Minion) _AND_ ([resistance] <> "")
-        IF= [tags] @ "ring-bearer"
+        IF= "ring-bearer" @ [tags]
             IMAGE = , JOIN([positioned_icon_path],resistance_ring_combined_position_,[card_size],.png), <card_background>, 0, PN
         ELSE
             IMAGE = , JOIN([positioned_icon_path],resistance_position_,[card_size],.png), <card_background>, 0, PN
@@ -191,26 +246,47 @@ IF= ([card_type] = "Companion") _OR_ ([card_type] = Minion) _OR_ ([card_type] = 
         HTMLTEXT=,"[resistance]",<third_icon>,,0,BE,100,numbers
     ENDIF
 
-ELSEIF= ([card_type] = Condition) _OR_ ([card_type] = Event) _OR_ ([card_type] = Possession) _OR_ ([card_type] = Artifact)
+ELSEIF= ([template] = "modifier") _OR_ ([template] = "support")
 
-    ;; Insert the card portrait, since this is "beneath" everything else
-    IMAGE = , JOIN([card_image_path],/,[image_name]), <modifier_card_portrait>, 0, PN
-
-    IF=[culture] = "gollum"
-        IF=[tags] @ "shadow"
-            IMAGE = , [gollum_shadow_modifier_template], <card_background>, 0, PN
-        ELSE
-            IMAGE = , [gollum_freeps_modifier_template], <card_background>, 0, PN
-        ENDIF
+    ;; Debug printing is used to put a full-sized card in the background for
+    ;; the purposes of checking exact alignment of text, etc
+    IF= [debug_print] = True
+        IMAGE = , JOIN([debug_image_path],[debug_image_name]), <card_background>, 0, PN
     ELSE
-        IMAGE = , [modifier_template], <card_background>, 0, PN
+        ;; Insert the card portrait, since this is "beneath" everything else
+        IMAGE = , JOIN([card_image_path],/,[image_name]), <modifier_card_portrait>, 0, PN
+
+        ;; Now for the actual card template
+        IF=[culture] = "gollum"
+            ;; which template to use for gollum is stored in the [tags] column
+            IF="shadow" @ [tags]
+                IMAGE = , [gollum_shadow_modifier_template], <card_background>, 0, PN
+            ELSE
+                IMAGE = , [gollum_freeps_modifier_template], <card_background>, 0, PN
+            ENDIF
+        ELSE
+            IMAGE = , [modifier_template], <card_background>, 0, PN
+        ENDIF
     ENDIF
 
-    ;; Modifier Title
-    IF=([unique] = T) _OR_ ([unique] = Y)
-        HTMLTEXT=,"•[title]",<modifier_title>,,270,BE,100,modtitle
+    ;; Debug drawing the title/subtitle area, before the drawing of the text so it remains visible
+    IF= [debug_regions] = "True"
+        RECTANGLE=,<modifier_title>,#00FFFF
+    ENDIF
+
+    ;; Modifier Title/Subtitle
+    IF= [subtitle] <> ""
+        IF=([unique] = T) _OR_ ([unique] = Y)
+            HTMLTEXT=,JOIN("•",[title],"<br><modsubtitle>",[subtitle],"</modsubtitle>"),<modifier_title>,,270,BE,100,modtitletop
+        ELSE
+            HTMLTEXT=,JOIN([title],"<br><modsubtitle>",[subtitle],"</modsubtitle>"),<modifier_title>,,270,BE,100,modtitletop
+        ENDIF
     ELSE
-        HTMLTEXT=,"[title]",<modifier_title>,,270,BE,100,modtitle
+        IF=([unique] = T) _OR_ ([unique] = Y)
+            HTMLTEXT=,"•[title]",<modifier_title>,,270,BE,100,modtitle
+        ELSE
+            HTMLTEXT=,"[title]",<modifier_title>,,270,BE,100,modtitle
+        ENDIF
     ENDIF
 
     ;; Card Type
@@ -220,24 +296,77 @@ ELSEIF= ([card_type] = Condition) _OR_ ([card_type] = Event) _OR_ ([card_type] =
         HTMLTEXT=,"[card_type] • [card_subtype]",<modifier_type_panel>,,0,BE,100,typeplate
     ENDIF
 
-ELSEIF= ([card_type] = Site)
-    IF= [tags] @ "sanctuary"
-        IMAGE = , [site_sanctuary_template], <card_background>, 0, PN
+ELSEIF= [template] = "site"
+
+    ;; Debug printing is used to put a full-sized card in the background for
+    ;; the purposes of checking exact alignment of text, etc
+    IF= [debug_print] = True
+        IMAGE = , JOIN([debug_image_path],[debug_image_name]), <card_background>, 270, PN
     ELSE
-        IMAGE = , [site_standard_template], <card_background>, 0, PN
+        ;; Insert the card portrait, since this is "beneath" everything else
+        IMAGE = , JOIN([card_image_path],/,[image_name]), <site_card_portrait>, 0, PN
+
+        ;; Now for the actual card template
+        IF= [card_type] = "Sanctuary"
+            IMAGE = , [site_sanctuary_template], <card_background>, 270, PN
+        ELSE
+            IMAGE = , [site_standard_template], <card_background>, 270, PN
+        ENDIF
     ENDIF
+
+    ;; Debug drawing the title/subtitle area, before the drawing of the text so it remains visible
+    IF= [debug_regions] = "True"
+        RECTANGLE=,<site_title>,#00FFFF
+    ENDIF
+
+    ;; Site Title
+    HTMLTEXT=,"[title]",<site_title>,,270,BE,100,sitetitle
+
+    ;;RECTANGLE=,<site_card_portrait>,#FF00FF
+
+    ;;RECTANGLE=,<site_twilight_cost_icon>,#ff00FF
+
+    ;; Twilight Cost Icon
+    IMAGE = , JOIN([positioned_icon_path],site_twilight_number_position_,[card_size],.png), <card_background>, 270, PN
+
+    ;; Site Compass Icon / Site Number
+    IF= "T" @ [site]
+        IMAGE = , JOIN([positioned_icon_path],site_block_tower_position_,[card_size],.png), <card_background>, 270, PN
+        HTMLTEXT=,"[sitenum]",<site_tower_site_number_icon>,,270,BE,100,numbers
+    ELSEIF= "K" @ [site]
+        IMAGE = , JOIN([positioned_icon_path],site_block_king_position_,[card_size],.png), <card_background>, 270, PN
+        HTMLTEXT=,"[sitenum]",<site_king_site_number_icon>,,270,BE,100,numbers
+    ELSEIF= [site] <> ""
+        IMAGE = , JOIN([positioned_icon_path],site_block_fellowship_position_,[card_size],.png), <card_background>, 270, PN
+        HTMLTEXT=,"[sitenum]",<site_site_number_icon>,,270,BE,100,numbers
+    ELSE
+        IMAGE = , JOIN([positioned_icon_path],site_block_shadows_position_,[card_size],.png), <card_background>, 270, PN
+    ENDIF
+    
+    
+    ;; Site Number
+    IF= [site] <> ""
+        
+        
+    ENDIF
+    
+
 ELSE=
     RECTANGLE=,0,0,100%,100%,#9C2542
+    TEXT=,"Unrecognized template type: [template]",0,0,100%,100%
 ENDIF
 
 ;;RECTANGLE=,<modifier_type_panel>,#FF00FF
-;;RECTANGLE=,<modifier_title>,#00FFFF
 
 
 
-;;Twilight Cost
-FONT = LOTR_TCG_Icons, 15, T, [icon_text_color]
-TEXT=,[twilight],6.3%,3.5%,10%,10%
+
+;; Non-site Twilight Cost
+IF= ([template] = "character") _OR_ ([template] = "modifier") _OR_ ([template] = "support")
+    HTMLTEXT=,"[twilight]",<twilight_cost_icon>,,0,BE,100,numbers
+ELSEIF= [template] = "site"
+    HTMLTEXT=,"[twilight]",<site_twilight_cost_icon>,,270,BE,100,numbers
+ENDIF
 
 
 
@@ -265,16 +394,20 @@ FONT = LOTR_TCG, 4.2, BT, [game_text_color]
 TEXT=,JOIN([set_num]," ",[rarity]," ", [card_num]),84.7%,87.7%,10%,10%,CENTER
 
 
-
-
-
-
 ;; Debug drawing the game text area, before the drawing of the text so it remains visible
-IF= [debug_game_text_area] = "True"
-    IF= [game_text_width] <> ""
-        RECTANGLE=,23.5%,67%,[game_text_width],25%,#ff00ff
+IF= [debug_regions] = "True"
+    IF= [template] = "site"
+        IF= [game_text_width] <> ""
+            RECTANGLE=,<site_game_text>,#ff00ff
+        ELSE
+            RECTANGLE=,<site_game_text_default>,#ff00ff
+        ENDIF
     ELSE
-        RECTANGLE=,23.5%,67%,[default_game_text_width],25%,#ff00ff
+        IF= [game_text_width] <> ""
+            RECTANGLE=,<game_text>,#ff00ff
+        ELSE
+            RECTANGLE=,<game_text_default>,#ff00ff
+        ENDIF
     ENDIF
 ENDIF
 
@@ -292,10 +425,20 @@ INCLUDE=game_text_replacements.txt
 ;; This isn't stored in a frame because frames can't have their value switch on
 ;; CSV column data like HTMLTEXT can, so we're forced to copy-paste.
 
-IF= [game_text_width] <> ""
-    HTMLTEXT=,[card_full_text],23.5%,67%,[game_text_width],25%,,0,BE,100,gametext
-ELSE
-    HTMLTEXT=,[card_full_text],23.5%,67%,[default_game_text_width],25%,,0,BE,100,gametext
+
+
+IF= ([template] = "character") _OR_ ([template] = "modifier") _OR_ ([template] = "support")
+    IF= [game_text_width] <> ""
+        HTMLTEXT=,[card_full_text],<game_text>,,0,BE,100,gametext
+    ELSE
+        HTMLTEXT=,[card_full_text],<game_text_default>,,0,BE,100,gametext
+    ENDIF
+ELSEIF = [template] = "site"
+    IF= [game_text_width] <> ""
+        HTMLTEXT=,[card_full_text],<site_game_text>,,270,BE,100,gametext
+    ELSE
+        HTMLTEXT=,[card_full_text],<site_game_text_default>,,270,BE,100,gametext
+    ENDIF
 ENDIF
 
 
