@@ -4,7 +4,7 @@
 
 INCLUDE = settings.txt
 
-BORDER=ROUNDED,#000000,0.15
+
 UNIT=INCH
 PAGE=8.5,11,PORTRAIT,HV
 FONTALIAS = , ON
@@ -40,6 +40,9 @@ LINK= vset1.csv
 [default_character_subtitle_font_size] = 8
 [default_modifier_title_font_size] = 9
 [default_modifier_subtitle_font_size] = 8
+[default_site_title_font_size] = 9
+[default_ring_title_font_size] = 10.5
+[default_border_color] = #000000
 
 ;; Systematic clean-up
 [template] = CASESTRING([template], L)
@@ -87,7 +90,7 @@ RECTANGLE=,0,0,100%,100%,#000000
 <character_card_portrait> = 10.5%, 14.5%, 78.5%, 42%
 <modifier_card_portrait> = 21.2%, 11.9%, 69.7%, 37%
 <site_card_portrait> = 12%, 10%, 64.2%, 79.4%
-<full_card_portrait> = 10.5%, 14.5%, 78.5%, 42%
+<full_card_portrait> = 4.3%,3.1%,91.4%,93.8%
 
 ;;RECTANGLE=,<card_portrait>,#00FFFF
 
@@ -119,25 +122,29 @@ RECTANGLE=,0,0,100%,100%,#000000
 ;; Line spacing can be defined per card in the CSV, so we integrate it here.
 
 HTMLFONT=gametext,LOTR_TCG,7.4,D,[game_text_color],LEFT
-HTMLFONT=sitetitle,LOTR_TCG-SmallCaps,9,BDZ,[game_text_color],CENTER
+
 
 
 IF= [title_font_size] <> ""
-    HTMLFONT=chartitle,LOTR_TCG-SmallCaps,[default_character_title_font_size],BD,[game_text_color],LEFT
-    HTMLFONT=modtitle,LOTR_TCG-SmallCaps,[default_character_title_font_size],BD,[game_text_color],RIGHT
-    HTMLFONT=modtitletop,LOTR_TCG-SmallCaps,[default_character_title_font_size],BD,[game_text_color],RIGHT
+    HTMLFONT=chartitle,LOTR_TCG-SmallCaps,{title_font_size?§},BDZ,[game_text_color],LEFT
+    HTMLFONT=modtitle,LOTR_TCG-SmallCaps,{title_font_size?§},BD,[game_text_color],RIGHT
+    HTMLFONT=modtitletop,LOTR_TCG-SmallCaps,{title_font_size?§},BDZ,[game_text_color],RIGHT
+    HTMLFONT=sitetitle,LOTR_TCG-SmallCaps,{title_font_size?§},BDZ,[game_text_color],CENTER
+    HTMLFONT=ringtitle,LOTR_TCG-SmallCaps,{title_font_size?§},BDZ,[game_text_color],RIGHT
 ELSE
-    HTMLFONT=chartitle,LOTR_TCG-SmallCaps,[default_character_title_font_size],BD,[game_text_color],LEFT
+    HTMLFONT=chartitle,LOTR_TCG-SmallCaps,[default_character_title_font_size],BDZ,[game_text_color],LEFT
     HTMLFONT=modtitle,LOTR_TCG-SmallCaps,[default_modifier_title_font_size],BD,[game_text_color],RIGHT
-    HTMLFONT=modtitletop,LOTR_TCG-SmallCaps,[default_modifier_title_font_size],BD,[game_text_color],RIGHT
+    HTMLFONT=modtitletop,LOTR_TCG-SmallCaps,[default_modifier_title_font_size],BDZ,[game_text_color],RIGHT
+    HTMLFONT=sitetitle,LOTR_TCG-SmallCaps,[default_site_title_font_size],BDZ,[game_text_color],CENTER
+    HTMLFONT=ringtitle,LOTR_TCG-SmallCaps,[default_ring_title_font_size],BDZ,[game_text_color],RIGHT
 ENDIF
 
 IF= [subtitle_font_size] <> ""
-    HTMLFONT=charsubtitle,LOTR_TCG-SmallCaps,[default_character_subtitle_font_size],BD,[game_text_color],LEFT
-    HTMLFONT=modsubtitle,LOTR_TCG-SmallCaps,[default_character_subtitle_font_size],BD,[game_text_color],RIGHT
+    HTMLFONT=charsubtitle,LOTR_TCG-SmallCaps,{subtitle_font_size?§},BDZ,[game_text_color],LEFT
+    HTMLFONT=modsubtitle,LOTR_TCG-SmallCaps,{subtitle_font_size?§},BDZ,[game_text_color],RIGHT
 ELSE
-    HTMLFONT=charsubtitle,LOTR_TCG-SmallCaps,[default_character_subtitle_font_size],BD,[game_text_color],LEFT
-    HTMLFONT=modsubtitle,LOTR_TCG-SmallCaps,[default_modifier_subtitle_font_size],BD,[game_text_color],RIGHT
+    HTMLFONT=charsubtitle,LOTR_TCG-SmallCaps,[default_character_subtitle_font_size],BDZ,[game_text_color],LEFT
+    HTMLFONT=modsubtitle,LOTR_TCG-SmallCaps,[default_modifier_subtitle_font_size],BDZ,[game_text_color],RIGHT
 ENDIF
 
 HTMLFONT=typeplate,LOTR_TCG-SmallCaps,8.9,BD,[game_text_color],CENTER
@@ -151,6 +158,7 @@ HTMLMARGINS=modtitle,0,0,0,0,CENTER,94
 HTMLMARGINS=modtitletop,0,0,0,0,TOP,94
 HTMLMARGINS=modsubtitle,-1%,0,0,0,
 HTMLMARGINS=sitetitle,0,0,0,0,CENTER
+HTMLMARGINS=ringtitle,0,0,0,0,CENTER
 HTMLMARGINS=numbers,0,0,0,0,CENTER
 HTMLMARGINS=typeplate,0,0,0,0,CENTER
 
@@ -184,7 +192,7 @@ IF= [template] = "character"
         ;; Now for the actual card template
         IF=[culture] = "gollum"
             ;; which template to use for gollum is stored in the [tags] column
-            IF= "shadow" @ [tags]
+            IF= "shadow" @ {tags?§}
                 IMAGE = , [gollum_shadow_character_template], <card_background>, 0, PN
             ELSE
                 IMAGE = , [gollum_freeps_character_template], <card_background>, 0, PN
@@ -238,7 +246,7 @@ IF= [template] = "character"
 
     ;; Resistance and ring-bearer
     IF= ([card_type] <> Minion) _AND_ ([resistance] <> "")
-        IF= "ring-bearer" @ [tags]
+        IF= "ring-bearer" @ {tags?§}
             IMAGE = , JOIN([positioned_icon_path],resistance_ring_combined_position_,[card_size],.png), <card_background>, 0, PN
         ELSE
             IMAGE = , JOIN([positioned_icon_path],resistance_position_,[card_size],.png), <card_background>, 0, PN
@@ -259,7 +267,7 @@ ELSEIF= ([template] = "modifier") _OR_ ([template] = "support")
         ;; Now for the actual card template
         IF=[culture] = "gollum"
             ;; which template to use for gollum is stored in the [tags] column
-            IF="shadow" @ [tags]
+            IF="shadow" @ {tags?§}
                 IMAGE = , [gollum_shadow_modifier_template], <card_background>, 0, PN
             ELSE
                 IMAGE = , [gollum_freeps_modifier_template], <card_background>, 0, PN
@@ -344,12 +352,52 @@ ELSEIF= [template] = "site"
     ENDIF
     
     
-    ;; Site Number
-    IF= [site] <> ""
+    ;; Site Arrows
+    IF= "right_arrow" @ {tags?§}
+        IF= [card_type] = "Sanctuary"
+            IMAGE = , JOIN([positioned_icon_path],site_arrow_right_sanctuary_position_,[card_size],.png), <card_background>, 270, PN
+        ELSE
+            IMAGE = , JOIN([positioned_icon_path],site_arrow_right_position_,[card_size],.png), <card_background>, 270, PN
+        ENDIF
         
-        
+    ELSE
+        IF= [card_type] = "Sanctuary"
+            IMAGE = , JOIN([positioned_icon_path],site_arrow_left_sanctuary_position_,[card_size],.png), <card_background>, 270, PN
+        ELSE
+            IMAGE = , JOIN([positioned_icon_path],site_arrow_left_position_,[card_size],.png), <card_background>, 270, PN
+        ENDIF
     ENDIF
     
+ELSEIF= [template] = "onering"
+
+    ;; Debug printing is used to put a full-sized card in the background for
+    ;; the purposes of checking exact alignment of text, etc
+    IF= [debug_print] = True
+        IMAGE = , JOIN([debug_image_path],[debug_image_name]), <card_background>, 0, PN
+    ELSE
+        ;; Insert the card portrait, since this is "beneath" everything else
+        IMAGE = , JOIN([card_image_path],/,[image_name]), <full_card_portrait>, 0, PN
+
+    ENDIF
+
+    ;; Debug drawing the title/subtitle area, before the drawing of the text so it remains visible
+    IF= [debug_regions] = "True"
+        RECTANGLE=,<modifier_title>,#00FFFF
+    ENDIF
+
+    
+
+    ;; Title
+    IF=([unique] = T) _OR_ ([unique] = Y)
+        HTMLTEXT=,"•[title]",<modifier_title>,,270,BE,100,ringtitle
+    ELSE
+        HTMLTEXT=,"[title]",<modifier_title>,,270,BE,100,ringtitle
+    ENDIF
+
+    ;; Subtitle
+    IF= [subtitle] <> ""
+        HTMLTEXT=,"[subtitle]",<modifier_type_panel>,,0,BE,100,typeplate
+    ENDIF
 
 ELSE=
     RECTANGLE=,0,0,100%,100%,#9C2542
@@ -361,7 +409,7 @@ ENDIF
 
 
 
-;; Non-site Twilight Cost
+;; Twilight Cost
 IF= ([template] = "character") _OR_ ([template] = "modifier") _OR_ ([template] = "support")
     HTMLTEXT=,"[twilight]",<twilight_cost_icon>,,0,BE,100,numbers
 ELSEIF= [template] = "site"
@@ -373,18 +421,22 @@ ENDIF
 ;;Strength
 
 IF= [strength] <> ""
-    IMAGE = , JOIN([positioned_icon_path],strength_position_,[card_size],.png), <card_background>, 0, PN
+    IF= "disable_strength" # {tags?§}
+        IMAGE = , JOIN([positioned_icon_path],strength_position_,[card_size],.png), <card_background>, 0, PN
+    ENDIF
     HTMLTEXT=,"[strength]",<strength_icon>,,0,BE,100,numbers
 ENDIF
 
 ;;Vitality
 IF= [vitality] <> ""
-    IMAGE = , JOIN([positioned_icon_path],vitality_position_,[card_size],.png), <card_background>, 0, PN
+    IF= "disable_vitality" # {tags?§}
+        IMAGE = , JOIN([positioned_icon_path],vitality_position_,[card_size],.png), <card_background>, 0, PN
+    ENDIF
     HTMLTEXT=,"[vitality]",<vitality_icon>,,0,BE,100,numbers
 ENDIF
 
 ;; Signets
-IF= [signet] <> ""
+IF= ([signet] <> "") _AND_ _NOT_ ("disable_signet" @ {tags?§})
     IMAGE = , JOIN([positioned_icon_path],signet_,[signet],_position_,[card_size],.png), <card_background>, 0, PN
 ENDIF
 
@@ -424,10 +476,7 @@ INCLUDE=game_text_replacements.txt
 ;; of the game text in these two clauses to also do it above in the debug draw.
 ;; This isn't stored in a frame because frames can't have their value switch on
 ;; CSV column data like HTMLTEXT can, so we're forced to copy-paste.
-
-
-
-IF= ([template] = "character") _OR_ ([template] = "modifier") _OR_ ([template] = "support")
+IF= ([template] = "character") _OR_ ([template] = "modifier") _OR_ ([template] = "support") _OR_ ([template] = "onering")
     IF= [game_text_width] <> ""
         HTMLTEXT=,[card_full_text],<game_text>,,0,BE,100,gametext
     ELSE
@@ -441,7 +490,24 @@ ELSEIF = [template] = "site"
     ENDIF
 ENDIF
 
+;;GRID=,<full_card_portrait>,#FF00FF,0.01,11,15
 
+
+
+IF= "disclaimer_light" @ {tags?§}
+    IMAGE = , JOIN([icon_path],disclaimer_light_,[card_size],.png), 33.5%,94%,61%,2.7%, 0, PN
+ELSEIF= ([template] = "onering") _OR_ ("disclaimer" @ {tags?§}) _OR_ ("full_art" @ {tags?§}) 
+    IMAGE = , JOIN([icon_path],disclaimer_dark_,[card_size],.png), 33.5%,94%,61%,2.7%, 0, PN
+ENDIF
+
+
+
+;; Draw additional borders over the top
+IF= {border_color?§} <> ""
+    ROUNDRECT=,<card_background>,{border_color?§},EMPTY,9%,7,9.8
+ELSE
+    ROUNDRECT=,<card_background>,[default_border_color],EMPTY,9%,7,9.8
+ENDIF
 
 
 ;; Last but not least, finally write the file (if not configured to do otherwise).
@@ -452,3 +518,4 @@ IF= [auto_write_files] = True
         SAVE=,JOIN([output_path],/,[id],.png),0,0,100%,100%,,,[card_mask_path]
     ENDIF
 ENDIF
+

@@ -136,6 +136,7 @@ HTMLKEY=,"Archery:","<b>Archery:</b>",,C
 HTMLKEY=,"Assignment:","<b>Assignment:</b>",,C
 HTMLKEY=,"Skirmish:","<b>Skirmish:</b>",,C
 HTMLKEY=,"Regroup:","<b>Regroup:</b>",,C
+HTMLKEY=,"Response:","<b>Response:</b>",,C
 
 
 ;; Culture symbol replacements.  These have to exist within the LotR_TCG font
@@ -165,34 +166,31 @@ HTMLKEY=,"(men)","&#8252"
 HTMLKEY=,"(evil men)","&#8252"
 HTMLKEY=,"(evilmen)","&#8252"
 
-
-
-;;Label unknown: <[ORC]>
-
-[card_full_text] = REPLACE([card_full_text],"\91\dwarf\93\","&#9786")
-[card_full_text] = REPLACE([card_full_text],"\91\dwarven\93\","&#9786")
-[card_full_text] = REPLACE([card_full_text],"\91\elf\93\","&#9787")
-[card_full_text] = REPLACE([card_full_text],"\91\elven\93\","&#9787")
-[card_full_text] = REPLACE([card_full_text],"\91\gandalf\93\","&#9829")
-[card_full_text] = REPLACE([card_full_text],"\91\shire\93\","&#9830")
-[card_full_text] = REPLACE([card_full_text],"\91\rohan\93\","&#9827")
-[card_full_text] = REPLACE([card_full_text],"\91\gondor\93\","&#9824")
-[card_full_text] = REPLACE([card_full_text],"\91\gollum\93\","&#9688")
-[card_full_text] = REPLACE([card_full_text],"\91\dunland\93\","&#9794")
-[card_full_text] = REPLACE([card_full_text],"\91\raider\93\","&#9792")
-[card_full_text] = REPLACE([card_full_text],"\91\isengard\93\","&#9834")
-[card_full_text] = REPLACE([card_full_text],"\91\uruk\93\","&#9835")
-[card_full_text] = REPLACE([card_full_text],"\91\urukhai\93\","&#9835")
-[card_full_text] = REPLACE([card_full_text],"\91\uruk-hai\93\","&#9835")
-[card_full_text] = REPLACE([card_full_text],"\91\moria\93\","&#9788")
-[card_full_text] = REPLACE([card_full_text],"\91\orc\93\","&#9658")
-;;[card_full_text] = REPLACE([card_full_text],"\91\Sauron\93\","&#9668")
-[card_full_text] = REPLACE([card_full_text],"\91\mordor\93\","&#9668")
-[card_full_text] = REPLACE([card_full_text],"\91\ringwraith\93\","&#8597")
-[card_full_text] = REPLACE([card_full_text],"\91\wraith\93\","&#8597")
-[card_full_text] = REPLACE([card_full_text],"\91\men\93\","&#8252")
-[card_full_text] = REPLACE([card_full_text],"\91\evil men\93\","&#8252")
-[card_full_text] = REPLACE([card_full_text],"\91\evilmen\93\","&#8252")
+;; Same for square brackets
+HTMLKEY=,"\91\dwarf\93\","&#9786"
+HTMLKEY=,"\91\dwarven\93\","&#9786"
+HTMLKEY=,"\91\elf\93\","&#9787"
+HTMLKEY=,"\91\elven\93\","&#9787"
+HTMLKEY=,"\91\gandalf\93\","&#9829"
+HTMLKEY=,"\91\shire\93\","&#9830"
+HTMLKEY=,"\91\rohan\93\","&#9827"
+HTMLKEY=,"\91\gondor\93\","&#9824"
+HTMLKEY=,"\91\gollum\93\","&#9688"
+HTMLKEY=,"\91\dunland\93\","&#9794"
+HTMLKEY=,"\91\raider\93\","&#9792"
+HTMLKEY=,"\91\isengard\93\","&#9834"
+HTMLKEY=,"\91\uruk\93\","&#9835"
+HTMLKEY=,"\91\urukhai\93\","&#9835"
+HTMLKEY=,"\91\uruk-hai\93\","&#9835"
+HTMLKEY=,"\91\moria\93\","&#9788"
+HTMLKEY=,"\91\orc\93\","&#9658"
+HTMLKEY=,"\91\sauron\93\","&#9668"
+HTMLKEY=,"\91\mordor\93\","&#9668"
+HTMLKEY=,"\91\ringwraith\93\","&#8597"
+HTMLKEY=,"\91\wraith\93\","&#8597"
+HTMLKEY=,"\91\men\93\","&#8252"
+HTMLKEY=,"\91\evil men\93\","&#8252"
+HTMLKEY=,"\91\evilmen\93\","&#8252"
 
 ;; Twilight symbol replacements.  These have to exist within the LotR_TCG font
 ;; or this won't work.
@@ -207,16 +205,16 @@ HTMLKEY=,"(8)","*"
 HTMLKEY=,"(9)","_"
 HTMLKEY=,"(X)","="
 
-[card_full_text] = REPLACE([card_full_text],"\91\1\93\","!")
-[card_full_text] = REPLACE([card_full_text],"\91\2\93\","@")
-[card_full_text] = REPLACE([card_full_text],"\91\3\93\","#")
-[card_full_text] = REPLACE([card_full_text],"\91\4\93\","$")
-[card_full_text] = REPLACE([card_full_text],"\91\5\93\","%")
-[card_full_text] = REPLACE([card_full_text],"\91\6\93\","^")
-[card_full_text] = REPLACE([card_full_text],"\91\7\93\","&")
-[card_full_text] = REPLACE([card_full_text],"\91\8\93\","*")
-[card_full_text] = REPLACE([card_full_text],"\91\9\93\","_")
-[card_full_text] = REPLACE([card_full_text],"\91\X\93\","=")
+HTMLKEY=,"\91\1\93\","!"
+HTMLKEY=,"\91\2\93\","@"
+HTMLKEY=,"\91\3\93\","#"
+HTMLKEY=,"\91\4\93\","$"
+HTMLKEY=,"\91\5\93\","%"
+HTMLKEY=,"\91\6\93\","^"
+HTMLKEY=,"\91\7\93\","&"
+HTMLKEY=,"\91\8\93\","*"
+HTMLKEY=,"\91\9\93\","_"
+HTMLKEY=,"\91\X\93\","="
 
 
 
