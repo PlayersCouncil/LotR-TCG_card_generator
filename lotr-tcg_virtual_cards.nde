@@ -117,40 +117,92 @@ RECTANGLE=,0,0,100%,100%,#000000
 <site_game_text> = 77.5%,13%,8.7%,[game_text_width]
 <site_game_text_default> = 77.5%,12.5%,8.7%,[default_site_game_text_width]
 
+<collectors_info> = 84.7%,91.8%,10%,2%
+
 
 ;; Set up our fonts for when we use HTML rendering (which is most everywhere).
 ;; Line spacing can be defined per card in the CSV, so we integrate it here.
 
-HTMLFONT=gametext,LOTR_TCG,7.4,D,[game_text_color],LEFT
 
 
+IF= {game_text_color?§} <> ""
+    IF= {title_font_size?§} <> ""
+        HTMLFONT=chartitle,LOTR_TCG-SmallCaps,{title_font_size?§},BDZ,{game_text_color?§},LEFT
+        HTMLFONT=modtitle,LOTR_TCG-SmallCaps,{title_font_size?§},BD,{game_text_color?§},RIGHT
+        HTMLFONT=modtitletop,LOTR_TCG-SmallCaps,{title_font_size?§},BDZ,{game_text_color?§},RIGHT
+        HTMLFONT=sitetitle,LOTR_TCG-SmallCaps,{title_font_size?§},BDZ,{game_text_color?§},CENTER
+        HTMLFONT=ringtitle,LOTR_TCG-SmallCaps,{title_font_size?§},BDZ,{game_text_color?§},RIGHT
+    ELSE
+        HTMLFONT=chartitle,LOTR_TCG-SmallCaps,[default_character_title_font_size],BDZ,{game_text_color?§},LEFT
+        HTMLFONT=modtitle,LOTR_TCG-SmallCaps,[default_modifier_title_font_size],BD,{game_text_color?§},RIGHT
+        HTMLFONT=modtitletop,LOTR_TCG-SmallCaps,[default_modifier_title_font_size],BDZ,{game_text_color?§},RIGHT
+        HTMLFONT=sitetitle,LOTR_TCG-SmallCaps,[default_site_title_font_size],BDZ,{game_text_color?§},CENTER
+        HTMLFONT=ringtitle,LOTR_TCG-SmallCaps,[default_ring_title_font_size],BDZ,{game_text_color?§},RIGHT
+    ENDIF
 
-IF= [title_font_size] <> ""
-    HTMLFONT=chartitle,LOTR_TCG-SmallCaps,{title_font_size?§},BDZ,[game_text_color],LEFT
-    HTMLFONT=modtitle,LOTR_TCG-SmallCaps,{title_font_size?§},BD,[game_text_color],RIGHT
-    HTMLFONT=modtitletop,LOTR_TCG-SmallCaps,{title_font_size?§},BDZ,[game_text_color],RIGHT
-    HTMLFONT=sitetitle,LOTR_TCG-SmallCaps,{title_font_size?§},BDZ,[game_text_color],CENTER
-    HTMLFONT=ringtitle,LOTR_TCG-SmallCaps,{title_font_size?§},BDZ,[game_text_color],RIGHT
+    IF= {subtitle_font_size?§} <> ""
+        HTMLFONT=charsubtitle,LOTR_TCG-SmallCaps,{subtitle_font_size?§},BDZ,{game_text_color?§},LEFT
+        HTMLFONT=modsubtitle,LOTR_TCG-SmallCaps,{subtitle_font_size?§},BDZ,{game_text_color?§},RIGHT
+    ELSE
+        HTMLFONT=charsubtitle,LOTR_TCG-SmallCaps,[default_character_subtitle_font_size],BDZ,{game_text_color?§},LEFT
+        HTMLFONT=modsubtitle,LOTR_TCG-SmallCaps,[default_modifier_subtitle_font_size],BDZ,{game_text_color?§},RIGHT
+    ENDIF
+
+    HTMLFONT=gametext,LOTR_TCG,7.4,D,{game_text_color?§},LEFT
+    HTMLFONT=typeplate,LOTR_TCG-SmallCaps,8.9,BD,{game_text_color?§},CENTER
+    HTMLFONT=typesymbol,LOTR_TCG,8.9,D,{game_text_color?§}
+    HTMLFONT=lore,LOTR_TCG-Lore,7.5,D,{game_text_color?§},LEFT
+    HTMLFONT=collinfo, LOTR_TCG, 4.2,BD, {game_text_color?§},CENTER
+    
 ELSE
-    HTMLFONT=chartitle,LOTR_TCG-SmallCaps,[default_character_title_font_size],BDZ,[game_text_color],LEFT
-    HTMLFONT=modtitle,LOTR_TCG-SmallCaps,[default_modifier_title_font_size],BD,[game_text_color],RIGHT
-    HTMLFONT=modtitletop,LOTR_TCG-SmallCaps,[default_modifier_title_font_size],BDZ,[game_text_color],RIGHT
-    HTMLFONT=sitetitle,LOTR_TCG-SmallCaps,[default_site_title_font_size],BDZ,[game_text_color],CENTER
-    HTMLFONT=ringtitle,LOTR_TCG-SmallCaps,[default_ring_title_font_size],BDZ,[game_text_color],RIGHT
+    IF= [title_font_size] <> ""
+        HTMLFONT=chartitle,LOTR_TCG-SmallCaps,{title_font_size?§},BDZ,[default_game_text_color],LEFT
+        HTMLFONT=modtitle,LOTR_TCG-SmallCaps,{title_font_size?§},BD,[default_game_text_color],RIGHT
+        HTMLFONT=modtitletop,LOTR_TCG-SmallCaps,{title_font_size?§},BDZ,[default_game_text_color],RIGHT
+        HTMLFONT=sitetitle,LOTR_TCG-SmallCaps,{title_font_size?§},BDZ,[default_game_text_color],CENTER
+        HTMLFONT=ringtitle,LOTR_TCG-SmallCaps,{title_font_size?§},BDZ,[default_game_text_color],RIGHT
+    ELSE
+        HTMLFONT=chartitle,LOTR_TCG-SmallCaps,[default_character_title_font_size],BDZ,[default_game_text_color],LEFT
+        HTMLFONT=modtitle,LOTR_TCG-SmallCaps,[default_modifier_title_font_size],BD,[default_game_text_color],RIGHT
+        HTMLFONT=modtitletop,LOTR_TCG-SmallCaps,[default_modifier_title_font_size],BDZ,[default_game_text_color],RIGHT
+        HTMLFONT=sitetitle,LOTR_TCG-SmallCaps,[default_site_title_font_size],BDZ,[default_game_text_color],CENTER
+        HTMLFONT=ringtitle,LOTR_TCG-SmallCaps,[default_ring_title_font_size],BDZ,[default_game_text_color],RIGHT
+    ENDIF
+
+    IF= [subtitle_font_size] <> ""
+        HTMLFONT=charsubtitle,LOTR_TCG-SmallCaps,{subtitle_font_size?§},BDZ,[default_game_text_color],LEFT
+        HTMLFONT=modsubtitle,LOTR_TCG-SmallCaps,{subtitle_font_size?§},BDZ,[default_game_text_color],RIGHT
+    ELSE
+        HTMLFONT=charsubtitle,LOTR_TCG-SmallCaps,[default_character_subtitle_font_size],BDZ,[default_game_text_color],LEFT
+        HTMLFONT=modsubtitle,LOTR_TCG-SmallCaps,[default_modifier_subtitle_font_size],BDZ,[default_game_text_color],RIGHT
+    ENDIF
+
+    HTMLFONT=gametext,LOTR_TCG,7.4,D,[default_game_text_color],LEFT
+    HTMLFONT=typeplate,LOTR_TCG-SmallCaps,8.9,BD,[default_game_text_color],CENTER
+    HTMLFONT=typesymbol,LOTR_TCG,8.9,D,[default_game_text_color]
+    HTMLFONT=lore,LOTR_TCG-Lore,7.5,D,[default_game_text_color],LEFT
+    HTMLFONT=collinfo, LOTR_TCG, 4.2,BD, [default_game_text_color],CENTER
+
 ENDIF
 
-IF= [subtitle_font_size] <> ""
-    HTMLFONT=charsubtitle,LOTR_TCG-SmallCaps,{subtitle_font_size?§},BDZ,[game_text_color],LEFT
-    HTMLFONT=modsubtitle,LOTR_TCG-SmallCaps,{subtitle_font_size?§},BDZ,[game_text_color],RIGHT
-ELSE
-    HTMLFONT=charsubtitle,LOTR_TCG-SmallCaps,[default_character_subtitle_font_size],BDZ,[game_text_color],LEFT
-    HTMLFONT=modsubtitle,LOTR_TCG-SmallCaps,[default_modifier_subtitle_font_size],BDZ,[game_text_color],RIGHT
-ENDIF
 
-HTMLFONT=typeplate,LOTR_TCG-SmallCaps,8.9,BD,[game_text_color],CENTER
-HTMLFONT=typesymbol,LOTR_TCG,8.9,D,[game_text_color]
-HTMLFONT=lore,LOTR_TCG-Lore,7.5,D,[game_text_color],LEFT
-HTMLFONT=numbers,LOTR_TCG_Icons,14,D,[icon_text_color],CENTER,0%, 0.5%,0.03,#000000
+IF= {icon_text_color?§} <> ""
+    HTMLFONT=numbers,LOTR_TCG_Icons,14,D,{icon_text_color?§},CENTER,0%, 0.5%,0.03,#000000
+
+    IF= {twilight_color?§} <> ""
+        HTMLFONT=twilight,LOTR_TCG_Icons,14,D,{twilight_color?§},CENTER,0%, 0.5%,0.03,#000000
+    ELSE
+        HTMLFONT=twilight,LOTR_TCG_Icons,14,D,{icon_text_color?§},CENTER,0%, 0.5%,0.03,#000000
+    ENDIF
+ELSE
+    HTMLFONT=numbers,LOTR_TCG_Icons,14,D,[default_icon_text_color],CENTER,0%, 0.5%,0.03,#000000
+
+    IF= {twilight_color?§} <> ""
+        HTMLFONT=twilight,LOTR_TCG_Icons,14,D,{twilight_color?§},CENTER,0%, 0.5%,0.03,#000000
+    ELSE
+        HTMLFONT=twilight,LOTR_TCG_Icons,14,D,[default_icon_text_color],CENTER,0%, 0.5%,0.03,#000000
+    ENDIF
+ENDIF
 
 HTMLMARGINS=chartitle,0,0,0,0,CENTER
 HTMLMARGINS=charsubtitle,0,0,0,0,CENTER
@@ -159,6 +211,7 @@ HTMLMARGINS=modtitletop,0,0,0,0,TOP,94
 HTMLMARGINS=modsubtitle,-1%,0,0,0,
 HTMLMARGINS=sitetitle,0,0,0,0,CENTER
 HTMLMARGINS=ringtitle,0,0,0,0,CENTER
+HTMLMARGINS=twilight,0,0,0,0,CENTER
 HTMLMARGINS=numbers,0,0,0,0,CENTER
 HTMLMARGINS=typeplate,0,0,0,0,CENTER
 
@@ -186,19 +239,24 @@ IF= [template] = "character"
     IF= [debug_print] = True
         IMAGE = , JOIN([debug_image_path],[debug_image_name]), <card_background>, 0, PN
     ELSE
-        ;; Insert the card portrait, since this is "beneath" everything else
-        IMAGE = , JOIN([card_image_path],/,[image_name]), <character_card_portrait>, 0, PN
-
-        ;; Now for the actual card template
-        IF=[culture] = "gollum"
-            ;; which template to use for gollum is stored in the [tags] column
-            IF= "shadow" @ {tags?§}
-                IMAGE = , [gollum_shadow_character_template], <card_background>, 0, PN
-            ELSE
-                IMAGE = , [gollum_freeps_character_template], <card_background>, 0, PN
-            ENDIF
+        ;; Full art means we are not using a template
+        IF= "full_art" @ {tags?§}
+            IMAGE = , JOIN([card_image_path],/,[image_name]), <full_card_portrait>, 0, PN
         ELSE
-            IMAGE = , [character_template], <card_background>, 0, PN
+            ;; Insert the card portrait, since this is "beneath" everything else
+            IMAGE = , JOIN([card_image_path],/,[image_name]), <character_card_portrait>, 0, PN
+
+            ;; Now for the actual card template
+            IF=[culture] = "gollum"
+                ;; which template to use for gollum is stored in the [tags] column
+                IF= "shadow" @ {tags?§}
+                    IMAGE = , [gollum_shadow_character_template], <card_background>, 0, PN
+                ELSE
+                    IMAGE = , [gollum_freeps_character_template], <card_background>, 0, PN
+                ENDIF
+            ELSE
+                IMAGE = , [character_template], <card_background>, 0, PN
+            ENDIF
         ENDIF
     ENDIF
 
@@ -261,19 +319,24 @@ ELSEIF= ([template] = "modifier") _OR_ ([template] = "support")
     IF= [debug_print] = True
         IMAGE = , JOIN([debug_image_path],[debug_image_name]), <card_background>, 0, PN
     ELSE
-        ;; Insert the card portrait, since this is "beneath" everything else
-        IMAGE = , JOIN([card_image_path],/,[image_name]), <modifier_card_portrait>, 0, PN
-
-        ;; Now for the actual card template
-        IF=[culture] = "gollum"
-            ;; which template to use for gollum is stored in the [tags] column
-            IF="shadow" @ {tags?§}
-                IMAGE = , [gollum_shadow_modifier_template], <card_background>, 0, PN
-            ELSE
-                IMAGE = , [gollum_freeps_modifier_template], <card_background>, 0, PN
-            ENDIF
+        ;; Full art means we are not using a template
+        IF= "full_art" @ {tags?§}
+            IMAGE = , JOIN([card_image_path],/,[image_name]), <full_card_portrait>, 0, PN
         ELSE
-            IMAGE = , [modifier_template], <card_background>, 0, PN
+            ;; Insert the card portrait, since this is "beneath" everything else
+            IMAGE = , JOIN([card_image_path],/,[image_name]), <modifier_card_portrait>, 0, PN
+
+            ;; Now for the actual card template
+            IF=[culture] = "gollum"
+                ;; which template to use for gollum is stored in the [tags] column
+                IF="shadow" @ {tags?§}
+                    IMAGE = , [gollum_shadow_modifier_template], <card_background>, 0, PN
+                ELSE
+                    IMAGE = , [gollum_freeps_modifier_template], <card_background>, 0, PN
+                ENDIF
+            ELSE
+                IMAGE = , [modifier_template], <card_background>, 0, PN
+            ENDIF
         ENDIF
     ENDIF
 
@@ -311,14 +374,19 @@ ELSEIF= [template] = "site"
     IF= [debug_print] = True
         IMAGE = , JOIN([debug_image_path],[debug_image_name]), <card_background>, 270, PN
     ELSE
-        ;; Insert the card portrait, since this is "beneath" everything else
-        IMAGE = , JOIN([card_image_path],/,[image_name]), <site_card_portrait>, 0, PN
-
-        ;; Now for the actual card template
-        IF= [card_type] = "Sanctuary"
-            IMAGE = , [site_sanctuary_template], <card_background>, 270, PN
+        ;; Full art means we are not using a template
+        IF= "full_art" @ {tags?§}
+            IMAGE = , JOIN([card_image_path],/,[image_name]), <full_card_portrait>, 0, PN
         ELSE
-            IMAGE = , [site_standard_template], <card_background>, 270, PN
+            ;; Insert the card portrait, since this is "beneath" everything else
+            IMAGE = , JOIN([card_image_path],/,[image_name]), <site_card_portrait>, 0, PN
+
+            ;; Now for the actual card template
+            IF= [card_type] = "Sanctuary"
+                IMAGE = , [site_sanctuary_template], <card_background>, 270, PN
+            ELSE
+                IMAGE = , [site_standard_template], <card_background>, 270, PN
+            ENDIF
         ENDIF
     ENDIF
 
@@ -409,11 +477,19 @@ ENDIF
 
 
 
+;; Follower Twilight Icons
+IF= ([card_type] = "Follower") _OR_ ("highlight_twilight" @ {tags?§})
+    IF= "shadow" @ {tags?§}
+        IMAGE = , JOIN([positioned_icon_path],follower_shadow_position_,[card_size],.png), <card_background>, 0, PN
+    ELSE
+        IMAGE = , JOIN([positioned_icon_path],follower_freeps_position_,[card_size],.png), <card_background>, 0, PN
+    ENDIF
+ENDIF
 ;; Twilight Cost
 IF= ([template] = "character") _OR_ ([template] = "modifier") _OR_ ([template] = "support")
-    HTMLTEXT=,"[twilight]",<twilight_cost_icon>,,0,BE,100,numbers
+    HTMLTEXT=,"[twilight]",<twilight_cost_icon>,,0,BE,100,twilight
 ELSEIF= [template] = "site"
-    HTMLTEXT=,"[twilight]",<site_twilight_cost_icon>,,270,BE,100,numbers
+    HTMLTEXT=,"[twilight]",<site_twilight_cost_icon>,,270,BE,100,twilight
 ENDIF
 
 
@@ -440,10 +516,9 @@ IF= ([signet] <> "") _AND_ _NOT_ ("disable_signet" @ {tags?§})
     IMAGE = , JOIN([positioned_icon_path],signet_,[signet],_position_,[card_size],.png), <card_background>, 0, PN
 ENDIF
 
-
+;;RECTANGLE=,<collectors_info>,#ff00ff
 ;;Collector's Info
-FONT = LOTR_TCG, 4.2, BT, [game_text_color]
-TEXT=,JOIN([set_num]," ",[rarity]," ", [card_num]),84.7%,87.7%,10%,10%,CENTER
+HTMLTEXT=,JOIN([set_num]," ",[rarity]," ", [card_num]),<collectors_info>,,0,BE,100,collinfo
 
 
 ;; Debug drawing the game text area, before the drawing of the text so it remains visible
@@ -490,7 +565,8 @@ ELSEIF = [template] = "site"
     ENDIF
 ENDIF
 
-;;GRID=,<full_card_portrait>,#FF00FF,0.01,11,15
+;GRID=,<full_card_portrait>,#FF00FF,0.01,11,15
+;;RECTANGLE=,<full_card_portrait>,#FF00FF
 
 
 

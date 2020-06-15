@@ -48,14 +48,16 @@
 [include_size_in_card_output] = True
 
 ;; The color to use for regular game text.  This includes the title/subtitle,
-;; card type, lore, and collector's info.
+;; card type, lore, and collector's info.  This can be overridden on a per-
+;; card basis by filling in the "game_text_color" column.
 ;; Can be any standard HTML-formatted hex color string (#RRGGBB).
-[game_text_color] = #000000
+[default_game_text_color] = #000000
 
 ;; The color to use for icon text.  This includes the twilight cost,
-;; strength, vitality, site number, and resistance.
+;; strength, vitality, site number, and resistance.  This can be overridden
+;; on a per-card basis by filling in the "icon_text_color" column.
 ;; Can be any standard HTML-formatted hex color string (#RRGGBB).
-[icon_text_color] = #FFFFFF
+[default_icon_text_color] = #FFFFFF
 
 ;; The PNG to be used for masking the card.  Every transparent pixel will be
 ;; transparent in the output, and the rest will be opaque.
