@@ -8,6 +8,7 @@ INCLUDE = settings.txt
 UNIT=INCH
 PAGE=8.5,11,PORTRAIT,HV
 FONTALIAS = , ON
+GAP=0.1,0.1,OFF,ON,MARKDOT,#FFFFFF
 
 LINKENCCSV= []
 
@@ -36,8 +37,8 @@ LINK= vset1.csv
 [default_lore_spacing] = 98
 [default_game_text_width] = 69%
 [default_site_game_text_width] = 74%
-[default_character_title_font_size] = 10
-[default_character_subtitle_font_size] = 8
+[default_character_title_font_size] = 9.7
+[default_character_subtitle_font_size] = 7.8
 [default_modifier_title_font_size] = 9
 [default_modifier_subtitle_font_size] = 8
 [default_site_title_font_size] = 9
@@ -47,6 +48,8 @@ LINK= vset1.csv
 ;; Systematic clean-up
 [template] = CASESTRING([template], L)
 [unique] = CASESTRING([unique], U)
+[culture] = REPLACE([culture], "elf", "elven")
+[culture] = REPLACE([culture], "dwarf", "dwarven")
 [culture] = CASESTRING([culture], L)
 [card_type] = CASESTRING([card_type], F)
 [tags] = CASESTRING([tags], L)
@@ -56,6 +59,8 @@ LINK= vset1.csv
 
 ;; Starts with black background as our canvas
 RECTANGLE=,0,0,100%,100%,#000000
+
+
 
 
 ;; Debug drawing options for various purposes.
@@ -123,84 +128,87 @@ RECTANGLE=,0,0,100%,100%,#000000
 ;; Set up our fonts for when we use HTML rendering (which is most everywhere).
 ;; Line spacing can be defined per card in the CSV, so we integrate it here.
 
-
+[game_text_font] = LOTR_TCG
+[title_font] = LOTR_TCG_Title
+[lore_font] = LOTR_TCG-Lore
+[number_font] = LOTR_TCG_Icons
 
 IF= {game_text_color?§} <> ""
     IF= {title_font_size?§} <> ""
-        HTMLFONT=chartitle,LOTR_TCG-SmallCaps,{title_font_size?§},BDZ,{game_text_color?§},LEFT
-        HTMLFONT=modtitle,LOTR_TCG-SmallCaps,{title_font_size?§},BD,{game_text_color?§},RIGHT
-        HTMLFONT=modtitletop,LOTR_TCG-SmallCaps,{title_font_size?§},BDZ,{game_text_color?§},RIGHT
-        HTMLFONT=sitetitle,LOTR_TCG-SmallCaps,{title_font_size?§},BDZ,{game_text_color?§},CENTER
-        HTMLFONT=ringtitle,LOTR_TCG-SmallCaps,{title_font_size?§},BDZ,{game_text_color?§},RIGHT
+        HTMLFONT=chartitle,[title_font],{title_font_size?§},BDZA,{game_text_color?§},LEFT
+        HTMLFONT=modtitle,[title_font],{title_font_size?§},BDA,{game_text_color?§},RIGHT
+        HTMLFONT=modtitletop,[title_font],{title_font_size?§},BDZ,{game_text_color?§},RIGHT
+        HTMLFONT=sitetitle,[title_font],{title_font_size?§},BDZA,{game_text_color?§},CENTER
+        HTMLFONT=ringtitle,[title_font],{title_font_size?§},BDZA,{game_text_color?§},RIGHT
     ELSE
-        HTMLFONT=chartitle,LOTR_TCG-SmallCaps,[default_character_title_font_size],BDZ,{game_text_color?§},LEFT
-        HTMLFONT=modtitle,LOTR_TCG-SmallCaps,[default_modifier_title_font_size],BD,{game_text_color?§},RIGHT
-        HTMLFONT=modtitletop,LOTR_TCG-SmallCaps,[default_modifier_title_font_size],BDZ,{game_text_color?§},RIGHT
-        HTMLFONT=sitetitle,LOTR_TCG-SmallCaps,[default_site_title_font_size],BDZ,{game_text_color?§},CENTER
-        HTMLFONT=ringtitle,LOTR_TCG-SmallCaps,[default_ring_title_font_size],BDZ,{game_text_color?§},RIGHT
+        HTMLFONT=chartitle,[title_font],[default_character_title_font_size],BDZA,{game_text_color?§},LEFT
+        HTMLFONT=modtitle,[title_font],[default_modifier_title_font_size],BDA,{game_text_color?§},RIGHT
+        HTMLFONT=modtitletop,[title_font],[default_modifier_title_font_size],BDZA,{game_text_color?§},RIGHT
+        HTMLFONT=sitetitle,[title_font],[default_site_title_font_size],BDZA,{game_text_color?§},CENTER
+        HTMLFONT=ringtitle,[title_font],[default_ring_title_font_size],BDZA,{game_text_color?§},RIGHT
     ENDIF
 
     IF= {subtitle_font_size?§} <> ""
-        HTMLFONT=charsubtitle,LOTR_TCG-SmallCaps,{subtitle_font_size?§},BDZ,{game_text_color?§},LEFT
-        HTMLFONT=modsubtitle,LOTR_TCG-SmallCaps,{subtitle_font_size?§},BDZ,{game_text_color?§},RIGHT
+        HTMLFONT=charsubtitle,[title_font],{subtitle_font_size?§},BDZA,{game_text_color?§},LEFT
+        HTMLFONT=modsubtitle,[title_font],{subtitle_font_size?§},BDZA,{game_text_color?§},RIGHT
     ELSE
-        HTMLFONT=charsubtitle,LOTR_TCG-SmallCaps,[default_character_subtitle_font_size],BDZ,{game_text_color?§},LEFT
-        HTMLFONT=modsubtitle,LOTR_TCG-SmallCaps,[default_modifier_subtitle_font_size],BDZ,{game_text_color?§},RIGHT
+        HTMLFONT=charsubtitle,[title_font],[default_character_subtitle_font_size],BDZA,{game_text_color?§},LEFT
+        HTMLFONT=modsubtitle,[title_font],[default_modifier_subtitle_font_size],BDZA,{game_text_color?§},RIGHT
     ENDIF
 
-    HTMLFONT=gametext,LOTR_TCG,7.4,D,{game_text_color?§},LEFT
-    HTMLFONT=typeplate,LOTR_TCG-SmallCaps,8.9,BD,{game_text_color?§},CENTER
-    HTMLFONT=typesymbol,LOTR_TCG,8.9,D,{game_text_color?§}
-    HTMLFONT=lore,LOTR_TCG-Lore,7.5,D,{game_text_color?§},LEFT
-    HTMLFONT=collinfo, LOTR_TCG, 4.2,BD, {game_text_color?§},CENTER
-    
+    HTMLFONT=gametext,[game_text_font],7.4,D,{game_text_color?§},LEFT
+    HTMLFONT=typeplate,[title_font],8.8,BDZA,{game_text_color?§},CENTER
+    HTMLFONT=typesymbol,[game_text_font],8.9,D,{game_text_color?§}
+    HTMLFONT=lore,[lore_font],7.5,D,{game_text_color?§},LEFT
+    HTMLFONT=collinfo, [game_text_font], 4.2,BD, {game_text_color?§},CENTER
+
 ELSE
     IF= [title_font_size] <> ""
-        HTMLFONT=chartitle,LOTR_TCG-SmallCaps,{title_font_size?§},BDZ,[default_game_text_color],LEFT
-        HTMLFONT=modtitle,LOTR_TCG-SmallCaps,{title_font_size?§},BD,[default_game_text_color],RIGHT
-        HTMLFONT=modtitletop,LOTR_TCG-SmallCaps,{title_font_size?§},BDZ,[default_game_text_color],RIGHT
-        HTMLFONT=sitetitle,LOTR_TCG-SmallCaps,{title_font_size?§},BDZ,[default_game_text_color],CENTER
-        HTMLFONT=ringtitle,LOTR_TCG-SmallCaps,{title_font_size?§},BDZ,[default_game_text_color],RIGHT
+        HTMLFONT=chartitle,[title_font],{title_font_size?§},BDZA,[default_game_text_color],LEFT
+        HTMLFONT=modtitle,[title_font],{title_font_size?§},BDA,[default_game_text_color],RIGHT
+        HTMLFONT=modtitletop,[title_font],{title_font_size?§},BDZA,[default_game_text_color],RIGHT
+        HTMLFONT=sitetitle,[title_font],{title_font_size?§},BDZA,[default_game_text_color],CENTER
+        HTMLFONT=ringtitle,[title_font],{title_font_size?§},BDZA,[default_game_text_color],RIGHT
     ELSE
-        HTMLFONT=chartitle,LOTR_TCG-SmallCaps,[default_character_title_font_size],BDZ,[default_game_text_color],LEFT
-        HTMLFONT=modtitle,LOTR_TCG-SmallCaps,[default_modifier_title_font_size],BD,[default_game_text_color],RIGHT
-        HTMLFONT=modtitletop,LOTR_TCG-SmallCaps,[default_modifier_title_font_size],BDZ,[default_game_text_color],RIGHT
-        HTMLFONT=sitetitle,LOTR_TCG-SmallCaps,[default_site_title_font_size],BDZ,[default_game_text_color],CENTER
-        HTMLFONT=ringtitle,LOTR_TCG-SmallCaps,[default_ring_title_font_size],BDZ,[default_game_text_color],RIGHT
+        HTMLFONT=chartitle,[title_font],[default_character_title_font_size],DZA,[default_game_text_color],LEFT
+        HTMLFONT=modtitle,[title_font],[default_modifier_title_font_size],DA,[default_game_text_color],RIGHT
+        HTMLFONT=modtitletop,[title_font],[default_modifier_title_font_size],DZA,[default_game_text_color],RIGHT
+        HTMLFONT=sitetitle,[title_font],[default_site_title_font_size],DZA,[default_game_text_color],CENTER
+        HTMLFONT=ringtitle,[title_font],[default_ring_title_font_size],DZA,[default_game_text_color],RIGHT
     ENDIF
 
     IF= [subtitle_font_size] <> ""
-        HTMLFONT=charsubtitle,LOTR_TCG-SmallCaps,{subtitle_font_size?§},BDZ,[default_game_text_color],LEFT
-        HTMLFONT=modsubtitle,LOTR_TCG-SmallCaps,{subtitle_font_size?§},BDZ,[default_game_text_color],RIGHT
+        HTMLFONT=charsubtitle,[title_font],{subtitle_font_size?§},DZA,[default_game_text_color],LEFT
+        HTMLFONT=modsubtitle,[title_font],{subtitle_font_size?§},DZA,[default_game_text_color],RIGHT
     ELSE
-        HTMLFONT=charsubtitle,LOTR_TCG-SmallCaps,[default_character_subtitle_font_size],BDZ,[default_game_text_color],LEFT
-        HTMLFONT=modsubtitle,LOTR_TCG-SmallCaps,[default_modifier_subtitle_font_size],BDZ,[default_game_text_color],RIGHT
+        HTMLFONT=charsubtitle,[title_font],[default_character_subtitle_font_size],DZA,[default_game_text_color],LEFT
+        HTMLFONT=modsubtitle,[title_font],[default_modifier_subtitle_font_size],DZA,[default_game_text_color],RIGHT
     ENDIF
 
-    HTMLFONT=gametext,LOTR_TCG,7.4,D,[default_game_text_color],LEFT
-    HTMLFONT=typeplate,LOTR_TCG-SmallCaps,8.9,BD,[default_game_text_color],CENTER
-    HTMLFONT=typesymbol,LOTR_TCG,8.9,D,[default_game_text_color]
-    HTMLFONT=lore,LOTR_TCG-Lore,7.5,D,[default_game_text_color],LEFT
-    HTMLFONT=collinfo, LOTR_TCG, 4.2,BD, [default_game_text_color],CENTER
+    HTMLFONT=gametext,[game_text_font],7.4,D,[default_game_text_color],LEFT
+    HTMLFONT=typeplate,[title_font],8.8,DZA,[default_game_text_color],CENTER
+    HTMLFONT=typesymbol,[game_text_font],8.9,D,[default_game_text_color]
+    HTMLFONT=lore,[lore_font],7.5,D,[default_game_text_color],LEFT
+    HTMLFONT=collinfo, [game_text_font], 4.2,BD, [default_game_text_color],CENTER
 
 ENDIF
 
 
 IF= {icon_text_color?§} <> ""
-    HTMLFONT=numbers,LOTR_TCG_Icons,14,D,{icon_text_color?§},CENTER,0%, 0.5%,0.03,#000000
+    HTMLFONT=numbers,[number_font],14,D,{icon_text_color?§},CENTER,0%, 0.5%,0.03,#000000
 
     IF= {twilight_color?§} <> ""
-        HTMLFONT=twilight,LOTR_TCG_Icons,14,D,{twilight_color?§},CENTER,0%, 0.5%,0.03,#000000
+        HTMLFONT=twilight,[number_font],14,D,{twilight_color?§},CENTER,0%, 0.5%,0.03,#000000
     ELSE
-        HTMLFONT=twilight,LOTR_TCG_Icons,14,D,{icon_text_color?§},CENTER,0%, 0.5%,0.03,#000000
+        HTMLFONT=twilight,[number_font],14,D,{icon_text_color?§},CENTER,0%, 0.5%,0.03,#000000
     ENDIF
 ELSE
-    HTMLFONT=numbers,LOTR_TCG_Icons,14,D,[default_icon_text_color],CENTER,0%, 0.5%,0.03,#000000
+    HTMLFONT=numbers,[number_font],14,D,[default_icon_text_color],CENTER,0%, 0.5%,0.03,#000000
 
     IF= {twilight_color?§} <> ""
-        HTMLFONT=twilight,LOTR_TCG_Icons,14,D,{twilight_color?§},CENTER,0%, 0.5%,0.03,#000000
+        HTMLFONT=twilight,[number_font],14,D,{twilight_color?§},CENTER,0%, 0.5%,0.03,#000000
     ELSE
-        HTMLFONT=twilight,LOTR_TCG_Icons,14,D,[default_icon_text_color],CENTER,0%, 0.5%,0.03,#000000
+        HTMLFONT=twilight,[number_font],14,D,[default_icon_text_color],CENTER,0%, 0.5%,0.03,#000000
     ENDIF
 ENDIF
 
@@ -302,15 +310,7 @@ IF= [template] = "character"
         HTMLTEXT=,"[site]",<third_icon>,,0,BE,100,numbers
     ENDIF
 
-    ;; Resistance and ring-bearer
-    IF= ([card_type] <> Minion) _AND_ ([resistance] <> "")
-        IF= "ring-bearer" @ {tags?§}
-            IMAGE = , JOIN([positioned_icon_path],resistance_ring_combined_position_,[card_size],.png), <card_background>, 0, PN
-        ELSE
-            IMAGE = , JOIN([positioned_icon_path],resistance_position_,[card_size],.png), <card_background>, 0, PN
-        ENDIF
-        HTMLTEXT=,"[resistance]",<third_icon>,,0,BE,100,numbers
-    ENDIF
+    
 
 ELSEIF= ([template] = "modifier") _OR_ ([template] = "support")
 
@@ -402,9 +402,6 @@ ELSEIF= [template] = "site"
 
     ;;RECTANGLE=,<site_twilight_cost_icon>,#ff00FF
 
-    ;; Twilight Cost Icon
-    IMAGE = , JOIN([positioned_icon_path],site_twilight_number_position_,[card_size],.png), <card_background>, 270, PN
-
     ;; Site Compass Icon / Site Number
     IF= "T" @ [site]
         IMAGE = , JOIN([positioned_icon_path],site_block_tower_position_,[card_size],.png), <card_background>, 270, PN
@@ -476,20 +473,24 @@ ENDIF
 
 
 
-
-;; Follower Twilight Icons
-IF= ([card_type] = "Follower") _OR_ ("highlight_twilight" @ {tags?§})
-    IF= "shadow" @ {tags?§}
-        IMAGE = , JOIN([positioned_icon_path],follower_shadow_position_,[card_size],.png), <card_background>, 0, PN
-    ELSE
-        IMAGE = , JOIN([positioned_icon_path],follower_freeps_position_,[card_size],.png), <card_background>, 0, PN
+IF= [twilight] <> ""
+    ;; Follower Twilight Icons
+    IF= ([card_type] = "Follower") _OR_ ("highlight_twilight" @ {tags?§})
+        IF= "shadow" @ {tags?§}
+            IMAGE = , JOIN([positioned_icon_path],follower_shadow_position_,[card_size],.png), <card_background>, 0, PN
+        ELSE
+            IMAGE = , JOIN([positioned_icon_path],follower_freeps_position_,[card_size],.png), <card_background>, 0, PN
+        ENDIF
     ENDIF
-ENDIF
-;; Twilight Cost
-IF= ([template] = "character") _OR_ ([template] = "modifier") _OR_ ([template] = "support")
-    HTMLTEXT=,"[twilight]",<twilight_cost_icon>,,0,BE,100,twilight
-ELSEIF= [template] = "site"
-    HTMLTEXT=,"[twilight]",<site_twilight_cost_icon>,,270,BE,100,twilight
+    ;; Twilight Cost
+
+    IF= ([template] = "character") _OR_ ([template] = "modifier") _OR_ ([template] = "support")
+        HTMLTEXT=,"[twilight]",<twilight_cost_icon>,,0,BE,100,twilight
+    ELSEIF= [template] = "site"
+        ;; Twilight Cost Icon
+        IMAGE = , JOIN([positioned_icon_path],site_twilight_number_position_,[card_size],.png), <card_background>, 270, PN
+        HTMLTEXT=,"[twilight]",<site_twilight_cost_icon>,,270,BE,100,twilight
+    ENDIF
 ENDIF
 
 
@@ -514,6 +515,16 @@ ENDIF
 ;; Signets
 IF= ([signet] <> "") _AND_ _NOT_ ("disable_signet" @ {tags?§})
     IMAGE = , JOIN([positioned_icon_path],signet_,[signet],_position_,[card_size],.png), <card_background>, 0, PN
+ENDIF
+
+;; Resistance and ring-bearer
+IF= ([card_type] <> Minion) _AND_ ([resistance] <> "")
+    IF= "ring-bearer" @ {tags?§}
+        IMAGE = , JOIN([positioned_icon_path],resistance_ring_combined_position_,[card_size],.png), <card_background>, 0, PN
+    ELSE
+        IMAGE = , JOIN([positioned_icon_path],resistance_position_,[card_size],.png), <card_background>, 0, PN
+    ENDIF
+    HTMLTEXT=,"[resistance]",<third_icon>,,0,BE,100,numbers
 ENDIF
 
 ;;RECTANGLE=,<collectors_info>,#ff00ff

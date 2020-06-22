@@ -1,4 +1,4 @@
-;;Replacement keys so that card writers don't have to include so many
+﻿;;Replacement keys so that card writers don't have to include so many
 ;; html tags for repetitive elements.  The replacements in this file
 ;; are ran against all text, including title, subtitle, card type,
 ;; game text, collector's info, and stats, so tread lightly.
@@ -10,6 +10,7 @@
 
 ;; Site block replacements
 HTMLKEY=,"(T)","`",typesymbol
+HTMLKEY=,"\91\T\93\","`"
 HTMLKEY=,"1T","1`",typesymbol
 HTMLKEY=,"2T","2`",typesymbol
 HTMLKEY=,"3T","3`",typesymbol
@@ -21,6 +22,7 @@ HTMLKEY=,"8T","8`",typesymbol
 HTMLKEY=,"9T","9`",typesymbol
 
 HTMLKEY=,"(K)","~",typesymbol
+HTMLKEY=,"\91\K\93\","~"
 HTMLKEY=,"1K","1~",typesymbol
 HTMLKEY=,"2K","2~",typesymbol
 HTMLKEY=,"3K","3~",typesymbol
@@ -34,6 +36,64 @@ HTMLKEY=,"9K","9~",typesymbol
 ;; Replacements of names with obnoxious accented characters, so we don't have
 ;; to be so vigilant all the time in a csv of all things.
 
-HTMLKEY=,"khazad-dum","Khazad-d&#251m"
-HTMLKEY=,"rumil","R&#250mil"
-HTMLKEY=,"smeagol","Sm&#233agol"
+HTMLKEY=,"anarion", "An&#225rion"
+HTMLKEY=,"anduril", "And&#250ril"
+HTMLKEY=,"annun", "Ann&#251n"
+HTMLKEY=,"attea", "Att&#235a"
+HTMLKEY=,"barad-dur", "Barad-d&#251r"
+HTMLKEY=,"baruk khazad", "Baruk Khaz&#226d"
+HTMLKEY=,"cantea", "Cant&#235a"
+HTMLKEY=,"cirdan", "C&#237rdan"
+HTMLKEY=,"curunir", "Curun&#237r"
+HTMLKEY=,"deagol", "D&#233agol"
+HTMLKEY=,"deor", "D&#233or"
+HTMLKEY=,"dinendal", "D&#237nendal"
+HTMLKEY=,"dunadan", "D&#250nadan"
+HTMLKEY=,"dunedain", "D&#250nedain"
+HTMLKEY=,"enquea", "Enqu&#235a"
+HTMLKEY=,"eomer", "&#201omer"
+HTMLKEY=,"eored", "&#201ored"
+HTMLKEY=,"eothain", "&#201othain"
+HTMLKEY=,"eowyn", "&#201owyn"
+HTMLKEY=,"erethon", "Ereth&#243n"
+HTMLKEY=,"fror", "Fr&#243r"
+HTMLKEY=,"ghan-buri-ghan", "Ghan-b&#251ri-ghan"
+HTMLKEY=,"gloin", "Gl&#243in"
+HTMLKEY=,"grima", "Gr&#237ma"
+HTMLKEY=,"grishnakh", "Grishn&#225kh"
+HTMLKEY=,"guthlaf", "Guthl&#225f"
+HTMLKEY=,"hama", "H&#225ma"
+HTMLKEY=,"jarnsmid", "J&#225rnsmid"
+HTMLKEY=,"khazad ai-menu", "Khaz&#226d ai-m&#234nu"
+HTMLKEY=,"khazad-dum", "Khazad-d&#251m"
+HTMLKEY=,"lathspell", "L&#225thspell"
+HTMLKEY=,"leod", "L&#233od"
+HTMLKEY=,"leofric", "L&#233ofric"
+HTMLKEY=,"leowyn", "L&#233owyn"
+HTMLKEY=,"lorien", "L&#243rien"
+HTMLKEY=,"lothlorien", "Lothl&#243rien"
+HTMLKEY=,"luthien", "L&#250thien"
+HTMLKEY=,"mauhur", "Mauh&#250r"
+HTMLKEY=,"miruvore", "Miruv&#243re"
+HTMLKEY=,"mumak", "M&#251mak"
+HTMLKEY=,"mumakil", "M&#251makil"
+HTMLKEY=,"namarie", "Nam&#225ri&#235"
+HTMLKEY=,"nazgul", "Nazg&#251l"
+HTMLKEY=,"nertea", "Nert&#235a"
+HTMLKEY=,"numenor", "N&#250menor"
+HTMLKEY=,"numenorean", "N&#250menorean"
+HTMLKEY=,"otsea", "Ots&#235a"
+HTMLKEY=,"palantir", "Palant&#237r"
+HTMLKEY=,"rhun", "Rh&#251n"
+HTMLKEY=,"rumil", "R&#250mil"
+HTMLKEY=,"simbelmyne", "Simbelmyn&#235"
+HTMLKEY=,"smeagol", "Sm&#233agol"
+HTMLKEY=,"theoden", "Th&#233oden"
+HTMLKEY=,"theodred", "Th&#233odred"
+HTMLKEY=,"thonnas", "Th&#243nnas"
+HTMLKEY=,"thror", "Thr&#243r"
+HTMLKEY=,"toldea", "Told&#235a"
+HTMLKEY=,"udun", "Ud&#251n"
+HTMLKEY=,"ugluk", "Ugl&#250k"
+HTMLKEY=,"ulaire", "&#218lair&#235"
+HTMLKEY=,"uri", "&#218ri"
