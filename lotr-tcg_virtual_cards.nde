@@ -40,9 +40,9 @@ LINK= vset1.csv
 [default_character_title_font_size] = 9.7
 [default_character_subtitle_font_size] = 7.8
 [default_modifier_title_font_size] = 9
-[default_modifier_subtitle_font_size] = 8
+[default_modifier_subtitle_font_size] = 7.6
 [default_site_title_font_size] = 9
-[default_ring_title_font_size] = 10.5
+[default_ring_title_font_size] = 11
 [default_border_color] = #000000
 
 ;; Systematic clean-up
@@ -73,6 +73,7 @@ RECTANGLE=,0,0,100%,100%,#000000
 [full_template_path] = JOIN([card_template_path],/,[card_size],_res_export/)
 [icon_path] = JOIN([full_template_path], components/)
 [positioned_icon_path] = JOIN([icon_path], positioned/)
+[overlay_path] = JOIN([full_template_path], overlays/)
 
 [character_template] = JOIN([full_template_path],[culture],_character_,[card_size],.png)
 [gollum_freeps_character_template] = JOIN([full_template_path],gollum_freeps_character_,[card_size],.png)
@@ -84,6 +85,11 @@ RECTANGLE=,0,0,100%,100%,#000000
 
 [site_standard_template] = JOIN([full_template_path],site_standard_,[card_size],.png)
 [site_sanctuary_template] = JOIN([full_template_path],site_sanctuary_,[card_size],.png)
+
+[artifact_overlay] = JOIN([overlay_path],artifact_,[culture],_,[card_size],.png)
+[culture_overlay] = JOIN([overlay_path],culture_,[culture],_,[card_size],.png)
+[freeps_twilight_overlay] = JOIN([overlay_path],twilight_freeps_,[card_size],.png)
+[shadow_twilight_overlay] = JOIN([overlay_path],twilight_shadow_,[card_size],.png)
 
 
 ;; Various named regions used in multiple places
@@ -135,40 +141,40 @@ RECTANGLE=,0,0,100%,100%,#000000
 
 IF= {game_text_color?§} <> ""
     IF= {title_font_size?§} <> ""
-        HTMLFONT=chartitle,[title_font],{title_font_size?§},BDZA,{game_text_color?§},LEFT
-        HTMLFONT=modtitle,[title_font],{title_font_size?§},BDA,{game_text_color?§},RIGHT
-        HTMLFONT=modtitletop,[title_font],{title_font_size?§},BDZ,{game_text_color?§},RIGHT
-        HTMLFONT=sitetitle,[title_font],{title_font_size?§},BDZA,{game_text_color?§},CENTER
-        HTMLFONT=ringtitle,[title_font],{title_font_size?§},BDZA,{game_text_color?§},RIGHT
+        HTMLFONT=chartitle,[title_font],{title_font_size?§},DZA,{game_text_color?§},LEFT
+        HTMLFONT=modtitle,[title_font],{title_font_size?§},DA,{game_text_color?§},RIGHT
+        HTMLFONT=modtitletop,[title_font],{title_font_size?§},DZ,{game_text_color?§},RIGHT
+        HTMLFONT=sitetitle,[title_font],{title_font_size?§},DZA,{game_text_color?§},CENTER
+        HTMLFONT=ringtitle,[title_font],{title_font_size?§},DZA,{game_text_color?§},RIGHT
     ELSE
-        HTMLFONT=chartitle,[title_font],[default_character_title_font_size],BDZA,{game_text_color?§},LEFT
-        HTMLFONT=modtitle,[title_font],[default_modifier_title_font_size],BDA,{game_text_color?§},RIGHT
-        HTMLFONT=modtitletop,[title_font],[default_modifier_title_font_size],BDZA,{game_text_color?§},RIGHT
-        HTMLFONT=sitetitle,[title_font],[default_site_title_font_size],BDZA,{game_text_color?§},CENTER
-        HTMLFONT=ringtitle,[title_font],[default_ring_title_font_size],BDZA,{game_text_color?§},RIGHT
+        HTMLFONT=chartitle,[title_font],[default_character_title_font_size],DZA,{game_text_color?§},LEFT
+        HTMLFONT=modtitle,[title_font],[default_modifier_title_font_size],DA,{game_text_color?§},RIGHT
+        HTMLFONT=modtitletop,[title_font],[default_modifier_title_font_size],DZA,{game_text_color?§},RIGHT
+        HTMLFONT=sitetitle,[title_font],[default_site_title_font_size],DZA,{game_text_color?§},CENTER
+        HTMLFONT=ringtitle,[title_font],[default_ring_title_font_size],DZA,{game_text_color?§},RIGHT
     ENDIF
 
     IF= {subtitle_font_size?§} <> ""
-        HTMLFONT=charsubtitle,[title_font],{subtitle_font_size?§},BDZA,{game_text_color?§},LEFT
-        HTMLFONT=modsubtitle,[title_font],{subtitle_font_size?§},BDZA,{game_text_color?§},RIGHT
+        HTMLFONT=charsubtitle,[title_font],{subtitle_font_size?§},DZA,{game_text_color?§},LEFT
+        HTMLFONT=modsubtitle,[title_font],{subtitle_font_size?§},DZA,{game_text_color?§},RIGHT
     ELSE
-        HTMLFONT=charsubtitle,[title_font],[default_character_subtitle_font_size],BDZA,{game_text_color?§},LEFT
-        HTMLFONT=modsubtitle,[title_font],[default_modifier_subtitle_font_size],BDZA,{game_text_color?§},RIGHT
+        HTMLFONT=charsubtitle,[title_font],[default_character_subtitle_font_size],DZA,{game_text_color?§},LEFT
+        HTMLFONT=modsubtitle,[title_font],[default_modifier_subtitle_font_size],DZA,{game_text_color?§},RIGHT
     ENDIF
 
     HTMLFONT=gametext,[game_text_font],7.4,D,{game_text_color?§},LEFT
-    HTMLFONT=typeplate,[title_font],8.8,BDZA,{game_text_color?§},CENTER
+    HTMLFONT=typeplate,[title_font],8.8,DZA,{game_text_color?§},CENTER
     HTMLFONT=typesymbol,[game_text_font],8.9,D,{game_text_color?§}
     HTMLFONT=lore,[lore_font],7.5,D,{game_text_color?§},LEFT
     HTMLFONT=collinfo, [game_text_font], 4.2,BD, {game_text_color?§},CENTER
 
 ELSE
     IF= [title_font_size] <> ""
-        HTMLFONT=chartitle,[title_font],{title_font_size?§},BDZA,[default_game_text_color],LEFT
-        HTMLFONT=modtitle,[title_font],{title_font_size?§},BDA,[default_game_text_color],RIGHT
-        HTMLFONT=modtitletop,[title_font],{title_font_size?§},BDZA,[default_game_text_color],RIGHT
-        HTMLFONT=sitetitle,[title_font],{title_font_size?§},BDZA,[default_game_text_color],CENTER
-        HTMLFONT=ringtitle,[title_font],{title_font_size?§},BDZA,[default_game_text_color],RIGHT
+        HTMLFONT=chartitle,[title_font],{title_font_size?§},DZA,[default_game_text_color],LEFT
+        HTMLFONT=modtitle,[title_font],{title_font_size?§},DA,[default_game_text_color],RIGHT
+        HTMLFONT=modtitletop,[title_font],{title_font_size?§},DZA,[default_game_text_color],RIGHT
+        HTMLFONT=sitetitle,[title_font],{title_font_size?§},DZA,[default_game_text_color],CENTER
+        HTMLFONT=ringtitle,[title_font],{title_font_size?§},DZA,[default_game_text_color],RIGHT
     ELSE
         HTMLFONT=chartitle,[title_font],[default_character_title_font_size],DZA,[default_game_text_color],LEFT
         HTMLFONT=modtitle,[title_font],[default_modifier_title_font_size],DA,[default_game_text_color],RIGHT
@@ -360,6 +366,12 @@ ELSEIF= ([template] = "modifier") _OR_ ([template] = "support")
         ENDIF
     ENDIF
 
+    ;; Artifact overlay if applicable
+    IF= (([card_type] = "Artifact") _OR_ ("artifact_overlay" @ {tags?§})) _AND_ ("full_art" # {tags?§})
+        IMAGE = ,[artifact_overlay], <card_background>, 0, PN
+        ;;RECTANGLE=,<card_background>,#00FFFF
+    ENDIF
+
     ;; Card Type
     IF= [card_subtype] = ""
         HTMLTEXT=,"[card_type]",<modifier_type_panel>,,0,BE,100,typeplate
@@ -472,6 +484,11 @@ ENDIF
 ;;RECTANGLE=,<modifier_type_panel>,#FF00FF
 
 
+;; Culture Icon
+IF= ("full_art" @ {tags?§}) _AND_ ("disable_culture" # {tags?§})
+        IMAGE = , [culture_overlay], <card_background>, 0, PN
+ENDIF
+
 
 IF= [twilight] <> ""
     ;; Follower Twilight Icons
@@ -481,14 +498,21 @@ IF= [twilight] <> ""
         ELSE
             IMAGE = , JOIN([positioned_icon_path],follower_freeps_position_,[card_size],.png), <card_background>, 0, PN
         ENDIF
-    ENDIF
-    ;; Twilight Cost
-
-    IF= ([template] = "character") _OR_ ([template] = "modifier") _OR_ ([template] = "support")
-        HTMLTEXT=,"[twilight]",<twilight_cost_icon>,,0,BE,100,twilight
     ELSEIF= [template] = "site"
         ;; Twilight Cost Icon
         IMAGE = , JOIN([positioned_icon_path],site_twilight_number_position_,[card_size],.png), <card_background>, 270, PN
+    ELSEIF= ("full_art" @ {tags?§}) _AND_ ("disable_twilight" # {tags?§})
+        IF= ("free_peoples" @ {tags?§}) _OR_ ("shadow" # {tags?§})
+            IMAGE = , [freeps_twilight_overlay], <card_background>, 0, PN
+        ELSE
+            IMAGE = , [shadow_twilight_overlay], <card_background>, 0, PN
+        ENDIF
+    ENDIF
+
+    ;; Twilight Cost Text
+    IF= ([template] = "character") _OR_ ([template] = "modifier") _OR_ ([template] = "support")
+        HTMLTEXT=,"[twilight]",<twilight_cost_icon>,,0,BE,100,twilight
+    ELSEIF= [template] = "site"
         HTMLTEXT=,"[twilight]",<site_twilight_cost_icon>,,270,BE,100,twilight
     ENDIF
 ENDIF
