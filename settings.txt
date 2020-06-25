@@ -76,4 +76,4 @@
 ;; care about getting a full set of images each time.
 ;; If this is False you can still manually export from nanDECK.
 ;; Can be one of: True, False
-[auto_write_files] = True
+[auto_write_files] = False

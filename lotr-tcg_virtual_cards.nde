@@ -27,7 +27,8 @@ CARDSIZE=2.5,3.5
 
 ;;THREADS = 8
 
-LINK= vset1.csv
+LINK= unit_tests.csv
+;;LINK= vset1.csv
 
 [debug_print] = False
 [debug_image_path] = "X:\Projects\lotr-tcg\templates\new_templates\examples\"
@@ -44,6 +45,9 @@ LINK= vset1.csv
 [default_site_title_font_size] = 9
 [default_ring_title_font_size] = 11
 [default_border_color] = #000000
+
+[default_icon_font_size] = 14
+[default_game_text_font_size] = 14
 
 ;; Systematic clean-up
 [template] = CASESTRING([template], L)
@@ -191,7 +195,7 @@ ELSE
         HTMLFONT=modsubtitle,[title_font],[default_modifier_subtitle_font_size],DZA,[default_game_text_color],RIGHT
     ENDIF
 
-    HTMLFONT=gametext,[game_text_font],7.4,D,[default_game_text_color],LEFT
+    HTMLFONT=gametext,[game_text_font],7.5,D,[default_game_text_color],LEFT
     HTMLFONT=typeplate,[title_font],8.8,DZA,[default_game_text_color],CENTER
     HTMLFONT=typesymbol,[game_text_font],8.9,D,[default_game_text_color]
     HTMLFONT=lore,[lore_font],7.5,D,[default_game_text_color],LEFT
@@ -200,21 +204,23 @@ ELSE
 ENDIF
 
 
+
+
 IF= {icon_text_color?§} <> ""
-    HTMLFONT=numbers,[number_font],14,D,{icon_text_color?§},CENTER,0%, 0.5%,0.03,#000000
+    HTMLFONT=numbers,[number_font],[default_icon_font_size],D,{icon_text_color?§},CENTER,0%, 0.5%,0.03,#000000
 
     IF= {twilight_color?§} <> ""
-        HTMLFONT=twilight,[number_font],14,D,{twilight_color?§},CENTER,0%, 0.5%,0.03,#000000
+        HTMLFONT=twilight,[number_font],[default_icon_font_size],D,{twilight_color?§},CENTER,0%, 0.5%,0.03,#000000
     ELSE
-        HTMLFONT=twilight,[number_font],14,D,{icon_text_color?§},CENTER,0%, 0.5%,0.03,#000000
+        HTMLFONT=twilight,[number_font],[default_icon_font_size],D,{icon_text_color?§},CENTER,0%, 0.5%,0.03,#000000
     ENDIF
 ELSE
-    HTMLFONT=numbers,[number_font],14,D,[default_icon_text_color],CENTER,0%, 0.5%,0.03,#000000
+    HTMLFONT=numbers,[number_font],[default_icon_font_size],D,[default_icon_text_color],CENTER,0%, 0.5%,0.03,#000000
 
     IF= {twilight_color?§} <> ""
-        HTMLFONT=twilight,[number_font],14,D,{twilight_color?§},CENTER,0%, 0.5%,0.03,#000000
+        HTMLFONT=twilight,[number_font],[default_icon_font_size],D,{twilight_color?§},CENTER,0%, 0.5%,0.03,#000000
     ELSE
-        HTMLFONT=twilight,[number_font],14,D,[default_icon_text_color],CENTER,0%, 0.5%,0.03,#000000
+        HTMLFONT=twilight,[number_font],[default_icon_font_size],D,[default_icon_text_color],CENTER,0%, 0.5%,0.03,#000000
     ENDIF
 ENDIF
 
@@ -236,9 +242,9 @@ ELSE
 ENDIF
 
 IF= [lore_spacing] <> ""
-    HTMLMARGINS=lore,2%,0,0,0,,[lore_spacing]
+    HTMLMARGINS=lore,2.5%,0,0,0,,[lore_spacing]
 ELSE
-    HTMLMARGINS=lore,2%,0,0,0,,[default_lore_spacing]
+    HTMLMARGINS=lore,2.5%,0,0,0,,[default_lore_spacing]
 ENDIF
 
 ;; including this file will perform a ton of find-replaces on all HTML-
@@ -246,7 +252,7 @@ ENDIF
 INCLUDE=all_text_replacements.txt
 
 ;; Now we get to card rendering.  Start with card-template-sensitive elements.
-IF= [template] = "character"
+IF= {template?§} = "character"
 
     ;; Debug printing is used to put a full-sized card in the background for
     ;; the purposes of checking exact alignment of text, etc
@@ -318,7 +324,7 @@ IF= [template] = "character"
 
     
 
-ELSEIF= ([template] = "modifier") _OR_ ([template] = "support")
+ELSEIF= ({template?§} = "modifier") _OR_ ({template?§} = "support")
 
     ;; Debug printing is used to put a full-sized card in the background for
     ;; the purposes of checking exact alignment of text, etc
@@ -330,6 +336,7 @@ ELSEIF= ([template] = "modifier") _OR_ ([template] = "support")
             IMAGE = , JOIN([card_image_path],/,[image_name]), <full_card_portrait>, 0, PN
         ELSE
             ;; Insert the card portrait, since this is "beneath" everything else
+            
             IMAGE = , JOIN([card_image_path],/,[image_name]), <modifier_card_portrait>, 0, PN
 
             ;; Now for the actual card template
@@ -379,7 +386,7 @@ ELSEIF= ([template] = "modifier") _OR_ ([template] = "support")
         HTMLTEXT=,"[card_type] • [card_subtype]",<modifier_type_panel>,,0,BE,100,typeplate
     ENDIF
 
-ELSEIF= [template] = "site"
+ELSEIF= {template?§} = "site"
 
     ;; Debug printing is used to put a full-sized card in the background for
     ;; the purposes of checking exact alignment of text, etc
@@ -445,7 +452,7 @@ ELSEIF= [template] = "site"
         ENDIF
     ENDIF
     
-ELSEIF= [template] = "onering"
+ELSEIF= {template?§} = "onering"
 
     ;; Debug printing is used to put a full-sized card in the background for
     ;; the purposes of checking exact alignment of text, etc
