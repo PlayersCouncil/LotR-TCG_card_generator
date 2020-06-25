@@ -27,8 +27,8 @@ CARDSIZE=2.5,3.5
 
 ;;THREADS = 8
 
-LINK= unit_tests.csv
-;;LINK= vset1.csv
+;;LINK= unit_tests.csv
+LINK= cards.csv
 
 [debug_print] = False
 [debug_image_path] = "X:\Projects\lotr-tcg\templates\new_templates\examples\"
@@ -127,8 +127,8 @@ RECTANGLE=,0,0,100%,100%,#000000
 <vitality_icon> = 7.5%,74%,10%,10%
 <third_icon> = 7.5%,84.5%,10%,10%
 
-<game_text> = 23.5%,67%,[game_text_width],25%
-<game_text_default> = 23.5%,67%,[default_game_text_width],25%
+<game_text> = 23.5%,67%,[game_text_width],26.5%
+<game_text_default> = 23.5%,67%,[default_game_text_width],26.5%
 <site_game_text> = 77.5%,13%,8.7%,[game_text_width]
 <site_game_text_default> = 77.5%,12.5%,8.7%,[default_site_game_text_width]
 
