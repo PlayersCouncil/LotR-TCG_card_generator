@@ -8,6 +8,8 @@ templates/original_res_export/*
 test.csv
 test.ods
 *.zip
+fonts/*
+releases/*
 
 
 
@@ -16,3 +18,5 @@ test.ods
 !templates/huge_res_export/*.txt
 !templates/double_res_export/*.txt
 !templates/original_res_export/*.txt
+!card_portraits/aragorn_full.png
+!card_portraits/steel_is_steel.png
