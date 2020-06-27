@@ -7,6 +7,7 @@ templates/double_res_export/*
 templates/original_res_export/*
 test.csv
 test.ods
+*.zip
 
 
 
@@ -15,3 +16,4 @@ test.ods
 !templates/huge_res_export/*.txt
 !templates/double_res_export/*.txt
 !templates/original_res_export/*.txt
+!card_portraits/*.txt
