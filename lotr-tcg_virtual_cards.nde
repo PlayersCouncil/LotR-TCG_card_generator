@@ -27,12 +27,16 @@ CARDSIZE=2.5,3.5
 
 ;;THREADS = 8
 
+[debug_print] = False
+[debug_image_path] = "X:\Projects\lotr-tcg\templates\new_templates\examples\"
+;;Don't modify this line, it exists to make sure that ommitting this column doesn't affect validation.
+[debug_image_name] = ""
+
 ;;LINK= unit_tests.csv
 LINK= cards.csv
 ;;[spreadsheet_path]
 
-[debug_print] = False
-[debug_image_path] = "X:\Projects\lotr-tcg\templates\new_templates\examples\"
+
 
 ;; If certain values are not filled in, we will use these values instead
 [default_game_text_spacing] = 100
@@ -584,7 +588,7 @@ ENDIF
 
 ;; First combine the game text and lore into a single contiguous set of text
 ;; with the lore marked as a separate font.
-[card_full_text] = CONCAT1([game_text],<br><lore>,[lore],</lore>)
+[card_full_text] = JOIN([game_text],<br><lore>,[lore],</lore>)
 
 ;; including this file will perform a ton of find-replaces on the text, including
 ;; for symbols, bolding, and smart quote handling.
