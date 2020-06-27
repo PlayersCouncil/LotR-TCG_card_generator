@@ -1,1 +1,17 @@
 card_export/*
+card_output/*
+card_portraits/*
+nanDECK/1.25.2_b30/*
+templates/huge_res_export/*
+templates/double_res_export/*
+templates/original_res_export/*
+test.csv
+test.ods
+
+
+
+!card_portraits/*.txt
+!nanDECK/1.25.2_b30/*.txt
+!templates/huge_res_export/*.txt
+!templates/double_res_export/*.txt
+!templates/original_res_export/*.txt

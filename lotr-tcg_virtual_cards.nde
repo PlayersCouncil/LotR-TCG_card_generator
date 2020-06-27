@@ -2,7 +2,7 @@
 'Standard cards 2.5 x 3.5 - 750 x 1050
 '#####################################
 
-INCLUDE = settings.txt
+INCLUDE= settings.txt
 
 
 UNIT=INCH
@@ -29,6 +29,7 @@ CARDSIZE=2.5,3.5
 
 ;;LINK= unit_tests.csv
 LINK= cards.csv
+;;[spreadsheet_path]
 
 [debug_print] = False
 [debug_image_path] = "X:\Projects\lotr-tcg\templates\new_templates\examples\"
@@ -52,9 +53,9 @@ LINK= cards.csv
 ;; Systematic clean-up
 [template] = CASESTRING([template], L)
 [unique] = CASESTRING([unique], U)
+[culture] = CASESTRING([culture], L)
 [culture] = REPLACE([culture], "elf", "elven")
 [culture] = REPLACE([culture], "dwarf", "dwarven")
-[culture] = CASESTRING([culture], L)
 [card_type] = CASESTRING([card_type], F)
 [tags] = CASESTRING([tags], L)
 
@@ -127,7 +128,7 @@ RECTANGLE=,0,0,100%,100%,#000000
 <vitality_icon> = 7.5%,74%,10%,10%
 <third_icon> = 7.5%,84.5%,10%,10%
 
-<game_text> = 23.5%,67%,[game_text_width],26.5%
+<game_text> = 23.5%,67%,{game_text_width?§},26.5%
 <game_text_default> = 23.5%,67%,[default_game_text_width],26.5%
 <site_game_text> = 77.5%,13%,8.7%,[game_text_width]
 <site_game_text_default> = 77.5%,12.5%,8.7%,[default_site_game_text_width]
@@ -583,7 +584,7 @@ ENDIF
 
 ;; First combine the game text and lore into a single contiguous set of text
 ;; with the lore marked as a separate font.
-[card_full_text] = JOIN([game_text],<br><lore>,[lore],</lore>)
+[card_full_text] = CONCAT1([game_text],<br><lore>,[lore],</lore>)
 
 ;; including this file will perform a ton of find-replaces on the text, including
 ;; for symbols, bolding, and smart quote handling.
