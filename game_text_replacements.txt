@@ -131,7 +131,7 @@ HTMLKEY=,"Warg-rider.","<b>Warg-rider.</b>",,C
 ;; Phase actions
 HTMLKEY=,"Fellowship:","<b>Fellowship:</b>",,C
 HTMLKEY=,"Shadow:","<b>Shadow:</b>",,C
-HTMLKEY=,"Manuever:","<b>Manuever:</b>",,C
+HTMLKEY=,"Maneuver:","<b>Maneuver:</b>",,C
 HTMLKEY=,"Archery:","<b>Archery:</b>",,C
 HTMLKEY=,"Assignment:","<b>Assignment:</b>",,C
 HTMLKEY=,"Skirmish:","<b>Skirmish:</b>",,C
