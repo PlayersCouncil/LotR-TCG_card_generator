@@ -17,13 +17,6 @@
 ;; else a full path with quotes such as "C:/users/me/my_cards"
 [output_path] = "card_output"
 
-;; A path pointing to the spreadsheet to read for card data.
-;; Can be the name of a file in the same folder as this script, or
-;; else a full path with quotes such as "C:/users/me/my_cards/test.csv"
-;; This can be an excel *.xls or *.xlsx file, an OpenOffice/LibreOffice
-;; *.ods file, or a comma-separated *.csv file.
-[spreadsheet_path] = "cards.csv"
-
 ;; The size of template to use.
 ;; Whichever one you select must be present in the same folder;
 ;; for instance, if you select "huge", then a "huge_res_export" folder

@@ -85,12 +85,7 @@ RECTANGLE=,0,0,100%,100%,#000000
 [overlay_path] = JOIN([full_template_path], overlays/)
 
 [character_template] = JOIN([full_template_path],[culture],_character_,[card_size],.png)
-[gollum_freeps_character_template] = JOIN([full_template_path],gollum_freeps_character_,[card_size],.png)
-[gollum_shadow_character_template] = JOIN([full_template_path],gollum_shadow_character_,[card_size],.png)
-
 [modifier_template] = JOIN([full_template_path],[culture],_modifier_,[card_size],.png)
-[gollum_freeps_modifier_template] = JOIN([full_template_path],gollum_freeps_modifier_,[card_size],.png)
-[gollum_shadow_modifier_template] = JOIN([full_template_path],gollum_shadow_modifier_,[card_size],.png)
 
 [site_standard_template] = JOIN([full_template_path],site_standard_,[card_size],.png)
 [site_sanctuary_template] = JOIN([full_template_path],site_sanctuary_,[card_size],.png)
@@ -272,16 +267,8 @@ IF= {template?§} = "character"
             IMAGE = , JOIN([card_image_path],/,[image_name]), <character_card_portrait>, 0, PN
 
             ;; Now for the actual card template
-            IF=[culture] = "gollum"
-                ;; which template to use for gollum is stored in the [tags] column
-                IF= "shadow" @ {tags?§}
-                    IMAGE = , [gollum_shadow_character_template], <card_background>, 0, PN
-                ELSE
-                    IMAGE = , [gollum_freeps_character_template], <card_background>, 0, PN
-                ENDIF
-            ELSE
-                IMAGE = , [character_template], <card_background>, 0, PN
-            ENDIF
+            IMAGE = , [character_template], <card_background>, 0, PN
+
         ENDIF
     ENDIF
 
@@ -323,7 +310,9 @@ IF= {template?§} = "character"
 
     ;; Minion Site Number
     IF= ([card_type] <> Ally) _AND_ ([site] <> "")
-        IMAGE = , JOIN([positioned_icon_path],minion_site_number_position_,[card_size],.png), <card_background>, 0, PN
+        IF= "disable_site" # {tags?§}
+            IMAGE = , JOIN([positioned_icon_path],minion_site_number_position_,[card_size],.png), <card_background>, 0, PN
+        ENDIF
         HTMLTEXT=,"[site]",<third_icon>,,0,BE,100,numbers
     ENDIF
 
@@ -345,16 +334,7 @@ ELSEIF= ({template?§} = "modifier") _OR_ ({template?§} = "support")
             IMAGE = , JOIN([card_image_path],/,[image_name]), <modifier_card_portrait>, 0, PN
 
             ;; Now for the actual card template
-            IF=[culture] = "gollum"
-                ;; which template to use for gollum is stored in the [tags] column
-                IF="shadow" @ {tags?§}
-                    IMAGE = , [gollum_shadow_modifier_template], <card_background>, 0, PN
-                ELSE
-                    IMAGE = , [gollum_freeps_modifier_template], <card_background>, 0, PN
-                ENDIF
-            ELSE
-                IMAGE = , [modifier_template], <card_background>, 0, PN
-            ENDIF
+            IMAGE = , [modifier_template], <card_background>, 0, PN
         ENDIF
     ENDIF
 
@@ -379,8 +359,10 @@ ELSEIF= ({template?§} = "modifier") _OR_ ({template?§} = "support")
     ENDIF
 
     ;; Artifact overlay if applicable
-    IF= (([card_type] = "Artifact") _OR_ ("artifact_overlay" @ {tags?§})) _AND_ ("full_art" # {tags?§})
-        IMAGE = ,[artifact_overlay], <card_background>, 0, PN
+    IF= ([card_type] = "Artifact") _OR_ ("artifact_overlay" @ {tags?§})
+        IF= ("full_art" # {tags?§}) _OR_ ("artifact_overlay" @ {tags?§})
+            IMAGE = ,[artifact_overlay], <card_background>, 0, PN
+        ENDIF
         ;;RECTANGLE=,<card_background>,#00FFFF
     ENDIF
 
@@ -389,6 +371,14 @@ ELSEIF= ({template?§} = "modifier") _OR_ ({template?§} = "support")
         HTMLTEXT=,"[card_type]",<modifier_type_panel>,,0,BE,100,typeplate
     ELSE
         HTMLTEXT=,"[card_type] • [card_subtype]",<modifier_type_panel>,,0,BE,100,typeplate
+    ENDIF
+
+    ;; Site Modifiers
+    IF= [site] <> ""
+        IF= "disable_site" # {tags?§}
+            IMAGE = , JOIN([positioned_icon_path],minion_site_number_position_,[card_size],.png), <card_background>, 0, PN
+        ENDIF
+        HTMLTEXT=,"[site]",<third_icon>,,0,BE,100,numbers
     ENDIF
 
 ELSEIF= {template?§} = "site"
@@ -497,8 +487,8 @@ ENDIF
 
 
 ;; Culture Icon
-IF= ("full_art" @ {tags?§}) _AND_ ("disable_culture" # {tags?§})
-        IMAGE = , [culture_overlay], <card_background>, 0, PN
+IF= ("full_art" @ {tags?§}) _AND_ ("disable_culture" # {tags?§}) _AND_ ( ([card_type] <> "modifier") _OR_ ("artifact_overlay" # {tags?§}))
+    IMAGE = , [culture_overlay], <card_background>, 0, PN
 ENDIF
 
 
@@ -555,10 +545,12 @@ ENDIF
 
 ;; Resistance and ring-bearer
 IF= ([card_type] <> Minion) _AND_ ([resistance] <> "")
-    IF= "ring-bearer" @ {tags?§}
-        IMAGE = , JOIN([positioned_icon_path],resistance_ring_combined_position_,[card_size],.png), <card_background>, 0, PN
-    ELSE
-        IMAGE = , JOIN([positioned_icon_path],resistance_position_,[card_size],.png), <card_background>, 0, PN
+    IF= "disable_resistance" # {tags?§}
+        IF= "ring_bearer" @ {tags?§}
+            IMAGE = , JOIN([positioned_icon_path],resistance_ring_combined_position_,[card_size],.png), <card_background>, 0, PN
+        ELSE
+            IMAGE = , JOIN([positioned_icon_path],resistance_position_,[card_size],.png), <card_background>, 0, PN
+        ENDIF
     ENDIF
     HTMLTEXT=,"[resistance]",<third_icon>,,0,BE,100,numbers
 ENDIF
@@ -619,7 +611,7 @@ ENDIF
 
 IF= "disclaimer_light" @ {tags?§}
     IMAGE = , JOIN([icon_path],disclaimer_light_,[card_size],.png), 33.5%,94%,61%,2.7%, 0, PN
-ELSEIF= ([template] = "onering") _OR_ ("disclaimer" @ {tags?§}) _OR_ ("full_art" @ {tags?§}) 
+ELSEIF= ([template] = "onering") _OR_ ("disclaimer_dark" @ {tags?§}) _OR_ ("full_art" @ {tags?§})
     IMAGE = , JOIN([icon_path],disclaimer_dark_,[card_size],.png), 33.5%,94%,61%,2.7%, 0, PN
 ENDIF
 
