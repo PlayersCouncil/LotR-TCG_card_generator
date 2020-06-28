@@ -5,12 +5,12 @@
 ;; A path pointing to the location to use for card template images.
 ;; Can be the name of a folder in the same folder as this script, or
 ;; else a full path with quotes such as "C:/users/me/my_templates"
-[card_template_path] = "X:/Projects/lotr-tcg/templates/new_templates"
+[card_template_path] = "templates"
 
 ;; A path pointing to the location to use for card portrait images.
 ;; Can be the name of a folder in the same folder as this script, or
 ;; else a full path with quotes such as "C:/users/me/my_images"
-[card_image_path] = "X:/Projects/lotr-tcg/templates/new_templates/images"
+[card_image_path] = "card_portraits"
 
 ;; A path pointing to the location to use for the resulting card images.
 ;; Can be the name of a folder in the same folder as this script, or
