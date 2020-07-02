@@ -1,0 +1,44 @@
+MACRO= SETFONT, (name), (fontname), (customfontsize), (defaultfontsize), (flags), (customcolor), (defaultcolor), (alignment)
+    IF= (customcolor) <> ""
+        IF= (customfontsize) > 0
+            HTMLFONT=(name),(fontname),(customfontsize),(flags),(customcolor),(alignment)
+        ELSE
+            HTMLFONT=(name),(fontname),(defaultfontsize),(flags),(customcolor),(alignment)
+        ENDIF
+    ELSE
+        IF= (customfontsize) > 0
+            HTMLFONT=(name),(fontname),(customfontsize),(flags),(defaultcolor),(alignment)
+        ELSE
+            HTMLFONT=(name),(fontname),(defaultfontsize),(flags),(defaultcolor),(alignment)
+        ENDIF
+    ENDIF
+END
+
+MACRO= TAGCAPS, (return_label_name), (text_label_name), (tag_name)
+    [(return_label_name)] = REPLACE([(text_label_name)], "A", "<(tag_name)>A</(tag_name)>")
+    [(return_label_name)] = REPLACE([(return_label_name)], "B", "<(tag_name)>B</(tag_name)>")
+    [(return_label_name)] = REPLACE([(return_label_name)], "C", "<(tag_name)>C</(tag_name)>")
+    [(return_label_name)] = REPLACE([(return_label_name)], "D", "<(tag_name)>D</(tag_name)>")
+    [(return_label_name)] = REPLACE([(return_label_name)], "E", "<(tag_name)>E</(tag_name)>")
+    [(return_label_name)] = REPLACE([(return_label_name)], "F", "<(tag_name)>F</(tag_name)>")
+    [(return_label_name)] = REPLACE([(return_label_name)], "G", "<(tag_name)>G</(tag_name)>")
+    [(return_label_name)] = REPLACE([(return_label_name)], "H", "<(tag_name)>H</(tag_name)>")
+    [(return_label_name)] = REPLACE([(return_label_name)], "I", "<(tag_name)>I</(tag_name)>")
+    [(return_label_name)] = REPLACE([(return_label_name)], "J", "<(tag_name)>J</(tag_name)>")
+    [(return_label_name)] = REPLACE([(return_label_name)], "K", "<(tag_name)>K</(tag_name)>")
+    [(return_label_name)] = REPLACE([(return_label_name)], "L", "<(tag_name)>L</(tag_name)>")
+    [(return_label_name)] = REPLACE([(return_label_name)], "M", "<(tag_name)>M</(tag_name)>")
+    [(return_label_name)] = REPLACE([(return_label_name)], "N", "<(tag_name)>N</(tag_name)>")
+    [(return_label_name)] = REPLACE([(return_label_name)], "O", "<(tag_name)>O</(tag_name)>")
+    [(return_label_name)] = REPLACE([(return_label_name)], "P", "<(tag_name)>P</(tag_name)>")
+    [(return_label_name)] = REPLACE([(return_label_name)], "Q", "<(tag_name)>Q</(tag_name)>")
+    [(return_label_name)] = REPLACE([(return_label_name)], "R", "<(tag_name)>R</(tag_name)>")
+    [(return_label_name)] = REPLACE([(return_label_name)], "S", "<(tag_name)>S</(tag_name)>")
+    [(return_label_name)] = REPLACE([(return_label_name)], "T", "<(tag_name)>T</(tag_name)>")
+    [(return_label_name)] = REPLACE([(return_label_name)], "U", "<(tag_name)>U</(tag_name)>")
+    [(return_label_name)] = REPLACE([(return_label_name)], "V", "<(tag_name)>V</(tag_name)>")
+    [(return_label_name)] = REPLACE([(return_label_name)], "W", "<(tag_name)>W</(tag_name)>")
+    [(return_label_name)] = REPLACE([(return_label_name)], "X", "<(tag_name)>X</(tag_name)>")
+    [(return_label_name)] = REPLACE([(return_label_name)], "Y", "<(tag_name)>Y</(tag_name)>")
+    [(return_label_name)] = REPLACE([(return_label_name)], "Z", "<(tag_name)>Z</(tag_name)>")
+END

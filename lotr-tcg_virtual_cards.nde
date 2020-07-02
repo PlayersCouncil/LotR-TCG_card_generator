@@ -3,6 +3,7 @@
 '#####################################
 
 INCLUDE= settings.txt
+INCLUDE= macros.nde
 
 
 UNIT=INCH
@@ -32,9 +33,9 @@ CARDSIZE=2.5,3.5
 ;;Don't modify this line, it exists to make sure that ommitting this column doesn't affect validation.
 [debug_image_name] = ""
 
-;;LINK= unit_tests.csv
+
 LINK= cards.csv
-;;[spreadsheet_path]
+;;LINK= [spreadsheet_path]
 
 
 
@@ -49,10 +50,41 @@ LINK= cards.csv
 [default_modifier_subtitle_font_size] = 7.6
 [default_site_title_font_size] = 9
 [default_ring_title_font_size] = 11
-[default_border_color] = #000000
+
+[title_cap_factor] = 1.2
+[type_title_cap_factor] = 1.1
+[mod_title_cap_factor] = 1.15
 
 [default_icon_font_size] = 14
-[default_game_text_font_size] = 14
+[default_game_text_font_size] = 7.4
+[default_type_plate_font_size] = 8.8
+[default_type_symbol_font_size] = 8.9
+[default_lore_font_size] = 7.5
+[default_coll_info_font_size] = 4.2
+
+;;{default_character_title_font_size * char_title_cap_factor}
+
+;;[default_char_title_cap_font_size] = {[default_character_title_font_size] * [char_title_cap_factor]}
+[default_char_title_cap_font_size] = {[default_character_title_font_size] * [title_cap_factor]}
+[custom_char_title_cap_font_size] = {{title_font_size?§} * [title_cap_factor]}
+[default_char_subtitle_cap_font_size] = {[default_character_subtitle_font_size] * [title_cap_factor]}
+[custom_char_subtitle_cap_font_size] = {{subtitle_font_size?§} * [title_cap_factor]}
+
+[default_mod_title_cap_font_size] = {[default_modifier_title_font_size] * [mod_title_cap_factor]}
+[custom_mod_title_cap_font_size] = {{title_font_size?§} * [mod_title_cap_factor]}
+[default_mod_subtitle_cap_font_size] = {[default_modifier_subtitle_font_size] * [mod_title_cap_factor]}
+[custom_mod_subtitle_cap_font_size] = {{subtitle_font_size?§} * [mod_title_cap_factor]}
+
+[default_ring_title_cap_font_size] = {[default_ring_title_font_size] * [mod_title_cap_factor]}
+[custom_ring_title_cap_font_size] = {{title_font_size?§} * [mod_title_cap_factor]}
+
+
+[default_type_plate_cap_font_size] = {[default_type_plate_font_size] * [type_title_cap_factor]}
+
+
+[default_border_color] = #000000
+
+
 
 ;; Systematic clean-up
 [template] = CASESTRING([template], L)
@@ -143,67 +175,32 @@ RECTANGLE=,0,0,100%,100%,#000000
 [lore_font] = LOTR_TCG-Lore
 [number_font] = LOTR_TCG_Icons
 
-IF= {game_text_color?§} <> ""
-    IF= {title_font_size?§} <> ""
-        HTMLFONT=chartitle,[title_font],{title_font_size?§},DZA,{game_text_color?§},LEFT
-        HTMLFONT=modtitle,[title_font],{title_font_size?§},DA,{game_text_color?§},RIGHT
-        HTMLFONT=modtitletop,[title_font],{title_font_size?§},DZ,{game_text_color?§},RIGHT
-        HTMLFONT=sitetitle,[title_font],{title_font_size?§},DZA,{game_text_color?§},CENTER
-        HTMLFONT=ringtitle,[title_font],{title_font_size?§},DZA,{game_text_color?§},RIGHT
-    ELSE
-        HTMLFONT=chartitle,[title_font],[default_character_title_font_size],DZA,{game_text_color?§},LEFT
-        HTMLFONT=modtitle,[title_font],[default_modifier_title_font_size],DA,{game_text_color?§},RIGHT
-        HTMLFONT=modtitletop,[title_font],[default_modifier_title_font_size],DZA,{game_text_color?§},RIGHT
-        HTMLFONT=sitetitle,[title_font],[default_site_title_font_size],DZA,{game_text_color?§},CENTER
-        HTMLFONT=ringtitle,[title_font],[default_ring_title_font_size],DZA,{game_text_color?§},RIGHT
-    ENDIF
-
-    IF= {subtitle_font_size?§} <> ""
-        HTMLFONT=charsubtitle,[title_font],{subtitle_font_size?§},DZA,{game_text_color?§},LEFT
-        HTMLFONT=modsubtitle,[title_font],{subtitle_font_size?§},DZA,{game_text_color?§},RIGHT
-    ELSE
-        HTMLFONT=charsubtitle,[title_font],[default_character_subtitle_font_size],DZA,{game_text_color?§},LEFT
-        HTMLFONT=modsubtitle,[title_font],[default_modifier_subtitle_font_size],DZA,{game_text_color?§},RIGHT
-    ENDIF
-
-    HTMLFONT=gametext,[game_text_font],7.4,D,{game_text_color?§},LEFT
-    HTMLFONT=typeplate,[title_font],8.8,DZA,{game_text_color?§},CENTER
-    HTMLFONT=typesymbol,[game_text_font],8.9,D,{game_text_color?§}
-    HTMLFONT=lore,[lore_font],7.5,D,{game_text_color?§},LEFT
-    HTMLFONT=collinfo, [game_text_font], 4.2,BD, {game_text_color?§},CENTER
-
-ELSE
-    IF= [title_font_size] <> ""
-        HTMLFONT=chartitle,[title_font],{title_font_size?§},DZA,[default_game_text_color],LEFT
-        HTMLFONT=modtitle,[title_font],{title_font_size?§},DA,[default_game_text_color],RIGHT
-        HTMLFONT=modtitletop,[title_font],{title_font_size?§},DZA,[default_game_text_color],RIGHT
-        HTMLFONT=sitetitle,[title_font],{title_font_size?§},DZA,[default_game_text_color],CENTER
-        HTMLFONT=ringtitle,[title_font],{title_font_size?§},DZA,[default_game_text_color],RIGHT
-    ELSE
-        HTMLFONT=chartitle,[title_font],[default_character_title_font_size],DZA,[default_game_text_color],LEFT
-        HTMLFONT=modtitle,[title_font],[default_modifier_title_font_size],DA,[default_game_text_color],RIGHT
-        HTMLFONT=modtitletop,[title_font],[default_modifier_title_font_size],DZA,[default_game_text_color],RIGHT
-        HTMLFONT=sitetitle,[title_font],[default_site_title_font_size],DZA,[default_game_text_color],CENTER
-        HTMLFONT=ringtitle,[title_font],[default_ring_title_font_size],DZA,[default_game_text_color],RIGHT
-    ENDIF
-
-    IF= [subtitle_font_size] <> ""
-        HTMLFONT=charsubtitle,[title_font],{subtitle_font_size?§},DZA,[default_game_text_color],LEFT
-        HTMLFONT=modsubtitle,[title_font],{subtitle_font_size?§},DZA,[default_game_text_color],RIGHT
-    ELSE
-        HTMLFONT=charsubtitle,[title_font],[default_character_subtitle_font_size],DZA,[default_game_text_color],LEFT
-        HTMLFONT=modsubtitle,[title_font],[default_modifier_subtitle_font_size],DZA,[default_game_text_color],RIGHT
-    ENDIF
-
-    HTMLFONT=gametext,[game_text_font],7.5,D,[default_game_text_color],LEFT
-    HTMLFONT=typeplate,[title_font],8.8,DZA,[default_game_text_color],CENTER
-    HTMLFONT=typesymbol,[game_text_font],8.9,D,[default_game_text_color]
-    HTMLFONT=lore,[lore_font],7.5,D,[default_game_text_color],LEFT
-    HTMLFONT=collinfo, [game_text_font], 4.2,BD, [default_game_text_color],CENTER
-
-ENDIF
 
 
+
+SETFONT= chartitle,[title_font],{title_font_size?§},[default_character_title_font_size],DZA,{game_text_color?§},[default_game_text_color],LEFT
+SETFONT= chartitlecap,[title_font],[custom_char_title_cap_font_size],[default_char_title_cap_font_size],D,{game_text_color?§},[default_game_text_color]
+SETFONT= charsubtitle,[title_font],{subtitle_font_size?§},[default_character_subtitle_font_size],DZA,{game_text_color?§},[default_game_text_color],LEFT
+SETFONT= charsubtitlecap,[title_font],[custom_char_subtitle_cap_font_size],[default_char_subtitle_cap_font_size],D,{game_text_color?§},[default_game_text_color]
+
+SETFONT= modtitle,[title_font],{title_font_size?§},[default_modifier_title_font_size],DA,{game_text_color?§},[default_game_text_color],RIGHT
+;; this is doubled just for the margins
+SETFONT= modtitletop,[title_font],{title_font_size?§},[default_modifier_title_font_size],DZA,{game_text_color?§},[default_game_text_color],RIGHT
+SETFONT= modtitlecap,[title_font],[custom_mod_title_cap_font_size],[default_mod_title_cap_font_size],D,{game_text_color?§},[default_game_text_color]
+
+SETFONT= modsubtitle,[title_font],{subtitle_font_size?§},[default_modifier_subtitle_font_size],DZA,{game_text_color?§},[default_game_text_color],RIGHT
+SETFONT= modsubtitlecap,[title_font],[custom_mod_subtitle_cap_font_size],[default_mod_subtitle_cap_font_size],D,{game_text_color?§},[default_game_text_color]
+
+SETFONT= sitetitle,[title_font],{title_font_size?§},[default_site_title_font_size],DZA,{game_text_color?§},[default_game_text_color],CENTER
+SETFONT= ringtitle,[title_font],{title_font_size?§},[default_ring_title_font_size],DZA,{game_text_color?§},[default_game_text_color],RIGHT
+SETFONT= ringtitlecap,[title_font],[custom_ring_title_cap_font_size],[default_ring_title_cap_font_size],DZA,{game_text_color?§},[default_game_text_color]
+
+SETFONT= gametext,[game_text_font],,[default_game_text_font_size],D,{game_text_color?§},[default_game_text_color],LEFT
+SETFONT= typeplate,[title_font],,[default_type_plate_font_size],DZA,{game_text_color?§},[default_game_text_color],CENTER
+SETFONT= typeplatecap,[title_font],,[default_type_plate_cap_font_size],DZA,{game_text_color?§},[default_game_text_color]
+SETFONT= typesymbol,[game_text_font],,[default_type_symbol_font_size],D,{game_text_color?§},[default_game_text_color]
+SETFONT= lore,[lore_font],,[default_lore_font_size],D,{game_text_color?§},[default_game_text_color],LEFT
+SETFONT= collinfo, [number_font],,[default_coll_info_font_size],D, {game_text_color?§},[default_game_text_color],CENTER
 
 
 IF= {icon_text_color?§} <> ""
@@ -251,6 +248,23 @@ ENDIF
 ;; displayed text, which is mostly used for obnoxious accents.
 INCLUDE=all_text_replacements.txt
 
+;; These text replacements have to be performed now, because for whatever reason
+;; we cannot set variables within if statements.
+
+TAGCAPS= "titlecaps_char","title","chartitlecap"
+TAGCAPS= "subtitlecaps_char","subtitle","charsubtitlecap"
+
+TAGCAPS= "titlecaps_mod","title","modtitlecap"
+TAGCAPS= "subtitlecaps_mod","subtitle","modsubtitlecap"
+
+TAGCAPS= "titlecaps_site","title","sitetitlecap"
+TAGCAPS= "titlecaps_ring","title","ringtitlecap"
+TAGCAPS= "subtitlecaps_ring","subtitle","typeplatecap"
+
+TAGCAPS= "cardtypecaps","card_type","typeplatecap"
+TAGCAPS= "cardsubtypecaps","card_subtype","typeplatecap"
+
+
 ;; Now we get to card rendering.  Start with card-template-sensitive elements.
 IF= {template?§} = "character"
 
@@ -280,32 +294,36 @@ IF= {template?§} = "character"
 
     ;; Character Title
     IF=([unique] = T) _OR_ ([unique] = Y)
-        HTMLTEXT=,"•",<character_unique>,,0,BE,100,chartitle
+        HTMLTEXT=,"•",<character_unique>,,0,BE,100,chartitlecap
     ENDIF
-    HTMLTEXT=,[title],<character_title>,,0,BE,100,chartitle
+
+    
+    
+    ;;HTMLTEXT=,REPLACE({title?§}, "G", "<chartitlecap>G</chartitlecap>"),<character_title>,,0,BE,100,chartitle
+    HTMLTEXT=,"[titlecaps_char]",<character_title>,,0,BE,100,chartitle
     
 
     ;; Character Subtitle
     IF= [subtitle] <> ""
-        HTMLTEXT=,"[subtitle]",<character_subtitle>,,0,BE,100,charsubtitle
+        HTMLTEXT=,"[subtitlecaps_char]",<character_subtitle>,,0,BE,100,charsubtitle
     ENDIF
 
     ;; Character Card Type
     IF= [card_type] = Ally
         IF= ([site] <> "") _AND_ ([card_subtype] <> "")
-            HTMLTEXT=,"[card_type] • Home [site] • [card_subtype]",<character_type_panel>,,0,BE,100,typeplate
+            HTMLTEXT=,CONCAT1("[cardtypecaps] • <typeplatecap>H</typeplatecap>ome [site] • ", {cardsubtypecaps?§}),<character_type_panel>,,0,BE,100,typeplate
             ;;HTMLTEXT=,"[card_type] • Home [site] • [card_subtype]",15%,58.5%,80%,15%,,0,BEY,100,typeplate
         ELSEIF= [site] <> ""
-            HTMLTEXT=,"[card_type] • Home [site]",<character_type_panel>,,0,BE,100,typeplate
+            HTMLTEXT=,"[cardtypecaps] • <typeplatecap>H</typeplatecap>ome [site]",<character_type_panel>,,0,BE,100,typeplate
         ELSEIF= [card_subtype] <> ""
-            HTMLTEXT=,"[card_type] • [card_subtype]",<character_type_panel>,,0,BE,100,typeplate
+            HTMLTEXT=,CONCAT1("[cardtypecaps] • ",{cardsubtypecaps?§}),<character_type_panel>,,0,BE,100,typeplate
         ELSE
-            HTMLTEXT=,"[card_type]",<character_type_panel>,,0,BE,100,typeplate
+            HTMLTEXT=,"[cardtypecaps]",<character_type_panel>,,0,BE,100,typeplate
         ENDIF
     ELSEIF= [card_subtype] = ""
-        HTMLTEXT=,"[card_type]",<character_type_panel>,,0,BE,100,typeplate
+        HTMLTEXT=,"[cardtypecaps]",<character_type_panel>,,0,BE,100,typeplate
     ELSE
-        HTMLTEXT=,"[card_type] • [card_subtype]",<character_type_panel>,,0,BE,100,typeplate
+        HTMLTEXT=,CONCAT1("[cardtypecaps] • ",{cardsubtypecaps?§}),<character_type_panel>,,0,BE,100,typeplate
     ENDIF
 
     ;; Minion Site Number
@@ -346,15 +364,15 @@ ELSEIF= ({template?§} = "modifier") _OR_ ({template?§} = "support")
     ;; Modifier Title/Subtitle
     IF= [subtitle] <> ""
         IF=([unique] = T) _OR_ ([unique] = Y)
-            HTMLTEXT=,JOIN("•",[title],"<br><modsubtitle>",[subtitle],"</modsubtitle>"),<modifier_title>,,270,BE,100,modtitletop
+            HTMLTEXT=,JOIN("•",[titlecaps_mod],"<br><modsubtitle>",[subtitlecaps_mod],"</modsubtitle>"),<modifier_title>,,270,BE,100,modtitletop
         ELSE
-            HTMLTEXT=,JOIN([title],"<br><modsubtitle>",[subtitle],"</modsubtitle>"),<modifier_title>,,270,BE,100,modtitletop
+            HTMLTEXT=,JOIN([titlecaps_mod],"<br><modsubtitle>",[subtitlecaps_mod],"</modsubtitle>"),<modifier_title>,,270,BE,100,modtitletop
         ENDIF
     ELSE
         IF=([unique] = T) _OR_ ([unique] = Y)
-            HTMLTEXT=,"•[title]",<modifier_title>,,270,BE,100,modtitle
+            HTMLTEXT=,JOIN("•",[titlecaps_mod]),<modifier_title>,,270,BE,100,modtitle
         ELSE
-            HTMLTEXT=,"[title]",<modifier_title>,,270,BE,100,modtitle
+            HTMLTEXT=,"[titlecaps_mod]",<modifier_title>,,270,BE,100,modtitle
         ENDIF
     ENDIF
 
@@ -368,9 +386,9 @@ ELSEIF= ({template?§} = "modifier") _OR_ ({template?§} = "support")
 
     ;; Card Type
     IF= [card_subtype] = ""
-        HTMLTEXT=,"[card_type]",<modifier_type_panel>,,0,BE,100,typeplate
+        HTMLTEXT=,"[cardtypecaps]",<modifier_type_panel>,,0,BE,100,typeplate
     ELSE
-        HTMLTEXT=,"[card_type] • [card_subtype]",<modifier_type_panel>,,0,BE,100,typeplate
+        HTMLTEXT=,CONCAT1("[cardtypecaps] • ",{cardsubtypecaps?§}),<modifier_type_panel>,,0,BE,100,typeplate
     ENDIF
 
     ;; Site Modifiers
@@ -468,14 +486,14 @@ ELSEIF= {template?§} = "onering"
 
     ;; Title
     IF=([unique] = T) _OR_ ([unique] = Y)
-        HTMLTEXT=,"•[title]",<modifier_title>,,270,BE,100,ringtitle
+        HTMLTEXT=,CONCAT1("•",[titlecaps_ring]),<modifier_title>,,270,BE,100,ringtitle
     ELSE
-        HTMLTEXT=,"[title]",<modifier_title>,,270,BE,100,ringtitle
+        HTMLTEXT=,"[titlecaps_ring]",<modifier_title>,,270,BE,100,ringtitle
     ENDIF
 
     ;; Subtitle
     IF= [subtitle] <> ""
-        HTMLTEXT=,"[subtitle]",<modifier_type_panel>,,0,BE,100,typeplate
+        HTMLTEXT=,"[subtitlecaps_ring]",<modifier_type_panel>,,0,BE,100,typeplate
     ENDIF
 
 ELSE=
