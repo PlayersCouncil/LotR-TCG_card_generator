@@ -14,12 +14,18 @@ Original: 250 x 185
 
 
 -Site
-Huge: 913 x 1579
-Double: 457 x 791
-Original: 229 x 395
+Huge: 1579 x 913
+Double: 791 x 457
+Original: 395 x 229 
 
 
 -One Ring / Full Art
 Huge: 1292 x 1860
 Double: 646 x 930
 Original: 323 x 465
+
+
+-Full Art Site
+Huge: 1860 x 1292
+Double: 930 x 646
+Original: 465 x 323
