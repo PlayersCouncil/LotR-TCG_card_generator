@@ -400,10 +400,10 @@ ELSEIF= {template?§} = "site"
     ELSE
         ;; Full art means we are not using a template
         IF= "full_art" @ {tags?§}
-            IMAGE = , JOIN([card_image_path],/,[image_name]), <full_card_portrait>, 0, PN
+            IMAGE = , JOIN([card_image_path],/,[image_name]), <full_card_portrait>, 270, PN
         ELSE
             ;; Insert the card portrait, since this is "beneath" everything else
-            IMAGE = , JOIN([card_image_path],/,[image_name]), <site_card_portrait>, 0, PN
+            IMAGE = , JOIN([card_image_path],/,[image_name]), <site_card_portrait>, 270, PN
 
             ;; Now for the actual card template
             IF= [card_type] = "Sanctuary"
