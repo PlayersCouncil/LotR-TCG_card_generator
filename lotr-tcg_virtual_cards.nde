@@ -44,23 +44,23 @@ LINK= cards.csv
 [default_lore_spacing] = 98
 [default_game_text_width] = 69%
 [default_site_game_text_width] = 74%
-[default_character_title_font_size] = 9.7
-[default_character_subtitle_font_size] = 7.8
-[default_modifier_title_font_size] = 9
-[default_modifier_subtitle_font_size] = 7.6
-[default_site_title_font_size] = 9
-[default_ring_title_font_size] = 11
+[default_character_title_font_size] = {9.7 * [font_scale_factor]}
+[default_character_subtitle_font_size] = {7.8 * [font_scale_factor]}
+[default_modifier_title_font_size] = {9 * [font_scale_factor]}
+[default_modifier_subtitle_font_size] = {7.6 * [font_scale_factor]}
+[default_site_title_font_size] = {9 * [font_scale_factor]}
+[default_ring_title_font_size] = {11 * [font_scale_factor]}
 
 [title_cap_factor] = 1.2
 [type_title_cap_factor] = 1.1
 [mod_title_cap_factor] = 1.15
 
-[default_icon_font_size] = 14
-[default_game_text_font_size] = 7.4
-[default_type_plate_font_size] = 8.8
-[default_type_symbol_font_size] = 8.9
-[default_lore_font_size] = 7.5
-[default_coll_info_font_size] = 4.2
+[default_icon_font_size] = {14* [font_scale_factor]}
+[default_game_text_font_size] = {7.4* [font_scale_factor]}
+[default_type_plate_font_size] = {8.8* [font_scale_factor]}
+[default_type_symbol_font_size] = {8.9* [font_scale_factor]}
+[default_lore_font_size] = {7.5* [font_scale_factor]}
+[default_coll_info_font_size] = {4.2* [font_scale_factor]}
 
 ;;{default_character_title_font_size * char_title_cap_factor}
 
@@ -169,14 +169,6 @@ RECTANGLE=,0,0,100%,100%,#000000
 
 ;; Set up our fonts for when we use HTML rendering (which is most everywhere).
 ;; Line spacing can be defined per card in the CSV, so we integrate it here.
-
-[game_text_font] = LOTR_TCG
-[title_font] = LOTR_TCG_Title
-[lore_font] = LOTR_TCG-Lore
-[number_font] = LOTR_TCG_Icons
-
-
-
 
 SETFONT= chartitle,[title_font],{title_font_size?§},[default_character_title_font_size],DZA,{game_text_color?§},[default_game_text_color],LEFT
 SETFONT= chartitlecap,[title_font],[custom_char_title_cap_font_size],[default_char_title_cap_font_size],D,{game_text_color?§},[default_game_text_color]

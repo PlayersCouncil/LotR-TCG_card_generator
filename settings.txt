@@ -17,6 +17,38 @@
 ;; else a full path with quotes such as "C:/users/me/my_cards"
 [output_path] = "card_output"
 
+
+;; These are the names of the installed fonts in your system that cards will
+;; use.  These fonts should be included with the software; make sure they
+;; are installed before running nanDECK. If you wish, you may attempt altering
+;; these to use other fonts (such as tengwar).
+;;
+;; These must be the name of an installed font, such as "Arial" or
+;; "Comic Sans MS".  The name of the font may surprise you, so double-check
+;; what you actually have installed.
+
+;; game_text_font is used for the non-lore part of the game text.  Also, this
+;; font contains the culture icons.  If you want to replace those you will need
+;; to do your due diligence in including those same icons in the same glyph
+;; positions.
+[game_text_font] = "LOTR_TCG"
+
+;; title_font is used for titles, subtitles, and the center card type bar
+[title_font] = "LOTR_TCG_Title"
+
+;; lore_font is used for lore
+[lore_font] = "LOTR_TCG-Lore"
+
+;; number_font is used for twilight, strength, vitality, resistance, site number,
+;; and collector's info
+[number_font] = "LOTR_TCG_Icons"
+
+
+;; If the font you have chosen is bigger or smaller (proportionally speaking)
+;; than those used by default, this setting may be used to adjust the size
+;; of all text on the card.
+[font_scale_factor] = 1.0
+
 ;; The size of template to use.
 ;; Whichever one you select must be present in the same folder;
 ;; for instance, if you select "huge", then a "huge_res_export" folder
