@@ -270,7 +270,15 @@ IF= {template?§} = "character"
             IMAGE = , JOIN([card_image_path],/,[image_name]), <full_card_portrait>, 0, PN
         ELSE
             ;; Insert the card portrait, since this is "beneath" everything else
-            IMAGE = , JOIN([card_image_path],/,[image_name]), <character_card_portrait>, 0, PN
+
+            ;; full portraits are intended to take up the whole card size, so
+            ;; that lower rest cards can just be slotted in without needing to
+            ;; cut out the portrait.
+            IF= "full_portrait" @ {tags?§}
+                IMAGE = , JOIN([card_image_path],/,[image_name]), <card_background>, 0, PN
+            ELSE
+                IMAGE = , JOIN([card_image_path],/,[image_name]), <character_card_portrait>, 0, PN
+            ENDIF
 
             ;; Now for the actual card template
             IMAGE = , [character_template], <card_background>, 0, PN
@@ -341,7 +349,14 @@ ELSEIF= ({template?§} = "modifier") _OR_ ({template?§} = "support")
         ELSE
             ;; Insert the card portrait, since this is "beneath" everything else
             
-            IMAGE = , JOIN([card_image_path],/,[image_name]), <modifier_card_portrait>, 0, PN
+            ;; full portraits are intended to take up the whole card size, so
+            ;; that lower rest cards can just be slotted in without needing to
+            ;; cut out the portrait.
+            IF= "full_portrait" @ {tags?§}
+                IMAGE = , JOIN([card_image_path],/,[image_name]), <card_background>, 0, PN
+            ELSE
+                IMAGE = , JOIN([card_image_path],/,[image_name]), <modifier_card_portrait>, 0, PN
+            ENDIF
 
             ;; Now for the actual card template
             IMAGE = , [modifier_template], <card_background>, 0, PN
@@ -403,7 +418,15 @@ ELSEIF= {template?§} = "site"
             IMAGE = , JOIN([card_image_path],/,[image_name]), <full_card_portrait>, 270, PN
         ELSE
             ;; Insert the card portrait, since this is "beneath" everything else
-            IMAGE = , JOIN([card_image_path],/,[image_name]), <site_card_portrait>, 270, PN
+
+            ;; full portraits are intended to take up the whole card size, so
+            ;; that lower rest cards can just be slotted in without needing to
+            ;; cut out the portrait.
+            IF= "full_portrait" @ {tags?§}
+                IMAGE = , JOIN([card_image_path],/,[image_name]), <card_background>, 270, PN
+            ELSE
+                IMAGE = , JOIN([card_image_path],/,[image_name]), <site_card_portrait>, 270, PN
+            ENDIF
 
             ;; Now for the actual card template
             IF= [card_type] = "Sanctuary"
