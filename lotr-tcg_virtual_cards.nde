@@ -34,8 +34,8 @@ CARDSIZE=2.5,3.5
 [debug_image_name] = ""
 
 
-LINK= cards.csv
-;;LINK= [spreadsheet_path]
+;;LINK= cards.csv
+LINK= [spreadsheet_path]
 
 
 

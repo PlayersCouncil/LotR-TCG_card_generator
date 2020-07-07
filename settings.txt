@@ -17,6 +17,12 @@
 ;; else a full path with quotes such as "C:/users/me/my_cards"
 [output_path] = "card_output"
 
+;; A path pointing to the location for the spreadsheet to read card data from.
+;; Can be the name of a file in the same folder as this script, or
+;; else a full path with quotes such as "C:/users/me/my_cards/cards.csv"
+;; Defaults to cards.csv, but may be any name
+[spreadsheet_path] = "cards.csv"
+
 
 ;; These are the names of the installed fonts in your system that cards will
 ;; use.  These fonts should be included with the software; make sure they
