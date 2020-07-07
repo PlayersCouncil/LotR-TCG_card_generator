@@ -6,7 +6,21 @@
 ;; You could utilize this to add more than just bold tags if you want,
 ;; it's just that bolded keywords are about the only systematic tags.
 
+
+
+;; Replace all hyphens in front of numbers with en dashes
+HTMLKEY=,"-1","–1"
+HTMLKEY=,"-2","–2"
+HTMLKEY=,"-3","–3"
+HTMLKEY=,"-4","–4"
+HTMLKEY=,"-5","–5"
+HTMLKEY=,"-6","–6"
+HTMLKEY=,"-7","–7"
+HTMLKEY=,"-8","–8"
+HTMLKEY=,"-9","–9"
+
 ;;Numeric loaded keywords
+;; the dash used by aid is an em dash
 HTMLKEY=,"Aid - ","<b>Aid — </b>",,C
 HTMLKEY=,"Ambush","<b>Ambush</b>",,C
 HTMLKEY=,"Damage +1.","<b>Damage +1.</b>",,C

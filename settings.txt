@@ -23,6 +23,13 @@
 ;; Defaults to cards.csv, but may be any name
 [spreadsheet_path] = "cards.csv"
 
+;; By default you can use <br> to indicate a newline.  If this is too cumbersome,
+;; you may instead customize this field to some other character or string of
+;; characters to use as well.
+;; May not be one of the following characters: [ ] ( ) |
+;; Examples: "\", "\n", "[n]"
+[newline_char] = "\"
+
 
 ;; These are the names of the installed fonts in your system that cards will
 ;; use.  These fonts should be included with the software; make sure they
