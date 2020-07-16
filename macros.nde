@@ -1,4 +1,4 @@
-MACRO= SETFONT, (name), (fontname), (customfontsize), (defaultfontsize), (flags), (customcolor), (defaultcolor), (alignment)
+﻿MACRO= SETFONT, (name), (fontname), (customfontsize), (defaultfontsize), (flags), (customcolor), (defaultcolor), (alignment)
     IF= (customcolor) <> ""
         IF= (customfontsize) > 0
             HTMLFONT=(name),(fontname),(customfontsize),(flags),(customcolor),(alignment)

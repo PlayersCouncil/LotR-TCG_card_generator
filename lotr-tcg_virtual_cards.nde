@@ -5,13 +5,13 @@
 INCLUDE= settings.txt
 INCLUDE= macros.nde
 
-
 UNIT=INCH
 PAGE=8.5,11,PORTRAIT,HV
 FONTALIAS = , ON
 GAP=0.1,0.1,OFF,ON,MARKDOT,#FFFFFF
 
 LINKENCCSV= []
+IMAGEFILTER= LANCZOS
 
 
 IF= [card_size] = huge
@@ -60,7 +60,7 @@ LINK= [spreadsheet_path]
 [default_type_plate_font_size] = {8.8* [font_scale_factor]}
 [default_type_symbol_font_size] = {8.9* [font_scale_factor]}
 [default_lore_font_size] = {7.5* [font_scale_factor]}
-[default_coll_info_font_size] = {4.2* [font_scale_factor]}
+[default_coll_info_font_size] = {3.7* [font_scale_factor]}
 
 ;;{default_character_title_font_size * char_title_cap_factor}
 
@@ -97,10 +97,6 @@ LINK= [spreadsheet_path]
 
 ;; Some site processing to get us the non-block site number
 [sitenum] = [site:1,1]
-
-;; Starts with black background as our canvas
-RECTANGLE=,0,0,100%,100%,#000000
-
 
 
 
@@ -161,10 +157,10 @@ RECTANGLE=,0,0,100%,100%,#000000
 
 <game_text> = 23.5%,67%,{game_text_width?§},26.5%
 <game_text_default> = 23.5%,67%,[default_game_text_width],26.5%
-<site_game_text> = 77.5%,13%,8.7%,[game_text_width]
-<site_game_text_default> = 77.5%,12.5%,8.7%,[default_site_game_text_width]
+<site_game_text> = 77.5%,13%,9%,[game_text_width]
+<site_game_text_default> = 77.5%,12.5%,9%,[default_site_game_text_width]
 
-<collectors_info> = 84.7%,91.8%,10%,2%
+<collectors_info> = 85.3%,91.8%,10%,2%
 
 
 ;; Set up our fonts for when we use HTML rendering (which is most everywhere).
@@ -236,12 +232,25 @@ ELSE
     HTMLMARGINS=lore,2.5%,0,0,0,,[default_lore_spacing]
 ENDIF
 
+
 ;; including this file will perform a ton of find-replaces on all HTML-
 ;; displayed text, which is mostly used for obnoxious accents.
 INCLUDE=all_text_replacements.txt
 
 ;; These text replacements have to be performed now, because for whatever reason
 ;; we cannot set variables within if statements.
+
+
+[title] = REPLACE([title], [Text_Find], [Text_Replace])
+[subtitle] = REPLACE([subtitle], [Text_Find], [Text_Replace])
+[card_type] = REPLACE([card_type], [Text_Find], [Text_Replace])
+[card_subtype] = REPLACE([card_subtype], [Text_Find], [Text_Replace])
+[game_text] = REPLACE([game_text], [Text_Find], [Text_Replace])
+[lore] = REPLACE([lore], [Text_Find], [Text_Replace])
+
+
+;; Next we detect capital letters and html-tag them for cases where we want
+;; customizable small-caps
 
 TAGCAPS= "titlecaps_char","title","chartitlecap"
 TAGCAPS= "subtitlecaps_char","subtitle","charsubtitlecap"
@@ -256,6 +265,12 @@ TAGCAPS= "subtitlecaps_ring","subtitle","typeplatecap"
 TAGCAPS= "cardtypecaps","card_type","typeplatecap"
 TAGCAPS= "cardsubtypecaps","card_subtype","typeplatecap"
 
+
+
+
+;; Starts with white background as our canvas
+RECTANGLE=,<card_background>,#FFFFFF
+RECTANGLE=,<full_card_portrait>,#000000
 
 ;; Now we get to card rendering.  Start with card-template-sensitive elements.
 IF= {template?§} = "character"
@@ -300,12 +315,13 @@ IF= {template?§} = "character"
     
     
     ;;HTMLTEXT=,REPLACE({title?§}, "G", "<chartitlecap>G</chartitlecap>"),<character_title>,,0,BE,100,chartitle
-    HTMLTEXT=,"[titlecaps_char]",<character_title>,,0,BE,100,chartitle
+    ;;HTMLTEXT=,[titlecaps_char],<character_title>,,0,BE,100,chartitle
+    HTMLTEXT=,{{titlecaps_char?§}},<character_title>,,0,BE,100,chartitle
     
 
     ;; Character Subtitle
     IF= [subtitle] <> ""
-        HTMLTEXT=,"[subtitlecaps_char]",<character_subtitle>,,0,BE,100,charsubtitle
+        HTMLTEXT=,{{subtitlecaps_char?§}},<character_subtitle>,,0,BE,100,charsubtitle
     ENDIF
 
     ;; Character Card Type

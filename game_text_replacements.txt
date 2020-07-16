@@ -208,27 +208,27 @@ HTMLKEY=,"\91\evilmen\93\","&#8252"
 
 ;; Twilight symbol replacements.  These have to exist within the LotR_TCG font
 ;; or this won't work.
-HTMLKEY=,"(1)","!"
-HTMLKEY=,"(2)","@"
-HTMLKEY=,"(3)","#"
-HTMLKEY=,"(4)","$"
-HTMLKEY=,"(5)","%"
-HTMLKEY=,"(6)","^"
-HTMLKEY=,"(7)","&"
-HTMLKEY=,"(8)","*"
-HTMLKEY=,"(9)","_"
-HTMLKEY=,"(X)","="
+HTMLKEY=,"(1)","!",typesymbol
+HTMLKEY=,"(2)","@",typesymbol
+HTMLKEY=,"(3)","#",typesymbol
+HTMLKEY=,"(4)","$",typesymbol
+HTMLKEY=,"(5)","%",typesymbol
+HTMLKEY=,"(6)","^",typesymbol
+HTMLKEY=,"(7)","&",typesymbol
+HTMLKEY=,"(8)","*",typesymbol
+HTMLKEY=,"(9)","_",typesymbol
+HTMLKEY=,"(X)","=",typesymbol
 
-HTMLKEY=,"\91\1\93\","!"
-HTMLKEY=,"\91\2\93\","@"
-HTMLKEY=,"\91\3\93\","#"
-HTMLKEY=,"\91\4\93\","$"
-HTMLKEY=,"\91\5\93\","%"
-HTMLKEY=,"\91\6\93\","^"
-HTMLKEY=,"\91\7\93\","&"
-HTMLKEY=,"\91\8\93\","*"
-HTMLKEY=,"\91\9\93\","_"
-HTMLKEY=,"\91\X\93\","="
+HTMLKEY=,"\91\1\93\","!",typesymbol
+HTMLKEY=,"\91\2\93\","@",typesymbol
+HTMLKEY=,"\91\3\93\","#",typesymbol
+HTMLKEY=,"\91\4\93\","$",typesymbol
+HTMLKEY=,"\91\5\93\","%",typesymbol
+HTMLKEY=,"\91\6\93\","^",typesymbol
+HTMLKEY=,"\91\7\93\","&",typesymbol
+HTMLKEY=,"\91\8\93\","*",typesymbol
+HTMLKEY=,"\91\9\93\","_",typesymbol
+HTMLKEY=,"\91\X\93\","=",typesymbol
 
 
 
