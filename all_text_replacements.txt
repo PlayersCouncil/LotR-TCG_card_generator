@@ -13,6 +13,11 @@ IF= ([newline_char] <> "") _AND_ ([newline_char] <> "(") _AND_ ([newline_char] <
     HTMLKEY=,[newline_char],"<br>"
 ENDIF
 
+;; Customizable non-breaking spaces
+IF= ([nbspace_char] <> "") _AND_ ([nbspace_char] <> "(") _AND_ ([nbspace_char] <> ")") _AND_ ([nbspace_char] <> "\91\") _AND_ ([nbspace_char] <> "\93\") _AND_ ([nbspace_char] <> "|")
+    HTMLKEY=,[nbspace_char],"&nbsp;"
+ENDIF
+
 ;; Manual en and em dash placement
 HTMLKEY=,"---","—"
 HTMLKEY=,"--","–"

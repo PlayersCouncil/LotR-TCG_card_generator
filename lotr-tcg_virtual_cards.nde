@@ -13,16 +13,21 @@ GAP=0.1,0.1,OFF,ON,MARKDOT,#FFFFFF
 LINKENCCSV= []
 IMAGEFILTER= LANCZOS
 
-
 IF= [card_size] = huge
     DPI=568
+    OVERSAMPLE = 1
 ELSEIF= [card_size] = double
     DPI=284
+    OVERSAMPLE = 1
 ELSEIF= [card_size] = original
     DPI=142
+    OVERSAMPLE = 2
 ELSE
     DPI=300
+    OVERSAMPLE = 2
 ENDIF
+
+
 
 CARDSIZE=2.5,3.5
 
@@ -87,6 +92,7 @@ LINK= [spreadsheet_path]
 
 
 ;; Systematic clean-up
+
 [template] = CASESTRING([template], L)
 [unique] = CASESTRING([unique], U)
 [culture] = CASESTRING([culture], L)
@@ -117,6 +123,12 @@ LINK= [spreadsheet_path]
 
 [site_standard_template] = JOIN([full_template_path],site_standard_,[card_size],.png)
 [site_sanctuary_template] = JOIN([full_template_path],site_sanctuary_,[card_size],.png)
+[custom_site_standard_template] = JOIN([full_template_path],[culture],_standard_,[card_size],.png)
+[custom_site_sanctuary_template] = JOIN([full_template_path],[culture],_sanctuary_,[card_size],.png)
+
+
+
+
 
 [artifact_overlay] = JOIN([overlay_path],artifact_,[culture],_,[card_size],.png)
 [culture_overlay] = JOIN([overlay_path],culture_,[culture],_,[card_size],.png)
@@ -187,7 +199,7 @@ SETFONT= gametext,[game_text_font],,[default_game_text_font_size],D,{game_text_c
 SETFONT= typeplate,[title_font],,[default_type_plate_font_size],DZA,{game_text_color?§},[default_game_text_color],CENTER
 SETFONT= typeplatecap,[title_font],,[default_type_plate_cap_font_size],DZA,{game_text_color?§},[default_game_text_color]
 SETFONT= typesymbol,[game_text_font],,[default_type_symbol_font_size],D,{game_text_color?§},[default_game_text_color]
-SETFONT= lore,[lore_font],,[default_lore_font_size],D,{game_text_color?§},[default_game_text_color],LEFT
+SETFONT= lore,[lore_font],,[default_lore_font_size],DR,{game_text_color?§},[default_game_text_color],LEFT
 SETFONT= collinfo, [number_font],,[default_coll_info_font_size],D, {game_text_color?§},[default_game_text_color],CENTER
 
 
@@ -445,10 +457,19 @@ ELSEIF= {template?§} = "site"
             ENDIF
 
             ;; Now for the actual card template
-            IF= [card_type] = "Sanctuary"
-                IMAGE = , [site_sanctuary_template], <card_background>, 270, PN
+            ;; If the culture is set, use that to look up a custom template name
+            IF= [culture] <> ""
+                IF= [card_type] = "Sanctuary"
+                    IMAGE = , [custom_site_sanctuary_template], <card_background>, 270, PN
+                ELSE
+                    IMAGE = , [custom_site_standard_template], <card_background>, 270, PN
+                ENDIF
             ELSE
-                IMAGE = , [site_standard_template], <card_background>, 270, PN
+                IF= [card_type] = "Sanctuary"
+                    IMAGE = , [site_sanctuary_template], <card_background>, 270, PN
+                ELSE
+                    IMAGE = , [site_standard_template], <card_background>, 270, PN
+                ENDIF
             ENDIF
         ENDIF
     ENDIF
@@ -668,11 +689,12 @@ ENDIF
 
 ;; Draw additional borders over the top
 IF= {border_color?§} <> ""
-    ROUNDRECT=,<card_background>,{border_color?§},EMPTY,9%,7,9.8
+    ROUNDRECT=,<card_background>,{border_color?§},EMPTY,9%,6,9.5
 ELSE
-    ROUNDRECT=,<card_background>,[default_border_color],EMPTY,9%,7,9.8
+    ROUNDRECT=,<card_background>,[default_border_color],EMPTY,9%,6,9.5
 ENDIF
 
+--ROUNDRECT=,<card_background>,#FFFFFF,EMPTY,-1%,15,15
 
 ;; Last but not least, finally write the file (if not configured to do otherwise).
 IF= [auto_write_files] = True

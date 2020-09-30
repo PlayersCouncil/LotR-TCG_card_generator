@@ -30,6 +30,13 @@
 ;; Examples: "\", "\n", "[n]"
 [newline_char] = "\"
 
+;; By default you can use &nbsp; to indicate a non-breaking space.  If this is too cumbersome,
+;; you may instead customize this field to some other character or string of
+;; characters to use as well.
+;; May not be one of the following characters: [ ] ( ) |
+;; Examples: "_", "\b", "[nb]"
+[nbspace_char] = "_"
+
 
 ;; These are the names of the installed fonts in your system that cards will
 ;; use.  These fonts should be included with the software; make sure they
