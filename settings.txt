@@ -59,6 +59,9 @@
 ;; lore_font is used for lore
 [lore_font] = "LOTR_TCG-Lore"
 
+;; promo_font is used for bold promo info
+[promo_font] = "LOTR_TCG_Promo"
+
 ;; number_font is used for twilight, strength, vitality, resistance, site number,
 ;; and collector's info
 [number_font] = "LOTR_TCG_Icons"

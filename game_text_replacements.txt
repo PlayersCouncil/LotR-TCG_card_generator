@@ -109,6 +109,24 @@ HTMLKEY=,"Muster.","<b>Muster.</b>",,C
 HTMLKEY=,"Sanctuary.","<b>Sanctuary.</b>",,C
 HTMLKEY=,"Unhasty.","<b>Unhasty.</b>",,C
 
+;; Ring-bearer
+HTMLKEY=,"Ring-bearer (","<b>Ring-bearer (</b>",,C
+HTMLKEY=,"resistance 1).","<b>resistance 1).</b>",,C
+HTMLKEY=,"resistance 2).","<b>resistance 2).</b>",,C
+HTMLKEY=,"resistance 3).","<b>resistance 3).</b>",,C
+HTMLKEY=,"resistance 4).","<b>resistance 4).</b>",,C
+HTMLKEY=,"resistance 5).","<b>resistance 5).</b>",,C
+HTMLKEY=,"resistance 6).","<b>resistance 6).</b>",,C
+HTMLKEY=,"resistance 7).","<b>resistance 7).</b>",,C
+HTMLKEY=,"resistance 8).","<b>resistance 8).</b>",,C
+HTMLKEY=,"resistance 9).","<b>resistance 9).</b>",,C
+HTMLKEY=,"resistance 10).","<b>resistance 10).</b>",,C
+HTMLKEY=,"resistance 11).","<b>resistance 11).</b>",,C
+HTMLKEY=,"resistance 12).","<b>resistance 12).</b>",,C
+HTMLKEY=,"resistance 13).","<b>resistance 13).</b>",,C
+HTMLKEY=,"resistance 14).","<b>resistance 14).</b>",,C
+HTMLKEY=,"resistance 15).","<b>resistance 15).</b>",,C
+
 ;; Unloaded keywords
 HTMLKEY=,"Battleground.","<b>Battleground.</b>",,C
 HTMLKEY=,"Besieger.","<b>Besieger.</b>",,C
@@ -155,56 +173,56 @@ HTMLKEY=,"Response:","<b>Response:</b>",,C
 
 ;; Culture symbol replacements.  These have to exist within the LotR_TCG font
 ;; or this won't work.
-HTMLKEY=,"(dwarf)","&#9786"
-HTMLKEY=,"(dwarven)","&#9786"
-HTMLKEY=,"(elf)","&#9787"
-HTMLKEY=,"(elven)","&#9787"
-HTMLKEY=,"(gandalf)","&#9829"
-HTMLKEY=,"(shire)","&#9830"
-HTMLKEY=,"(rohan)","&#9827"
-HTMLKEY=,"(gondor)","&#9824"
-HTMLKEY=,"(gollum)","&#9688"
-HTMLKEY=,"(dunland)","&#9794"
-HTMLKEY=,"(raider)","&#9792"
-HTMLKEY=,"(isengard)","&#9834"
-HTMLKEY=,"(uruk)","&#9835"
-HTMLKEY=,"(urukhai)","&#9835"
-HTMLKEY=,"(uruk-hai)","&#9835"
-HTMLKEY=,"(moria)","&#9788"
-HTMLKEY=,"(orc)","&#9658"
-HTMLKEY=,"(sauron)","&#9668"
-HTMLKEY=,"(mordor)","&#9668"
-HTMLKEY=,"(ringwraith)","&#8597"
-HTMLKEY=,"(wraith)","&#8597"
-HTMLKEY=,"(men)","&#8252"
-HTMLKEY=,"(evil men)","&#8252"
-HTMLKEY=,"(evilmen)","&#8252"
+HTMLKEY=,"(dwarf)","&#9786",typesymbol
+HTMLKEY=,"(dwarven)","&#9786",typesymbol
+HTMLKEY=,"(elf)","&#9787",typesymbol
+HTMLKEY=,"(elven)","&#9787",typesymbol
+HTMLKEY=,"(gandalf)","&#9829",typesymbol
+HTMLKEY=,"(shire)","&#9830",typesymbol
+HTMLKEY=,"(rohan)","&#9827",typesymbol
+HTMLKEY=,"(gondor)","&#9824",typesymbol
+HTMLKEY=,"(gollum)","&#9688",typesymbol
+HTMLKEY=,"(dunland)","&#9794",typesymbol
+HTMLKEY=,"(raider)","&#9792",typesymbol
+HTMLKEY=,"(isengard)","&#9834",typesymbol
+HTMLKEY=,"(uruk)","&#9835",typesymbol
+HTMLKEY=,"(urukhai)","&#9835",typesymbol
+HTMLKEY=,"(uruk-hai)","&#9835",typesymbol
+HTMLKEY=,"(moria)","&#9788",typesymbol
+HTMLKEY=,"(orc)","&#9658",typesymbol
+HTMLKEY=,"(sauron)","&#9668",typesymbol
+HTMLKEY=,"(mordor)","&#9668",typesymbol
+HTMLKEY=,"(ringwraith)","&#8597",typesymbol
+HTMLKEY=,"(wraith)","&#8597",typesymbol
+HTMLKEY=,"(men)","&#8252",typesymbol
+HTMLKEY=,"(evil men)","&#8252",typesymbol
+HTMLKEY=,"(evilmen)","&#8252",typesymbol
 
 ;; Same for square brackets
-HTMLKEY=,"\91\dwarf\93\","&#9786"
-HTMLKEY=,"\91\dwarven\93\","&#9786"
-HTMLKEY=,"\91\elf\93\","&#9787"
-HTMLKEY=,"\91\elven\93\","&#9787"
-HTMLKEY=,"\91\gandalf\93\","&#9829"
-HTMLKEY=,"\91\shire\93\","&#9830"
-HTMLKEY=,"\91\rohan\93\","&#9827"
-HTMLKEY=,"\91\gondor\93\","&#9824"
-HTMLKEY=,"\91\gollum\93\","&#9688"
-HTMLKEY=,"\91\dunland\93\","&#9794"
-HTMLKEY=,"\91\raider\93\","&#9792"
-HTMLKEY=,"\91\isengard\93\","&#9834"
-HTMLKEY=,"\91\uruk\93\","&#9835"
-HTMLKEY=,"\91\urukhai\93\","&#9835"
-HTMLKEY=,"\91\uruk-hai\93\","&#9835"
-HTMLKEY=,"\91\moria\93\","&#9788"
-HTMLKEY=,"\91\orc\93\","&#9658"
-HTMLKEY=,"\91\sauron\93\","&#9668"
-HTMLKEY=,"\91\mordor\93\","&#9668"
-HTMLKEY=,"\91\ringwraith\93\","&#8597"
-HTMLKEY=,"\91\wraith\93\","&#8597"
-HTMLKEY=,"\91\men\93\","&#8252"
-HTMLKEY=,"\91\evil men\93\","&#8252"
-HTMLKEY=,"\91\evilmen\93\","&#8252"
+HTMLKEY=,"\91\dwarf\93\","&#9786",typesymbol
+HTMLKEY=,"\91\dwarven\93\","&#9786",typesymbol
+HTMLKEY=,"\91\elf\93\","&#9787",typesymbol
+HTMLKEY=,"\91\elven\93\","&#9787",typesymbol
+HTMLKEY=,"\91\gandalf\93\","&#9829",typesymbol
+HTMLKEY=,"\91\shire\93\","&#9830",typesymbol
+HTMLKEY=,"\91\rohan\93\","&#9827",typesymbol
+HTMLKEY=,"\91\gondor\93\","&#9824",typesymbol
+HTMLKEY=,"\91\gollum\93\","&#9688",typesymbol
+HTMLKEY=,"\91\dunland\93\","&#9794",typesymbol
+HTMLKEY=,"\91\raider\93\","&#9792",typesymbol
+HTMLKEY=,"\91\isengard\93\","&#9834",typesymbol
+HTMLKEY=,"\91\uruk\93\","&#9835",typesymbol
+HTMLKEY=,"\91\urukhai\93\","&#9835",typesymbol
+HTMLKEY=,"\91\uruk-hai\93\","&#9835",typesymbol
+HTMLKEY=,"\91\moria\93\","&#9788",typesymbol
+HTMLKEY=,"\91\orc\93\","&#9658",typesymbol
+HTMLKEY=,"\91\sauron\93\","&#9668",typesymbol
+HTMLKEY=,"\91\mordor\93\","&#9668",typesymbol
+HTMLKEY=,"\91\ringwraith\93\","&#8597",typesymbol
+HTMLKEY=,"\91\wraith\93\","&#8597",typesymbol
+HTMLKEY=,"\91\men\93\","&#8252",typesymbol
+HTMLKEY=,"\91\evil men\93\","&#8252",typesymbol
+HTMLKEY=,"\91\evilmen\93\","&#8252",typesymbol
 
 ;; Twilight symbol replacements.  These have to exist within the LotR_TCG font
 ;; or this won't work.
@@ -232,6 +250,8 @@ HTMLKEY=,"\91\X\93\","=",typesymbol
 
 
 
+
+
 ;; Now for replacing regular quotes into smart quotes in the lore
 ;; this code will not work on its own and is intended to be included
 ;; into lotr-tcg_virtual_cards.nde.  REPLACE is used instead of HTMLKEY
@@ -246,10 +266,11 @@ HTMLKEY=,"\91\X\93\","=",typesymbol
 [card_full_text] = REPLACE([card_full_text],"'<","’<")
 
 ;; if a space is on one side, also unambiguous
-[card_full_text] = REPLACE([card_full_text]," \34\"," “")
-[card_full_text] = REPLACE([card_full_text],"\34\ ","” ")
-[card_full_text] = REPLACE([card_full_text]," '"," ‘")
-[card_full_text] = REPLACE([card_full_text],"' ","’ ")
+;; Pending a fix from the dev, these are broken
+;[card_full_text] = REPLACE([card_full_text]," \34\"," “")
+;[card_full_text] = REPLACE([card_full_text],"\34\ ","” ")
+;[card_full_text] = REPLACE([card_full_text]," '"," ‘")
+;[card_full_text] = REPLACE([card_full_text],"' ","’ ")
 
 ;; when next to punctuation, it must be an end quote
 [card_full_text] = REPLACE([card_full_text],".\34\",".”")
@@ -281,6 +302,9 @@ HTMLKEY=,"\91\X\93\","=",typesymbol
 ;; pair of dumb quotes is either open or closed depending on order
 [card_full_text] = REPLACE([card_full_text],"\34\'","“‘")
 [card_full_text] = REPLACE([card_full_text],"'\34\","’”")
+
+;; any remaining single quotes are in contractions like ain't or I'm
+[card_full_text] = REPLACE([card_full_text],"'","’")
 
 
 

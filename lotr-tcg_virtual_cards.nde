@@ -59,13 +59,18 @@ LINK= [spreadsheet_path]
 [title_cap_factor] = 1.2
 [type_title_cap_factor] = 1.1
 [mod_title_cap_factor] = 1.15
+[promo_cap_factor] = 1.2
 
 [default_icon_font_size] = {14* [font_scale_factor]}
 [default_game_text_font_size] = {7.4* [font_scale_factor]}
+[default_helper_text_font_size] = {7.25* [font_scale_factor]}
 [default_type_plate_font_size] = {8.8* [font_scale_factor]}
 [default_type_symbol_font_size] = {8.9* [font_scale_factor]}
 [default_lore_font_size] = {7.5* [font_scale_factor]}
+[default_promo_font_size] = {7.1* [font_scale_factor]}
+[default_promo_cap_font_size] = {[default_promo_font_size] * [promo_cap_factor]}
 [default_coll_info_font_size] = {3.7* [font_scale_factor]}
+[default_coll_symbol_font_size] = {3.2* [font_scale_factor]}
 
 ;;{default_character_title_font_size * char_title_cap_factor}
 
@@ -100,6 +105,12 @@ LINK= [spreadsheet_path]
 [culture] = REPLACE([culture], "dwarf", "dwarven")
 [card_type] = CASESTRING([card_type], F)
 [tags] = CASESTRING([tags], L)
+[symrarity] = REPLACE([rarity], O, &#9675)
+[symrarity] = REPLACE([symrarity], o, &#9675)
+[promo_text] = REPLACE([promo_text], "<BR>", "<br>")
+[promo_text] = REPLACE([promo_text], "<bR>", "<br>")
+[promo_text] = REPLACE([promo_text], "<Br>", "<br>")
+
 
 ;; Some site processing to get us the non-block site number
 [sitenum] = [site:1,1]
@@ -172,7 +183,7 @@ LINK= [spreadsheet_path]
 <site_game_text> = 77.5%,13%,9%,[game_text_width]
 <site_game_text_default> = 77.5%,12.5%,9%,[default_site_game_text_width]
 
-<collectors_info> = 85.3%,91.8%,10%,2%
+<collectors_info> = 84.8%,91.8%,10%,2%
 
 
 ;; Set up our fonts for when we use HTML rendering (which is most everywhere).
@@ -196,11 +207,18 @@ SETFONT= ringtitle,[title_font],{title_font_size?§},[default_ring_title_font_si
 SETFONT= ringtitlecap,[title_font],[custom_ring_title_cap_font_size],[default_ring_title_cap_font_size],DZA,{game_text_color?§},[default_game_text_color]
 
 SETFONT= gametext,[game_text_font],,[default_game_text_font_size],D,{game_text_color?§},[default_game_text_color],LEFT
+SETFONT= helper,[game_text_font],,[default_helper_text_font_size],DI,{game_text_color?§},[default_game_text_color]
+
 SETFONT= typeplate,[title_font],,[default_type_plate_font_size],DZA,{game_text_color?§},[default_game_text_color],CENTER
 SETFONT= typeplatecap,[title_font],,[default_type_plate_cap_font_size],DZA,{game_text_color?§},[default_game_text_color]
 SETFONT= typesymbol,[game_text_font],,[default_type_symbol_font_size],D,{game_text_color?§},[default_game_text_color]
 SETFONT= lore,[lore_font],,[default_lore_font_size],DR,{game_text_color?§},[default_game_text_color],LEFT
+
+SETFONT= promo,[promo_font],,[default_promo_font_size],BDAR,{game_text_color?§},[default_game_text_color],CENTER
+SETFONT= promocap,[promo_font],,[default_promo_cap_font_size],BDAR,{game_text_color?§},[default_game_text_color]
+
 SETFONT= collinfo, [number_font],,[default_coll_info_font_size],D, {game_text_color?§},[default_game_text_color],CENTER
+SETFONT= colltext, [game_text_font],,[default_coll_symbol_font_size],D, {game_text_color?§},[default_game_text_color]
 
 
 IF= {icon_text_color?§} <> ""
@@ -231,17 +249,22 @@ HTMLMARGINS=ringtitle,0,0,0,0,CENTER
 HTMLMARGINS=twilight,0,0,0,0,CENTER
 HTMLMARGINS=numbers,0,0,0,0,CENTER
 HTMLMARGINS=typeplate,0,0,0,0,CENTER
+HTMLMARGINS=promo,2.5%,0,0,0
 
 IF= [game_text_spacing] <> ""
     HTMLMARGINS=gametext,0,0,0,0,TOP,[game_text_spacing]
+    HTMLMARGINS=typesymbol,0,0,0,0,,[game_text_spacing]
+    HTMLMARGINS=helper,0,0,0,0,,[game_text_spacing]
 ELSE
     HTMLMARGINS=gametext,0,0,0,0,TOP,[default_game_text_spacing]
+    HTMLMARGINS=typesymbol,0,0,0,0,,[default_game_text_spacing]
+    HTMLMARGINS=helper,0,0,0,0,,[default_game_text_spacing]
 ENDIF
 
 IF= [lore_spacing] <> ""
-    HTMLMARGINS=lore,2.5%,0,0,0,,[lore_spacing]
+    HTMLMARGINS=lore,2.5%,0,0,-2.5%,,[lore_spacing]
 ELSE
-    HTMLMARGINS=lore,2.5%,0,0,0,,[default_lore_spacing]
+    HTMLMARGINS=lore,2.5%,0,0,-2.5%,,[default_lore_spacing]
 ENDIF
 
 
@@ -276,6 +299,8 @@ TAGCAPS= "subtitlecaps_ring","subtitle","typeplatecap"
 
 TAGCAPS= "cardtypecaps","card_type","typeplatecap"
 TAGCAPS= "cardsubtypecaps","card_subtype","typeplatecap"
+
+TAGCAPS= "promocaps", "promo_text", "promocap"
 
 
 
@@ -452,6 +477,8 @@ ELSEIF= {template?§} = "site"
             ;; cut out the portrait.
             IF= "full_portrait" @ {tags?§}
                 IMAGE = , JOIN([card_image_path],/,[image_name]), <card_background>, 270, PN
+            ELSEIF= "no_rotate" @ {tags?§}
+                IMAGE = , JOIN([card_image_path],/,[image_name]), <site_card_portrait>, 0, PN
             ELSE
                 IMAGE = , JOIN([card_image_path],/,[image_name]), <site_card_portrait>, 270, PN
             ENDIF
@@ -524,8 +551,14 @@ ELSEIF= {template?§} = "onering"
     IF= [debug_print] = True
         IMAGE = , JOIN([debug_image_path],[debug_image_name]), <card_background>, 0, PN
     ELSE
-        ;; Insert the card portrait, since this is "beneath" everything else
-        IMAGE = , JOIN([card_image_path],/,[image_name]), <full_card_portrait>, 0, PN
+        ;; full portraits are intended to take up the whole card size, so
+        ;; that lower rest cards can just be slotted in without needing to
+        ;; cut out the portrait.
+        IF= "full_portrait" @ {tags?§}
+            IMAGE = , JOIN([card_image_path],/,[image_name]), <card_background>, 0, PN
+        ELSE
+            IMAGE = , JOIN([card_image_path],/,[image_name]), <full_card_portrait>, 0, PN
+        ENDIF
 
     ENDIF
 
@@ -557,7 +590,7 @@ ENDIF
 
 
 ;; Culture Icon
-IF= ("full_art" @ {tags?§}) _AND_ ("disable_culture" # {tags?§}) _AND_ ( ([card_type] <> "modifier") _OR_ ("artifact_overlay" # {tags?§}))
+IF= ("full_art" @ {tags?§}) _AND_ ("onering" # {template?§}) _AND_ ("disable_culture" # {tags?§}) _AND_ ( ([card_type] <> "modifier") _OR_ ("artifact_overlay" # {tags?§}))
     IMAGE = , [culture_overlay], <card_background>, 0, PN
 ENDIF
 
@@ -627,7 +660,12 @@ ENDIF
 
 ;;RECTANGLE=,<collectors_info>,#ff00ff
 ;;Collector's Info
-HTMLTEXT=,JOIN([set_num]," ",[rarity]," ", [card_num]),<collectors_info>,,0,BE,100,collinfo
+IF= [symrarity] <> [rarity]
+    HTMLTEXT=,JOIN([set_num]," <colltext>",[symrarity],"</colltext> ", [card_num]),<collectors_info>,,0,BE,100,collinfo
+ELSE
+    HTMLTEXT=,JOIN([set_num]," ",[symrarity]," ", [card_num]),<collectors_info>,,0,BE,100,collinfo
+ENDIF
+
 
 
 ;; Debug drawing the game text area, before the drawing of the text so it remains visible
@@ -650,7 +688,10 @@ ENDIF
 
 ;; First combine the game text and lore into a single contiguous set of text
 ;; with the lore marked as a separate font.
-[card_full_text] = JOIN([game_text],<br><lore>,[lore],</lore>)
+[card_full_text] = JOIN([game_text],<br><lore>,[lore],</lore><br><promo>,[promocaps],</promo>)
+
+[card_full_text] = REPLACE([card_full_text], <br><lore></lore>, "&nbsp;")
+[card_full_text] = REPLACE([card_full_text], <br><promo></promo>, "&nbsp;")
 
 ;; including this file will perform a ton of find-replaces on the text, including
 ;; for symbols, bolding, and smart quote handling.
@@ -694,7 +735,7 @@ ELSE
     ROUNDRECT=,<card_background>,[default_border_color],EMPTY,9%,6,9.5
 ENDIF
 
---ROUNDRECT=,<card_background>,#FFFFFF,EMPTY,-1%,15,15
+;;ROUNDRECT=,<card_background>,#FFFFFF,EMPTY,-1%,15,15
 
 ;; Last but not least, finally write the file (if not configured to do otherwise).
 IF= [auto_write_files] = True
