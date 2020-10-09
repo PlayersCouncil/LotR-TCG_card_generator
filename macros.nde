@@ -1,5 +1,11 @@
-﻿MACRO= SETFONT, (name), (fontname), (customfontsize), (defaultfontsize), (flags), (customcolor), (defaultcolor), (alignment)
-    IF= (customcolor) <> ""
+﻿MACRO= SETFONT, (name), (fontname), (customfontsize), (defaultfontsize), (flags), (customcolor), (defaultcolor), (overridecolor) (alignment)
+    IF= (overridecolor) <> ""
+        IF= (customfontsize) > 0
+            HTMLFONT=(name),(fontname),(customfontsize),(flags),(overridecolor),(alignment)
+        ELSE
+            HTMLFONT=(name),(fontname),(defaultfontsize),(flags),(overridecolor),(alignment)
+        ENDIF
+    ELSEIF= (customcolor) <> ""
         IF= (customfontsize) > 0
             HTMLFONT=(name),(fontname),(customfontsize),(flags),(customcolor),(alignment)
         ELSE

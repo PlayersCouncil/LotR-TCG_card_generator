@@ -110,6 +110,7 @@ HTMLKEY=,"Sanctuary.","<b>Sanctuary.</b>",,C
 HTMLKEY=,"Unhasty.","<b>Unhasty.</b>",,C
 
 ;; Ring-bearer
+HTMLKEY=,">Ring-bearer.","><b>Ring-bearer.</b>",,C
 HTMLKEY=,"Ring-bearer (","<b>Ring-bearer (</b>",,C
 HTMLKEY=,"resistance 1).","<b>resistance 1).</b>",,C
 HTMLKEY=,"resistance 2).","<b>resistance 2).</b>",,C

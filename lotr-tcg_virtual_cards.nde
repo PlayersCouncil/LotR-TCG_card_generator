@@ -66,6 +66,8 @@ LINK= [spreadsheet_path]
 [default_helper_text_font_size] = {7.25* [font_scale_factor]}
 [default_type_plate_font_size] = {8.8* [font_scale_factor]}
 [default_type_symbol_font_size] = {8.9* [font_scale_factor]}
+[default_text_symbol_font_size] = {7.2* [font_scale_factor]}
+
 [default_lore_font_size] = {7.5* [font_scale_factor]}
 [default_promo_font_size] = {7.1* [font_scale_factor]}
 [default_promo_cap_font_size] = {[default_promo_font_size] * [promo_cap_factor]}
@@ -189,35 +191,36 @@ LINK= [spreadsheet_path]
 ;; Set up our fonts for when we use HTML rendering (which is most everywhere).
 ;; Line spacing can be defined per card in the CSV, so we integrate it here.
 
-SETFONT= chartitle,[title_font],{title_font_size?§},[default_character_title_font_size],DZA,{game_text_color?§},[default_game_text_color],LEFT
-SETFONT= chartitlecap,[title_font],[custom_char_title_cap_font_size],[default_char_title_cap_font_size],D,{game_text_color?§},[default_game_text_color]
-SETFONT= charsubtitle,[title_font],{subtitle_font_size?§},[default_character_subtitle_font_size],DZA,{game_text_color?§},[default_game_text_color],LEFT
-SETFONT= charsubtitlecap,[title_font],[custom_char_subtitle_cap_font_size],[default_char_subtitle_cap_font_size],D,{game_text_color?§},[default_game_text_color]
+SETFONT= chartitle,[title_font],{title_font_size?§},[default_character_title_font_size],DZA,{game_text_color?§},[default_game_text_color],{title_color_override?§},LEFT
+SETFONT= chartitlecap,[title_font],[custom_char_title_cap_font_size],[default_char_title_cap_font_size],D,{game_text_color?§},[default_game_text_color],{title_color_override?§}
+SETFONT= charsubtitle,[title_font],{subtitle_font_size?§},[default_character_subtitle_font_size],DZA,{game_text_color?§},[default_game_text_color],{title_color_override?§},LEFT
+SETFONT= charsubtitlecap,[title_font],[custom_char_subtitle_cap_font_size],[default_char_subtitle_cap_font_size],D,{game_text_color?§},[default_game_text_color],{title_color_override?§}
 
-SETFONT= modtitle,[title_font],{title_font_size?§},[default_modifier_title_font_size],DA,{game_text_color?§},[default_game_text_color],RIGHT
+SETFONT= modtitle,[title_font],{title_font_size?§},[default_modifier_title_font_size],DA,{game_text_color?§},[default_game_text_color],{title_color_override?§},RIGHT
 ;; this is doubled just for the margins
-SETFONT= modtitletop,[title_font],{title_font_size?§},[default_modifier_title_font_size],DZA,{game_text_color?§},[default_game_text_color],RIGHT
-SETFONT= modtitlecap,[title_font],[custom_mod_title_cap_font_size],[default_mod_title_cap_font_size],D,{game_text_color?§},[default_game_text_color]
+SETFONT= modtitletop,[title_font],{title_font_size?§},[default_modifier_title_font_size],DZA,{game_text_color?§},[default_game_text_color],{title_color_override?§},RIGHT
+SETFONT= modtitlecap,[title_font],[custom_mod_title_cap_font_size],[default_mod_title_cap_font_size],D,{game_text_color?§},[default_game_text_color],{title_color_override?§}
 
-SETFONT= modsubtitle,[title_font],{subtitle_font_size?§},[default_modifier_subtitle_font_size],DZA,{game_text_color?§},[default_game_text_color],RIGHT
-SETFONT= modsubtitlecap,[title_font],[custom_mod_subtitle_cap_font_size],[default_mod_subtitle_cap_font_size],D,{game_text_color?§},[default_game_text_color]
+SETFONT= modsubtitle,[title_font],{subtitle_font_size?§},[default_modifier_subtitle_font_size],DZA,{game_text_color?§},[default_game_text_color],{title_color_override?§},RIGHT
+SETFONT= modsubtitlecap,[title_font],[custom_mod_subtitle_cap_font_size],[default_mod_subtitle_cap_font_size],D,{game_text_color?§},[default_game_text_color],{title_color_override?§}
 
-SETFONT= sitetitle,[title_font],{title_font_size?§},[default_site_title_font_size],DZA,{game_text_color?§},[default_game_text_color],CENTER
-SETFONT= ringtitle,[title_font],{title_font_size?§},[default_ring_title_font_size],DZA,{game_text_color?§},[default_game_text_color],RIGHT
-SETFONT= ringtitlecap,[title_font],[custom_ring_title_cap_font_size],[default_ring_title_cap_font_size],DZA,{game_text_color?§},[default_game_text_color]
+SETFONT= sitetitle,[title_font],{title_font_size?§},[default_site_title_font_size],DZA,{game_text_color?§},[default_game_text_color],{title_color_override?§},CENTER
+SETFONT= ringtitle,[title_font],{title_font_size?§},[default_ring_title_font_size],DZA,{game_text_color?§},[default_game_text_color],{title_color_override?§},RIGHT
+SETFONT= ringtitlecap,[title_font],[custom_ring_title_cap_font_size],[default_ring_title_cap_font_size],DZA,{game_text_color?§},[default_game_text_color],{title_color_override?§}
 
-SETFONT= gametext,[game_text_font],,[default_game_text_font_size],D,{game_text_color?§},[default_game_text_color],LEFT
-SETFONT= helper,[game_text_font],,[default_helper_text_font_size],DI,{game_text_color?§},[default_game_text_color]
+SETFONT= typeplate,[title_font],,[default_type_plate_font_size],DZA,{game_text_color?§},[default_game_text_color],{type_color_override?§},CENTER
+SETFONT= typeplatecap,[title_font],,[default_type_plate_cap_font_size],DZA,{game_text_color?§},[default_game_text_color],{type_color_override?§}
+SETFONT= typesymbol,[game_text_font],,[default_type_symbol_font_size],D,{game_text_color?§},[default_game_text_color],{type_color_override?§}
 
-SETFONT= typeplate,[title_font],,[default_type_plate_font_size],DZA,{game_text_color?§},[default_game_text_color],CENTER
-SETFONT= typeplatecap,[title_font],,[default_type_plate_cap_font_size],DZA,{game_text_color?§},[default_game_text_color]
-SETFONT= typesymbol,[game_text_font],,[default_type_symbol_font_size],D,{game_text_color?§},[default_game_text_color]
-SETFONT= lore,[lore_font],,[default_lore_font_size],DR,{game_text_color?§},[default_game_text_color],LEFT
-
-SETFONT= promo,[promo_font],,[default_promo_font_size],BDAR,{game_text_color?§},[default_game_text_color],CENTER
+SETFONT= promo,[promo_font],,[default_promo_font_size],BDAR,{game_text_color?§},[default_game_text_color],,CENTER
 SETFONT= promocap,[promo_font],,[default_promo_cap_font_size],BDAR,{game_text_color?§},[default_game_text_color]
 
-SETFONT= collinfo, [number_font],,[default_coll_info_font_size],D, {game_text_color?§},[default_game_text_color],CENTER
+SETFONT= gametext,[game_text_font],,[default_game_text_font_size],D,{game_text_color?§},[default_game_text_color],,LEFT
+SETFONT= textsymbol,[game_text_font],,[default_text_symbol_font_size],D,{game_text_color?§},[default_game_text_color]
+SETFONT= helper,[game_text_font],,[default_helper_text_font_size],DI,{game_text_color?§},[default_game_text_color]
+SETFONT= lore,[lore_font],,[default_lore_font_size],DR,{game_text_color?§},[default_game_text_color],,LEFT
+
+SETFONT= collinfo, [number_font],,[default_coll_info_font_size],D, {game_text_color?§},[default_game_text_color],,CENTER
 SETFONT= colltext, [game_text_font],,[default_coll_symbol_font_size],D, {game_text_color?§},[default_game_text_color]
 
 
@@ -249,22 +252,24 @@ HTMLMARGINS=ringtitle,0,0,0,0,CENTER
 HTMLMARGINS=twilight,0,0,0,0,CENTER
 HTMLMARGINS=numbers,0,0,0,0,CENTER
 HTMLMARGINS=typeplate,0,0,0,0,CENTER
-HTMLMARGINS=promo,2.5%,0,0,0
+HTMLMARGINS=promo,2.0%,0,0,0
 
 IF= [game_text_spacing] <> ""
     HTMLMARGINS=gametext,0,0,0,0,TOP,[game_text_spacing]
     HTMLMARGINS=typesymbol,0,0,0,0,,[game_text_spacing]
+    HTMLMARGINS=textsymbol,0,0,0,0,,[game_text_spacing]
     HTMLMARGINS=helper,0,0,0,0,,[game_text_spacing]
 ELSE
     HTMLMARGINS=gametext,0,0,0,0,TOP,[default_game_text_spacing]
     HTMLMARGINS=typesymbol,0,0,0,0,,[default_game_text_spacing]
+    HTMLMARGINS=textsymbol,0,0,0,0,,[default_game_text_spacing]
     HTMLMARGINS=helper,0,0,0,0,,[default_game_text_spacing]
 ENDIF
 
 IF= [lore_spacing] <> ""
-    HTMLMARGINS=lore,2.5%,0,0,-2.5%,,[lore_spacing]
+    HTMLMARGINS=lore,1.5%,0,0,0,,[lore_spacing]
 ELSE
-    HTMLMARGINS=lore,2.5%,0,0,-2.5%,,[default_lore_spacing]
+    HTMLMARGINS=lore,1.5%,0,0,0,,[default_lore_spacing]
 ENDIF
 
 
@@ -688,10 +693,10 @@ ENDIF
 
 ;; First combine the game text and lore into a single contiguous set of text
 ;; with the lore marked as a separate font.
-[card_full_text] = JOIN([game_text],<br><lore>,[lore],</lore><br><promo>,[promocaps],</promo>)
+[card_full_text] = JOIN([game_text],<lore>,[lore],</lore><promo>,[promocaps],</promo>)
 
-[card_full_text] = REPLACE([card_full_text], <br><lore></lore>, "&nbsp;")
-[card_full_text] = REPLACE([card_full_text], <br><promo></promo>, "&nbsp;")
+[card_full_text] = REPLACE([card_full_text], <lore></lore>, "&nbsp;")
+[card_full_text] = REPLACE([card_full_text], <promo></promo>, "&nbsp;")
 
 ;; including this file will perform a ton of find-replaces on the text, including
 ;; for symbols, bolding, and smart quote handling.
