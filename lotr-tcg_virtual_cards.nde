@@ -28,24 +28,63 @@ ELSE
 ENDIF
 
 
-
 CARDSIZE=2.5,3.5
 
 ;;THREADS = 8
 
 [debug_print] = False
 [debug_image_path] = "X:\Projects\lotr-tcg\templates\new_templates\examples\"
-;;Don't modify this line, it exists to make sure that ommitting this column doesn't affect validation.
+;;Don't modify the following lines, they exist to make sure that these columns
+;; can be omitted without causing validation errors.
+[id] = ""
+[image_name] = ""
+[unique] = ""
+[title] = ""
+[subtitle] = ""
+[culture] = ""
+[template] = ""
+[card_type] = ""
+[display_type] = ""
+[card_subtype] = ""
+[twilight] = ""
+[strength] = ""
+[vitality] = ""
+[resistance] = ""
+[signet] = ""
+[site] = ""
+[set_num] = ""
+[rarity] = ""
+[card_num] = ""
+[game_text] = ""
+[lore] = ""
+[promo_text] = ""
+[custom_icon] = ""
+[tags] = ""
+[game_text_width] = ""
+[game_text_color] = ""
+[game_text_scale] = ""
+[game_text_spacing] = ""
+[lore_spacing] = ""
+[title_font_size] = ""
+[subtitle_font_size] = ""
+[title_color_override] = ""
+[type_color_override] = ""
+[icon_text_color] = ""
+[twilight_color] = ""
+[border_color] = ""
+[notes] = ""
 [debug_image_name] = ""
 
 
 ;;LINK= cards.csv
 LINK= [spreadsheet_path]
 
-
+;; Starts with white background as our canvas
+RECTANGLE=,<card_background>,#FFFFFF
+RECTANGLE=,<full_card_portrait>,#000000
 
 ;; If certain values are not filled in, we will use these values instead
-[default_game_text_spacing] = 100
+[default_game_text_spacing] = 98
 [default_lore_spacing] = 98
 [default_game_text_width] = 69%
 [default_site_game_text_width] = 74%
@@ -62,17 +101,26 @@ LINK= [spreadsheet_path]
 [promo_cap_factor] = 1.2
 
 [default_icon_font_size] = {14* [font_scale_factor]}
-[default_game_text_font_size] = {7.4* [font_scale_factor]}
-[default_helper_text_font_size] = {7.25* [font_scale_factor]}
 [default_type_plate_font_size] = {8.8* [font_scale_factor]}
 [default_type_symbol_font_size] = {8.9* [font_scale_factor]}
-[default_text_symbol_font_size] = {7.2* [font_scale_factor]}
+[default_text_symbol_font_size] = {7.4* [font_scale_factor]}
 
+[default_game_text_font_size] = {7.4* [font_scale_factor]}
+[default_helper_text_font_size] = {7.25* [font_scale_factor]}
 [default_lore_font_size] = {7.5* [font_scale_factor]}
 [default_promo_font_size] = {7.1* [font_scale_factor]}
 [default_promo_cap_font_size] = {[default_promo_font_size] * [promo_cap_factor]}
+
 [default_coll_info_font_size] = {3.7* [font_scale_factor]}
 [default_coll_symbol_font_size] = {3.2* [font_scale_factor]}
+[default_coll_plus_font_size] = {4.75* [font_scale_factor]}
+
+[custom_game_text_font_size] = {[default_game_text_font_size] * {game_text_scale?§}}
+[custom_text_symbol_font_size] = {[default_text_symbol_font_size] * {game_text_scale?§}}
+[custom_helper_text_font_size] = {[default_helper_text_font_size] * {game_text_scale?§}}
+[custom_lore_font_size] = {[default_lore_font_size] * {game_text_scale?§}}
+[custom_promo_font_size] = {[default_promo_font_size] * {game_text_scale?§}}
+[custom_promo_cap_font_size] = {[default_promo_cap_font_size] * {game_text_scale?§}}
 
 ;;{default_character_title_font_size * char_title_cap_factor}
 
@@ -107,11 +155,7 @@ LINK= [spreadsheet_path]
 [culture] = REPLACE([culture], "dwarf", "dwarven")
 [card_type] = CASESTRING([card_type], F)
 [tags] = CASESTRING([tags], L)
-[symrarity] = REPLACE([rarity], O, &#9675)
-[symrarity] = REPLACE([symrarity], o, &#9675)
-[promo_text] = REPLACE([promo_text], "<BR>", "<br>")
-[promo_text] = REPLACE([promo_text], "<bR>", "<br>")
-[promo_text] = REPLACE([promo_text], "<Br>", "<br>")
+
 
 
 ;; Some site processing to get us the non-block site number
@@ -147,6 +191,7 @@ LINK= [spreadsheet_path]
 [culture_overlay] = JOIN([overlay_path],culture_,[culture],_,[card_size],.png)
 [freeps_twilight_overlay] = JOIN([overlay_path],twilight_freeps_,[card_size],.png)
 [shadow_twilight_overlay] = JOIN([overlay_path],twilight_shadow_,[card_size],.png)
+[custom_icon_path] = JOIN([positioned_icon_path],[custom_icon],_position_,[card_size],.png)
 
 
 ;; Various named regions used in multiple places
@@ -212,16 +257,17 @@ SETFONT= typeplate,[title_font],,[default_type_plate_font_size],DZA,{game_text_c
 SETFONT= typeplatecap,[title_font],,[default_type_plate_cap_font_size],DZA,{game_text_color?§},[default_game_text_color],{type_color_override?§}
 SETFONT= typesymbol,[game_text_font],,[default_type_symbol_font_size],D,{game_text_color?§},[default_game_text_color],{type_color_override?§}
 
-SETFONT= promo,[promo_font],,[default_promo_font_size],BDAR,{game_text_color?§},[default_game_text_color],,CENTER
-SETFONT= promocap,[promo_font],,[default_promo_cap_font_size],BDAR,{game_text_color?§},[default_game_text_color]
+SETFONT= gametext,[game_text_font],[custom_game_text_font_size],[default_game_text_font_size],D,{game_text_color?§},[default_game_text_color],,LEFT
+SETFONT= textsymbol,[game_text_font],[custom_text_symbol_font_size],[default_text_symbol_font_size],D,{game_text_color?§},[default_game_text_color]
+SETFONT= helper,[game_text_font],[custom_helper_text_font_size],[default_helper_text_font_size],DI,{game_text_color?§},[default_game_text_color]
+SETFONT= lore,[lore_font],[custom_lore_font_size],[default_lore_font_size],DR,{game_text_color?§},[default_game_text_color],,LEFT
 
-SETFONT= gametext,[game_text_font],,[default_game_text_font_size],D,{game_text_color?§},[default_game_text_color],,LEFT
-SETFONT= textsymbol,[game_text_font],,[default_text_symbol_font_size],D,{game_text_color?§},[default_game_text_color]
-SETFONT= helper,[game_text_font],,[default_helper_text_font_size],DI,{game_text_color?§},[default_game_text_color]
-SETFONT= lore,[lore_font],,[default_lore_font_size],DR,{game_text_color?§},[default_game_text_color],,LEFT
+SETFONT= promo,[promo_font],[custom_promo_font_size],[default_promo_font_size],BDAR,{game_text_color?§},[default_game_text_color],,CENTER
+SETFONT= promocap,[promo_font],[custom_promo_cap_font_size],[default_promo_cap_font_size],BDAR,{game_text_color?§},[default_game_text_color]
 
 SETFONT= collinfo, [number_font],,[default_coll_info_font_size],D, {game_text_color?§},[default_game_text_color],,CENTER
 SETFONT= colltext, [game_text_font],,[default_coll_symbol_font_size],D, {game_text_color?§},[default_game_text_color]
+SETFONT= collplus, [game_text_font],,[default_coll_plus_font_size],D, {game_text_color?§},[default_game_text_color]
 
 
 IF= {icon_text_color?§} <> ""
@@ -253,15 +299,15 @@ HTMLMARGINS=twilight,0,0,0,0,CENTER
 HTMLMARGINS=numbers,0,0,0,0,CENTER
 HTMLMARGINS=typeplate,0,0,0,0,CENTER
 HTMLMARGINS=promo,2.0%,0,0,0
+HTMLMARGINS=typesymbol,0,0,0,0,,[default_game_text_spacing]
+HTMLMARGINS=collplus,0,0,0,0,
 
 IF= [game_text_spacing] <> ""
     HTMLMARGINS=gametext,0,0,0,0,TOP,[game_text_spacing]
-    HTMLMARGINS=typesymbol,0,0,0,0,,[game_text_spacing]
     HTMLMARGINS=textsymbol,0,0,0,0,,[game_text_spacing]
     HTMLMARGINS=helper,0,0,0,0,,[game_text_spacing]
 ELSE
     HTMLMARGINS=gametext,0,0,0,0,TOP,[default_game_text_spacing]
-    HTMLMARGINS=typesymbol,0,0,0,0,,[default_game_text_spacing]
     HTMLMARGINS=textsymbol,0,0,0,0,,[default_game_text_spacing]
     HTMLMARGINS=helper,0,0,0,0,,[default_game_text_spacing]
 ENDIF
@@ -287,7 +333,50 @@ INCLUDE=all_text_replacements.txt
 [card_subtype] = REPLACE([card_subtype], [Text_Find], [Text_Replace])
 [game_text] = REPLACE([game_text], [Text_Find], [Text_Replace])
 [lore] = REPLACE([lore], [Text_Find], [Text_Replace])
+[promo_text] = REPLACE([promo_text], "<BR>", "<br>")
+[promo_text] = REPLACE([promo_text], "<bR>", "<br>")
+[promo_text] = REPLACE([promo_text], "<Br>", "<br>")
 
+[symrarity] = [rarity]
+;;{rarity?§}
+;;SETRING({rarity?§})
+[symrarity] = REPLACE([symrarity], o, "<colltext>&#9675</colltext>")
+[symrarity] = REPLACE([symrarity], O, "<colltext>&#9675</colltext>")
+[symrarity] = REPLACE([symrarity], "+", "<collplus>+</collplus>")
+
+
+;;HTMLTEXT=,"10[symrarity]R+",<character_card_portrait>,#FFFF00,0,BE,100,colltext
+
+
+;;HTMLTEXT=,"[site]",<third_icon>,,0,BE,100,gametext
+[home_site_formatted] = [site]
+
+;; Site block replacements
+[home_site_formatted] = REPLACE([home_site_formatted], "(T)","<typesymbol>`<typesymbol>")
+[home_site_formatted] = REPLACE([home_site_formatted], "\91\T\93\", "<typesymbol>`</typesymbol>")
+[home_site_formatted] = REPLACE([home_site_formatted], "1T", "1<typesymbol>`</typesymbol>")
+[home_site_formatted] = REPLACE([home_site_formatted], "2T", "2<typesymbol>`</typesymbol>")
+[home_site_formatted] = REPLACE([home_site_formatted], "3T", "3<typesymbol>`</typesymbol>")
+[home_site_formatted] = REPLACE([home_site_formatted], "4T", "4<typesymbol>`</typesymbol>")
+[home_site_formatted] = REPLACE([home_site_formatted], "5T", "5<typesymbol>`</typesymbol>")
+[home_site_formatted] = REPLACE([home_site_formatted], "6T", "6<typesymbol>`</typesymbol>")
+[home_site_formatted] = REPLACE([home_site_formatted], "7T", "7<typesymbol>`</typesymbol>")
+[home_site_formatted] = REPLACE([home_site_formatted], "8T", "8<typesymbol>`</typesymbol>")
+[home_site_formatted] = REPLACE([home_site_formatted], "9T", "9<typesymbol>`</typesymbol>")
+
+[home_site_formatted] = REPLACE([home_site_formatted], "(K)", "<typesymbol>~</typesymbol>")
+[home_site_formatted] = REPLACE([home_site_formatted], "\91\K\93\", "<typesymbol>~</typesymbol>")
+[home_site_formatted] = REPLACE([home_site_formatted], "1K", "1<typesymbol>~</typesymbol>")
+[home_site_formatted] = REPLACE([home_site_formatted], "2K", "2<typesymbol>~</typesymbol>")
+[home_site_formatted] = REPLACE([home_site_formatted], "3K", "3<typesymbol>~</typesymbol>")
+[home_site_formatted] = REPLACE([home_site_formatted], "4K", "4<typesymbol>~</typesymbol>")
+[home_site_formatted] = REPLACE([home_site_formatted], "5K", "5<typesymbol>~</typesymbol>")
+[home_site_formatted] = REPLACE([home_site_formatted], "6K", "6<typesymbol>~</typesymbol>")
+[home_site_formatted] = REPLACE([home_site_formatted], "7K", "7<typesymbol>~</typesymbol>")
+[home_site_formatted] = REPLACE([home_site_formatted], "8K", "8<typesymbol>~</typesymbol>")
+[home_site_formatted] = REPLACE([home_site_formatted], "9K", "9<typesymbol>~</typesymbol>")
+
+HTMLTEXT=,"[home_site_formatted]",<third_icon>,#FFFF00,0,BE,100,collinfo
 
 ;; Next we detect capital letters and html-tag them for cases where we want
 ;; customizable small-caps
@@ -303,16 +392,15 @@ TAGCAPS= "titlecaps_ring","title","ringtitlecap"
 TAGCAPS= "subtitlecaps_ring","subtitle","typeplatecap"
 
 TAGCAPS= "cardtypecaps","card_type","typeplatecap"
+TAGCAPS= "carddisplaytypecaps","display_type","typeplatecap"
 TAGCAPS= "cardsubtypecaps","card_subtype","typeplatecap"
 
 TAGCAPS= "promocaps", "promo_text", "promocap"
 
+TAGCAPS= "homecaps", "ally_home_label", "typeplatecap"
 
 
 
-;; Starts with white background as our canvas
-RECTANGLE=,<card_background>,#FFFFFF
-RECTANGLE=,<full_card_portrait>,#000000
 
 ;; Now we get to card rendering.  Start with card-template-sensitive elements.
 IF= {template?§} = "character"
@@ -324,7 +412,11 @@ IF= {template?§} = "character"
     ELSE
         ;; Full art means we are not using a template
         IF= "full_art" @ {tags?§}
-            IMAGE = , JOIN([card_image_path],/,[image_name]), <full_card_portrait>, 0, PN
+            IF= "full_portrait" @ {tags?§}
+                IMAGE = , JOIN([card_image_path],/,[image_name]), <card_background>, 0, PN
+            ELSE
+                IMAGE = , JOIN([card_image_path],/,[image_name]), <full_card_portrait>, 0, PN
+            ENDIF
         ELSE
             ;; Insert the card portrait, since this is "beneath" everything else
 
@@ -354,12 +446,12 @@ IF= {template?§} = "character"
         HTMLTEXT=,"•",<character_unique>,,0,BE,100,chartitlecap
     ENDIF
 
-    
-    
+
+
     ;;HTMLTEXT=,REPLACE({title?§}, "G", "<chartitlecap>G</chartitlecap>"),<character_title>,,0,BE,100,chartitle
     ;;HTMLTEXT=,[titlecaps_char],<character_title>,,0,BE,100,chartitle
     HTMLTEXT=,{{titlecaps_char?§}},<character_title>,,0,BE,100,chartitle
-    
+
 
     ;; Character Subtitle
     IF= [subtitle] <> ""
@@ -368,20 +460,44 @@ IF= {template?§} = "character"
 
     ;; Character Card Type
     IF= [card_type] = Ally
-        IF= ([site] <> "") _AND_ ([card_subtype] <> "")
-            HTMLTEXT=,CONCAT1("[cardtypecaps] • <typeplatecap>H</typeplatecap>ome [site] • ", {cardsubtypecaps?§}),<character_type_panel>,,0,BE,100,typeplate
-            ;;HTMLTEXT=,"[card_type] • Home [site] • [card_subtype]",15%,58.5%,80%,15%,,0,BEY,100,typeplate
-        ELSEIF= [site] <> ""
-            HTMLTEXT=,"[cardtypecaps] • <typeplatecap>H</typeplatecap>ome [site]",<character_type_panel>,,0,BE,100,typeplate
+        IF= ([home_site_formatted] <> "") _AND_ ([card_subtype] <> "")
+            IF= [display_type] <> ""
+                HTMLTEXT=,CONCAT1("[carddisplaytypecaps] • [homecaps] [home_site_formatted] • ", {cardsubtypecaps?§}),<character_type_panel>,,0,BE,100,typeplate
+            ELSE=
+                HTMLTEXT=,CONCAT1("[cardtypecaps] • [homecaps] [home_site_formatted] • ", {cardsubtypecaps?§}),<character_type_panel>,,0,BE,100,typeplate
+            ENDIF
+        ELSEIF= [home_site_formatted] <> ""
+            IF= [display_type] <> ""
+                HTMLTEXT=,"[carddisplaytypecaps] • [homecaps] [home_site_formatted]",<character_type_panel>,,0,BE,100,typeplate
+            ELSE=
+                HTMLTEXT=,"[cardtypecaps] • [homecaps] [home_site_formatted]",<character_type_panel>,,0,BE,100,typeplate
+            ENDIF
         ELSEIF= [card_subtype] <> ""
-            HTMLTEXT=,CONCAT1("[cardtypecaps] • ",{cardsubtypecaps?§}),<character_type_panel>,,0,BE,100,typeplate
+            IF= [display_type] <> ""
+                HTMLTEXT=,CONCAT1("[carddisplaytypecaps] • ",{cardsubtypecaps?§}),<character_type_panel>,,0,BE,100,typeplate
+            ELSE=
+                HTMLTEXT=,CONCAT1("[cardtypecaps] • ",{cardsubtypecaps?§}),<character_type_panel>,,0,BE,100,typeplate
+            ENDIF
         ELSE
-            HTMLTEXT=,"[cardtypecaps]",<character_type_panel>,,0,BE,100,typeplate
+            IF= [display_type] <> ""
+                HTMLTEXT=,"[carddisplaytypecaps]",<character_type_panel>,,0,BE,100,typeplate
+            ELSE=
+                HTMLTEXT=,"[cardtypecaps]",<character_type_panel>,,0,BE,100,typeplate
+            ENDIF
         ENDIF
     ELSEIF= [card_subtype] = ""
-        HTMLTEXT=,"[cardtypecaps]",<character_type_panel>,,0,BE,100,typeplate
+        IF= [display_type] <> ""
+            HTMLTEXT=,"[carddisplaytypecaps]",<character_type_panel>,,0,BE,100,typeplate
+        ELSE=
+            HTMLTEXT=,"[cardtypecaps]",<character_type_panel>,,0,BE,100,typeplate
+        ENDIF
+
     ELSE
-        HTMLTEXT=,CONCAT1("[cardtypecaps] • ",{cardsubtypecaps?§}),<character_type_panel>,,0,BE,100,typeplate
+        IF= [display_type] <> ""
+            HTMLTEXT=,CONCAT1("[carddisplaytypecaps] • ",{cardsubtypecaps?§}),<character_type_panel>,,0,BE,100,typeplate
+        ELSE=
+            HTMLTEXT=,CONCAT1("[cardtypecaps] • ",{cardsubtypecaps?§}),<character_type_panel>,,0,BE,100,typeplate
+        ENDIF
     ENDIF
 
     ;; Minion Site Number
@@ -392,7 +508,7 @@ IF= {template?§} = "character"
         HTMLTEXT=,"[site]",<third_icon>,,0,BE,100,numbers
     ENDIF
 
-    
+
 
 ELSEIF= ({template?§} = "modifier") _OR_ ({template?§} = "support")
 
@@ -403,10 +519,14 @@ ELSEIF= ({template?§} = "modifier") _OR_ ({template?§} = "support")
     ELSE
         ;; Full art means we are not using a template
         IF= "full_art" @ {tags?§}
-            IMAGE = , JOIN([card_image_path],/,[image_name]), <full_card_portrait>, 0, PN
+            IF= "full_portrait" @ {tags?§}
+                IMAGE = , JOIN([card_image_path],/,[image_name]), <card_background>, 0, PN
+            ELSE
+                IMAGE = , JOIN([card_image_path],/,[image_name]), <full_card_portrait>, 0, PN
+            ENDIF
         ELSE
             ;; Insert the card portrait, since this is "beneath" everything else
-            
+
             ;; full portraits are intended to take up the whole card size, so
             ;; that lower rest cards can just be slotted in without needing to
             ;; cut out the portrait.
@@ -451,9 +571,17 @@ ELSEIF= ({template?§} = "modifier") _OR_ ({template?§} = "support")
 
     ;; Card Type
     IF= [card_subtype] = ""
-        HTMLTEXT=,"[cardtypecaps]",<modifier_type_panel>,,0,BE,100,typeplate
+        IF= [display_type] <> ""
+            HTMLTEXT=,"[carddisplaytypecaps]",<modifier_type_panel>,,0,BE,100,typeplate
+        ELSE=
+            HTMLTEXT=,"[cardtypecaps]",<modifier_type_panel>,,0,BE,100,typeplate
+        ENDIF
     ELSE
-        HTMLTEXT=,CONCAT1("[cardtypecaps] • ",{cardsubtypecaps?§}),<modifier_type_panel>,,0,BE,100,typeplate
+        IF= [display_type] <> ""
+            HTMLTEXT=,CONCAT1("[carddisplaytypecaps] • ",{cardsubtypecaps?§}),<modifier_type_panel>,,0,BE,100,typeplate
+        ELSE=
+            HTMLTEXT=,CONCAT1("[cardtypecaps] • ",{cardsubtypecaps?§}),<modifier_type_panel>,,0,BE,100,typeplate
+        ENDIF
     ENDIF
 
     ;; Site Modifiers
@@ -473,19 +601,37 @@ ELSEIF= {template?§} = "site"
     ELSE
         ;; Full art means we are not using a template
         IF= "full_art" @ {tags?§}
-            IMAGE = , JOIN([card_image_path],/,[image_name]), <full_card_portrait>, 270, PN
+            IF= "full_portrait" @ {tags?§}
+                IF= "no_rotate" @ {tags?§}
+                    IMAGE = , JOIN([card_image_path],/,[image_name]), <card_background>, 0, PN
+                ELSE
+                    IMAGE = , JOIN([card_image_path],/,[image_name]), <card_background>, 270, PN
+                ENDIF
+            ELSE
+                IF= "no_rotate" @ {tags?§}
+                    IMAGE = , JOIN([card_image_path],/,[image_name]), <full_card_portrait>, 0, PN
+                ELSE
+                    IMAGE = , JOIN([card_image_path],/,[image_name]), <full_card_portrait>, 270, PN
+                ENDIF
+            ENDIF
         ELSE
             ;; Insert the card portrait, since this is "beneath" everything else
 
             ;; full portraits are intended to take up the whole card size, so
-            ;; that lower rest cards can just be slotted in without needing to
+            ;; that lower res card images can just be slotted in without needing to
             ;; cut out the portrait.
             IF= "full_portrait" @ {tags?§}
-                IMAGE = , JOIN([card_image_path],/,[image_name]), <card_background>, 270, PN
-            ELSEIF= "no_rotate" @ {tags?§}
-                IMAGE = , JOIN([card_image_path],/,[image_name]), <site_card_portrait>, 0, PN
+                IF= "no_rotate" @ {tags?§}
+                    IMAGE = , JOIN([card_image_path],/,[image_name]), <card_background>, 0, PN
+                ELSE
+                    IMAGE = , JOIN([card_image_path],/,[image_name]), <card_background>, 270, PN
+                ENDIF
             ELSE
-                IMAGE = , JOIN([card_image_path],/,[image_name]), <site_card_portrait>, 270, PN
+                IF= "no_rotate" @ {tags?§}
+                    IMAGE = , JOIN([card_image_path],/,[image_name]), <site_card_portrait>, 0, PN
+                ELSE
+                    IMAGE = , JOIN([card_image_path],/,[image_name]), <site_card_portrait>, 270, PN
+                ENDIF
             ENDIF
 
             ;; Now for the actual card template
@@ -531,8 +677,8 @@ ELSEIF= {template?§} = "site"
     ELSE
         IMAGE = , JOIN([positioned_icon_path],site_block_shadows_position_,[card_size],.png), <card_background>, 270, PN
     ENDIF
-    
-    
+
+
     ;; Site Arrows
     IF= "right_arrow" @ {tags?§}
         IF= [card_type] = "Sanctuary"
@@ -540,7 +686,7 @@ ELSEIF= {template?§} = "site"
         ELSE
             IMAGE = , JOIN([positioned_icon_path],site_arrow_right_position_,[card_size],.png), <card_background>, 270, PN
         ENDIF
-        
+
     ELSE
         IF= [card_type] = "Sanctuary"
             IMAGE = , JOIN([positioned_icon_path],site_arrow_left_sanctuary_position_,[card_size],.png), <card_background>, 270, PN
@@ -548,7 +694,7 @@ ELSEIF= {template?§} = "site"
             IMAGE = , JOIN([positioned_icon_path],site_arrow_left_position_,[card_size],.png), <card_background>, 270, PN
         ENDIF
     ENDIF
-    
+
 ELSEIF= {template?§} = "onering"
 
     ;; Debug printing is used to put a full-sized card in the background for
@@ -572,7 +718,7 @@ ELSEIF= {template?§} = "onering"
         RECTANGLE=,<modifier_title>,#00FFFF
     ENDIF
 
-    
+
 
     ;; Title
     IF=([unique] = T) _OR_ ([unique] = Y)
@@ -665,11 +811,12 @@ ENDIF
 
 ;;RECTANGLE=,<collectors_info>,#ff00ff
 ;;Collector's Info
-IF= [symrarity] <> [rarity]
-    HTMLTEXT=,JOIN([set_num]," <colltext>",[symrarity],"</colltext> ", [card_num]),<collectors_info>,,0,BE,100,collinfo
-ELSE
-    HTMLTEXT=,JOIN([set_num]," ",[symrarity]," ", [card_num]),<collectors_info>,,0,BE,100,collinfo
-ENDIF
+;IF= [symrarity] <> [rarity]
+;    HTMLTEXT=,JOIN([set_num]," <colltext>",[symrarity],"</colltext> ", [card_num]),<collectors_info>,,0,BE,100,collinfo
+;ELSE
+    HTMLTEXT=,CONCAT1({set_num?§}," ",{symrarity?§}," ",{card_num?§}),<collectors_info>,,0,BE,100,collinfo
+    ;;HTMLTEXT=,JOIN([set_num]," ",[symrarity]," ",[card_num]),<collectors_info>,,0,BE,100,collinfo
+;;ENDIF
 
 
 
@@ -729,6 +876,14 @@ IF= "disclaimer_light" @ {tags?§}
     IMAGE = , JOIN([icon_path],disclaimer_light_,[card_size],.png), 33.5%,94%,61%,2.7%, 0, PN
 ELSEIF= ([template] = "onering") _OR_ ("disclaimer_dark" @ {tags?§}) _OR_ ("full_art" @ {tags?§})
     IMAGE = , JOIN([icon_path],disclaimer_dark_,[card_size],.png), 33.5%,94%,61%,2.7%, 0, PN
+ENDIF
+
+
+;; Drawing the custom icon if it's provided; this is intended for things like the
+;; weta cricket icon, etc.
+
+IF= [custom_icon] <> ""
+    IMAGE = , [custom_icon_path], <card_background>, 0, PN
 ENDIF
 
 

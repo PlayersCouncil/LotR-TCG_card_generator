@@ -174,83 +174,106 @@ HTMLKEY=,"Response:","<b>Response:</b>",,C
 
 ;; Culture symbol replacements.  These have to exist within the LotR_TCG font
 ;; or this won't work.
-HTMLKEY=,"(dwarf)","&#9786",typesymbol
-HTMLKEY=,"(dwarven)","&#9786",typesymbol
-HTMLKEY=,"(elf)","&#9787",typesymbol
-HTMLKEY=,"(elven)","&#9787",typesymbol
-HTMLKEY=,"(gandalf)","&#9829",typesymbol
-HTMLKEY=,"(shire)","&#9830",typesymbol
-HTMLKEY=,"(rohan)","&#9827",typesymbol
-HTMLKEY=,"(gondor)","&#9824",typesymbol
-HTMLKEY=,"(gollum)","&#9688",typesymbol
-HTMLKEY=,"(dunland)","&#9794",typesymbol
-HTMLKEY=,"(raider)","&#9792",typesymbol
-HTMLKEY=,"(isengard)","&#9834",typesymbol
-HTMLKEY=,"(uruk)","&#9835",typesymbol
-HTMLKEY=,"(urukhai)","&#9835",typesymbol
-HTMLKEY=,"(uruk-hai)","&#9835",typesymbol
-HTMLKEY=,"(moria)","&#9788",typesymbol
-HTMLKEY=,"(orc)","&#9658",typesymbol
-HTMLKEY=,"(sauron)","&#9668",typesymbol
-HTMLKEY=,"(mordor)","&#9668",typesymbol
-HTMLKEY=,"(ringwraith)","&#8597",typesymbol
-HTMLKEY=,"(wraith)","&#8597",typesymbol
-HTMLKEY=,"(men)","&#8252",typesymbol
-HTMLKEY=,"(evil men)","&#8252",typesymbol
-HTMLKEY=,"(evilmen)","&#8252",typesymbol
+HTMLKEY=,"(dwarf)","&#9786",textsymbol
+HTMLKEY=,"(dwarven)","&#9786",textsymbol
+HTMLKEY=,"(elf)","&#9787",textsymbol
+HTMLKEY=,"(elven)","&#9787",textsymbol
+HTMLKEY=,"(gandalf)","&#9829",textsymbol
+HTMLKEY=,"(shire)","&#9830",textsymbol
+HTMLKEY=,"(rohan)","&#9827",textsymbol
+HTMLKEY=,"(gondor)","&#9824",textsymbol
+HTMLKEY=,"(gollum)","&#9688",textsymbol
+HTMLKEY=,"(dunland)","&#9794",textsymbol
+HTMLKEY=,"(raider)","&#9792",textsymbol
+HTMLKEY=,"(isengard)","&#9834",textsymbol
+HTMLKEY=,"(uruk)","&#9835",textsymbol
+HTMLKEY=,"(urukhai)","&#9835",textsymbol
+HTMLKEY=,"(uruk-hai)","&#9835",textsymbol
+HTMLKEY=,"(moria)","&#9788",textsymbol
+HTMLKEY=,"(orc)","&#9658",textsymbol
+HTMLKEY=,"(sauron)","&#9668",textsymbol
+HTMLKEY=,"(mordor)","&#9668",textsymbol
+HTMLKEY=,"(ringwraith)","&#8597",textsymbol
+HTMLKEY=,"(wraith)","&#8597",textsymbol
+HTMLKEY=,"(men)","&#8252",textsymbol
+HTMLKEY=,"(evil men)","&#8252",textsymbol
+HTMLKEY=,"(evilmen)","&#8252",textsymbol
 
 ;; Same for square brackets
-HTMLKEY=,"\91\dwarf\93\","&#9786",typesymbol
-HTMLKEY=,"\91\dwarven\93\","&#9786",typesymbol
-HTMLKEY=,"\91\elf\93\","&#9787",typesymbol
-HTMLKEY=,"\91\elven\93\","&#9787",typesymbol
-HTMLKEY=,"\91\gandalf\93\","&#9829",typesymbol
-HTMLKEY=,"\91\shire\93\","&#9830",typesymbol
-HTMLKEY=,"\91\rohan\93\","&#9827",typesymbol
-HTMLKEY=,"\91\gondor\93\","&#9824",typesymbol
-HTMLKEY=,"\91\gollum\93\","&#9688",typesymbol
-HTMLKEY=,"\91\dunland\93\","&#9794",typesymbol
-HTMLKEY=,"\91\raider\93\","&#9792",typesymbol
-HTMLKEY=,"\91\isengard\93\","&#9834",typesymbol
-HTMLKEY=,"\91\uruk\93\","&#9835",typesymbol
-HTMLKEY=,"\91\urukhai\93\","&#9835",typesymbol
-HTMLKEY=,"\91\uruk-hai\93\","&#9835",typesymbol
-HTMLKEY=,"\91\moria\93\","&#9788",typesymbol
-HTMLKEY=,"\91\orc\93\","&#9658",typesymbol
-HTMLKEY=,"\91\sauron\93\","&#9668",typesymbol
-HTMLKEY=,"\91\mordor\93\","&#9668",typesymbol
-HTMLKEY=,"\91\ringwraith\93\","&#8597",typesymbol
-HTMLKEY=,"\91\wraith\93\","&#8597",typesymbol
-HTMLKEY=,"\91\men\93\","&#8252",typesymbol
-HTMLKEY=,"\91\evil men\93\","&#8252",typesymbol
-HTMLKEY=,"\91\evilmen\93\","&#8252",typesymbol
+HTMLKEY=,"\91\dwarf\93\","&#9786",textsymbol
+HTMLKEY=,"\91\dwarven\93\","&#9786",textsymbol
+HTMLKEY=,"\91\elf\93\","&#9787",textsymbol
+HTMLKEY=,"\91\elven\93\","&#9787",textsymbol
+HTMLKEY=,"\91\gandalf\93\","&#9829",textsymbol
+HTMLKEY=,"\91\shire\93\","&#9830",textsymbol
+HTMLKEY=,"\91\rohan\93\","&#9827",textsymbol
+HTMLKEY=,"\91\gondor\93\","&#9824",textsymbol
+HTMLKEY=,"\91\gollum\93\","&#9688",textsymbol
+HTMLKEY=,"\91\dunland\93\","&#9794",textsymbol
+HTMLKEY=,"\91\raider\93\","&#9792",textsymbol
+HTMLKEY=,"\91\isengard\93\","&#9834",textsymbol
+HTMLKEY=,"\91\uruk\93\","&#9835",textsymbol
+HTMLKEY=,"\91\urukhai\93\","&#9835",textsymbol
+HTMLKEY=,"\91\uruk-hai\93\","&#9835",textsymbol
+HTMLKEY=,"\91\moria\93\","&#9788",textsymbol
+HTMLKEY=,"\91\orc\93\","&#9658",textsymbol
+HTMLKEY=,"\91\sauron\93\","&#9668",textsymbol
+HTMLKEY=,"\91\mordor\93\","&#9668",textsymbol
+HTMLKEY=,"\91\ringwraith\93\","&#8597",textsymbol
+HTMLKEY=,"\91\wraith\93\","&#8597",textsymbol
+HTMLKEY=,"\91\men\93\","&#8252",textsymbol
+HTMLKEY=,"\91\evil men\93\","&#8252",textsymbol
+HTMLKEY=,"\91\evilmen\93\","&#8252",textsymbol
 
 ;; Twilight symbol replacements.  These have to exist within the LotR_TCG font
 ;; or this won't work.
-HTMLKEY=,"(1)","!",typesymbol
-HTMLKEY=,"(2)","@",typesymbol
-HTMLKEY=,"(3)","#",typesymbol
-HTMLKEY=,"(4)","$",typesymbol
-HTMLKEY=,"(5)","%",typesymbol
-HTMLKEY=,"(6)","^",typesymbol
-HTMLKEY=,"(7)","&",typesymbol
-HTMLKEY=,"(8)","*",typesymbol
-HTMLKEY=,"(9)","_",typesymbol
-HTMLKEY=,"(X)","=",typesymbol
+HTMLKEY=,"(1)","!",textsymbol
+HTMLKEY=,"(2)","@",textsymbol
+HTMLKEY=,"(3)","#",textsymbol
+HTMLKEY=,"(4)","$",textsymbol
+HTMLKEY=,"(5)","%",textsymbol
+HTMLKEY=,"(6)","^",textsymbol
+HTMLKEY=,"(7)","&",textsymbol
+HTMLKEY=,"(8)","*",textsymbol
+HTMLKEY=,"(9)","_",textsymbol
+HTMLKEY=,"(X)","=",textsymbol
 
-HTMLKEY=,"\91\1\93\","!",typesymbol
-HTMLKEY=,"\91\2\93\","@",typesymbol
-HTMLKEY=,"\91\3\93\","#",typesymbol
-HTMLKEY=,"\91\4\93\","$",typesymbol
-HTMLKEY=,"\91\5\93\","%",typesymbol
-HTMLKEY=,"\91\6\93\","^",typesymbol
-HTMLKEY=,"\91\7\93\","&",typesymbol
-HTMLKEY=,"\91\8\93\","*",typesymbol
-HTMLKEY=,"\91\9\93\","_",typesymbol
-HTMLKEY=,"\91\X\93\","=",typesymbol
+HTMLKEY=,"\91\1\93\","!",textsymbol
+HTMLKEY=,"\91\2\93\","@",textsymbol
+HTMLKEY=,"\91\3\93\","#",textsymbol
+HTMLKEY=,"\91\4\93\","$",textsymbol
+HTMLKEY=,"\91\5\93\","%",textsymbol
+HTMLKEY=,"\91\6\93\","^",textsymbol
+HTMLKEY=,"\91\7\93\","&",textsymbol
+HTMLKEY=,"\91\8\93\","*",textsymbol
+HTMLKEY=,"\91\9\93\","_",textsymbol
+HTMLKEY=,"\91\X\93\","=",textsymbol
 
 
+;; Site block replacements
+HTMLKEY=,"(T)","`",textsymbol
+HTMLKEY=,"\91\T\93\","`",textsymbol
+HTMLKEY=,"1T","1`",textsymbol,C
+HTMLKEY=,"2T","2`",textsymbol,C
+HTMLKEY=,"3T","3`",textsymbol,C
+HTMLKEY=,"4T","4`",textsymbol,C
+HTMLKEY=,"5T","5`",textsymbol,C
+HTMLKEY=,"6T","6`",textsymbol,C
+HTMLKEY=,"7T","7`",textsymbol,C
+HTMLKEY=,"8T","8`",textsymbol,C
+HTMLKEY=,"9T","9`",textsymbol,C
 
+HTMLKEY=,"(K)","~",textsymbol
+HTMLKEY=,"\91\K\93\","~",textsymbol
+HTMLKEY=,"1K","1~",textsymbol,C
+HTMLKEY=,"2K","2~",textsymbol,C
+HTMLKEY=,"3K","3~",textsymbol,C
+HTMLKEY=,"4K","4~",textsymbol,C
+HTMLKEY=,"5K","5~",textsymbol,C
+HTMLKEY=,"6K","6~",textsymbol,C
+HTMLKEY=,"7K","7~",textsymbol,C
+HTMLKEY=,"8K","8~",textsymbol,C
+HTMLKEY=,"9K","9~",textsymbol,C
 
 
 ;; Now for replacing regular quotes into smart quotes in the lore

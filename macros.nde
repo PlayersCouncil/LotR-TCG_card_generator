@@ -1,4 +1,4 @@
-﻿MACRO= SETFONT, (name), (fontname), (customfontsize), (defaultfontsize), (flags), (customcolor), (defaultcolor), (overridecolor) (alignment)
+﻿MACRO= SETFONT, (name), (fontname), (customfontsize), (defaultfontsize), (flags), (customcolor), (defaultcolor), (overridecolor), (alignment)
     IF= (overridecolor) <> ""
         IF= (customfontsize) > 0
             HTMLFONT=(name),(fontname),(customfontsize),(flags),(overridecolor),(alignment)
@@ -47,4 +47,43 @@ MACRO= TAGCAPS, (return_label_name), (text_label_name), (tag_name)
     [(return_label_name)] = REPLACE([(return_label_name)], "X", "<(tag_name)>X</(tag_name)>")
     [(return_label_name)] = REPLACE([(return_label_name)], "Y", "<(tag_name)>Y</(tag_name)>")
     [(return_label_name)] = REPLACE([(return_label_name)], "Z", "<(tag_name)>Z</(tag_name)>")
+END
+
+
+MACRO= CARDTYPE_BLOCKSYMBOL, (home_site)
+
+    [home_site_formatted] = (home_site)
+    ;; Site block replacements
+    [home_site_formatted] = REPLACE([home_site_formatted], "(T)","<typesymbol>`<typesymbol>")
+    [home_site_formatted] = REPLACE([home_site_formatted], "\91\T\93\", "<typesymbol>`</typesymbol>")
+    [home_site_formatted] = REPLACE([home_site_formatted], "1T", "1<typesymbol>`</typesymbol>")
+    [home_site_formatted] = REPLACE([home_site_formatted], "2T", "2<typesymbol>`</typesymbol>")
+    [home_site_formatted] = REPLACE([home_site_formatted], "3T", "3<typesymbol>`</typesymbol>")
+    [home_site_formatted] = REPLACE([home_site_formatted], "4T", "4<typesymbol>`</typesymbol>")
+    [home_site_formatted] = REPLACE([home_site_formatted], "5T", "5<typesymbol>`</typesymbol>")
+    [home_site_formatted] = REPLACE([home_site_formatted], "6T", "6<typesymbol>`</typesymbol>")
+    [home_site_formatted] = REPLACE([home_site_formatted], "7T", "7<typesymbol>`</typesymbol>")
+    [home_site_formatted] = REPLACE([home_site_formatted], "8T", "8<typesymbol>`</typesymbol>")
+    [home_site_formatted] = REPLACE([home_site_formatted], "9T", "9<typesymbol>`</typesymbol>")
+
+    [home_site_formatted] = REPLACE([home_site_formatted], "(K)", "<typesymbol>~</typesymbol>")
+    [home_site_formatted] = REPLACE([home_site_formatted], "\91\K\93\", "<typesymbol>~</typesymbol>")
+    [home_site_formatted] = REPLACE([home_site_formatted], "1K", "1<typesymbol>~</typesymbol>")
+    [home_site_formatted] = REPLACE([home_site_formatted], "2K", "2<typesymbol>~</typesymbol>")
+    [home_site_formatted] = REPLACE([home_site_formatted], "3K", "3<typesymbol>~</typesymbol>")
+    [home_site_formatted] = REPLACE([home_site_formatted], "4K", "4<typesymbol>~</typesymbol>")
+    [home_site_formatted] = REPLACE([home_site_formatted], "5K", "5<typesymbol>~</typesymbol>")
+    [home_site_formatted] = REPLACE([home_site_formatted], "6K", "6<typesymbol>~</typesymbol>")
+    [home_site_formatted] = REPLACE([home_site_formatted], "7K", "7<typesymbol>~</typesymbol>")
+    [home_site_formatted] = REPLACE([home_site_formatted], "8K", "8<typesymbol>~</typesymbol>")
+    [home_site_formatted] = REPLACE([home_site_formatted], "9K", "9<typesymbol>~</typesymbol>")
+END
+
+MACRO= SETRING, (rarity)
+
+    [symrarity] = (rarity)
+    [symrarity] = REPLACE([symrarity], O, "<colltext>&#9675</colltext>")
+    [symrarity] = REPLACE([symrarity], o, "<colltext>&#9675</colltext>")
+    [symrarity] = REPLACE([symrarity], "+", "<collplus>+</collplus>")
+
 END

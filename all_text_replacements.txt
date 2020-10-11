@@ -23,31 +23,6 @@ HTMLKEY=,"---","—"
 HTMLKEY=,"--","–"
 
 
-;; Site block replacements
-HTMLKEY=,"(T)","`",typesymbol
-HTMLKEY=,"\91\T\93\","`"
-HTMLKEY=,"1T","1`",typesymbol,C
-HTMLKEY=,"2T","2`",typesymbol,C
-HTMLKEY=,"3T","3`",typesymbol,C
-HTMLKEY=,"4T","4`",typesymbol,C
-HTMLKEY=,"5T","5`",typesymbol,C
-HTMLKEY=,"6T","6`",typesymbol,C
-HTMLKEY=,"7T","7`",typesymbol,C
-HTMLKEY=,"8T","8`",typesymbol,C
-HTMLKEY=,"9T","9`",typesymbol,C
-
-HTMLKEY=,"(K)","~",typesymbol
-HTMLKEY=,"\91\K\93\","~"
-HTMLKEY=,"1K","1~",typesymbol,C
-HTMLKEY=,"2K","2~",typesymbol,C
-HTMLKEY=,"3K","3~",typesymbol,C
-HTMLKEY=,"4K","4~",typesymbol,C
-HTMLKEY=,"5K","5~",typesymbol,C
-HTMLKEY=,"6K","6~",typesymbol,C
-HTMLKEY=,"7K","7~",typesymbol,C
-HTMLKEY=,"8K","8~",typesymbol,C
-HTMLKEY=,"9K","9~",typesymbol,C
-
 ;; Replacements of names with obnoxious accented characters, so we don't have
 ;; to be so vigilant all the time in a csv of all things.  These will affect
 ;; all titles, subtitles, card types, card subtypes, game text, and lore.

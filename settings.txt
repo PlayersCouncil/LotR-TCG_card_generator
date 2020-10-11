@@ -125,3 +125,9 @@
 ;; If this is False you can still manually export from nanDECK.
 ;; Can be one of: True, False
 [auto_write_files] = True
+
+;; The text to use for an Ally's home site bar, which is normally displayed in
+;; English as "Home X".  X is provided by the card spreadsheet, but "Home" is
+;; pulled from this setting here.  This should only need to be changed if
+;; generating cards in languages other than English.
+[ally_home_label] = "Home"
