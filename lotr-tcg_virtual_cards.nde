@@ -224,6 +224,7 @@ RECTANGLE=,<full_card_portrait>,#000000
 <strength_icon> = 7.5%,62.5%,10%,10%
 <vitality_icon> = 7.5%,74%,10%,10%
 <third_icon> = 7.5%,84.5%,10%,10%
+<disclaimer_bar> = 33.5%,94%,61%,2.7%
 
 <game_text> = 23.5%,67%,{game_text_width?§},26.5%
 <game_text_default> = 23.5%,67%,[default_game_text_width],26.5%
@@ -872,10 +873,16 @@ ENDIF
 
 
 
+;IF= "disclaimer_light" @ {tags?§}
+;    IMAGE = , JOIN([icon_path],disclaimer_light_,[card_size],.png), <disclaimer_bar>, 0, PN
+;ELSEIF= ([template] = "onering") _OR_ ("disclaimer_dark" @ {tags?§}) _OR_ ("full_art" @ {tags?§})
+;    IMAGE = , JOIN([icon_path],disclaimer_dark_,[card_size],.png), <disclaimer_bar>, 0, PN
+;ENDIF
+
 IF= "disclaimer_light" @ {tags?§}
-    IMAGE = , JOIN([icon_path],disclaimer_light_,[card_size],.png), 33.5%,94%,61%,2.7%, 0, PN
+    IMAGE = , JOIN([positioned_icon_path],disclaimer_light_position_,[card_size],.png), <card_background>, 0, PN
 ELSEIF= ([template] = "onering") _OR_ ("disclaimer_dark" @ {tags?§}) _OR_ ("full_art" @ {tags?§})
-    IMAGE = , JOIN([icon_path],disclaimer_dark_,[card_size],.png), 33.5%,94%,61%,2.7%, 0, PN
+    IMAGE = , JOIN([positioned_icon_path],disclaimer_dark_position_,[card_size],.png), <card_background>, 0, PN
 ENDIF
 
 
