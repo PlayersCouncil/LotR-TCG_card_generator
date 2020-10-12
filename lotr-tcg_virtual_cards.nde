@@ -640,15 +640,31 @@ ELSEIF= {template?§} = "site"
             ;; If the culture is set, use that to look up a custom template name
             IF= [culture] <> ""
                 IF= [card_type] = "Sanctuary"
-                    IMAGE = , [custom_site_sanctuary_template], <card_background>, 270, PN
+                    IF= [rotate_site_templates] = True
+                        IMAGE = , [custom_site_sanctuary_template], <card_background>, 270, PN
+                    ELSE
+                        IMAGE = , [custom_site_sanctuary_template], <card_background>, 0, PN
+                    ENDIF
                 ELSE
-                    IMAGE = , [custom_site_standard_template], <card_background>, 270, PN
+                    IF= [rotate_site_templates] = True
+                        IMAGE = , [custom_site_standard_template], <card_background>, 270, PN
+                    ELSE
+                        IMAGE = , [custom_site_standard_template], <card_background>, 0, PN
+                    ENDIF
                 ENDIF
             ELSE
                 IF= [card_type] = "Sanctuary"
-                    IMAGE = , [site_sanctuary_template], <card_background>, 270, PN
+                    IF= [rotate_site_templates] = True
+                        IMAGE = , [site_sanctuary_template], <card_background>, 270, PN
+                    ELSE
+                        IMAGE = , [site_sanctuary_template], <card_background>, 0, PN
+                    ENDIF
                 ELSE
-                    IMAGE = , [site_standard_template], <card_background>, 270, PN
+                    IF= [rotate_site_templates] = True
+                        IMAGE = , [site_standard_template], <card_background>, 270, PN
+                    ELSE
+                        IMAGE = , [site_standard_template], <card_background>, 0, PN
+                    ENDIF
                 ENDIF
             ENDIF
         ENDIF

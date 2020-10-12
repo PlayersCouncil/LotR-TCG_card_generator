@@ -131,3 +131,12 @@
 ;; pulled from this setting here.  This should only need to be changed if
 ;; generating cards in languages other than English.
 [ally_home_label] = "Home"
+
+;; By default, site templates in the files provided are in landscape mode for
+;; ease of use outside of nanDECK.  As a result, those templates need rotated
+;; 270 degrees for them to be used here.  If you have provided site templates
+;; of your own that are in portrait mode, set this value to False.  If you do
+;; so, make sure the site_sanctuary_X and site_standard_X files are all
+;; manually rotated into portrait mode as well.
+;; Can be one of: True, False
+[rotate_site_templates] = True
