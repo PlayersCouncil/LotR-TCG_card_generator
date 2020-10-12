@@ -155,7 +155,8 @@ RECTANGLE=,<full_card_portrait>,#000000
 [culture] = REPLACE([culture], "dwarf", "dwarven")
 [card_type] = CASESTRING([card_type], F)
 [tags] = CASESTRING([tags], L)
-
+[tags] = REPLACE([tags], "no_template", "full_art")
+[tags] = REPLACE([tags], "portrait_backdrop", "full_portrait")
 
 
 ;; Some site processing to get us the non-block site number
@@ -463,34 +464,34 @@ IF= {template?§} = "character"
     IF= [card_type] = Ally
         IF= ([home_site_formatted] <> "") _AND_ ([card_subtype] <> "")
             IF= [display_type] <> ""
-                HTMLTEXT=,CONCAT1("[carddisplaytypecaps] • [homecaps] [home_site_formatted] • ", {cardsubtypecaps?§}),<character_type_panel>,,0,BE,100,typeplate
+                HTMLTEXT=,CONCAT1({carddisplaytypecaps?�}," � ",{homecaps?1}," ",{home_site_formatted?�}," � ",{cardsubtypecaps?�}),<character_type_panel>,,0,BE,100,typeplate
             ELSE=
-                HTMLTEXT=,CONCAT1("[cardtypecaps] • [homecaps] [home_site_formatted] • ", {cardsubtypecaps?§}),<character_type_panel>,,0,BE,100,typeplate
+                HTMLTEXT=,CONCAT1({cardtypecaps?�}," � ",{homecaps?1}," ",{home_site_formatted?�}," � ",{cardsubtypecaps?�}),<character_type_panel>,,0,BE,100,typeplate
             ENDIF
         ELSEIF= [home_site_formatted] <> ""
             IF= [display_type] <> ""
-                HTMLTEXT=,"[carddisplaytypecaps] • [homecaps] [home_site_formatted]",<character_type_panel>,,0,BE,100,typeplate
+                HTMLTEXT=,CONCAT1({carddisplaytypecaps?�}," � ",{homecaps?1}," ",{home_site_formatted?�}),<character_type_panel>,,0,BE,100,typeplate
             ELSE=
-                HTMLTEXT=,"[cardtypecaps] • [homecaps] [home_site_formatted]",<character_type_panel>,,0,BE,100,typeplate
+                HTMLTEXT=,CONCAT1({cardtypecaps?�}," � ",{homecaps?1}," ",{home_site_formatted?�}),<character_type_panel>,,0,BE,100,typeplate
             ENDIF
         ELSEIF= [card_subtype] <> ""
             IF= [display_type] <> ""
-                HTMLTEXT=,CONCAT1("[carddisplaytypecaps] • ",{cardsubtypecaps?§}),<character_type_panel>,,0,BE,100,typeplate
+                HTMLTEXT=,CONCAT1({carddisplaytypecaps?�}," � ",{cardsubtypecaps?�}),<character_type_panel>,,0,BE,100,typeplate
             ELSE=
-                HTMLTEXT=,CONCAT1("[cardtypecaps] • ",{cardsubtypecaps?§}),<character_type_panel>,,0,BE,100,typeplate
+                HTMLTEXT=,CONCAT1({cardtypecaps?�}," � ",{cardsubtypecaps?�}),<character_type_panel>,,0,BE,100,typeplate
             ENDIF
         ELSE
             IF= [display_type] <> ""
-                HTMLTEXT=,"[carddisplaytypecaps]",<character_type_panel>,,0,BE,100,typeplate
+                HTMLTEXT=,{carddisplaytypecaps?�},<character_type_panel>,,0,BE,100,typeplate
             ELSE=
-                HTMLTEXT=,"[cardtypecaps]",<character_type_panel>,,0,BE,100,typeplate
+                HTMLTEXT=,{cardtypecaps?�},<character_type_panel>,,0,BE,100,typeplate
             ENDIF
         ENDIF
     ELSEIF= [card_subtype] = ""
         IF= [display_type] <> ""
-            HTMLTEXT=,"[carddisplaytypecaps]",<character_type_panel>,,0,BE,100,typeplate
+            HTMLTEXT=,{carddisplaytypecaps?�},<character_type_panel>,,0,BE,100,typeplate
         ELSE=
-            HTMLTEXT=,"[cardtypecaps]",<character_type_panel>,,0,BE,100,typeplate
+            HTMLTEXT=,{cardtypecaps?�},<character_type_panel>,,0,BE,100,typeplate
         ENDIF
 
     ELSE

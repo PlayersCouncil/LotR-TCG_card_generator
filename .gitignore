@@ -20,3 +20,10 @@ releases/*
 !templates/original_res_export/*.txt
 !card_portraits/aragorn_full.png
 !card_portraits/steel_is_steel.png
+card_output_lotro
+morvael.csv
+cards_lotro.csv
+test.txt
+bug.csv
+cards_lotro.ods
+link_bug.txt
