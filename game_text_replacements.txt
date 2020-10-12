@@ -291,10 +291,10 @@ HTMLKEY=,"9K","9~",textsymbol,C
 
 ;; if a space is on one side, also unambiguous
 ;; Pending a fix from the dev, these are broken
-;[card_full_text] = REPLACE([card_full_text]," \34\"," “")
-;[card_full_text] = REPLACE([card_full_text],"\34\ ","” ")
-;[card_full_text] = REPLACE([card_full_text]," '"," ‘")
-;[card_full_text] = REPLACE([card_full_text],"' ","’ ")
+[card_full_text] = REPLACE([card_full_text]," \34\"," “")
+[card_full_text] = REPLACE([card_full_text],"\34\ ","” ")
+[card_full_text] = REPLACE([card_full_text]," '"," ‘")
+[card_full_text] = REPLACE([card_full_text],"' ","’ ")
 
 ;; when next to punctuation, it must be an end quote
 [card_full_text] = REPLACE([card_full_text],".\34\",".”")

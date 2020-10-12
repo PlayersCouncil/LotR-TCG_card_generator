@@ -1,4 +1,4 @@
-๏ปฟ'#####################################
+'#####################################
 'Standard cards 2.5 x 3.5 - 750 x 1050
 '#####################################
 
@@ -115,28 +115,28 @@ RECTANGLE=,<full_card_portrait>,#000000
 [default_coll_symbol_font_size] = {3.2* [font_scale_factor]}
 [default_coll_plus_font_size] = {4.75* [font_scale_factor]}
 
-[custom_game_text_font_size] = {[default_game_text_font_size] * {game_text_scale?ยง}}
-[custom_text_symbol_font_size] = {[default_text_symbol_font_size] * {game_text_scale?ยง}}
-[custom_helper_text_font_size] = {[default_helper_text_font_size] * {game_text_scale?ยง}}
-[custom_lore_font_size] = {[default_lore_font_size] * {game_text_scale?ยง}}
-[custom_promo_font_size] = {[default_promo_font_size] * {game_text_scale?ยง}}
-[custom_promo_cap_font_size] = {[default_promo_cap_font_size] * {game_text_scale?ยง}}
+[custom_game_text_font_size] = {[default_game_text_font_size] * {game_text_scale?ง}}
+[custom_text_symbol_font_size] = {[default_text_symbol_font_size] * {game_text_scale?ง}}
+[custom_helper_text_font_size] = {[default_helper_text_font_size] * {game_text_scale?ง}}
+[custom_lore_font_size] = {[default_lore_font_size] * {game_text_scale?ง}}
+[custom_promo_font_size] = {[default_promo_font_size] * {game_text_scale?ง}}
+[custom_promo_cap_font_size] = {[default_promo_cap_font_size] * {game_text_scale?ง}}
 
 ;;{default_character_title_font_size * char_title_cap_factor}
 
 ;;[default_char_title_cap_font_size] = {[default_character_title_font_size] * [char_title_cap_factor]}
 [default_char_title_cap_font_size] = {[default_character_title_font_size] * [title_cap_factor]}
-[custom_char_title_cap_font_size] = {{title_font_size?ยง} * [title_cap_factor]}
+[custom_char_title_cap_font_size] = {{title_font_size?ง} * [title_cap_factor]}
 [default_char_subtitle_cap_font_size] = {[default_character_subtitle_font_size] * [title_cap_factor]}
-[custom_char_subtitle_cap_font_size] = {{subtitle_font_size?ยง} * [title_cap_factor]}
+[custom_char_subtitle_cap_font_size] = {{subtitle_font_size?ง} * [title_cap_factor]}
 
 [default_mod_title_cap_font_size] = {[default_modifier_title_font_size] * [mod_title_cap_factor]}
-[custom_mod_title_cap_font_size] = {{title_font_size?ยง} * [mod_title_cap_factor]}
+[custom_mod_title_cap_font_size] = {{title_font_size?ง} * [mod_title_cap_factor]}
 [default_mod_subtitle_cap_font_size] = {[default_modifier_subtitle_font_size] * [mod_title_cap_factor]}
-[custom_mod_subtitle_cap_font_size] = {{subtitle_font_size?ยง} * [mod_title_cap_factor]}
+[custom_mod_subtitle_cap_font_size] = {{subtitle_font_size?ง} * [mod_title_cap_factor]}
 
 [default_ring_title_cap_font_size] = {[default_ring_title_font_size] * [mod_title_cap_factor]}
-[custom_ring_title_cap_font_size] = {{title_font_size?ยง} * [mod_title_cap_factor]}
+[custom_ring_title_cap_font_size] = {{title_font_size?ง} * [mod_title_cap_factor]}
 
 
 [default_type_plate_cap_font_size] = {[default_type_plate_font_size] * [type_title_cap_factor]}
@@ -227,7 +227,7 @@ RECTANGLE=,<full_card_portrait>,#000000
 <third_icon> = 7.5%,84.5%,10%,10%
 <disclaimer_bar> = 33.5%,94%,61%,2.7%
 
-<game_text> = 23.5%,67%,{game_text_width?ยง},26.5%
+<game_text> = 23.5%,67%,{game_text_width?ง},26.5%
 <game_text_default> = 23.5%,67%,[default_game_text_width],26.5%
 <site_game_text> = 77.5%,13%,9%,[game_text_width]
 <site_game_text_default> = 77.5%,12.5%,9%,[default_site_game_text_width]
@@ -238,53 +238,53 @@ RECTANGLE=,<full_card_portrait>,#000000
 ;; Set up our fonts for when we use HTML rendering (which is most everywhere).
 ;; Line spacing can be defined per card in the CSV, so we integrate it here.
 
-SETFONT= chartitle,[title_font],{title_font_size?ยง},[default_character_title_font_size],DZA,{game_text_color?ยง},[default_game_text_color],{title_color_override?ยง},LEFT
-SETFONT= chartitlecap,[title_font],[custom_char_title_cap_font_size],[default_char_title_cap_font_size],D,{game_text_color?ยง},[default_game_text_color],{title_color_override?ยง}
-SETFONT= charsubtitle,[title_font],{subtitle_font_size?ยง},[default_character_subtitle_font_size],DZA,{game_text_color?ยง},[default_game_text_color],{title_color_override?ยง},LEFT
-SETFONT= charsubtitlecap,[title_font],[custom_char_subtitle_cap_font_size],[default_char_subtitle_cap_font_size],D,{game_text_color?ยง},[default_game_text_color],{title_color_override?ยง}
+SETFONT= chartitle,[title_font],{title_font_size?ง},[default_character_title_font_size],DZA,{game_text_color?ง},[default_game_text_color],{title_color_override?ง},LEFT
+SETFONT= chartitlecap,[title_font],[custom_char_title_cap_font_size],[default_char_title_cap_font_size],D,{game_text_color?ง},[default_game_text_color],{title_color_override?ง}
+SETFONT= charsubtitle,[title_font],{subtitle_font_size?ง},[default_character_subtitle_font_size],DZA,{game_text_color?ง},[default_game_text_color],{title_color_override?ง},LEFT
+SETFONT= charsubtitlecap,[title_font],[custom_char_subtitle_cap_font_size],[default_char_subtitle_cap_font_size],D,{game_text_color?ง},[default_game_text_color],{title_color_override?ง}
 
-SETFONT= modtitle,[title_font],{title_font_size?ยง},[default_modifier_title_font_size],DA,{game_text_color?ยง},[default_game_text_color],{title_color_override?ยง},RIGHT
+SETFONT= modtitle,[title_font],{title_font_size?ง},[default_modifier_title_font_size],DA,{game_text_color?ง},[default_game_text_color],{title_color_override?ง},RIGHT
 ;; this is doubled just for the margins
-SETFONT= modtitletop,[title_font],{title_font_size?ยง},[default_modifier_title_font_size],DZA,{game_text_color?ยง},[default_game_text_color],{title_color_override?ยง},RIGHT
-SETFONT= modtitlecap,[title_font],[custom_mod_title_cap_font_size],[default_mod_title_cap_font_size],D,{game_text_color?ยง},[default_game_text_color],{title_color_override?ยง}
+SETFONT= modtitletop,[title_font],{title_font_size?ง},[default_modifier_title_font_size],DZA,{game_text_color?ง},[default_game_text_color],{title_color_override?ง},RIGHT
+SETFONT= modtitlecap,[title_font],[custom_mod_title_cap_font_size],[default_mod_title_cap_font_size],D,{game_text_color?ง},[default_game_text_color],{title_color_override?ง}
 
-SETFONT= modsubtitle,[title_font],{subtitle_font_size?ยง},[default_modifier_subtitle_font_size],DZA,{game_text_color?ยง},[default_game_text_color],{title_color_override?ยง},RIGHT
-SETFONT= modsubtitlecap,[title_font],[custom_mod_subtitle_cap_font_size],[default_mod_subtitle_cap_font_size],D,{game_text_color?ยง},[default_game_text_color],{title_color_override?ยง}
+SETFONT= modsubtitle,[title_font],{subtitle_font_size?ง},[default_modifier_subtitle_font_size],DZA,{game_text_color?ง},[default_game_text_color],{title_color_override?ง},RIGHT
+SETFONT= modsubtitlecap,[title_font],[custom_mod_subtitle_cap_font_size],[default_mod_subtitle_cap_font_size],D,{game_text_color?ง},[default_game_text_color],{title_color_override?ง}
 
-SETFONT= sitetitle,[title_font],{title_font_size?ยง},[default_site_title_font_size],DZA,{game_text_color?ยง},[default_game_text_color],{title_color_override?ยง},CENTER
-SETFONT= ringtitle,[title_font],{title_font_size?ยง},[default_ring_title_font_size],DZA,{game_text_color?ยง},[default_game_text_color],{title_color_override?ยง},RIGHT
-SETFONT= ringtitlecap,[title_font],[custom_ring_title_cap_font_size],[default_ring_title_cap_font_size],DZA,{game_text_color?ยง},[default_game_text_color],{title_color_override?ยง}
+SETFONT= sitetitle,[title_font],{title_font_size?ง},[default_site_title_font_size],DZA,{game_text_color?ง},[default_game_text_color],{title_color_override?ง},CENTER
+SETFONT= ringtitle,[title_font],{title_font_size?ง},[default_ring_title_font_size],DZA,{game_text_color?ง},[default_game_text_color],{title_color_override?ง},RIGHT
+SETFONT= ringtitlecap,[title_font],[custom_ring_title_cap_font_size],[default_ring_title_cap_font_size],DZA,{game_text_color?ง},[default_game_text_color],{title_color_override?ง}
 
-SETFONT= typeplate,[title_font],,[default_type_plate_font_size],DZA,{game_text_color?ยง},[default_game_text_color],{type_color_override?ยง},CENTER
-SETFONT= typeplatecap,[title_font],,[default_type_plate_cap_font_size],DZA,{game_text_color?ยง},[default_game_text_color],{type_color_override?ยง}
-SETFONT= typesymbol,[game_text_font],,[default_type_symbol_font_size],D,{game_text_color?ยง},[default_game_text_color],{type_color_override?ยง}
+SETFONT= typeplate,[title_font],,[default_type_plate_font_size],DZA,{game_text_color?ง},[default_game_text_color],{type_color_override?ง},CENTER
+SETFONT= typeplatecap,[title_font],,[default_type_plate_cap_font_size],DZA,{game_text_color?ง},[default_game_text_color],{type_color_override?ง}
+SETFONT= typesymbol,[game_text_font],,[default_type_symbol_font_size],D,{game_text_color?ง},[default_game_text_color],{type_color_override?ง}
 
-SETFONT= gametext,[game_text_font],[custom_game_text_font_size],[default_game_text_font_size],D,{game_text_color?ยง},[default_game_text_color],,LEFT
-SETFONT= textsymbol,[game_text_font],[custom_text_symbol_font_size],[default_text_symbol_font_size],D,{game_text_color?ยง},[default_game_text_color]
-SETFONT= helper,[game_text_font],[custom_helper_text_font_size],[default_helper_text_font_size],DI,{game_text_color?ยง},[default_game_text_color]
-SETFONT= lore,[lore_font],[custom_lore_font_size],[default_lore_font_size],DR,{game_text_color?ยง},[default_game_text_color],,LEFT
+SETFONT= gametext,[game_text_font],[custom_game_text_font_size],[default_game_text_font_size],D,{game_text_color?ง},[default_game_text_color],,LEFT
+SETFONT= textsymbol,[game_text_font],[custom_text_symbol_font_size],[default_text_symbol_font_size],D,{game_text_color?ง},[default_game_text_color]
+SETFONT= helper,[game_text_font],[custom_helper_text_font_size],[default_helper_text_font_size],DI,{game_text_color?ง},[default_game_text_color]
+SETFONT= lore,[lore_font],[custom_lore_font_size],[default_lore_font_size],DR,{game_text_color?ง},[default_game_text_color],,LEFT
 
-SETFONT= promo,[promo_font],[custom_promo_font_size],[default_promo_font_size],BDAR,{game_text_color?ยง},[default_game_text_color],,CENTER
-SETFONT= promocap,[promo_font],[custom_promo_cap_font_size],[default_promo_cap_font_size],BDAR,{game_text_color?ยง},[default_game_text_color]
+SETFONT= promo,[promo_font],[custom_promo_font_size],[default_promo_font_size],BDAR,{game_text_color?ง},[default_game_text_color],,CENTER
+SETFONT= promocap,[promo_font],[custom_promo_cap_font_size],[default_promo_cap_font_size],BDAR,{game_text_color?ง},[default_game_text_color]
 
-SETFONT= collinfo, [number_font],,[default_coll_info_font_size],D, {game_text_color?ยง},[default_game_text_color],,CENTER
-SETFONT= colltext, [game_text_font],,[default_coll_symbol_font_size],D, {game_text_color?ยง},[default_game_text_color]
-SETFONT= collplus, [game_text_font],,[default_coll_plus_font_size],D, {game_text_color?ยง},[default_game_text_color]
+SETFONT= collinfo, [number_font],,[default_coll_info_font_size],D, {game_text_color?ง},[default_game_text_color],,CENTER
+SETFONT= colltext, [game_text_font],,[default_coll_symbol_font_size],D, {game_text_color?ง},[default_game_text_color]
+SETFONT= collplus, [game_text_font],,[default_coll_plus_font_size],D, {game_text_color?ง},[default_game_text_color]
 
 
-IF= {icon_text_color?ยง} <> ""
-    HTMLFONT=numbers,[number_font],[default_icon_font_size],D,{icon_text_color?ยง},CENTER,0%, 0.5%,0.03,#000000
+IF= {icon_text_color?ง} <> ""
+    HTMLFONT=numbers,[number_font],[default_icon_font_size],D,{icon_text_color?ง},CENTER,0%, 0.5%,0.03,#000000
 
-    IF= {twilight_color?ยง} <> ""
-        HTMLFONT=twilight,[number_font],[default_icon_font_size],D,{twilight_color?ยง},CENTER,0%, 0.5%,0.03,#000000
+    IF= {twilight_color?ง} <> ""
+        HTMLFONT=twilight,[number_font],[default_icon_font_size],D,{twilight_color?ง},CENTER,0%, 0.5%,0.03,#000000
     ELSE
-        HTMLFONT=twilight,[number_font],[default_icon_font_size],D,{icon_text_color?ยง},CENTER,0%, 0.5%,0.03,#000000
+        HTMLFONT=twilight,[number_font],[default_icon_font_size],D,{icon_text_color?ง},CENTER,0%, 0.5%,0.03,#000000
     ENDIF
 ELSE
     HTMLFONT=numbers,[number_font],[default_icon_font_size],D,[default_icon_text_color],CENTER,0%, 0.5%,0.03,#000000
 
-    IF= {twilight_color?ยง} <> ""
-        HTMLFONT=twilight,[number_font],[default_icon_font_size],D,{twilight_color?ยง},CENTER,0%, 0.5%,0.03,#000000
+    IF= {twilight_color?ง} <> ""
+        HTMLFONT=twilight,[number_font],[default_icon_font_size],D,{twilight_color?ง},CENTER,0%, 0.5%,0.03,#000000
     ELSE
         HTMLFONT=twilight,[number_font],[default_icon_font_size],D,[default_icon_text_color],CENTER,0%, 0.5%,0.03,#000000
     ENDIF
@@ -340,8 +340,8 @@ INCLUDE=all_text_replacements.txt
 [promo_text] = REPLACE([promo_text], "<Br>", "<br>")
 
 [symrarity] = [rarity]
-;;{rarity?ยง}
-;;SETRING({rarity?ยง})
+;;{rarity?ง}
+;;SETRING({rarity?ง})
 [symrarity] = REPLACE([symrarity], o, "<colltext>&#9675</colltext>")
 [symrarity] = REPLACE([symrarity], O, "<colltext>&#9675</colltext>")
 [symrarity] = REPLACE([symrarity], "+", "<collplus>+</collplus>")
@@ -405,7 +405,7 @@ TAGCAPS= "homecaps", "ally_home_label", "typeplatecap"
 
 
 ;; Now we get to card rendering.  Start with card-template-sensitive elements.
-IF= {template?ยง} = "character"
+IF= {template?ง} = "character"
 
     ;; Debug printing is used to put a full-sized card in the background for
     ;; the purposes of checking exact alignment of text, etc
@@ -413,8 +413,8 @@ IF= {template?ยง} = "character"
         IMAGE = , JOIN([debug_image_path],[debug_image_name]), <card_background>, 0, PN
     ELSE
         ;; Full art means we are not using a template
-        IF= "full_art" @ {tags?ยง}
-            IF= "full_portrait" @ {tags?ยง}
+        IF= "full_art" @ {tags?ง}
+            IF= "full_portrait" @ {tags?ง}
                 IMAGE = , JOIN([card_image_path],/,[image_name]), <card_background>, 0, PN
             ELSE
                 IMAGE = , JOIN([card_image_path],/,[image_name]), <full_card_portrait>, 0, PN
@@ -425,7 +425,7 @@ IF= {template?ยง} = "character"
             ;; full portraits are intended to take up the whole card size, so
             ;; that lower rest cards can just be slotted in without needing to
             ;; cut out the portrait.
-            IF= "full_portrait" @ {tags?ยง}
+            IF= "full_portrait" @ {tags?ง}
                 IMAGE = , JOIN([card_image_path],/,[image_name]), <card_background>, 0, PN
             ELSE
                 IMAGE = , JOIN([card_image_path],/,[image_name]), <character_card_portrait>, 0, PN
@@ -445,66 +445,66 @@ IF= {template?ยง} = "character"
 
     ;; Character Title
     IF=([unique] = T) _OR_ ([unique] = Y)
-        HTMLTEXT=,"โ€ข",<character_unique>,,0,BE,100,chartitlecap
+        HTMLTEXT=,"•",<character_unique>,,0,BE,100,chartitlecap
     ENDIF
 
 
 
-    ;;HTMLTEXT=,REPLACE({title?ยง}, "G", "<chartitlecap>G</chartitlecap>"),<character_title>,,0,BE,100,chartitle
+    ;;HTMLTEXT=,REPLACE({title?ง}, "G", "<chartitlecap>G</chartitlecap>"),<character_title>,,0,BE,100,chartitle
     ;;HTMLTEXT=,[titlecaps_char],<character_title>,,0,BE,100,chartitle
-    HTMLTEXT=,{{titlecaps_char?ยง}},<character_title>,,0,BE,100,chartitle
+    HTMLTEXT=,{{titlecaps_char?ง}},<character_title>,,0,BE,100,chartitle
 
 
     ;; Character Subtitle
     IF= [subtitle] <> ""
-        HTMLTEXT=,{{subtitlecaps_char?ยง}},<character_subtitle>,,0,BE,100,charsubtitle
+        HTMLTEXT=,{{subtitlecaps_char?ง}},<character_subtitle>,,0,BE,100,charsubtitle
     ENDIF
 
     ;; Character Card Type
     IF= [card_type] = Ally
         IF= ([home_site_formatted] <> "") _AND_ ([card_subtype] <> "")
             IF= [display_type] <> ""
-                HTMLTEXT=,CONCAT1({carddisplaytypecaps?๏ฟฝ}," ๏ฟฝ ",{homecaps?1}," ",{home_site_formatted?๏ฟฝ}," ๏ฟฝ ",{cardsubtypecaps?๏ฟฝ}),<character_type_panel>,,0,BE,100,typeplate
+                HTMLTEXT=,CONCAT1({carddisplaytypecaps?ง}," • ",{homecaps?1}," ",{home_site_formatted?ง}," • ",{cardsubtypecaps?ง}),<character_type_panel>,,0,BE,100,typeplate
             ELSE=
-                HTMLTEXT=,CONCAT1({cardtypecaps?๏ฟฝ}," ๏ฟฝ ",{homecaps?1}," ",{home_site_formatted?๏ฟฝ}," ๏ฟฝ ",{cardsubtypecaps?๏ฟฝ}),<character_type_panel>,,0,BE,100,typeplate
+                HTMLTEXT=,CONCAT1({cardtypecaps?ง}," • ",{homecaps?1}," ",{home_site_formatted?ง}," • ",{cardsubtypecaps?ง}),<character_type_panel>,,0,BE,100,typeplate
             ENDIF
         ELSEIF= [home_site_formatted] <> ""
             IF= [display_type] <> ""
-                HTMLTEXT=,CONCAT1({carddisplaytypecaps?๏ฟฝ}," ๏ฟฝ ",{homecaps?1}," ",{home_site_formatted?๏ฟฝ}),<character_type_panel>,,0,BE,100,typeplate
+                HTMLTEXT=,CONCAT1({carddisplaytypecaps?ง}," • ",{homecaps?1}," ",{home_site_formatted?ง}),<character_type_panel>,,0,BE,100,typeplate
             ELSE=
-                HTMLTEXT=,CONCAT1({cardtypecaps?๏ฟฝ}," ๏ฟฝ ",{homecaps?1}," ",{home_site_formatted?๏ฟฝ}),<character_type_panel>,,0,BE,100,typeplate
+                HTMLTEXT=,CONCAT1({cardtypecaps?ง}," • ",{homecaps?1}," ",{home_site_formatted?ง}),<character_type_panel>,,0,BE,100,typeplate
             ENDIF
         ELSEIF= [card_subtype] <> ""
             IF= [display_type] <> ""
-                HTMLTEXT=,CONCAT1({carddisplaytypecaps?๏ฟฝ}," ๏ฟฝ ",{cardsubtypecaps?๏ฟฝ}),<character_type_panel>,,0,BE,100,typeplate
+                HTMLTEXT=,CONCAT1({carddisplaytypecaps?ง}," • ",{cardsubtypecaps?ง}),<character_type_panel>,,0,BE,100,typeplate
             ELSE=
-                HTMLTEXT=,CONCAT1({cardtypecaps?๏ฟฝ}," ๏ฟฝ ",{cardsubtypecaps?๏ฟฝ}),<character_type_panel>,,0,BE,100,typeplate
+                HTMLTEXT=,CONCAT1({cardtypecaps?ง}," • ",{cardsubtypecaps?ง}),<character_type_panel>,,0,BE,100,typeplate
             ENDIF
         ELSE
             IF= [display_type] <> ""
-                HTMLTEXT=,{carddisplaytypecaps?๏ฟฝ},<character_type_panel>,,0,BE,100,typeplate
+                HTMLTEXT=,{carddisplaytypecaps?ง},<character_type_panel>,,0,BE,100,typeplate
             ELSE=
-                HTMLTEXT=,{cardtypecaps?๏ฟฝ},<character_type_panel>,,0,BE,100,typeplate
+                HTMLTEXT=,{cardtypecaps?ง},<character_type_panel>,,0,BE,100,typeplate
             ENDIF
         ENDIF
     ELSEIF= [card_subtype] = ""
         IF= [display_type] <> ""
-            HTMLTEXT=,{carddisplaytypecaps?๏ฟฝ},<character_type_panel>,,0,BE,100,typeplate
+            HTMLTEXT=,{carddisplaytypecaps?ง},<character_type_panel>,,0,BE,100,typeplate
         ELSE=
-            HTMLTEXT=,{cardtypecaps?๏ฟฝ},<character_type_panel>,,0,BE,100,typeplate
+            HTMLTEXT=,{cardtypecaps?ง},<character_type_panel>,,0,BE,100,typeplate
         ENDIF
 
     ELSE
         IF= [display_type] <> ""
-            HTMLTEXT=,CONCAT1("[carddisplaytypecaps] โ€ข ",{cardsubtypecaps?ยง}),<character_type_panel>,,0,BE,100,typeplate
+            HTMLTEXT=,CONCAT1({carddisplaytypecaps?ง}," • ",{cardsubtypecaps?ง}),<character_type_panel>,,0,BE,100,typeplate
         ELSE=
-            HTMLTEXT=,CONCAT1("[cardtypecaps] โ€ข ",{cardsubtypecaps?ยง}),<character_type_panel>,,0,BE,100,typeplate
+            HTMLTEXT=,CONCAT1({cardtypecaps?ง}," • ",{cardsubtypecaps?ง}),<character_type_panel>,,0,BE,100,typeplate
         ENDIF
     ENDIF
 
     ;; Minion Site Number
     IF= ([card_type] <> Ally) _AND_ ([site] <> "")
-        IF= "disable_site" # {tags?ยง}
+        IF= "disable_site" # {tags?ง}
             IMAGE = , JOIN([positioned_icon_path],minion_site_number_position_,[card_size],.png), <card_background>, 0, PN
         ENDIF
         HTMLTEXT=,"[site]",<third_icon>,,0,BE,100,numbers
@@ -512,7 +512,7 @@ IF= {template?ยง} = "character"
 
 
 
-ELSEIF= ({template?ยง} = "modifier") _OR_ ({template?ยง} = "support")
+ELSEIF= ({template?ง} = "modifier") _OR_ ({template?ง} = "support")
 
     ;; Debug printing is used to put a full-sized card in the background for
     ;; the purposes of checking exact alignment of text, etc
@@ -520,8 +520,8 @@ ELSEIF= ({template?ยง} = "modifier") _OR_ ({template?ยง} = "support")
         IMAGE = , JOIN([debug_image_path],[debug_image_name]), <card_background>, 0, PN
     ELSE
         ;; Full art means we are not using a template
-        IF= "full_art" @ {tags?ยง}
-            IF= "full_portrait" @ {tags?ยง}
+        IF= "full_art" @ {tags?ง}
+            IF= "full_portrait" @ {tags?ง}
                 IMAGE = , JOIN([card_image_path],/,[image_name]), <card_background>, 0, PN
             ELSE
                 IMAGE = , JOIN([card_image_path],/,[image_name]), <full_card_portrait>, 0, PN
@@ -532,7 +532,7 @@ ELSEIF= ({template?ยง} = "modifier") _OR_ ({template?ยง} = "support")
             ;; full portraits are intended to take up the whole card size, so
             ;; that lower rest cards can just be slotted in without needing to
             ;; cut out the portrait.
-            IF= "full_portrait" @ {tags?ยง}
+            IF= "full_portrait" @ {tags?ง}
                 IMAGE = , JOIN([card_image_path],/,[image_name]), <card_background>, 0, PN
             ELSE
                 IMAGE = , JOIN([card_image_path],/,[image_name]), <modifier_card_portrait>, 0, PN
@@ -551,21 +551,21 @@ ELSEIF= ({template?ยง} = "modifier") _OR_ ({template?ยง} = "support")
     ;; Modifier Title/Subtitle
     IF= [subtitle] <> ""
         IF=([unique] = T) _OR_ ([unique] = Y)
-            HTMLTEXT=,JOIN("โ€ข",[titlecaps_mod],"<br><modsubtitle>",[subtitlecaps_mod],"</modsubtitle>"),<modifier_title>,,270,BE,100,modtitletop
+            HTMLTEXT=,JOIN("•",[titlecaps_mod],"<br><modsubtitle>",[subtitlecaps_mod],"</modsubtitle>"),<modifier_title>,,270,BE,100,modtitletop
         ELSE
             HTMLTEXT=,JOIN([titlecaps_mod],"<br><modsubtitle>",[subtitlecaps_mod],"</modsubtitle>"),<modifier_title>,,270,BE,100,modtitletop
         ENDIF
     ELSE
         IF=([unique] = T) _OR_ ([unique] = Y)
-            HTMLTEXT=,JOIN("โ€ข",[titlecaps_mod]),<modifier_title>,,270,BE,100,modtitle
+            HTMLTEXT=,JOIN("•",[titlecaps_mod]),<modifier_title>,,270,BE,100,modtitle
         ELSE
             HTMLTEXT=,"[titlecaps_mod]",<modifier_title>,,270,BE,100,modtitle
         ENDIF
     ENDIF
 
     ;; Artifact overlay if applicable
-    IF= ([card_type] = "Artifact") _OR_ ("artifact_overlay" @ {tags?ยง})
-        IF= ("full_art" # {tags?ยง}) _OR_ ("artifact_overlay" @ {tags?ยง})
+    IF= ([card_type] = "Artifact") _OR_ ("artifact_overlay" @ {tags?ง})
+        IF= ("full_art" # {tags?ง}) _OR_ ("artifact_overlay" @ {tags?ง})
             IMAGE = ,[artifact_overlay], <card_background>, 0, PN
         ENDIF
         ;;RECTANGLE=,<card_background>,#00FFFF
@@ -580,21 +580,21 @@ ELSEIF= ({template?ยง} = "modifier") _OR_ ({template?ยง} = "support")
         ENDIF
     ELSE
         IF= [display_type] <> ""
-            HTMLTEXT=,CONCAT1("[carddisplaytypecaps] โ€ข ",{cardsubtypecaps?ยง}),<modifier_type_panel>,,0,BE,100,typeplate
+            HTMLTEXT=,CONCAT1("[carddisplaytypecaps] • ",{cardsubtypecaps?ง}),<modifier_type_panel>,,0,BE,100,typeplate
         ELSE=
-            HTMLTEXT=,CONCAT1("[cardtypecaps] โ€ข ",{cardsubtypecaps?ยง}),<modifier_type_panel>,,0,BE,100,typeplate
+            HTMLTEXT=,CONCAT1("[cardtypecaps] • ",{cardsubtypecaps?ง}),<modifier_type_panel>,,0,BE,100,typeplate
         ENDIF
     ENDIF
 
     ;; Site Modifiers
     IF= [site] <> ""
-        IF= "disable_site" # {tags?ยง}
+        IF= "disable_site" # {tags?ง}
             IMAGE = , JOIN([positioned_icon_path],minion_site_number_position_,[card_size],.png), <card_background>, 0, PN
         ENDIF
         HTMLTEXT=,"[site]",<third_icon>,,0,BE,100,numbers
     ENDIF
 
-ELSEIF= {template?ยง} = "site"
+ELSEIF= {template?ง} = "site"
 
     ;; Debug printing is used to put a full-sized card in the background for
     ;; the purposes of checking exact alignment of text, etc
@@ -602,15 +602,15 @@ ELSEIF= {template?ยง} = "site"
         IMAGE = , JOIN([debug_image_path],[debug_image_name]), <card_background>, 270, PN
     ELSE
         ;; Full art means we are not using a template
-        IF= "full_art" @ {tags?ยง}
-            IF= "full_portrait" @ {tags?ยง}
-                IF= "no_rotate" @ {tags?ยง}
+        IF= "full_art" @ {tags?ง}
+            IF= "full_portrait" @ {tags?ง}
+                IF= "no_rotate" @ {tags?ง}
                     IMAGE = , JOIN([card_image_path],/,[image_name]), <card_background>, 0, PN
                 ELSE
                     IMAGE = , JOIN([card_image_path],/,[image_name]), <card_background>, 270, PN
                 ENDIF
             ELSE
-                IF= "no_rotate" @ {tags?ยง}
+                IF= "no_rotate" @ {tags?ง}
                     IMAGE = , JOIN([card_image_path],/,[image_name]), <full_card_portrait>, 0, PN
                 ELSE
                     IMAGE = , JOIN([card_image_path],/,[image_name]), <full_card_portrait>, 270, PN
@@ -622,14 +622,14 @@ ELSEIF= {template?ยง} = "site"
             ;; full portraits are intended to take up the whole card size, so
             ;; that lower res card images can just be slotted in without needing to
             ;; cut out the portrait.
-            IF= "full_portrait" @ {tags?ยง}
-                IF= "no_rotate" @ {tags?ยง}
+            IF= "full_portrait" @ {tags?ง}
+                IF= "no_rotate" @ {tags?ง}
                     IMAGE = , JOIN([card_image_path],/,[image_name]), <card_background>, 0, PN
                 ELSE
                     IMAGE = , JOIN([card_image_path],/,[image_name]), <card_background>, 270, PN
                 ENDIF
             ELSE
-                IF= "no_rotate" @ {tags?ยง}
+                IF= "no_rotate" @ {tags?ง}
                     IMAGE = , JOIN([card_image_path],/,[image_name]), <site_card_portrait>, 0, PN
                 ELSE
                     IMAGE = , JOIN([card_image_path],/,[image_name]), <site_card_portrait>, 270, PN
@@ -682,7 +682,7 @@ ELSEIF= {template?ยง} = "site"
 
 
     ;; Site Arrows
-    IF= "right_arrow" @ {tags?ยง}
+    IF= "right_arrow" @ {tags?ง}
         IF= [card_type] = "Sanctuary"
             IMAGE = , JOIN([positioned_icon_path],site_arrow_right_sanctuary_position_,[card_size],.png), <card_background>, 270, PN
         ELSE
@@ -697,7 +697,7 @@ ELSEIF= {template?ยง} = "site"
         ENDIF
     ENDIF
 
-ELSEIF= {template?ยง} = "onering"
+ELSEIF= {template?ง} = "onering"
 
     ;; Debug printing is used to put a full-sized card in the background for
     ;; the purposes of checking exact alignment of text, etc
@@ -707,7 +707,7 @@ ELSEIF= {template?ยง} = "onering"
         ;; full portraits are intended to take up the whole card size, so
         ;; that lower rest cards can just be slotted in without needing to
         ;; cut out the portrait.
-        IF= "full_portrait" @ {tags?ยง}
+        IF= "full_portrait" @ {tags?ง}
             IMAGE = , JOIN([card_image_path],/,[image_name]), <card_background>, 0, PN
         ELSE
             IMAGE = , JOIN([card_image_path],/,[image_name]), <full_card_portrait>, 0, PN
@@ -724,7 +724,7 @@ ELSEIF= {template?ยง} = "onering"
 
     ;; Title
     IF=([unique] = T) _OR_ ([unique] = Y)
-        HTMLTEXT=,CONCAT1("โ€ข",[titlecaps_ring]),<modifier_title>,,270,BE,100,ringtitle
+        HTMLTEXT=,CONCAT1("•",[titlecaps_ring]),<modifier_title>,,270,BE,100,ringtitle
     ELSE
         HTMLTEXT=,"[titlecaps_ring]",<modifier_title>,,270,BE,100,ringtitle
     ENDIF
@@ -743,15 +743,15 @@ ENDIF
 
 
 ;; Culture Icon
-IF= ("full_art" @ {tags?ยง}) _AND_ ("onering" # {template?ยง}) _AND_ ("disable_culture" # {tags?ยง}) _AND_ ( ([card_type] <> "modifier") _OR_ ("artifact_overlay" # {tags?ยง}))
+IF= ("full_art" @ {tags?ง}) _AND_ ("onering" # {template?ง}) _AND_ ("disable_culture" # {tags?ง}) _AND_ ( ([card_type] <> "modifier") _OR_ ("artifact_overlay" # {tags?ง}))
     IMAGE = , [culture_overlay], <card_background>, 0, PN
 ENDIF
 
 
 IF= [twilight] <> ""
     ;; Follower Twilight Icons
-    IF= ([card_type] = "Follower") _OR_ ("highlight_twilight" @ {tags?ยง})
-        IF= "shadow" @ {tags?ยง}
+    IF= ([card_type] = "Follower") _OR_ ("highlight_twilight" @ {tags?ง})
+        IF= "shadow" @ {tags?ง}
             IMAGE = , JOIN([positioned_icon_path],follower_shadow_position_,[card_size],.png), <card_background>, 0, PN
         ELSE
             IMAGE = , JOIN([positioned_icon_path],follower_freeps_position_,[card_size],.png), <card_background>, 0, PN
@@ -759,8 +759,8 @@ IF= [twilight] <> ""
     ELSEIF= [template] = "site"
         ;; Twilight Cost Icon
         IMAGE = , JOIN([positioned_icon_path],site_twilight_number_position_,[card_size],.png), <card_background>, 270, PN
-    ELSEIF= ("full_art" @ {tags?ยง}) _AND_ ("disable_twilight" # {tags?ยง})
-        IF= ("free_peoples" @ {tags?ยง}) _OR_ ("shadow" # {tags?ยง})
+    ELSEIF= ("full_art" @ {tags?ง}) _AND_ ("disable_twilight" # {tags?ง})
+        IF= ("free_peoples" @ {tags?ง}) _OR_ ("shadow" # {tags?ง})
             IMAGE = , [freeps_twilight_overlay], <card_background>, 0, PN
         ELSE
             IMAGE = , [shadow_twilight_overlay], <card_background>, 0, PN
@@ -780,7 +780,7 @@ ENDIF
 ;;Strength
 
 IF= [strength] <> ""
-    IF= "disable_strength" # {tags?ยง}
+    IF= "disable_strength" # {tags?ง}
         IMAGE = , JOIN([positioned_icon_path],strength_position_,[card_size],.png), <card_background>, 0, PN
     ENDIF
     HTMLTEXT=,"[strength]",<strength_icon>,,0,BE,100,numbers
@@ -788,21 +788,21 @@ ENDIF
 
 ;;Vitality
 IF= [vitality] <> ""
-    IF= "disable_vitality" # {tags?ยง}
+    IF= "disable_vitality" # {tags?ง}
         IMAGE = , JOIN([positioned_icon_path],vitality_position_,[card_size],.png), <card_background>, 0, PN
     ENDIF
     HTMLTEXT=,"[vitality]",<vitality_icon>,,0,BE,100,numbers
 ENDIF
 
 ;; Signets
-IF= ([signet] <> "") _AND_ _NOT_ ("disable_signet" @ {tags?ยง})
+IF= ([signet] <> "") _AND_ _NOT_ ("disable_signet" @ {tags?ง})
     IMAGE = , JOIN([positioned_icon_path],signet_,[signet],_position_,[card_size],.png), <card_background>, 0, PN
 ENDIF
 
 ;; Resistance and ring-bearer
 IF= ([card_type] <> Minion) _AND_ ([resistance] <> "")
-    IF= "disable_resistance" # {tags?ยง}
-        IF= "ring_bearer" @ {tags?ยง}
+    IF= "disable_resistance" # {tags?ง}
+        IF= "ring_bearer" @ {tags?ง}
             IMAGE = , JOIN([positioned_icon_path],resistance_ring_combined_position_,[card_size],.png), <card_background>, 0, PN
         ELSE
             IMAGE = , JOIN([positioned_icon_path],resistance_position_,[card_size],.png), <card_background>, 0, PN
@@ -816,7 +816,7 @@ ENDIF
 ;IF= [symrarity] <> [rarity]
 ;    HTMLTEXT=,JOIN([set_num]," <colltext>",[symrarity],"</colltext> ", [card_num]),<collectors_info>,,0,BE,100,collinfo
 ;ELSE
-    HTMLTEXT=,CONCAT1({set_num?ยง}," ",{symrarity?ยง}," ",{card_num?ยง}),<collectors_info>,,0,BE,100,collinfo
+    HTMLTEXT=,CONCAT1({set_num?ง}," ",{symrarity?ง}," ",{card_num?ง}),<collectors_info>,,0,BE,100,collinfo
     ;;HTMLTEXT=,JOIN([set_num]," ",[symrarity]," ",[card_num]),<collectors_info>,,0,BE,100,collinfo
 ;;ENDIF
 
@@ -874,15 +874,15 @@ ENDIF
 
 
 
-;IF= "disclaimer_light" @ {tags?ยง}
+;IF= "disclaimer_light" @ {tags?ง}
 ;    IMAGE = , JOIN([icon_path],disclaimer_light_,[card_size],.png), <disclaimer_bar>, 0, PN
-;ELSEIF= ([template] = "onering") _OR_ ("disclaimer_dark" @ {tags?ยง}) _OR_ ("full_art" @ {tags?ยง})
+;ELSEIF= ([template] = "onering") _OR_ ("disclaimer_dark" @ {tags?ง}) _OR_ ("full_art" @ {tags?ง})
 ;    IMAGE = , JOIN([icon_path],disclaimer_dark_,[card_size],.png), <disclaimer_bar>, 0, PN
 ;ENDIF
 
-IF= "disclaimer_light" @ {tags?ยง}
+IF= "disclaimer_light" @ {tags?ง}
     IMAGE = , JOIN([positioned_icon_path],disclaimer_light_position_,[card_size],.png), <card_background>, 0, PN
-ELSEIF= ([template] = "onering") _OR_ ("disclaimer_dark" @ {tags?ยง}) _OR_ ("full_art" @ {tags?ยง})
+ELSEIF= ([template] = "onering") _OR_ ("disclaimer_dark" @ {tags?ง}) _OR_ ("full_art" @ {tags?ง})
     IMAGE = , JOIN([positioned_icon_path],disclaimer_dark_position_,[card_size],.png), <card_background>, 0, PN
 ENDIF
 
@@ -897,8 +897,8 @@ ENDIF
 
 
 ;; Draw additional borders over the top
-IF= {border_color?ยง} <> ""
-    ROUNDRECT=,<card_background>,{border_color?ยง},EMPTY,9%,6,9.5
+IF= {border_color?ง} <> ""
+    ROUNDRECT=,<card_background>,{border_color?ง},EMPTY,9%,6,9.5
 ELSE
     ROUNDRECT=,<card_background>,[default_border_color],EMPTY,9%,6,9.5
 ENDIF
