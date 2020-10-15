@@ -178,6 +178,7 @@ RECTANGLE=,<full_card_portrait>,#000000
 
 [character_template] = JOIN([full_template_path],[culture],_character_,[card_size],.png)
 [modifier_template] = JOIN([full_template_path],[culture],_modifier_,[card_size],.png)
+[back_template] = JOIN([full_template_path],card_back_,[card_size],.png)
 
 [site_standard_template] = JOIN([full_template_path],site_standard_,[card_size],.png)
 [site_sanctuary_template] = JOIN([full_template_path],site_sanctuary_,[card_size],.png)
@@ -750,7 +751,9 @@ ELSEIF= {template?§} = "onering"
     IF= [subtitle] <> ""
         HTMLTEXT=,"[subtitlecaps_ring]",<modifier_type_panel>,,0,BE,100,typeplate
     ENDIF
+ELSEIF= {template?§} = "back"
 
+    IMAGE = , [back_template], <card_background>, 0, PN
 ELSE=
     RECTANGLE=,0,0,100%,100%,#9C2542
     TEXT=,"Unrecognized template type: [template]",0,0,100%,100%
