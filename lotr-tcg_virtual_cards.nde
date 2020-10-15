@@ -452,12 +452,13 @@ IF= {template?§} = "character"
 
     ;;HTMLTEXT=,REPLACE({title?§}, "G", "<chartitlecap>G</chartitlecap>"),<character_title>,,0,BE,100,chartitle
     ;;HTMLTEXT=,[titlecaps_char],<character_title>,,0,BE,100,chartitle
-    HTMLTEXT=,{{titlecaps_char?§}},<character_title>,,0,BE,100,chartitle
+    HTMLTEXT=,CONCAT1({titlecaps_char?§},""),<character_title>,,0,BE,100,chartitle
 
 
     ;; Character Subtitle
     IF= [subtitle] <> ""
-        HTMLTEXT=,{{subtitlecaps_char?§}},<character_subtitle>,,0,BE,100,charsubtitle
+        ;; The pointless concat is to avoid one-card CSVs producing quotes around the subtitle spontaneously
+        HTMLTEXT=,CONCAT1({subtitlecaps_char?§},""),<character_subtitle>,,0,BE,100,charsubtitle
     ENDIF
 
     ;; Character Card Type
