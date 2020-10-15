@@ -210,7 +210,7 @@ RECTANGLE=,<full_card_portrait>,#000000
 
 <character_unique> = 19.5%, 4.2%, 3%, 5%
 <character_title> = 21.5%, 4.7%, 58%, 4%
-<character_subtitle> = 21.6%, 9.3%, 58%, 3%
+<character_subtitle> = 21.6%, 8.8%, 58%, 4%
 <modifier_title> = 6.5%, 15.7%, 9.6%, 38%
 <site_title> = 7.5%, 24.9%, 4.5%, 50%
 
