@@ -1,4 +1,4 @@
-ï»¿;;Replacement keys so that card writers don't have to include so many
+;;Replacement keys so that card writers don't have to include so many
 ;; html tags for repetitive elements.  The replacements in this file
 ;; are ran against all text, including title, subtitle, card type,
 ;; game text, collector's info, and stats, so tread lightly.
@@ -19,8 +19,22 @@ IF= ([nbspace_char] <> "") _AND_ ([nbspace_char] <> "(") _AND_ ([nbspace_char] <
 ENDIF
 
 ;; Manual en and em dash placement
-HTMLKEY=,"---","â€”"
-HTMLKEY=,"--","â€“"
+HTMLKEY=,"---","—"
+HTMLKEY=,"--","–"
+
+
+;; Replace all hyphens in front of numbers with en dashes
+HTMLKEY=,"-1","–1"
+HTMLKEY=,"-2","–2"
+HTMLKEY=,"-3","–3"
+HTMLKEY=,"-4","–4"
+HTMLKEY=,"-5","–5"
+HTMLKEY=,"-6","–6"
+HTMLKEY=,"-7","–7"
+HTMLKEY=,"-8","–8"
+HTMLKEY=,"-9","–9"
+
+
 
 
 ;; Replacements of names with obnoxious accented characters, so we don't have

@@ -8,272 +8,257 @@
 
 
 
-;; Replace all hyphens in front of numbers with en dashes
-HTMLKEY=,"-1","–1"
-HTMLKEY=,"-2","–2"
-HTMLKEY=,"-3","–3"
-HTMLKEY=,"-4","–4"
-HTMLKEY=,"-5","–5"
-HTMLKEY=,"-6","–6"
-HTMLKEY=,"-7","–7"
-HTMLKEY=,"-8","–8"
-HTMLKEY=,"-9","–9"
-
 ;;Numeric loaded keywords
 ;; the dash used by aid is an em dash
-HTMLKEY=,"Aid - ","<b>Aid — </b>",,C
-HTMLKEY=,"Ambush","<b>Ambush</b>",,C
-HTMLKEY=,"Damage +1.","<b>Damage +1.</b>",,C
-HTMLKEY=,"Damage +2.","<b>Damage +2.</b>",,C
-HTMLKEY=,"Damage +3.","<b>Damage +3.</b>",,C
-HTMLKEY=,"Damage +4.","<b>Damage +4.</b>",,C
-HTMLKEY=,"Damage +5.","<b>Damage +5.</b>",,C
-HTMLKEY=,"Damage +6.","<b>Damage +6.</b>",,C
-HTMLKEY=,"Damage +7.","<b>Damage +7.</b>",,C
-HTMLKEY=,"Damage +8.","<b>Damage +8.</b>",,C
-HTMLKEY=,"Damage +9.","<b>Damage +9.</b>",,C
-HTMLKEY=,"damage +1","<b>damage +1</b>",,C
-HTMLKEY=,"damage +2","<b>damage +2</b>",,C
-HTMLKEY=,"damage +3","<b>damage +3</b>",,C
-HTMLKEY=,"damage +4","<b>damage +4</b>",,C
-HTMLKEY=,"damage +5","<b>damage +5</b>",,C
-HTMLKEY=,"damage +6","<b>damage +6</b>",,C
-HTMLKEY=,"damage +7","<b>damage +7</b>",,C
-HTMLKEY=,"damage +8","<b>damage +8</b>",,C
-HTMLKEY=,"damage +9","<b>damage +9</b>",,C
-HTMLKEY=,"damage +X","<b>damage +X</b>",,C
-HTMLKEY=,"Defender +1.","<b>Defender +1.</b>",,C
-HTMLKEY=,"Defender +2.","<b>Defender +2.</b>",,C
-HTMLKEY=,"Defender +3.","<b>Defender +3.</b>",,C
-HTMLKEY=,"Defender +4.","<b>Defender +4.</b>",,C
-HTMLKEY=,"Defender +5.","<b>Defender +5.</b>",,C
-HTMLKEY=,"Defender +6.","<b>Defender +6.</b>",,C
-HTMLKEY=,"Defender +7.","<b>Defender +7.</b>",,C
-HTMLKEY=,"Defender +8.","<b>Defender +8.</b>",,C
-HTMLKEY=,"Defender +9.","<b>Defender +9.</b>",,C
-HTMLKEY=,"defender +1","<b>defender +1</b>",,C
-HTMLKEY=,"defender +2","<b>defender +2</b>",,C
-HTMLKEY=,"defender +3","<b>defender +3</b>",,C
-HTMLKEY=,"defender +4","<b>defender +4</b>",,C
-HTMLKEY=,"defender +5","<b>defender +5</b>",,C
-HTMLKEY=,"defender +6","<b>defender +6</b>",,C
-HTMLKEY=,"defender +7","<b>defender +7</b>",,C
-HTMLKEY=,"defender +8","<b>defender +8</b>",,C
-HTMLKEY=,"defender +9","<b>defender +9</b>",,C
-HTMLKEY=,"defender +X","<b>defender +X</b>",,C
-HTMLKEY=,"Hunter 1.","<b>Hunter 1.</b>",,C
-HTMLKEY=,"Hunter 2.","<b>Hunter 2.</b>",,C
-HTMLKEY=,"Hunter 3.","<b>Hunter 3.</b>",,C
-HTMLKEY=,"Hunter 4.","<b>Hunter 4.</b>",,C
-HTMLKEY=,"Hunter 5.","<b>Hunter 5.</b>",,C
-HTMLKEY=,"Hunter 6.","<b>Hunter 6.</b>",,C
-HTMLKEY=,"Hunter 7.","<b>Hunter 7.</b>",,C
-HTMLKEY=,"Hunter 8.","<b>Hunter 8.</b>",,C
-HTMLKEY=,"Hunter 9.","<b>Hunter 9.</b>",,C
-HTMLKEY=,"hunter 1","<b>hunter 1</b>",,C
-HTMLKEY=,"hunter 2","<b>hunter 2</b>",,C
-HTMLKEY=,"hunter 3","<b>hunter 3</b>",,C
-HTMLKEY=,"hunter 4","<b>hunter 4</b>",,C
-HTMLKEY=,"hunter 5","<b>hunter 5</b>",,C
-HTMLKEY=,"hunter 6","<b>hunter 6</b>",,C
-HTMLKEY=,"hunter 7","<b>hunter 7</b>",,C
-HTMLKEY=,"hunter 8","<b>hunter 8</b>",,C
-HTMLKEY=,"hunter 9","<b>hunter 9</b>",,C
-HTMLKEY=,"hunter X","<b>hunter X</b>",,C
-HTMLKEY=,"Toil 1.","<b>Toil 1.</b>",,C
-HTMLKEY=,"Toil 2.","<b>Toil 2.</b>",,C
-HTMLKEY=,"Toil 3.","<b>Toil 3.</b>",,C
-HTMLKEY=,"Toil 4.","<b>Toil 4.</b>",,C
-HTMLKEY=,"Toil 5.","<b>Toil 5.</b>",,C
-HTMLKEY=,"Toil 6.","<b>Toil 6.</b>",,C
-HTMLKEY=,"Toil 7.","<b>Toil 7.</b>",,C
-HTMLKEY=,"Toil 8.","<b>Toil 8.</b>",,C
-HTMLKEY=,"Toil 9.","<b>Toil 9.</b>",,C
-HTMLKEY=,"toil 1","<b>toil 1</b>",,C
-HTMLKEY=,"toil 2","<b>toil 2</b>",,C
-HTMLKEY=,"toil 3","<b>toil 3</b>",,C
-HTMLKEY=,"toil 4","<b>toil 4</b>",,C
-HTMLKEY=,"toil 5","<b>toil 5</b>",,C
-HTMLKEY=,"toil 6","<b>toil 6</b>",,C
-HTMLKEY=,"toil 7","<b>toil 7</b>",,C
-HTMLKEY=,"toil 8","<b>toil 8</b>",,C
-HTMLKEY=,"toil 9","<b>toil 9</b>",,C
-HTMLKEY=,"toil X","<b>toil X</b>",,C
+[game_text_replaced] = REPLACE([game_text_replaced],"Aid - ","<b>Aid — </b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Ambush","<b>Ambush</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Damage +1.","<b>Damage +1.</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Damage +2.","<b>Damage +2.</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Damage +3.","<b>Damage +3.</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Damage +4.","<b>Damage +4.</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Damage +5.","<b>Damage +5.</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Damage +6.","<b>Damage +6.</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Damage +7.","<b>Damage +7.</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Damage +8.","<b>Damage +8.</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Damage +9.","<b>Damage +9.</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"damage +1","<b>damage +1</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"damage +2","<b>damage +2</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"damage +3","<b>damage +3</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"damage +4","<b>damage +4</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"damage +5","<b>damage +5</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"damage +6","<b>damage +6</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"damage +7","<b>damage +7</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"damage +8","<b>damage +8</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"damage +9","<b>damage +9</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Defender +1.","<b>Defender +1.</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Defender +2.","<b>Defender +2.</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Defender +3.","<b>Defender +3.</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Defender +4.","<b>Defender +4.</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Defender +5.","<b>Defender +5.</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Defender +6.","<b>Defender +6.</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Defender +7.","<b>Defender +7.</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Defender +8.","<b>Defender +8.</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Defender +9.","<b>Defender +9.</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"defender +1","<b>defender +1</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"defender +2","<b>defender +2</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"defender +3","<b>defender +3</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"defender +4","<b>defender +4</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"defender +5","<b>defender +5</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"defender +6","<b>defender +6</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"defender +7","<b>defender +7</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"defender +8","<b>defender +8</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"defender +9","<b>defender +9</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Hunter 1.","<b>Hunter 1.</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Hunter 2.","<b>Hunter 2.</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Hunter 3.","<b>Hunter 3.</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Hunter 4.","<b>Hunter 4.</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Hunter 5.","<b>Hunter 5.</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Hunter 6.","<b>Hunter 6.</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Hunter 7.","<b>Hunter 7.</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Hunter 8.","<b>Hunter 8.</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Hunter 9.","<b>Hunter 9.</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"hunter 1","<b>hunter 1</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"hunter 2","<b>hunter 2</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"hunter 3","<b>hunter 3</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"hunter 4","<b>hunter 4</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"hunter 5","<b>hunter 5</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"hunter 6","<b>hunter 6</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"hunter 7","<b>hunter 7</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"hunter 8","<b>hunter 8</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"hunter 9","<b>hunter 9</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Toil 1.","<b>Toil 1.</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Toil 2.","<b>Toil 2.</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Toil 3.","<b>Toil 3.</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Toil 4.","<b>Toil 4.</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Toil 5.","<b>Toil 5.</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Toil 6.","<b>Toil 6.</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Toil 7.","<b>Toil 7.</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Toil 8.","<b>Toil 8.</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Toil 9.","<b>Toil 9.</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"toil 1","<b>toil 1</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"toil 2","<b>toil 2</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"toil 3","<b>toil 3</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"toil 4","<b>toil 4</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"toil 5","<b>toil 5</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"toil 6","<b>toil 6</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"toil 7","<b>toil 7</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"toil 8","<b>toil 8</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"toil 9","<b>toil 9</b>")
 
 ;; Loaded keywords
-HTMLKEY=,"Archer.","<b>Archer.</b>",,C
-HTMLKEY=,"Enduring.","<b>Enduring.</b>",,C
-HTMLKEY=,"Fierce.","<b>Fierce.</b>",,C
-HTMLKEY=,"Lurker.","<b>Lurker.</b>",,C
-HTMLKEY=,"Muster.","<b>Muster.</b>",,C
-HTMLKEY=,"Sanctuary.","<b>Sanctuary.</b>",,C
-HTMLKEY=,"Unhasty.","<b>Unhasty.</b>",,C
+[game_text_replaced] = REPLACE([game_text_replaced],"Archer.","<textsymbol><b>Archer.</b></textsymbol>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Enduring.","<textsymbol><b>Enduring.</b></textsymbol>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Fierce.","<textsymbol><b>Fierce.</b></textsymbol>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Lurker.","<textsymbol><b>Lurker.</b></textsymbol>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Muster.","<textsymbol><b>Muster.</b></textsymbol>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Sanctuary.","<textsymbol><b>Sanctuary.</b></textsymbol>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Unhasty.","<textsymbol><b>Unhasty.</b></textsymbol>")
 
 ;; Ring-bearer
-HTMLKEY=,">Ring-bearer.","><b>Ring-bearer.</b>",,C
-HTMLKEY=,"Ring-bearer (","<b>Ring-bearer (</b>",,C
-HTMLKEY=,"resistance 1).","<b>resistance 1).</b>",,C
-HTMLKEY=,"resistance 2).","<b>resistance 2).</b>",,C
-HTMLKEY=,"resistance 3).","<b>resistance 3).</b>",,C
-HTMLKEY=,"resistance 4).","<b>resistance 4).</b>",,C
-HTMLKEY=,"resistance 5).","<b>resistance 5).</b>",,C
-HTMLKEY=,"resistance 6).","<b>resistance 6).</b>",,C
-HTMLKEY=,"resistance 7).","<b>resistance 7).</b>",,C
-HTMLKEY=,"resistance 8).","<b>resistance 8).</b>",,C
-HTMLKEY=,"resistance 9).","<b>resistance 9).</b>",,C
-HTMLKEY=,"resistance 10).","<b>resistance 10).</b>",,C
-HTMLKEY=,"resistance 11).","<b>resistance 11).</b>",,C
-HTMLKEY=,"resistance 12).","<b>resistance 12).</b>",,C
-HTMLKEY=,"resistance 13).","<b>resistance 13).</b>",,C
-HTMLKEY=,"resistance 14).","<b>resistance 14).</b>",,C
-HTMLKEY=,"resistance 15).","<b>resistance 15).</b>",,C
+[game_text_replaced] = REPLACE([game_text_replaced],"<start>Ring-bearer.","<start><b>Ring-bearer.</b>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"Ring-bearer (","<b>Ring-bearer (</b>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"resistance 1).","<b>resistance 1).</b>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"resistance 2).","<b>resistance 2).</b>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"resistance 3).","<b>resistance 3).</b>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"resistance 4).","<b>resistance 4).</b>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"resistance 5).","<b>resistance 5).</b>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"resistance 6).","<b>resistance 6).</b>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"resistance 7).","<b>resistance 7).</b>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"resistance 8).","<b>resistance 8).</b>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"resistance 9).","<b>resistance 9).</b>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"resistance 10).","<b>resistance 10).</b>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"resistance 11).","<b>resistance 11).</b>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"resistance 12).","<b>resistance 12).</b>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"resistance 13).","<b>resistance 13).</b>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"resistance 14).","<b>resistance 14).</b>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"resistance 15).","<b>resistance 15).</b>", I)
 
 ;; Unloaded keywords
-HTMLKEY=,"Battleground.","<b>Battleground.</b>",,C
-HTMLKEY=,"Besieger.","<b>Besieger.</b>",,C
-HTMLKEY=,"Corsair.","<b>Corsair.</b>",,C
-HTMLKEY=,"Dwelling.","<b>Dwelling.</b>",,C
-HTMLKEY=,"Easterling.","<b>Easterling.</b>",,C
-HTMLKEY=,"Engine.","<b>Engine.</b>",,C
-HTMLKEY=,"Fellowship.","<b>Fellowship.</b>",,C
-HTMLKEY=,"Forest.","<b>Forest.</b>",,C
-HTMLKEY=,"Fortification.","<b>Fortification.</b>",,C
-HTMLKEY=,"Knight.","<b>Knight.</b>",,C
-HTMLKEY=,"Machine.","<b>Machine.</b>",,C
-HTMLKEY=,"Marsh.","<b>Marsh.</b>",,C
-HTMLKEY=,"Mountain.","<b>Mountain.</b>",,C
-HTMLKEY=,"Plains.","<b>Plains.</b>",,C
-HTMLKEY=,"Pipeweed.","<b>Pipeweed.</b>",,C
-HTMLKEY=,"Ranger.","<b>Ranger.</b>",,C
-HTMLKEY=,"Ring-bound.","<b>Ring-bound.</b>",,C
-HTMLKEY=,"River.","<b>River.</b>",,C
-HTMLKEY=,"Search.","<b>Search.</b>",,C
-HTMLKEY=,"Southron.","<b>Southron.</b>",,C
-HTMLKEY=,"Spell.","<b>Spell.</b>",,C
-HTMLKEY=,"Stealth.","<b>Stealth.</b>",,C
-HTMLKEY=,"Tale.","<b>Tale.</b>",,C
-HTMLKEY=,"Tentacle.","<b>Tentacle.</b>",,C
-HTMLKEY=,"Tracker.","<b>Tracker.</b>",,C
-HTMLKEY=,"Twilight.","<b>Twilight.</b>",,C
-HTMLKEY=,"Underground.","<b>Underground.</b>",,C
-HTMLKEY=,"Valiant.","<b>Valiant.</b>",,C
-HTMLKEY=,"Villager.","<b>Villager.</b>",,C
-HTMLKEY=,"Weather.","<b>Weather.</b>",,C
-HTMLKEY=,"Warg-rider.","<b>Warg-rider.</b>",,C
+[game_text_replaced] = REPLACE([game_text_replaced],"Battleground.","<b>Battleground.</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Besieger.","<b>Besieger.</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Corsair.","<b>Corsair.</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Dwelling.","<b>Dwelling.</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"<start>Easterling.","<start><b>Easterling.</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Engine.","<b>Engine.</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Fellowship.","<b>Fellowship.</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Forest.","<b>Forest.</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Fortification.","<b>Fortification.</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Knight.","<b>Knight.</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Machine.","<b>Machine.</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Marsh.","<b>Marsh.</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Mountain.","<b>Mountain.</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Plains.","<b>Plains.</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Pipeweed.","<b>Pipeweed.</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Ranger.","<b>Ranger.</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Ring-bound.","<b>Ring-bound.</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"River.","<b>River.</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Search.","<b>Search.</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"<start>Southron.","<start><b>Southron.</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Spell.","<b>Spell.</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Stealth.","<b>Stealth.</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Tale.","<b>Tale.</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Tentacle.","<b>Tentacle.</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Tracker.","<b>Tracker.</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Twilight.","<b>Twilight.</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Underground.","<b>Underground.</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Valiant.","<b>Valiant.</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Villager.","<b>Villager.</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Weather.","<b>Weather.</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Warg-rider.","<b>Warg-rider.</b>")
 
 ;; Phase actions
-HTMLKEY=,"Fellowship:","<b>Fellowship:</b>",,C
-HTMLKEY=,"Shadow:","<b>Shadow:</b>",,C
-HTMLKEY=,"Maneuver:","<b>Maneuver:</b>",,C
-HTMLKEY=,"Archery:","<b>Archery:</b>",,C
-HTMLKEY=,"Assignment:","<b>Assignment:</b>",,C
-HTMLKEY=,"Skirmish:","<b>Skirmish:</b>",,C
-HTMLKEY=,"Regroup:","<b>Regroup:</b>",,C
-HTMLKEY=,"Response:","<b>Response:</b>",,C
+[game_text_replaced] = REPLACE([game_text_replaced],"Fellowship:","<b>Fellowship:</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Shadow:","<b>Shadow:</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Maneuver:","<b>Maneuver:</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Archery:","<b>Archery:</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Assignment:","<b>Assignment:</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Skirmish:","<b>Skirmish:</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Regroup:","<b>Regroup:</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"Response:","<b>Response:</b>")
 
 
 ;; Culture symbol replacements.  These have to exist within the LotR_TCG font
 ;; or this won't work.
-HTMLKEY=,"(dwarf)","&#9786",textsymbol
-HTMLKEY=,"(dwarven)","&#9786",textsymbol
-HTMLKEY=,"(elf)","&#9787",textsymbol
-HTMLKEY=,"(elven)","&#9787",textsymbol
-HTMLKEY=,"(gandalf)","&#9829",textsymbol
-HTMLKEY=,"(shire)","&#9830",textsymbol
-HTMLKEY=,"(rohan)","&#9827",textsymbol
-HTMLKEY=,"(gondor)","&#9824",textsymbol
-HTMLKEY=,"(gollum)","&#9688",textsymbol
-HTMLKEY=,"(dunland)","&#9794",textsymbol
-HTMLKEY=,"(raider)","&#9792",textsymbol
-HTMLKEY=,"(isengard)","&#9834",textsymbol
-HTMLKEY=,"(uruk)","&#9835",textsymbol
-HTMLKEY=,"(urukhai)","&#9835",textsymbol
-HTMLKEY=,"(uruk-hai)","&#9835",textsymbol
-HTMLKEY=,"(moria)","&#9788",textsymbol
-HTMLKEY=,"(orc)","&#9658",textsymbol
-HTMLKEY=,"(sauron)","&#9668",textsymbol
-HTMLKEY=,"(mordor)","&#9668",textsymbol
-HTMLKEY=,"(ringwraith)","&#8597",textsymbol
-HTMLKEY=,"(wraith)","&#8597",textsymbol
-HTMLKEY=,"(men)","&#8252",textsymbol
-HTMLKEY=,"(evil men)","&#8252",textsymbol
-HTMLKEY=,"(evilmen)","&#8252",textsymbol
+[game_text_replaced] = REPLACE([game_text_replaced],"(dwarf)","<textsymbol>&#9786;</textsymbol>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"(dwarven)","<textsymbol>&#9786;</textsymbol>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"(elf)","<textsymbol>&#9787;</textsymbol>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"(elven)","<textsymbol>&#9787;</textsymbol>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"(gandalf)","<textsymbol>&#9829;</textsymbol>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"(shire)","<textsymbol>&#9830;</textsymbol>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"(rohan)","<textsymbol>&#9827;</textsymbol>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"(gondor)","<textsymbol>&#9824;</textsymbol>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"(gollum)","<textsymbol>&#9688;</textsymbol>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"(dunland)","<textsymbol>&#9794;</textsymbol>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"(raider)","<textsymbol>&#9792;</textsymbol>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"(isengard)","<textsymbol>&#9834;</textsymbol>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"(uruk)","<textsymbol>&#9835;</textsymbol>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"(urukhai)","<textsymbol>&#9835;</textsymbol>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"(uruk-hai)","<textsymbol>&#9835;</textsymbol>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"(moria)","<textsymbol>&#9788;</textsymbol>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"(orc)","<textsymbol>&#9658;</textsymbol>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"(sauron)","<textsymbol>&#9668;</textsymbol>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"(mordor)","<textsymbol>&#9668;</textsymbol>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"(ringwraith)","<textsymbol>&#8597;</textsymbol>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"(wraith)","<textsymbol>&#8597;</textsymbol>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"(men)","<textsymbol>&#8252;</textsymbol>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"(evil men)","<textsymbol>&#8252;</textsymbol>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"(evilmen)","<textsymbol>&#8252;</textsymbol>", I)
 
 ;; Same for square brackets
-HTMLKEY=,"\91\dwarf\93\","&#9786",textsymbol
-HTMLKEY=,"\91\dwarven\93\","&#9786",textsymbol
-HTMLKEY=,"\91\elf\93\","&#9787",textsymbol
-HTMLKEY=,"\91\elven\93\","&#9787",textsymbol
-HTMLKEY=,"\91\gandalf\93\","&#9829",textsymbol
-HTMLKEY=,"\91\shire\93\","&#9830",textsymbol
-HTMLKEY=,"\91\rohan\93\","&#9827",textsymbol
-HTMLKEY=,"\91\gondor\93\","&#9824",textsymbol
-HTMLKEY=,"\91\gollum\93\","&#9688",textsymbol
-HTMLKEY=,"\91\dunland\93\","&#9794",textsymbol
-HTMLKEY=,"\91\raider\93\","&#9792",textsymbol
-HTMLKEY=,"\91\isengard\93\","&#9834",textsymbol
-HTMLKEY=,"\91\uruk\93\","&#9835",textsymbol
-HTMLKEY=,"\91\urukhai\93\","&#9835",textsymbol
-HTMLKEY=,"\91\uruk-hai\93\","&#9835",textsymbol
-HTMLKEY=,"\91\moria\93\","&#9788",textsymbol
-HTMLKEY=,"\91\orc\93\","&#9658",textsymbol
-HTMLKEY=,"\91\sauron\93\","&#9668",textsymbol
-HTMLKEY=,"\91\mordor\93\","&#9668",textsymbol
-HTMLKEY=,"\91\ringwraith\93\","&#8597",textsymbol
-HTMLKEY=,"\91\wraith\93\","&#8597",textsymbol
-HTMLKEY=,"\91\men\93\","&#8252",textsymbol
-HTMLKEY=,"\91\evil men\93\","&#8252",textsymbol
-HTMLKEY=,"\91\evilmen\93\","&#8252",textsymbol
+[game_text_replaced] = REPLACE([game_text_replaced],"\91\dwarf\93\","<textsymbol>&#9786;</textsymbol>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"\91\dwarven\93\","<textsymbol>&#9786;</textsymbol>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"\91\elf\93\","<textsymbol>&#9787;</textsymbol>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"\91\elven\93\","<textsymbol>&#9787;</textsymbol>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"\91\gandalf\93\","<textsymbol>&#9829;</textsymbol>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"\91\shire\93\","<textsymbol>&#9830;</textsymbol>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"\91\rohan\93\","<textsymbol>&#9827;</textsymbol>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"\91\gondor\93\","<textsymbol>&#9824;</textsymbol>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"\91\gollum\93\","<textsymbol>&#9688;</textsymbol>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"\91\dunland\93\","<textsymbol>&#9794;</textsymbol>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"\91\raider\93\","<textsymbol>&#9792;</textsymbol>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"\91\isengard\93\","<textsymbol>&#9834;</textsymbol>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"\91\uruk\93\","<textsymbol>&#9835;</textsymbol>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"\91\urukhai\93\","<textsymbol>&#9835;</textsymbol>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"\91\uruk-hai\93\","<textsymbol>&#9835;</textsymbol>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"\91\moria\93\","<textsymbol>&#9788;</textsymbol>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"\91\orc\93\","<textsymbol>&#9658;</textsymbol>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"\91\sauron\93\","<textsymbol>&#9668;</textsymbol>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"\91\mordor\93\","<textsymbol>&#9668;</textsymbol>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"\91\ringwraith\93\","<textsymbol>&#8597;</textsymbol>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"\91\wraith\93\","<textsymbol>&#8597;</textsymbol>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"\91\men\93\","<textsymbol>&#8252;</textsymbol>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"\91\evil men\93\","<textsymbol>&#8252;</textsymbol>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"\91\evilmen\93\","<textsymbol>&#8252;</textsymbol>", I)
 
 ;; Twilight symbol replacements.  These have to exist within the LotR_TCG font
 ;; or this won't work.
-HTMLKEY=,"(1)","!",textsymbol
-HTMLKEY=,"(2)","@",textsymbol
-HTMLKEY=,"(3)","#",textsymbol
-HTMLKEY=,"(4)","$",textsymbol
-HTMLKEY=,"(5)","%",textsymbol
-HTMLKEY=,"(6)","^",textsymbol
-HTMLKEY=,"(7)","&",textsymbol
-HTMLKEY=,"(8)","*",textsymbol
-HTMLKEY=,"(9)","_",textsymbol
-HTMLKEY=,"(X)","=",textsymbol
+[game_text_replaced] = REPLACE([game_text_replaced],"(1)","<textsymbol>!</textsymbol>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"(2)","<textsymbol>@</textsymbol>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"(3)","<textsymbol>#</textsymbol>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"(4)","<textsymbol>$</textsymbol>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"(5)","<textsymbol>%</textsymbol>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"(6)","<textsymbol>^</textsymbol>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"(7)","<textsymbol>&</textsymbol>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"(8)","<textsymbol>*</textsymbol>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"(9)","<textsymbol>_</textsymbol>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"(X)","<textsymbol>=</textsymbol>", I)
 
-HTMLKEY=,"\91\1\93\","!",textsymbol
-HTMLKEY=,"\91\2\93\","@",textsymbol
-HTMLKEY=,"\91\3\93\","#",textsymbol
-HTMLKEY=,"\91\4\93\","$",textsymbol
-HTMLKEY=,"\91\5\93\","%",textsymbol
-HTMLKEY=,"\91\6\93\","^",textsymbol
-HTMLKEY=,"\91\7\93\","&",textsymbol
-HTMLKEY=,"\91\8\93\","*",textsymbol
-HTMLKEY=,"\91\9\93\","_",textsymbol
-HTMLKEY=,"\91\X\93\","=",textsymbol
+[game_text_replaced] = REPLACE([game_text_replaced],"\91\1\93\","<textsymbol>!</textsymbol>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"\91\2\93\","<textsymbol>@</textsymbol>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"\91\3\93\","<textsymbol>#</textsymbol>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"\91\4\93\","<textsymbol>$</textsymbol>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"\91\5\93\","<textsymbol>%</textsymbol>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"\91\6\93\","<textsymbol>^</textsymbol>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"\91\7\93\","<textsymbol>&</textsymbol>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"\91\8\93\","<textsymbol>*</textsymbol>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"\91\9\93\","<textsymbol>_</textsymbol>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"\91\X\93\","<textsymbol>=</textsymbol>", I)
 
 
 ;; Site block replacements
-HTMLKEY=,"(T)","`",textsymbol
-HTMLKEY=,"\91\T\93\","`",textsymbol
-HTMLKEY=,"1T","1`",textsymbol,C
-HTMLKEY=,"2T","2`",textsymbol,C
-HTMLKEY=,"3T","3`",textsymbol,C
-HTMLKEY=,"4T","4`",textsymbol,C
-HTMLKEY=,"5T","5`",textsymbol,C
-HTMLKEY=,"6T","6`",textsymbol,C
-HTMLKEY=,"7T","7`",textsymbol,C
-HTMLKEY=,"8T","8`",textsymbol,C
-HTMLKEY=,"9T","9`",textsymbol,C
+[game_text_replaced] = REPLACE([game_text_replaced],"(T)","<textsymbol>`</textsymbol>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"\91\T\93\","<textsymbol>`</textsymbol>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"1T","<textsymbol>1`</textsymbol>")
+[game_text_replaced] = REPLACE([game_text_replaced],"2T","<textsymbol>2`</textsymbol>")
+[game_text_replaced] = REPLACE([game_text_replaced],"3T","<textsymbol>3`</textsymbol>")
+[game_text_replaced] = REPLACE([game_text_replaced],"4T","<textsymbol>4`</textsymbol>")
+[game_text_replaced] = REPLACE([game_text_replaced],"5T","<textsymbol>5`</textsymbol>")
+[game_text_replaced] = REPLACE([game_text_replaced],"6T","<textsymbol>6`</textsymbol>")
+[game_text_replaced] = REPLACE([game_text_replaced],"7T","<textsymbol>7`</textsymbol>")
+[game_text_replaced] = REPLACE([game_text_replaced],"8T","<textsymbol>8`</textsymbol>")
+[game_text_replaced] = REPLACE([game_text_replaced],"9T","<textsymbol>9`</textsymbol>")
 
-HTMLKEY=,"(K)","~",textsymbol
-HTMLKEY=,"\91\K\93\","~",textsymbol
-HTMLKEY=,"1K","1~",textsymbol,C
-HTMLKEY=,"2K","2~",textsymbol,C
-HTMLKEY=,"3K","3~",textsymbol,C
-HTMLKEY=,"4K","4~",textsymbol,C
-HTMLKEY=,"5K","5~",textsymbol,C
-HTMLKEY=,"6K","6~",textsymbol,C
-HTMLKEY=,"7K","7~",textsymbol,C
-HTMLKEY=,"8K","8~",textsymbol,C
-HTMLKEY=,"9K","9~",textsymbol,C
+[game_text_replaced] = REPLACE([game_text_replaced],"(K)","<textsymbol>~</textsymbol>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"\91\K\93\","<textsymbol>~</textsymbol>", I)
+[game_text_replaced] = REPLACE([game_text_replaced],"1K","<textsymbol>1~</textsymbol>")
+[game_text_replaced] = REPLACE([game_text_replaced],"2K","<textsymbol>2~</textsymbol>")
+[game_text_replaced] = REPLACE([game_text_replaced],"3K","<textsymbol>3~</textsymbol>")
+[game_text_replaced] = REPLACE([game_text_replaced],"4K","<textsymbol>4~</textsymbol>")
+[game_text_replaced] = REPLACE([game_text_replaced],"5K","<textsymbol>5~</textsymbol>")
+[game_text_replaced] = REPLACE([game_text_replaced],"6K","<textsymbol>6~</textsymbol>")
+[game_text_replaced] = REPLACE([game_text_replaced],"7K","<textsymbol>7~</textsymbol>")
+[game_text_replaced] = REPLACE([game_text_replaced],"8K","<textsymbol>8~</textsymbol>")
+[game_text_replaced] = REPLACE([game_text_replaced],"9K","<textsymbol>9~</textsymbol>")
 
 
 ;; Now for replacing regular quotes into smart quotes in the lore
@@ -284,51 +269,52 @@ HTMLKEY=,"9K","9~",textsymbol,C
 
 
 ;; beginning and end of lore string are unambiguous
-[card_full_text] = REPLACE([card_full_text],">\34\",">“")
-[card_full_text] = REPLACE([card_full_text],"\34\<","”<")
-[card_full_text] = REPLACE([card_full_text],">'",">‘")
-[card_full_text] = REPLACE([card_full_text],"'<","’<")
+[lore_replaced] = REPLACE([lore_replaced],">\34\",">“")
+[lore_replaced] = REPLACE([lore_replaced],"\34\<","”<")
+[lore_replaced] = REPLACE([lore_replaced],">'",">‘")
+[lore_replaced] = REPLACE([lore_replaced],"'<","’<")
 
 ;; if a space is on one side, also unambiguous
 ;; Pending a fix from the dev, these are broken
-[card_full_text] = REPLACE([card_full_text]," \34\"," “")
-[card_full_text] = REPLACE([card_full_text],"\34\ ","” ")
-[card_full_text] = REPLACE([card_full_text]," '"," ‘")
-[card_full_text] = REPLACE([card_full_text],"' ","’ ")
+[lore_replaced] = REPLACE([lore_replaced]," \34\"," “")
+[lore_replaced] = REPLACE([lore_replaced],"\34\ ","” ")
+[lore_replaced] = REPLACE([lore_replaced]," '"," ‘")
+[lore_replaced] = REPLACE([lore_replaced],"' ","’ ")
 
 ;; when next to punctuation, it must be an end quote
-[card_full_text] = REPLACE([card_full_text],".\34\",".”")
-[card_full_text] = REPLACE([card_full_text],",\34\",",”")
-[card_full_text] = REPLACE([card_full_text],"?\34\","?”")
-[card_full_text] = REPLACE([card_full_text],"!\34\","!”")
-[card_full_text] = REPLACE([card_full_text],"/\34\","/”")
-[card_full_text] = REPLACE([card_full_text],".'",".’")
-[card_full_text] = REPLACE([card_full_text],",'",",’")
-[card_full_text] = REPLACE([card_full_text],"?'","?’")
-[card_full_text] = REPLACE([card_full_text],"!'","!’")
-[card_full_text] = REPLACE([card_full_text],"/'","/’")
+[lore_replaced] = REPLACE([lore_replaced],".\34\",".”")
+[lore_replaced] = REPLACE([lore_replaced],",\34\",",”")
+[lore_replaced] = REPLACE([lore_replaced],"?\34\","?”")
+[lore_replaced] = REPLACE([lore_replaced],"!\34\","!”")
+[lore_replaced] = REPLACE([lore_replaced],"/\34\","/”")
+[lore_replaced] = REPLACE([lore_replaced],".'",".’")
+[lore_replaced] = REPLACE([lore_replaced],",'",",’")
+[lore_replaced] = REPLACE([lore_replaced],"?'","?’")
+[lore_replaced] = REPLACE([lore_replaced],"!'","!’")
+[lore_replaced] = REPLACE([lore_replaced],"/'","/’")
 
 ;; if we figured out one of the smart quotes and it's right next
 ;; to a dumb quote, we can use that to figure out the other
-[card_full_text] = REPLACE([card_full_text],"\34\‘","“‘")
-[card_full_text] = REPLACE([card_full_text],"\34\’","”’")
-[card_full_text] = REPLACE([card_full_text],"‘\34\","‘“")
-[card_full_text] = REPLACE([card_full_text],"’\34\","’”")
-[card_full_text] = REPLACE([card_full_text],"'“","‘“")
-[card_full_text] = REPLACE([card_full_text],"'”","’”")
-[card_full_text] = REPLACE([card_full_text],"“'","“‘")
-[card_full_text] = REPLACE([card_full_text],"”'","”’")
+[lore_replaced] = REPLACE([lore_replaced],"\34\‘","“‘")
+[lore_replaced] = REPLACE([lore_replaced],"\34\’","”’")
+[lore_replaced] = REPLACE([lore_replaced],"‘\34\","‘“")
+[lore_replaced] = REPLACE([lore_replaced],"’\34\","’”")
+[lore_replaced] = REPLACE([lore_replaced],"'“","‘“")
+[lore_replaced] = REPLACE([lore_replaced],"'”","’”")
+[lore_replaced] = REPLACE([lore_replaced],"“'","“‘")
+[lore_replaced] = REPLACE([lore_replaced],"”'","”’")
 
 ;; possessive apostrophes
-[card_full_text] = REPLACE([card_full_text],"'s","’s")
+[lore_replaced] = REPLACE([lore_replaced],"'s","’s")
 
 ;; finally, if anything evaded all the above, we'll just assume a
 ;; pair of dumb quotes is either open or closed depending on order
-[card_full_text] = REPLACE([card_full_text],"\34\'","“‘")
-[card_full_text] = REPLACE([card_full_text],"'\34\","’”")
+[lore_replaced] = REPLACE([lore_replaced],"\34\'","“‘")
+[lore_replaced] = REPLACE([lore_replaced],"'\34\","’”")
 
 ;; any remaining single quotes are in contractions like ain't or I'm
-[card_full_text] = REPLACE([card_full_text],"'","’")
+[lore_replaced] = REPLACE([lore_replaced],"'","’")
+[game_text_replaced] = REPLACE([game_text_replaced],"'","’")
 
 
 
