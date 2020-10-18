@@ -116,7 +116,7 @@
 ;; Unloaded keywords
 [game_text_replaced] = REPLACE([game_text_replaced],"Battleground.","<b>Battleground.</b>")
 [game_text_replaced] = REPLACE([game_text_replaced],"Besieger.","<b>Besieger.</b>")
-[game_text_replaced] = REPLACE([game_text_replaced],"Corsair.","<b>Corsair.</b>")
+[game_text_replaced] = REPLACE([game_text_replaced],"<start>Corsair.","<b>Corsair.</b>")
 [game_text_replaced] = REPLACE([game_text_replaced],"Dwelling.","<b>Dwelling.</b>")
 [game_text_replaced] = REPLACE([game_text_replaced],"<start>Easterling.","<start><b>Easterling.</b>")
 [game_text_replaced] = REPLACE([game_text_replaced],"Engine.","<b>Engine.</b>")
