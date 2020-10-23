@@ -21,7 +21,7 @@ ELSEIF= [card_size] = double
     OVERSAMPLE = 1
 ELSEIF= [card_size] = original
     DPI=142
-    OVERSAMPLE = 0.1
+    OVERSAMPLE = 2
 ELSE
     DPI=300
     OVERSAMPLE = 2
@@ -228,9 +228,9 @@ RECTANGLE=,<full_card_portrait>,#000000
 <third_icon> = 7.5%,84.5%,10%,10%
 <disclaimer_bar> = 33.5%,94%,61%,2.7%
 
-<game_text> = 22.8%,66.4%,{game_text_width?§},26.5%
+<game_text> = 22.8%,66.4%,[game_text_width],26.5%
 <game_text_default> = 22.8%,66.4%,[default_game_text_width],26.5%
-<site_game_text> = 77.5%,13%,9%,[game_text_width]
+<site_game_text> = 77.5%,12.5%,9%,[game_text_width]
 <site_game_text_default> = 77.5%,12.5%,9%,[default_site_game_text_width]
 
 <collectors_info> = 84.8%,91.8%,10%,2%
@@ -756,7 +756,7 @@ ELSEIF= {template?§} = "back"
     IMAGE = , [back_template], <card_background>, 0, PN
 ELSE=
     RECTANGLE=,0,0,100%,100%,#9C2542
-    TEXT=,"Unrecognized template type: [template]",0,0,100%,100%
+    TEXT=,CONCAT1("Unrecognized template type: ",{template?§}),0,0,100%,100%
 ENDIF
 
 ;;RECTANGLE=,<modifier_type_panel>,#FF00FF
@@ -881,22 +881,25 @@ INCLUDE=game_text_replacements.txt
 [promo_replaced] = REPLACE([promo_replaced],<promo>,)
 [promo_replaced] = REPLACE([promo_replaced],</promo>,)
 
+;;[card_full_text] = CONCAT1({game_text_replaced?§},<lore>,{lore_replaced?§},</lore><promo>,{promo_replaced?§},</promo>)
 [card_full_text] = JOIN([game_text_replaced],<lore>,[lore_replaced],</lore><promo>,[promo_replaced],</promo>)
 [card_full_text] = REPLACE([card_full_text],<lore></lore>,)
 [card_full_text] = REPLACE([card_full_text],<promo></promo>,)
 
-[card_full_text_thin] = JOIN([game_text_replaced_thin],<lore>,[lore_replaced],</lore><promo>,[promo_replaced],</promo>)
+;;[card_full_text_thin] = CONCAT1({game_text_replaced_thin?§},<lore>,{lore_replaced?§},</lore><promo>,{promo_replaced?§},</promo>)
+[card_full_text_thin] = JOIN({game_text_replaced_thin?§},<lore>,[lore_replaced],</lore><promo>,[promo_replaced],</promo>)
 [card_full_text_thin] = REPLACE([card_full_text_thin],<lore></lore>,)
 [card_full_text_thin] = REPLACE([card_full_text_thin],<promo></promo>,)
 ;;[card_full_text_thin] = REPLACE([card_full_text]," ","&#8201;")
 
-;; Finally, draw the game text itself.  
+
+;; Finally, draw the game text itself.
 IF= ([template] = "character") _OR_ ([template] = "modifier") _OR_ ([template] = "support") _OR_ ([template] = "onering")
     IF= [game_text_width] <> ""
         IF= "thin_space" @ {tags?§}
             HTMLTEXT=,[card_full_text_thin],<game_text>,,0,BE,100,gametext
         ELSE
-            HTMLTEXT=,[card_full_text],<game_text>,,0,BE4,100,gametext
+            HTMLTEXT=,"[card_full_text]",<game_text>,,0,BE,100,gametext
         ENDIF
     ELSE
         IF= "thin_space" @ {tags?§}
@@ -913,7 +916,6 @@ ELSEIF = [template] = "site"
             HTMLTEXT=,[card_full_text],<site_game_text>,,270,BE,100,gametext
         ENDIF
     ELSE
-        HTMLTEXT=,[card_full_text],<site_game_text_default>,,270,BE,100,gametext
         IF= "thin_space" @ {tags?§}
             HTMLTEXT=,[card_full_text_thin],<site_game_text_default>,,270,BE,100,gametext
         ELSE
