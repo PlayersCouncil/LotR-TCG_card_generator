@@ -140,3 +140,11 @@
 ;; manually rotated into portrait mode as well.
 ;; Can be one of: True, False
 [rotate_site_templates] = True
+
+;; By default the 'mockup' tag is used on a card by card basis, but if you'd
+;; rather force all cards to be drawn in the mockup style, this will do so
+;; without needing to edit the tags for all cards.
+;; "Mockups" are drawn in a very obviously sketchy style, which makes the
+;; work-in-progress nature impossible to miss.
+[force_mockup] = True
+

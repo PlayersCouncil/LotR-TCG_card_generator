@@ -100,6 +100,7 @@ RECTANGLE=,<full_card_portrait>,#000000
 [mod_title_cap_factor] = 1.15
 [promo_cap_factor] = 1.2
 
+
 [default_icon_font_size] = {14* [font_scale_factor]}
 [default_type_plate_font_size] = {8.8* [font_scale_factor]}
 [default_type_symbol_font_size] = {8.9* [font_scale_factor]}
@@ -174,14 +175,20 @@ RECTANGLE=,<full_card_portrait>,#000000
 [full_template_path] = JOIN([card_template_path],/,[card_size],_res_export/)
 [icon_path] = JOIN([full_template_path], components/)
 [positioned_icon_path] = JOIN([icon_path], positioned/)
+[mockup_positioned_icon_path] = JOIN([positioned_icon_path], mockups/)
 [overlay_path] = JOIN([full_template_path], overlays/)
+[mockup_overlay_path] = JOIN([overlay_path], mockups/)
 
 [character_template] = JOIN([full_template_path],[culture],_character_,[card_size],.png)
+[mockup_character_template] = JOIN([full_template_path],mockups/,[culture],_character_mockup_,[card_size],.png)
 [modifier_template] = JOIN([full_template_path],[culture],_modifier_,[card_size],.png)
+[mockup_modifier_template] = JOIN([full_template_path],mockups/,[culture],_modifier_mockup_,[card_size],.png)
 [back_template] = JOIN([full_template_path],card_back_,[card_size],.png)
 
 [site_standard_template] = JOIN([full_template_path],site_standard_,[card_size],.png)
+[mockup_site_standard_template] = JOIN([full_template_path],mockups/,site_standard_mockup_,[card_size],.png)
 [site_sanctuary_template] = JOIN([full_template_path],site_sanctuary_,[card_size],.png)
+[mockup_site_sanctuary_template] = JOIN([full_template_path],mockups/,site_sanctuary_mockup_,[card_size],.png)
 [custom_site_standard_template] = JOIN([full_template_path],[culture],_standard_,[card_size],.png)
 [custom_site_sanctuary_template] = JOIN([full_template_path],[culture],_sanctuary_,[card_size],.png)
 
@@ -190,9 +197,13 @@ RECTANGLE=,<full_card_portrait>,#000000
 
 
 [artifact_overlay] = JOIN([overlay_path],artifact_,[culture],_,[card_size],.png)
+[mockup_artifact_overlay] = JOIN([mockup_overlay_path],artifact_,[culture],_mockup_,[card_size],.png)
 [culture_overlay] = JOIN([overlay_path],culture_,[culture],_,[card_size],.png)
+[mockup_culture_overlay] = JOIN([mockup_overlay_path],culture_,[culture],_mockup_,[card_size],.png)
 [freeps_twilight_overlay] = JOIN([overlay_path],twilight_freeps_,[card_size],.png)
+[mockup_freeps_twilight_overlay] = JOIN([mockup_overlay_path],twilight_freeps_mockup_,[card_size],.png)
 [shadow_twilight_overlay] = JOIN([overlay_path],twilight_shadow_,[card_size],.png)
+[mockup_shadow_twilight_overlay] = JOIN([mockup_overlay_path],twilight_shadow_mockup_,[card_size],.png)
 [custom_icon_path] = JOIN([positioned_icon_path],[custom_icon],_position_,[card_size],.png)
 
 
@@ -433,7 +444,11 @@ IF= {template?§} = "character"
             ENDIF
 
             ;; Now for the actual card template
-            IMAGE = , [character_template], <card_background>, 0, PN
+            IF= ([force_mockup] = True) _OR_ ("mockup" @ {tags?§})
+                IMAGE = , [mockup_character_template], <card_background>, 0, PN
+            ELSE
+                IMAGE = , [character_template], <card_background>, 0, PN
+            ENDIF
 
         ENDIF
     ENDIF
@@ -507,7 +522,11 @@ IF= {template?§} = "character"
     ;; Minion Site Number
     IF= ([card_type] <> Ally) _AND_ ([site] <> "")
         IF= "disable_site" # {tags?§}
-            IMAGE = , JOIN([positioned_icon_path],minion_site_number_position_,[card_size],.png), <card_background>, 0, PN
+            IF= ([force_mockup] = True) _OR_ ("mockup" @ {tags?§})
+                IMAGE = , JOIN([mockup_positioned_icon_path],minion_site_number_mockup_position_,[card_size],.png), <card_background>, 0, PN
+            ELSE
+                IMAGE = , JOIN([positioned_icon_path],minion_site_number_position_,[card_size],.png), <card_background>, 0, PN
+            ENDIF
         ENDIF
         HTMLTEXT=,"[site]",<third_icon>,,0,BE,100,numbers
     ENDIF
@@ -541,7 +560,12 @@ ELSEIF= ({template?§} = "modifier") _OR_ ({template?§} = "support")
             ENDIF
 
             ;; Now for the actual card template
-            IMAGE = , [modifier_template], <card_background>, 0, PN
+            
+            IF= ([force_mockup] = True) _OR_ ("mockup" @ {tags?§})
+                IMAGE = , [mockup_modifier_template], <card_background>, 0, PN
+            ELSE
+                IMAGE = , [modifier_template], <card_background>, 0, PN
+            ENDIF
         ENDIF
     ENDIF
 
@@ -568,7 +592,12 @@ ELSEIF= ({template?§} = "modifier") _OR_ ({template?§} = "support")
     ;; Artifact overlay if applicable
     IF= ([card_type] = "Artifact") _OR_ ("artifact_overlay" @ {tags?§})
         IF= ("full_art" # {tags?§}) _OR_ ("artifact_overlay" @ {tags?§})
-            IMAGE = ,[artifact_overlay], <card_background>, 0, PN
+            
+            IF= ([force_mockup] = True) _OR_ ("mockup" @ {tags?§})
+                IMAGE = ,[mockup_artifact_overlay], <card_background>, 0, PN
+            ELSE
+                IMAGE = ,[artifact_overlay], <card_background>, 0, PN
+            ENDIF
         ENDIF
         ;;RECTANGLE=,<card_background>,#00FFFF
     ENDIF
@@ -591,7 +620,11 @@ ELSEIF= ({template?§} = "modifier") _OR_ ({template?§} = "support")
     ;; Site Modifiers
     IF= [site] <> ""
         IF= "disable_site" # {tags?§}
-            IMAGE = , JOIN([positioned_icon_path],minion_site_number_position_,[card_size],.png), <card_background>, 0, PN
+            IF= ([force_mockup] = True) _OR_ ("mockup" @ {tags?§})
+                IMAGE = , JOIN([mockup_positioned_icon_path],minion_site_number_mockup_position_,[card_size],.png), <card_background>, 0, PN
+            ELSE
+                IMAGE = , JOIN([positioned_icon_path],minion_site_number_position_,[card_size],.png), <card_background>, 0, PN
+            ENDIF
         ENDIF
         HTMLTEXT=,"[site]",<third_icon>,,0,BE,100,numbers
     ENDIF
@@ -641,7 +674,8 @@ ELSEIF= {template?§} = "site"
             ;; Now for the actual card template
             ;; If the culture is set, use that to look up a custom template name
             IF= [culture] <> ""
-                IF= [card_type] = "Sanctuary"
+                IF= ([card_type] = "Sanctuary") _OR_ ([card_subtype] = "Sanctuary")
+
                     IF= [rotate_site_templates] = True
                         IMAGE = , [custom_site_sanctuary_template], <card_background>, 270, PN
                     ELSE
@@ -655,17 +689,34 @@ ELSEIF= {template?§} = "site"
                     ENDIF
                 ENDIF
             ELSE
-                IF= [card_type] = "Sanctuary"
-                    IF= [rotate_site_templates] = True
-                        IMAGE = , [site_sanctuary_template], <card_background>, 270, PN
+                IF= ([card_type] = "Sanctuary") _OR_ ([card_subtype] = "Sanctuary")
+                    IF= ([force_mockup] = True) _OR_ ("mockup" @ {tags?§})
+                        IF= [rotate_site_templates] = True
+                            IMAGE = , [mockup_site_sanctuary_template], <card_background>, 270, PN
+                        ELSE
+                            IMAGE = , [mockup_site_sanctuary_template], <card_background>, 0, PN
+                        ENDIF
                     ELSE
-                        IMAGE = , [site_sanctuary_template], <card_background>, 0, PN
+                        IF= [rotate_site_templates] = True
+                            IMAGE = , [site_sanctuary_template], <card_background>, 270, PN
+                        ELSE
+                            IMAGE = , [site_sanctuary_template], <card_background>, 0, PN
+                        ENDIF
                     ENDIF
+
                 ELSE
-                    IF= [rotate_site_templates] = True
-                        IMAGE = , [site_standard_template], <card_background>, 270, PN
+                    IF= ([force_mockup] = True) _OR_ ("mockup" @ {tags?§})
+                        IF= [rotate_site_templates] = True
+                            IMAGE = , [mockup_site_standard_template], <card_background>, 270, PN
+                        ELSE
+                            IMAGE = , [mockup_site_standard_template], <card_background>, 0, PN
+                        ENDIF
                     ELSE
-                        IMAGE = , [site_standard_template], <card_background>, 0, PN
+                        IF= [rotate_site_templates] = True
+                            IMAGE = , [site_standard_template], <card_background>, 270, PN
+                        ELSE
+                            IMAGE = , [site_standard_template], <card_background>, 0, PN
+                        ENDIF
                     ENDIF
                 ENDIF
             ENDIF
@@ -686,32 +737,63 @@ ELSEIF= {template?§} = "site"
 
     ;; Site Compass Icon / Site Number
     IF= "T" @ [site]
-        IMAGE = , JOIN([positioned_icon_path],site_block_tower_position_,[card_size],.png), <card_background>, 270, PN
+        IF= ([force_mockup] = True) _OR_ ("mockup" @ {tags?§})
+            IMAGE = , JOIN([mockup_positioned_icon_path]site_block_tower_mockup_position_,[card_size],.png), <card_background>, 270, PN
+        ELSE
+            IMAGE = , JOIN([positioned_icon_path],site_block_tower_position_,[card_size],.png), <card_background>, 270, PN
+        ENDIF
         HTMLTEXT=,"[sitenum]",<site_tower_site_number_icon>,,270,BE,100,numbers
     ELSEIF= "K" @ [site]
-        IMAGE = , JOIN([positioned_icon_path],site_block_king_position_,[card_size],.png), <card_background>, 270, PN
+        IF= ([force_mockup] = True) _OR_ ("mockup" @ {tags?§})
+            IMAGE = , JOIN([mockup_positioned_icon_path]site_block_king_mockup_position_,[card_size],.png), <card_background>, 270, PN
+        ELSE
+            IMAGE = , JOIN([positioned_icon_path],site_block_king_position_,[card_size],.png), <card_background>, 270, PN
+        ENDIF
         HTMLTEXT=,"[sitenum]",<site_king_site_number_icon>,,270,BE,100,numbers
     ELSEIF= [site] <> ""
-        IMAGE = , JOIN([positioned_icon_path],site_block_fellowship_position_,[card_size],.png), <card_background>, 270, PN
+        IF= ([force_mockup] = True) _OR_ ("mockup" @ {tags?§})
+            IMAGE = , JOIN([mockup_positioned_icon_path]site_block_fellowship_mockup_position_,[card_size],.png), <card_background>, 270, PN
+        ELSE
+            IMAGE = , JOIN([positioned_icon_path],site_block_fellowship_position_,[card_size],.png), <card_background>, 270, PN
+        ENDIF
         HTMLTEXT=,"[sitenum]",<site_site_number_icon>,,270,BE,100,numbers
     ELSE
-        IMAGE = , JOIN([positioned_icon_path],site_block_shadows_position_,[card_size],.png), <card_background>, 270, PN
+        IF= ([force_mockup] = True) _OR_ ("mockup" @ {tags?§})
+            IMAGE = , JOIN([mockup_positioned_icon_path]site_block_shadows_mockup_position_,[card_size],.png), <card_background>, 270, PN
+        ELSE
+            IMAGE = , JOIN([positioned_icon_path],site_block_shadows_position_,[card_size],.png), <card_background>, 270, PN
+        ENDIF
     ENDIF
 
 
     ;; Site Arrows
     IF= "right_arrow" @ {tags?§}
-        IF= [card_type] = "Sanctuary"
-            IMAGE = , JOIN([positioned_icon_path],site_arrow_right_sanctuary_position_,[card_size],.png), <card_background>, 270, PN
+        IF= ([card_type] = "Sanctuary") _OR_ ([card_subtype] = "Sanctuary")
+            IF= ([force_mockup] = True) _OR_ ("mockup" @ {tags?§})
+                IMAGE = , JOIN([mockup_positioned_icon_path]site_arrow_right_sanctuary_mockup_position_,[card_size],.png), <card_background>, 270, PN
+            ELSE
+                IMAGE = , JOIN([positioned_icon_path],site_arrow_right_sanctuary_position_,[card_size],.png), <card_background>, 270, PN
+            ENDIF
         ELSE
-            IMAGE = , JOIN([positioned_icon_path],site_arrow_right_position_,[card_size],.png), <card_background>, 270, PN
+            IF= ([force_mockup] = True) _OR_ ("mockup" @ {tags?§})
+                IMAGE = , JOIN([mockup_positioned_icon_path]site_arrow_right_mockup_position_,[card_size],.png), <card_background>, 270, PN
+            ELSE
+                IMAGE = , JOIN([positioned_icon_path],site_arrow_right_position_,[card_size],.png), <card_background>, 270, PN
+            ENDIF
         ENDIF
-
     ELSE
-        IF= [card_type] = "Sanctuary"
-            IMAGE = , JOIN([positioned_icon_path],site_arrow_left_sanctuary_position_,[card_size],.png), <card_background>, 270, PN
+        IF= ([card_type] = "Sanctuary") _OR_ ([card_subtype] = "Sanctuary")
+            IF= ([force_mockup] = True) _OR_ ("mockup" @ {tags?§})
+                IMAGE = , JOIN([mockup_positioned_icon_path]site_arrow_left_sanctuary_mockup_position_,[card_size],.png), <card_background>, 270, PN
+            ELSE
+                IMAGE = , JOIN([positioned_icon_path],site_arrow_left_sanctuary_position_,[card_size],.png), <card_background>, 270, PN
+            ENDIF
         ELSE
-            IMAGE = , JOIN([positioned_icon_path],site_arrow_left_position_,[card_size],.png), <card_background>, 270, PN
+            IF= ([force_mockup] = True) _OR_ ("mockup" @ {tags?§})
+                IMAGE = , JOIN([mockup_positioned_icon_path]site_arrow_left_mockup_position_,[card_size],.png), <card_background>, 270, PN
+            ELSE
+                IMAGE = , JOIN([positioned_icon_path],site_arrow_left_position_,[card_size],.png), <card_background>, 270, PN
+            ENDIF
         ENDIF
     ENDIF
 
@@ -764,7 +846,12 @@ ENDIF
 
 ;; Culture Icon
 IF= ("full_art" @ {tags?§}) _AND_ ("onering" # {template?§}) _AND_ ("disable_culture" # {tags?§}) _AND_ ( ([card_type] <> "modifier") _OR_ ("artifact_overlay" # {tags?§}))
-    IMAGE = , [culture_overlay], <card_background>, 0, PN
+    
+    IF= ([force_mockup] = True) _OR_ ("mockup" @ {tags?§})
+        IMAGE = , [mockup_culture_overlay], <card_background>, 0, PN
+    ELSE
+        IMAGE = , [culture_overlay], <card_background>, 0, PN
+    ENDIF
 ENDIF
 
 
@@ -772,18 +859,41 @@ IF= [twilight] <> ""
     ;; Follower Twilight Icons
     IF= ([card_type] = "Follower") _OR_ ("highlight_twilight" @ {tags?§})
         IF= "shadow" @ {tags?§}
-            IMAGE = , JOIN([positioned_icon_path],follower_shadow_position_,[card_size],.png), <card_background>, 0, PN
+            
+            IF= ([force_mockup] = True) _OR_ ("mockup" @ {tags?§})
+                IMAGE = , JOIN([mockup_positioned_icon_path],follower_shadow_mockup_position_,[card_size],.png), <card_background>, 0, PN
+            ELSE
+                IMAGE = , JOIN([positioned_icon_path],follower_shadow_position_,[card_size],.png), <card_background>, 0, PN
+            ENDIF
         ELSE
-            IMAGE = , JOIN([positioned_icon_path],follower_freeps_position_,[card_size],.png), <card_background>, 0, PN
+            
+            IF= ([force_mockup] = True) _OR_ ("mockup" @ {tags?§})
+                IMAGE = , JOIN([mockup_positioned_icon_path],follower_freeps_mockup_position_,[card_size],.png), <card_background>, 0, PN
+            ELSE
+                IMAGE = , JOIN([positioned_icon_path],follower_freeps_position_,[card_size],.png), <card_background>, 0, PN
+            ENDIF
         ENDIF
     ELSEIF= [template] = "site"
         ;; Twilight Cost Icon
-        IMAGE = , JOIN([positioned_icon_path],site_twilight_number_position_,[card_size],.png), <card_background>, 270, PN
+        
+        IF= ([force_mockup] = True) _OR_ ("mockup" @ {tags?§})
+            IMAGE = , JOIN([mockup_positioned_icon_path],site_twilight_number_mockup_position_,[card_size],.png), <card_background>, 270, PN
+        ELSE
+            IMAGE = , JOIN([positioned_icon_path],site_twilight_number_position_,[card_size],.png), <card_background>, 270, PN
+        ENDIF
     ELSEIF= ("full_art" @ {tags?§}) _AND_ ("disable_twilight" # {tags?§})
         IF= ("free_peoples" @ {tags?§}) _OR_ ("shadow" # {tags?§})
-            IMAGE = , [freeps_twilight_overlay], <card_background>, 0, PN
+            IF= ([force_mockup] = True) _OR_ ("mockup" @ {tags?§})
+                IMAGE = , [mockup_freeps_twilight_overlay], <card_background>, 0, PN
+            ELSE
+                IMAGE = , [freeps_twilight_overlay], <card_background>, 0, PN
+            ENDIF
         ELSE
-            IMAGE = , [shadow_twilight_overlay], <card_background>, 0, PN
+            IF= ([force_mockup] = True) _OR_ ("mockup" @ {tags?§})
+                IMAGE = , [mockup_shadow_twilight_overlay], <card_background>, 0, PN
+            ELSE
+                IMAGE = , [shadow_twilight_overlay], <card_background>, 0, PN
+            ENDIF
         ENDIF
     ENDIF
 
@@ -801,7 +911,12 @@ ENDIF
 
 IF= [strength] <> ""
     IF= "disable_strength" # {tags?§}
-        IMAGE = , JOIN([positioned_icon_path],strength_position_,[card_size],.png), <card_background>, 0, PN
+        
+        IF= ([force_mockup] = True) _OR_ ("mockup" @ {tags?§})
+            IMAGE = , JOIN([mockup_positioned_icon_path],strength_mockup_position_,[card_size],.png), <card_background>, 0, PN
+        ELSE
+            IMAGE = , JOIN([positioned_icon_path],strength_position_,[card_size],.png), <card_background>, 0, PN
+        ENDIF
     ENDIF
     HTMLTEXT=,"[strength]",<strength_icon>,,0,BE,100,numbers
 ENDIF
@@ -809,23 +924,40 @@ ENDIF
 ;;Vitality
 IF= [vitality] <> ""
     IF= "disable_vitality" # {tags?§}
-        IMAGE = , JOIN([positioned_icon_path],vitality_position_,[card_size],.png), <card_background>, 0, PN
+
+        IF= ([force_mockup] = True) _OR_ ("mockup" @ {tags?§})
+            IMAGE = , JOIN([mockup_positioned_icon_path],vitality_mockup_position_,[card_size],.png), <card_background>, 0, PN
+        ELSE
+            IMAGE = , JOIN([positioned_icon_path],vitality_position_,[card_size],.png), <card_background>, 0, PN
+        ENDIF
     ENDIF
     HTMLTEXT=,"[vitality]",<vitality_icon>,,0,BE,100,numbers
 ENDIF
 
 ;; Signets
 IF= ([signet] <> "") _AND_ _NOT_ ("disable_signet" @ {tags?§})
-    IMAGE = , JOIN([positioned_icon_path],signet_,[signet],_position_,[card_size],.png), <card_background>, 0, PN
+    
+    IF= ([force_mockup] = True) _OR_ ("mockup" @ {tags?§})
+        IMAGE = , JOIN([mockup_positioned_icon_path],signet_,[signet],_mockup_position_,[card_size],.png), <card_background>, 0, PN
+    ELSE
+        IMAGE = , JOIN([positioned_icon_path],signet_,[signet],_position_,[card_size],.png), <card_background>, 0, PN
+    ENDIF
 ENDIF
 
 ;; Resistance and ring-bearer
 IF= ([card_type] <> Minion) _AND_ ([resistance] <> "")
     IF= "disable_resistance" # {tags?§}
-        IF= "ring_bearer" @ {tags?§}
-            IMAGE = , JOIN([positioned_icon_path],resistance_ring_combined_position_,[card_size],.png), <card_background>, 0, PN
+        IF= ([force_mockup] = True) _OR_ ("mockup" @ {tags?§})
+            IMAGE = , JOIN([mockup_positioned_icon_path],resistance_mockup_position_,[card_size],.png), <card_background>, 0, PN
         ELSE
             IMAGE = , JOIN([positioned_icon_path],resistance_position_,[card_size],.png), <card_background>, 0, PN
+        ENDIF
+        IF= ("ring_bearer" @ {tags?§}) _OR_ ("ring-bearer" @ {tags?§})
+            IF= ([force_mockup] = True) _OR_ ("mockup" @ {tags?§})
+                IMAGE = , JOIN([mockup_positioned_icon_path],resistance_ring_mockup_position_,[card_size],.png), <card_background>, 0, PN
+            ELSE
+                IMAGE = , JOIN([positioned_icon_path],resistance_ring_position_,[card_size],.png), <card_background>, 0, PN
+            ENDIF
         ENDIF
     ENDIF
     HTMLTEXT=,"[resistance]",<third_icon>,,0,BE,100,numbers
@@ -897,7 +1029,7 @@ INCLUDE=game_text_replacements.txt
 IF= ([template] = "character") _OR_ ([template] = "modifier") _OR_ ([template] = "support") _OR_ ([template] = "onering")
     IF= [game_text_width] <> ""
         IF= "thin_space" @ {tags?§}
-            HTMLTEXT=,[card_full_text_thin],<game_text>,,0,BE,100,gametext
+            HTMLTEXT=,"[card_full_text_thin]",<game_text>,,0,BE,100,gametext
         ELSE
             HTMLTEXT=,"[card_full_text]",<game_text>,,0,BE,100,gametext
         ENDIF
