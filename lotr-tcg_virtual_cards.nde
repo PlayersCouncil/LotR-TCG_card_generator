@@ -65,10 +65,12 @@ CARDSIZE=2.5,3.5
 [game_text_scale] = ""
 [game_text_spacing] = ""
 [lore_spacing] = ""
-[title_font_size] = ""
-[subtitle_font_size] = ""
+[title_area_scale] = ""
+[title_text_scale] = ""
+[subtitle_text_scale] = ""
 [title_color_override] = ""
 [type_color_override] = ""
+[type_text_scale] = ""
 [icon_text_color] = ""
 [twilight_color] = ""
 [border_color] = ""
@@ -83,64 +85,88 @@ LINK= [spreadsheet_path]
 RECTANGLE=,<card_background>,#FFFFFF
 RECTANGLE=,<full_card_portrait>,#000000
 
-;; If certain values are not filled in, we will use these values instead
+;; Spacing and customizable width defaults
 [default_game_text_spacing] = 98
 [default_lore_spacing] = 98
 [default_game_text_width] = 69%
 [default_site_game_text_width] = 74%
-[default_character_title_font_size] = {9.7 * [font_scale_factor]}
-[default_character_subtitle_font_size] = {7.8 * [font_scale_factor]}
-[default_modifier_title_font_size] = {9 * [font_scale_factor]}
-[default_modifier_subtitle_font_size] = {7.6 * [font_scale_factor]}
-[default_site_title_font_size] = {9 * [font_scale_factor]}
-[default_ring_title_font_size] = {11 * [font_scale_factor]}
+[default_mod_title_text_width] = 38%
 
+
+;; Title/Subtitle font sizes
+[default_character_title_font_size] = {9.7 * [font_scale_factor]}
+[custom_character_title_font_size] = {[default_character_title_font_size] * {title_text_scale?§}}
+[default_character_subtitle_font_size] = {7.8 * [font_scale_factor]}
+[custom_character_subtitle_font_size] = {[default_character_subtitle_font_size] * {subtitle_text_scale?§}}
+[default_modifier_title_font_size] = {9 * [font_scale_factor]}
+[custom_modifier_title_font_size] = {[default_modifier_title_font_size] * {title_text_scale?§}}
+[default_modifier_subtitle_font_size] = {7.6 * [font_scale_factor]}
+[custom_modifier_subtitle_font_size] = {[default_modifier_subtitle_font_size] * {subtitle_text_scale?§}}
+[default_site_title_font_size] = {9 * [font_scale_factor]}
+[custom_site_title_font_size] = {[default_site_title_font_size] * {title_text_scale?§}}
+[default_ring_title_font_size] = {11 * [font_scale_factor]}
+[custom_ring_title_font_size] = {[default_ring_title_font_size] * {title_text_scale?§}}
+
+;; Icon and type plate font sizes
+[default_icon_font_size] = {14* [font_scale_factor]}
+[default_type_plate_font_size] = {8.8* [font_scale_factor]}
+[custom_type_plate_font_size] = {[default_type_plate_font_size] * {type_text_scale?§}}
+[default_type_symbol_font_size] = {8.9* [font_scale_factor]}
+[custom_type_symbol_font_size] = {[default_type_symbol_font_size] * {type_text_scale?§}}
+
+
+;; Small Caps font sizes
 [title_cap_factor] = 1.2
 [type_title_cap_factor] = 1.1
 [mod_title_cap_factor] = 1.15
 [promo_cap_factor] = 1.2
 
+[default_char_title_cap_font_size] = {[default_character_title_font_size] * [title_cap_factor]}
+[custom_char_title_cap_font_size] = {[default_char_title_cap_font_size] * {title_text_scale?§}}
+[default_char_subtitle_cap_font_size] = {[default_character_subtitle_font_size] * [title_cap_factor]}
+[custom_char_subtitle_cap_font_size] = {[default_char_subtitle_cap_font_size] * {subtitle_text_scale?§}}
 
-[default_icon_font_size] = {14* [font_scale_factor]}
-[default_type_plate_font_size] = {8.8* [font_scale_factor]}
-[default_type_symbol_font_size] = {8.9* [font_scale_factor]}
-[default_text_symbol_font_size] = {7.4* [font_scale_factor]}
+[default_mod_title_cap_font_size] = {[default_modifier_title_font_size] * [mod_title_cap_factor]}
+[custom_mod_title_cap_font_size] = {[default_mod_title_cap_font_size] * {title_text_scale?§}}
+[default_mod_subtitle_cap_font_size] = {[default_modifier_subtitle_font_size] * [mod_title_cap_factor]}
+[custom_mod_subtitle_cap_font_size] = {[default_mod_subtitle_cap_font_size] * {subtitle_text_scale?§}}
 
+[default_ring_title_cap_font_size] = {[default_ring_title_font_size] * [mod_title_cap_factor]}
+[custom_ring_title_cap_font_size] = {[default_ring_title_cap_font_size] * {title_text_scale?§}}
+
+[default_type_plate_cap_font_size] = {[default_type_plate_font_size] * [type_title_cap_factor]}
+[custom_type_plate_cap_font_size] = {[default_type_plate_cap_font_size] * {type_text_scale?§}}
+
+
+;; All other font sizes
 [default_game_text_font_size] = {7.4* [font_scale_factor]}
+[custom_game_text_font_size] = {[default_game_text_font_size] * {game_text_scale?§}}
+[default_text_symbol_font_size] = {7.4* [font_scale_factor]}
+[custom_text_symbol_font_size] = {[default_text_symbol_font_size] * {game_text_scale?§}}
 [default_helper_text_font_size] = {7.25* [font_scale_factor]}
+[custom_helper_text_font_size] = {[default_helper_text_font_size] * {game_text_scale?§}}
 [default_lore_font_size] = {7.5* [font_scale_factor]}
+[custom_lore_font_size] = {[default_lore_font_size] * {game_text_scale?§}}
 [default_promo_font_size] = {7.1* [font_scale_factor]}
+[custom_promo_font_size] = {[default_promo_font_size] * {game_text_scale?§}}
 [default_promo_cap_font_size] = {[default_promo_font_size] * [promo_cap_factor]}
+[custom_promo_cap_font_size] = {[default_promo_cap_font_size] * {game_text_scale?§}}
 
 [default_coll_info_font_size] = {3.7* [font_scale_factor]}
 [default_coll_symbol_font_size] = {3.2* [font_scale_factor]}
 [default_coll_plus_font_size] = {4.75* [font_scale_factor]}
 
-[custom_game_text_font_size] = {[default_game_text_font_size] * {game_text_scale?§}}
-[custom_text_symbol_font_size] = {[default_text_symbol_font_size] * {game_text_scale?§}}
-[custom_helper_text_font_size] = {[default_helper_text_font_size] * {game_text_scale?§}}
-[custom_lore_font_size] = {[default_lore_font_size] * {game_text_scale?§}}
-[custom_promo_font_size] = {[default_promo_font_size] * {game_text_scale?§}}
-[custom_promo_cap_font_size] = {[default_promo_cap_font_size] * {game_text_scale?§}}
+
+
+
+
+
+
 
 ;;{default_character_title_font_size * char_title_cap_factor}
 
 ;;[default_char_title_cap_font_size] = {[default_character_title_font_size] * [char_title_cap_factor]}
-[default_char_title_cap_font_size] = {[default_character_title_font_size] * [title_cap_factor]}
-[custom_char_title_cap_font_size] = {{title_font_size?§} * [title_cap_factor]}
-[default_char_subtitle_cap_font_size] = {[default_character_subtitle_font_size] * [title_cap_factor]}
-[custom_char_subtitle_cap_font_size] = {{subtitle_font_size?§} * [title_cap_factor]}
 
-[default_mod_title_cap_font_size] = {[default_modifier_title_font_size] * [mod_title_cap_factor]}
-[custom_mod_title_cap_font_size] = {{title_font_size?§} * [mod_title_cap_factor]}
-[default_mod_subtitle_cap_font_size] = {[default_modifier_subtitle_font_size] * [mod_title_cap_factor]}
-[custom_mod_subtitle_cap_font_size] = {{subtitle_font_size?§} * [mod_title_cap_factor]}
-
-[default_ring_title_cap_font_size] = {[default_ring_title_font_size] * [mod_title_cap_factor]}
-[custom_ring_title_cap_font_size] = {{title_font_size?§} * [mod_title_cap_factor]}
-
-
-[default_type_plate_cap_font_size] = {[default_type_plate_font_size] * [type_title_cap_factor]}
 
 
 [default_border_color] = #000000
@@ -221,9 +247,10 @@ RECTANGLE=,<full_card_portrait>,#000000
 ;;RECTANGLE=,<card_portrait>,#00FFFF
 
 <character_unique> = 19.5%, 4.2%, 3%, 5%
-<character_title> = 21.5%, 4.7%, 58%, 4%
-<character_subtitle> = 21.6%, 8.8%, 58%, 4%
-<modifier_title> = 6.5%, 15.7%, 9.6%, 38%
+<character_title> = 19.5%, 4.7%, 58%, 4%
+<character_subtitle> = 19.6%, 8.8%, 58%, 4%
+<modifier_title> = 6.5%, 15.7%, 9.6%, {{title_area_scale?§} * [default_mod_title_text_width]}
+<modifier_title_default> = 6.5%, 15.7%, 9.6%, [default_mod_title_text_width]
 <site_title> = 7.5%, 24.9%, 4.5%, 50%
 
 <character_type_panel> = 15%,58.5%,70%,3.8%
@@ -239,9 +266,9 @@ RECTANGLE=,<full_card_portrait>,#000000
 <third_icon> = 7.5%,84.5%,10%,10%
 <disclaimer_bar> = 33.5%,94%,61%,2.7%
 
-<game_text> = 22.8%,66.4%,[game_text_width],26.5%
+<game_text> = 22.8%,66.4%,{{game_text_width?§} * [default_game_text_width]},26.5%
 <game_text_default> = 22.8%,66.4%,[default_game_text_width],26.5%
-<site_game_text> = 77.5%,12.5%,9%,[game_text_width]
+<site_game_text> = 77.5%,12.5%,9%,{{game_text_width?§} * [default_game_text_width]}
 <site_game_text_default> = 77.5%,12.5%,9%,[default_site_game_text_width]
 
 <collectors_info> = 84.8%,91.8%,10%,2%
@@ -250,26 +277,27 @@ RECTANGLE=,<full_card_portrait>,#000000
 ;; Set up our fonts for when we use HTML rendering (which is most everywhere).
 ;; Line spacing can be defined per card in the CSV, so we integrate it here.
 
-SETFONT= chartitle,[title_font],{title_font_size?§},[default_character_title_font_size],DZA,{game_text_color?§},[default_game_text_color],{title_color_override?§},LEFT
+SETFONT= hiddendot,[title_font],[custom_character_title_font_size],[default_character_title_font_size],DZA,#00000000,#00000000,#00000000,
+SETFONT= chartitle,[title_font],[custom_character_title_font_size],[default_character_title_font_size],DZA,{game_text_color?§},[default_game_text_color],{title_color_override?§},LEFT
 SETFONT= chartitlecap,[title_font],[custom_char_title_cap_font_size],[default_char_title_cap_font_size],D,{game_text_color?§},[default_game_text_color],{title_color_override?§}
-SETFONT= charsubtitle,[title_font],{subtitle_font_size?§},[default_character_subtitle_font_size],DZA,{game_text_color?§},[default_game_text_color],{title_color_override?§},LEFT
+SETFONT= charsubtitle,[title_font],[custom_character_subtitle_font_size],[default_character_subtitle_font_size],DZA,{game_text_color?§},[default_game_text_color],{title_color_override?§},LEFT
 SETFONT= charsubtitlecap,[title_font],[custom_char_subtitle_cap_font_size],[default_char_subtitle_cap_font_size],D,{game_text_color?§},[default_game_text_color],{title_color_override?§}
 
-SETFONT= modtitle,[title_font],{title_font_size?§},[default_modifier_title_font_size],DA,{game_text_color?§},[default_game_text_color],{title_color_override?§},RIGHT
+SETFONT= modtitle,[title_font],[custom_modifier_title_font_size],[default_modifier_title_font_size],DA,{game_text_color?§},[default_game_text_color],{title_color_override?§},RIGHT
 ;; this is doubled just for the margins
-SETFONT= modtitletop,[title_font],{title_font_size?§},[default_modifier_title_font_size],DZA,{game_text_color?§},[default_game_text_color],{title_color_override?§},RIGHT
+SETFONT= modtitletop,[title_font],[custom_modifier_title_font_size],[default_modifier_title_font_size],DZA,{game_text_color?§},[default_game_text_color],{title_color_override?§},RIGHT
 SETFONT= modtitlecap,[title_font],[custom_mod_title_cap_font_size],[default_mod_title_cap_font_size],D,{game_text_color?§},[default_game_text_color],{title_color_override?§}
 
-SETFONT= modsubtitle,[title_font],{subtitle_font_size?§},[default_modifier_subtitle_font_size],DZA,{game_text_color?§},[default_game_text_color],{title_color_override?§},RIGHT
+SETFONT= modsubtitle,[title_font],[custom_modifier_subtitle_font_size],[default_modifier_subtitle_font_size],DZA,{game_text_color?§},[default_game_text_color],{title_color_override?§},RIGHT
 SETFONT= modsubtitlecap,[title_font],[custom_mod_subtitle_cap_font_size],[default_mod_subtitle_cap_font_size],D,{game_text_color?§},[default_game_text_color],{title_color_override?§}
 
-SETFONT= sitetitle,[title_font],{title_font_size?§},[default_site_title_font_size],DZA,{game_text_color?§},[default_game_text_color],{title_color_override?§},CENTER
-SETFONT= ringtitle,[title_font],{title_font_size?§},[default_ring_title_font_size],DZA,{game_text_color?§},[default_game_text_color],{title_color_override?§},RIGHT
+SETFONT= sitetitle,[title_font],[custom_site_title_font_size],[default_site_title_font_size],DZA,{game_text_color?§},[default_game_text_color],{title_color_override?§},CENTER
+SETFONT= ringtitle,[title_font],[custom_ring_title_font_size],[default_ring_title_font_size],DZA,{game_text_color?§},[default_game_text_color],{title_color_override?§},RIGHT
 SETFONT= ringtitlecap,[title_font],[custom_ring_title_cap_font_size],[default_ring_title_cap_font_size],DZA,{game_text_color?§},[default_game_text_color],{title_color_override?§}
 
-SETFONT= typeplate,[title_font],,[default_type_plate_font_size],DZA,{game_text_color?§},[default_game_text_color],{type_color_override?§},CENTER
-SETFONT= typeplatecap,[title_font],,[default_type_plate_cap_font_size],DZA,{game_text_color?§},[default_game_text_color],{type_color_override?§}
-SETFONT= typesymbol,[game_text_font],,[default_type_symbol_font_size],D,{game_text_color?§},[default_game_text_color],{type_color_override?§}
+SETFONT= typeplate,[title_font],[custom_type_plate_font_size],[default_type_plate_font_size],DZA,{game_text_color?§},[default_game_text_color],{type_color_override?§},CENTER
+SETFONT= typeplatecap,[title_font],[custom_type_plate_cap_font_size],[default_type_plate_cap_font_size],DZA,{game_text_color?§},[default_game_text_color],{type_color_override?§}
+SETFONT= typesymbol,[game_text_font],[custom_type_symbol_font_size],[default_type_symbol_font_size],D,{game_text_color?§},[default_game_text_color],{type_color_override?§}
 
 SETFONT= gametext,[game_text_font],[custom_game_text_font_size],[default_game_text_font_size],D,{game_text_color?§},[default_game_text_color],,LEFT
 SETFONT= textsymbol,[game_text_font],[custom_text_symbol_font_size],[default_text_symbol_font_size],D,{game_text_color?§},[default_game_text_color]
@@ -455,26 +483,18 @@ IF= {template?§} = "character"
 
     ;; Debug drawing the title/subtitle area, before the drawing of the text so it remains visible
     IF= [debug_regions] = "True"
+        ;;RECTANGLE=,<character_unique>,#00FF00
         RECTANGLE=,<character_title>,#00FFFF
+
         RECTANGLE=,<character_subtitle>,#00FFFF
     ENDIF
 
-    ;; Character Title
     IF=([unique] = T) _OR_ ([unique] = Y)
-        HTMLTEXT=,"•",<character_unique>,,0,BE,100,chartitlecap
-    ENDIF
-
-
-
-    ;;HTMLTEXT=,REPLACE({title?§}, "G", "<chartitlecap>G</chartitlecap>"),<character_title>,,0,BE,100,chartitle
-    ;;HTMLTEXT=,[titlecaps_char],<character_title>,,0,BE,100,chartitle
-    HTMLTEXT=,CONCAT1({titlecaps_char?§},""),<character_title>,,0,BE,100,chartitle
-
-
-    ;; Character Subtitle
-    IF= [subtitle] <> ""
-        ;; The pointless concat is to avoid one-card CSVs producing quotes around the subtitle spontaneously
-        HTMLTEXT=,CONCAT1({subtitlecaps_char?§},""),<character_subtitle>,,0,BE,100,charsubtitle
+        HTMLTEXT=,CONCAT1("<chartitlecap>•</chartitlecap>",{titlecaps_char?§}," "),<character_title>,,0,BE,100,chartitle
+        HTMLTEXT=,CONCAT1("<chartitlecap>&nbsp;</chartitlecap>",{subtitlecaps_char?§}," "),<character_subtitle>,,0,BE,100,charsubtitle
+    ELSE
+        HTMLTEXT=,CONCAT1("<chartitlecap>&nbsp;</chartitlecap>"{titlecaps_char?§}," "),<character_title>,,0,BE,100,chartitle
+        HTMLTEXT=,CONCAT1("<chartitlecap>&nbsp;</chartitlecap>",{subtitlecaps_char?§}," "),<character_subtitle>,,0,BE,100,charsubtitle
     ENDIF
 
     ;; Character Card Type
@@ -571,21 +591,43 @@ ELSEIF= ({template?§} = "modifier") _OR_ ({template?§} = "support")
 
     ;; Debug drawing the title/subtitle area, before the drawing of the text so it remains visible
     IF= [debug_regions] = "True"
-        RECTANGLE=,<modifier_title>,#00FFFF
+        IF= [title_area_scale] <> ""
+            RECTANGLE=,<modifier_title>,#00FFFF
+        ELSE
+            RECTANGLE=,<modifier_title_default>,#00FFFF
+        ENDIF
     ENDIF
+
+    
 
     ;; Modifier Title/Subtitle
     IF= [subtitle] <> ""
         IF=([unique] = T) _OR_ ([unique] = Y)
-            HTMLTEXT=,JOIN("•",[titlecaps_mod],"<br><modsubtitle>",[subtitlecaps_mod],"</modsubtitle>"),<modifier_title>,,270,BE,100,modtitletop
+            IF= [title_area_scale] <> ""
+                HTMLTEXT=,JOIN("•",[titlecaps_mod],"<br><modsubtitle>",[subtitlecaps_mod],"</modsubtitle>"),<modifier_title>,,270,BE,100,modtitletop
+            ELSE
+                HTMLTEXT=,JOIN("•",[titlecaps_mod],"<br><modsubtitle>",[subtitlecaps_mod],"</modsubtitle>"),<modifier_title_default>,,270,BE,100,modtitletop
+            ENDIF
         ELSE
-            HTMLTEXT=,JOIN([titlecaps_mod],"<br><modsubtitle>",[subtitlecaps_mod],"</modsubtitle>"),<modifier_title>,,270,BE,100,modtitletop
+            IF= [title_area_scale] <> ""
+                HTMLTEXT=,JOIN([titlecaps_mod],"<br><modsubtitle>",[subtitlecaps_mod],"</modsubtitle>"),<modifier_title>,,270,BE,100,modtitletop
+            ELSE
+                HTMLTEXT=,JOIN([titlecaps_mod],"<br><modsubtitle>",[subtitlecaps_mod],"</modsubtitle>"),<modifier_title_default>,,270,BE,100,modtitletop
+            ENDIF
         ENDIF
     ELSE
         IF=([unique] = T) _OR_ ([unique] = Y)
-            HTMLTEXT=,JOIN("•",[titlecaps_mod]),<modifier_title>,,270,BE,100,modtitle
+            IF= [title_area_scale] <> ""
+                HTMLTEXT=,JOIN("•",[titlecaps_mod]),<modifier_title>,,270,BE,100,modtitle
+            ELSE
+                HTMLTEXT=,JOIN("•",[titlecaps_mod]),<modifier_title_default>,,270,BE,100,modtitle
+            ENDIF
         ELSE
-            HTMLTEXT=,"[titlecaps_mod]",<modifier_title>,,270,BE,100,modtitle
+            IF= [title_area_scale] <> ""
+                HTMLTEXT=,"[titlecaps_mod]",<modifier_title>,,270,BE,100,modtitle
+            ELSE
+                HTMLTEXT=,"[titlecaps_mod]",<modifier_title_default>,,270,BE,100,modtitle
+            ENDIF
         ENDIF
     ENDIF
 
@@ -1015,11 +1057,12 @@ INCLUDE=game_text_replacements.txt
 
 ;;[card_full_text] = CONCAT1({game_text_replaced?§},<lore>,{lore_replaced?§},</lore><promo>,{promo_replaced?§},</promo>)
 [card_full_text] = JOIN([game_text_replaced],<lore>,[lore_replaced],</lore><promo>,[promo_replaced],</promo>)
+[card_full_text] = JOIN([game_text_replaced],<lore>,[lore_replaced],</lore><promo>,[promo_replaced],</promo>)
 [card_full_text] = REPLACE([card_full_text],<lore></lore>,)
 [card_full_text] = REPLACE([card_full_text],<promo></promo>,)
 
-;;[card_full_text_thin] = CONCAT1({game_text_replaced_thin?§},<lore>,{lore_replaced?§},</lore><promo>,{promo_replaced?§},</promo>)
-[card_full_text_thin] = JOIN({game_text_replaced_thin?§},<lore>,[lore_replaced],</lore><promo>,[promo_replaced],</promo>)
+;;[card_full_text_thin] = CONCAT1({game_text_replaced_thin?§}," test ",<lore>,{lore_replaced?§},</lore><promo>,{promo_replaced?§},</promo>)
+[card_full_text_thin] = JOIN([game_text_replaced_thin],<lore>,[lore_replaced],</lore><promo>,[promo_replaced],</promo>)
 [card_full_text_thin] = REPLACE([card_full_text_thin],<lore></lore>,)
 [card_full_text_thin] = REPLACE([card_full_text_thin],<promo></promo>,)
 ;;[card_full_text_thin] = REPLACE([card_full_text]," ","&#8201;")
@@ -1029,7 +1072,7 @@ INCLUDE=game_text_replacements.txt
 IF= ([template] = "character") _OR_ ([template] = "modifier") _OR_ ([template] = "support") _OR_ ([template] = "onering")
     IF= [game_text_width] <> ""
         IF= "thin_space" @ {tags?§}
-            HTMLTEXT=,"[card_full_text_thin]",<game_text>,,0,BE,100,gametext
+            HTMLTEXT=,[card_full_text_thin],<game_text>,,0,BE,100,gametext
         ELSE
             HTMLTEXT=,"[card_full_text]",<game_text>,,0,BE,100,gametext
         ENDIF
