@@ -146,5 +146,5 @@
 ;; without needing to edit the tags for all cards.
 ;; "Mockups" are drawn in a very obviously sketchy style, which makes the
 ;; work-in-progress nature impossible to miss.
-[force_mockup] = True
+[force_mockup] = False
 
