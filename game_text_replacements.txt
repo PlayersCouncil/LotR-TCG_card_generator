@@ -316,6 +316,7 @@
 [lore_replaced] = REPLACE([lore_replaced],"'","’")
 [game_text_replaced] = REPLACE([game_text_replaced],"'","’")
 
+[lore_replaced] = REPLACE([lore_replaced],"\34\","“")
 
 
 

@@ -94,6 +94,9 @@
 ;; end of the card file name.
 ;; Can be one of: True, False
 [include_size_in_card_output] = True
+;; Which file image format to use for the final output.
+;; Can be one of: bmp, jpg, png, gif
+[output_format] = "png"
 
 ;; The color to use for regular game text.  This includes the title/subtitle,
 ;; card type, lore, and collector's info.  This can be overridden on a per-

@@ -94,9 +94,9 @@ RECTANGLE=,<full_card_portrait>,#000000
 
 
 ;; Title/Subtitle font sizes
-[default_character_title_font_size] = {9.7 * [font_scale_factor]}
+[default_character_title_font_size] = {9.6 * [font_scale_factor]}
 [custom_character_title_font_size] = {[default_character_title_font_size] * {title_text_scale?§}}
-[default_character_subtitle_font_size] = {7.8 * [font_scale_factor]}
+[default_character_subtitle_font_size] = {7.7 * [font_scale_factor]}
 [custom_character_subtitle_font_size] = {[default_character_subtitle_font_size] * {subtitle_text_scale?§}}
 [default_modifier_title_font_size] = {9 * [font_scale_factor]}
 [custom_modifier_title_font_size] = {[default_modifier_title_font_size] * {title_text_scale?§}}
@@ -151,6 +151,9 @@ RECTANGLE=,<full_card_portrait>,#000000
 [custom_promo_font_size] = {[default_promo_font_size] * {game_text_scale?§}}
 [default_promo_cap_font_size] = {[default_promo_font_size] * [promo_cap_factor]}
 [custom_promo_cap_font_size] = {[default_promo_cap_font_size] * {game_text_scale?§}}
+
+[custom_lore_spacing] = {[default_lore_spacing] * {lore_spacing?§}}
+[custom_game_text_spacing] = {[default_game_text_spacing] * {game_text_spacing?§}}
 
 [default_coll_info_font_size] = {3.7* [font_scale_factor]}
 [default_coll_symbol_font_size] = {3.2* [font_scale_factor]}
@@ -247,13 +250,13 @@ RECTANGLE=,<full_card_portrait>,#000000
 ;;RECTANGLE=,<card_portrait>,#00FFFF
 
 <character_unique> = 19.5%, 4.2%, 3%, 5%
-<character_title> = 19.5%, 4.7%, 58%, 4%
-<character_subtitle> = 19.6%, 8.8%, 58%, 4%
+<character_title> = 19.5%, 4.6%, 58%, 4%
+<character_subtitle> = 19.6%, 8.4%, 58%, 4%
 <modifier_title> = 6.5%, 15.7%, 9.6%, {{title_area_scale?§} * [default_mod_title_text_width]}
 <modifier_title_default> = 6.5%, 15.7%, 9.6%, [default_mod_title_text_width]
 <site_title> = 7.5%, 24.9%, 4.5%, 50%
 
-<character_type_panel> = 15%,58.5%,70%,3.8%
+<character_type_panel> = 15%,58.4%,70%,3.8%
 <modifier_type_panel> = 25%,58.5%,65%,3.8%
 
 <twilight_cost_icon> = 6.3%,3.5%,10%,10%
@@ -354,7 +357,7 @@ ELSE
     HTMLMARGINS=helper,0,0,0,0,,[default_game_text_spacing]
 ENDIF
 
-IF= [lore_spacing] <> ""
+IF= {lore_spacing?§} <> ""
     HTMLMARGINS=lore,1.5%,0,0,0,,[lore_spacing]
 ELSE
     HTMLMARGINS=lore,1.5%,0,0,0,,[default_lore_spacing]
@@ -1132,9 +1135,9 @@ ENDIF
 ;; Last but not least, finally write the file (if not configured to do otherwise).
 IF= [auto_write_files] = True
     IF= [include_size_in_card_output] = "True"
-        SAVE=,JOIN([output_path],/,[id],_,[card_size],.png),0,0,100%,100%,,,[card_mask_path]
+        SAVE=,JOIN([output_path],/,[id],_,[card_size],.,[output_format]),0,0,100%,100%,,,[card_mask_path]
     ELSE
-        SAVE=,JOIN([output_path],/,[id],.png),0,0,100%,100%,,,[card_mask_path]
+        SAVE=,JOIN([output_path],/,[id],.,[output_format]),0,0,100%,100%,,,[card_mask_path]
     ENDIF
 ENDIF
 
