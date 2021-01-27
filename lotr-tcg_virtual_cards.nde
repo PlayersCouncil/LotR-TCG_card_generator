@@ -862,16 +862,26 @@ ELSEIF= {template?§} = "onering"
 
     ;; Debug drawing the title/subtitle area, before the drawing of the text so it remains visible
     IF= [debug_regions] = "True"
-        RECTANGLE=,<modifier_title>,#00FFFF
+        IF= [title_area_scale] <> ""
+            RECTANGLE=,<modifier_title>,#00FFFF
+        ELSE
+            RECTANGLE=,<modifier_title_default>,#00FFFF
+        ENDIF
     ENDIF
-
-
 
     ;; Title
     IF=([unique] = T) _OR_ ([unique] = Y)
-        HTMLTEXT=,CONCAT1("•",[titlecaps_ring]),<modifier_title>,,270,BE,100,ringtitle
+        IF= [title_area_scale] <> ""
+            HTMLTEXT=,JOIN("•",[titlecaps_ring]),<modifier_title>,,270,BE,100,ringtitle
+        ELSE
+            HTMLTEXT=,JOIN("•",[titlecaps_ring]),<modifier_title_default>,,270,BE,100,ringtitle
+        ENDIF
     ELSE
-        HTMLTEXT=,"[titlecaps_ring]",<modifier_title>,,270,BE,100,ringtitle
+        IF= [title_area_scale] <> ""
+            HTMLTEXT=,"[titlecaps_ring]",<modifier_title>,,270,BE,100,ringtitle
+        ELSE
+            HTMLTEXT=,"[titlecaps_ring]",<modifier_title_default>,,270,BE,100,ringtitle
+        ENDIF
     ENDIF
 
     ;; Subtitle
@@ -1060,12 +1070,11 @@ INCLUDE=game_text_replacements.txt
 
 ;;[card_full_text] = CONCAT1({game_text_replaced?§},<lore>,{lore_replaced?§},</lore><promo>,{promo_replaced?§},</promo>)
 [card_full_text] = JOIN([game_text_replaced],<lore>,[lore_replaced],</lore><promo>,[promo_replaced],</promo>)
-[card_full_text] = JOIN([game_text_replaced],<lore>,[lore_replaced],</lore><promo>,[promo_replaced],</promo>)
 [card_full_text] = REPLACE([card_full_text],<lore></lore>,)
 [card_full_text] = REPLACE([card_full_text],<promo></promo>,)
 
 ;;[card_full_text_thin] = CONCAT1({game_text_replaced_thin?§}," test ",<lore>,{lore_replaced?§},</lore><promo>,{promo_replaced?§},</promo>)
-[card_full_text_thin] = JOIN([game_text_replaced_thin],<lore>,[lore_replaced],</lore><promo>,[promo_replaced],</promo>)
+[card_full_text_thin] = JOIN({game_text_replaced_thin?§},<lore>,[lore_replaced],</lore><promo>,[promo_replaced],</promo>)
 [card_full_text_thin] = REPLACE([card_full_text_thin],<lore></lore>,)
 [card_full_text_thin] = REPLACE([card_full_text_thin],<promo></promo>,)
 ;;[card_full_text_thin] = REPLACE([card_full_text]," ","&#8201;")
