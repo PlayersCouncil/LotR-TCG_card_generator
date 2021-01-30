@@ -650,15 +650,15 @@ ELSEIF= ({template?§} = "modifier") _OR_ ({template?§} = "support")
     ;; Card Type
     IF= [card_subtype] = ""
         IF= [display_type] <> ""
-            HTMLTEXT=,"[carddisplaytypecaps]",<modifier_type_panel>,,0,BE,100,typeplate
+            HTMLTEXT=,CONCAT1("[carddisplaytypecaps]",""),<modifier_type_panel>,,0,BE,100,typeplate
         ELSE=
-            HTMLTEXT=,"[cardtypecaps]",<modifier_type_panel>,,0,BE,100,typeplate
+            HTMLTEXT=,CONCAT1("[cardtypecaps]",""),<modifier_type_panel>,,0,BE,100,typeplate
         ENDIF
     ELSE
         IF= [display_type] <> ""
-            HTMLTEXT=,CONCAT1("[carddisplaytypecaps] • ",{cardsubtypecaps?§}),<modifier_type_panel>,,0,BE,100,typeplate
+            HTMLTEXT=,CONCAT1({carddisplaytypecaps?§}," • ",{cardsubtypecaps?§}),<modifier_type_panel>,,0,BE,100,typeplate
         ELSE=
-            HTMLTEXT=,CONCAT1("[cardtypecaps] • ",{cardsubtypecaps?§}),<modifier_type_panel>,,0,BE,100,typeplate
+            HTMLTEXT=,CONCAT1({cardtypecaps?§}," • ",{cardsubtypecaps?§}),<modifier_type_panel>,,0,BE,100,typeplate
         ENDIF
     ENDIF
 
