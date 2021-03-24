@@ -74,6 +74,7 @@ CARDSIZE=2.5,3.5
 [icon_text_color] = ""
 [twilight_color] = ""
 [border_color] = ""
+[errata_date] = ""
 [notes] = ""
 [debug_image_name] = ""
 
@@ -158,6 +159,8 @@ RECTANGLE=,<full_card_portrait>,#000000
 [default_coll_info_font_size] = {3.7* [font_scale_factor]}
 [default_coll_symbol_font_size] = {3.2* [font_scale_factor]}
 [default_coll_plus_font_size] = {4.75* [font_scale_factor]}
+
+[default_errata_font_size] = 7
 
 
 
@@ -303,6 +306,7 @@ SETFONT= typeplatecap,[title_font],[custom_type_plate_cap_font_size],[default_ty
 SETFONT= typesymbol,[game_text_font],[custom_type_symbol_font_size],[default_type_symbol_font_size],D,{game_text_color?§},[default_game_text_color],{type_color_override?§}
 
 SETFONT= gametext,[game_text_font],[custom_game_text_font_size],[default_game_text_font_size],D,{game_text_color?§},[default_game_text_color],,LEFT
+SETFONT= gametextthin,[game_text_thin_font],[custom_game_text_font_size],[default_game_text_font_size],D,{game_text_color?§},[default_game_text_color],,LEFT
 SETFONT= textsymbol,[game_text_font],[custom_text_symbol_font_size],[default_text_symbol_font_size],D,{game_text_color?§},[default_game_text_color]
 SETFONT= helper,[game_text_font],[custom_helper_text_font_size],[default_helper_text_font_size],DI,{game_text_color?§},[default_game_text_color]
 SETFONT= lore,[lore_font],[custom_lore_font_size],[default_lore_font_size],D,{game_text_color?§},[default_game_text_color],,LEFT
@@ -313,6 +317,8 @@ SETFONT= promocap,[promo_font],[custom_promo_cap_font_size],[default_promo_cap_f
 SETFONT= collinfo, [number_font],,[default_coll_info_font_size],D, {game_text_color?§},[default_game_text_color],,CENTER
 SETFONT= colltext, [game_text_font],,[default_coll_symbol_font_size],D, {game_text_color?§},[default_game_text_color]
 SETFONT= collplus, [game_text_font],,[default_coll_plus_font_size],D, {game_text_color?§},[default_game_text_color]
+
+HTMLFONT=erratatext,[number_font],[default_errata_font_size],D,[default_icon_text_color],CENTER,0%, 0.5%,0.03,#000000
 
 
 IF= {icon_text_color?§} <> ""
@@ -349,10 +355,12 @@ HTMLMARGINS=collplus,0,0,0,0,
 
 IF= [game_text_spacing] <> ""
     HTMLMARGINS=gametext,0,0,0,0,TOP,[game_text_spacing]
+    HTMLMARGINS=gametextthin,0,0,0,0,TOP,[game_text_spacing]
     HTMLMARGINS=textsymbol,0,0,0,0,,[game_text_spacing]
     HTMLMARGINS=helper,0,0,0,0,,[game_text_spacing]
 ELSE
     HTMLMARGINS=gametext,0,0,0,0,TOP,[default_game_text_spacing]
+    HTMLMARGINS=gametextthin,0,0,0,0,TOP,[default_game_text_spacing]
     HTMLMARGINS=textsymbol,0,0,0,0,,[default_game_text_spacing]
     HTMLMARGINS=helper,0,0,0,0,,[default_game_text_spacing]
 ENDIF
@@ -1060,7 +1068,6 @@ INCLUDE=game_text_replacements.txt
 
 [game_text_replaced] = REPLACE([game_text_replaced],<start>,)
 [game_text_replaced] = REPLACE([game_text_replaced],</start>,)
-[game_text_replaced_thin] = REPLACE([game_text_replaced]," ","&#8201;")
 
 [lore_replaced] = REPLACE([lore_replaced],<lore>,)
 [lore_replaced] = REPLACE([lore_replaced],</lore>,)
@@ -1073,24 +1080,18 @@ INCLUDE=game_text_replacements.txt
 [card_full_text] = REPLACE([card_full_text],<lore></lore>,)
 [card_full_text] = REPLACE([card_full_text],<promo></promo>,)
 
-;;[card_full_text_thin] = CONCAT1({game_text_replaced_thin?§}," test ",<lore>,{lore_replaced?§},</lore><promo>,{promo_replaced?§},</promo>)
-[card_full_text_thin] = JOIN({game_text_replaced_thin?§},<lore>,[lore_replaced],</lore><promo>,[promo_replaced],</promo>)
-[card_full_text_thin] = REPLACE([card_full_text_thin],<lore></lore>,)
-[card_full_text_thin] = REPLACE([card_full_text_thin],<promo></promo>,)
-;;[card_full_text_thin] = REPLACE([card_full_text]," ","&#8201;")
-
 
 ;; Finally, draw the game text itself.
 IF= ([template] = "character") _OR_ ([template] = "modifier") _OR_ ([template] = "support") _OR_ ([template] = "onering")
     IF= [game_text_width] <> ""
         IF= "thin_space" @ {tags?§}
-            HTMLTEXT=,[card_full_text_thin],<game_text>,,0,BE,100,gametext
+            HTMLTEXT=,[card_full_text],<game_text>,,0,BE,100,gametextthin
         ELSE
-            HTMLTEXT=,"[card_full_text]",<game_text>,,0,BE,100,gametext
+            HTMLTEXT=,[card_full_text],<game_text>,,0,BE,100,gametext
         ENDIF
     ELSE
         IF= "thin_space" @ {tags?§}
-            HTMLTEXT=,[card_full_text_thin],<game_text_default>,,0,BE,100,gametext
+            HTMLTEXT=,[card_full_text],<game_text_default>,,0,BE,100,gametextthin
         ELSE
             HTMLTEXT=,[card_full_text],<game_text_default>,,0,BE,100,gametext
         ENDIF
@@ -1098,13 +1099,13 @@ IF= ([template] = "character") _OR_ ([template] = "modifier") _OR_ ([template] =
 ELSEIF = [template] = "site"
     IF= [game_text_width] <> ""
         IF= "thin_space" @ {tags?§}
-            HTMLTEXT=,[card_full_text_thin],<site_game_text>,,270,BE,100,gametext
+            HTMLTEXT=,[card_full_text],<site_game_text>,,270,BE,100,gametext
         ELSE
             HTMLTEXT=,[card_full_text],<site_game_text>,,270,BE,100,gametext
         ENDIF
     ELSE
         IF= "thin_space" @ {tags?§}
-            HTMLTEXT=,[card_full_text_thin],<site_game_text_default>,,270,BE,100,gametext
+            HTMLTEXT=,[card_full_text],<site_game_text_default>,,270,BE,100,gametext
         ELSE
             HTMLTEXT=,[card_full_text],<site_game_text_default>,,270,BE,100,gametext
         ENDIF
@@ -1128,6 +1129,13 @@ ENDIF
 
 IF= [custom_icon] <> ""
     IMAGE = , [custom_icon_path], <card_background>, 0, PN
+ENDIF
+
+<errata_area> = 8.5%, 93.65%, 20%, 5%
+
+IF= [errata_date] <> ""
+    IMAGE = , JOIN([positioned_icon_path],"errata",_position_,[card_size],.png), <card_background>, 0, PN
+    HTMLTEXT=,[errata_date],<errata_area>,,0,BE,100,erratatext
 ENDIF
 
 
