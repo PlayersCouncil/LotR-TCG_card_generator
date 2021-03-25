@@ -56,7 +56,7 @@
 ;; game_text_thin_font is used when the thin_space option is used (see The
 ;; Faithful Stone for such a card).  The space charcater has had its width
 ;; cut in half compared to normal spacing.
-[game_text_thin_font] = "LOTR_TCG-Thin"
+[game_text_thin_font] = "LOTR_TCG-Space"
 
 ;; title_font is used for titles, subtitles, and the center card type bar
 [title_font] = "LOTR_TCG_Title"

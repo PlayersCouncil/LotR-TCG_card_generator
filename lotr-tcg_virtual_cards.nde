@@ -306,7 +306,7 @@ SETFONT= typeplatecap,[title_font],[custom_type_plate_cap_font_size],[default_ty
 SETFONT= typesymbol,[game_text_font],[custom_type_symbol_font_size],[default_type_symbol_font_size],D,{game_text_color?§},[default_game_text_color],{type_color_override?§}
 
 SETFONT= gametext,[game_text_font],[custom_game_text_font_size],[default_game_text_font_size],D,{game_text_color?§},[default_game_text_color],,LEFT
-SETFONT= gametextthin,[game_text_thin_font],[custom_game_text_font_size],[default_game_text_font_size],D,{game_text_color?§},[default_game_text_color],,LEFT
+SETFONT= thin,[game_text_thin_font],[custom_game_text_font_size],[default_game_text_font_size],D,{game_text_color?§},[default_game_text_color],,LEFT
 SETFONT= textsymbol,[game_text_font],[custom_text_symbol_font_size],[default_text_symbol_font_size],D,{game_text_color?§},[default_game_text_color]
 SETFONT= helper,[game_text_font],[custom_helper_text_font_size],[default_helper_text_font_size],DI,{game_text_color?§},[default_game_text_color]
 SETFONT= lore,[lore_font],[custom_lore_font_size],[default_lore_font_size],D,{game_text_color?§},[default_game_text_color],,LEFT
@@ -354,13 +354,13 @@ HTMLMARGINS=typesymbol,0,0,0,0,,[default_game_text_spacing]
 HTMLMARGINS=collplus,0,0,0,0,
 
 IF= [game_text_spacing] <> ""
-    HTMLMARGINS=gametext,0,0,0,0,TOP,[game_text_spacing]
-    HTMLMARGINS=gametextthin,0,0,0,0,TOP,[game_text_spacing]
+    HTMLMARGINS=gametext,0,0,0,0,,[game_text_spacing]
+    HTMLMARGINS=thin,0,0,0,0,,[game_text_spacing]
     HTMLMARGINS=textsymbol,0,0,0,0,,[game_text_spacing]
     HTMLMARGINS=helper,0,0,0,0,,[game_text_spacing]
 ELSE
-    HTMLMARGINS=gametext,0,0,0,0,TOP,[default_game_text_spacing]
-    HTMLMARGINS=gametextthin,0,0,0,0,TOP,[default_game_text_spacing]
+    HTMLMARGINS=gametext,0,0,0,0,,[default_game_text_spacing]
+    HTMLMARGINS=thin,0,0,0,0,,[default_game_text_spacing]
     HTMLMARGINS=textsymbol,0,0,0,0,,[default_game_text_spacing]
     HTMLMARGINS=helper,0,0,0,0,,[default_game_text_spacing]
 ENDIF
@@ -1085,13 +1085,13 @@ INCLUDE=game_text_replacements.txt
 IF= ([template] = "character") _OR_ ([template] = "modifier") _OR_ ([template] = "support") _OR_ ([template] = "onering")
     IF= [game_text_width] <> ""
         IF= "thin_space" @ {tags?§}
-            HTMLTEXT=,[card_full_text],<game_text>,,0,BE,100,gametextthin
+            HTMLTEXT=,[card_full_text],<game_text>,,0,BE,100,thin
         ELSE
             HTMLTEXT=,[card_full_text],<game_text>,,0,BE,100,gametext
         ENDIF
     ELSE
         IF= "thin_space" @ {tags?§}
-            HTMLTEXT=,[card_full_text],<game_text_default>,,0,BE,100,gametextthin
+            HTMLTEXT=,[card_full_text],<game_text_default>,,0,BE,100,thin
         ELSE
             HTMLTEXT=,[card_full_text],<game_text_default>,,0,BE,100,gametext
         ENDIF
@@ -1099,13 +1099,13 @@ IF= ([template] = "character") _OR_ ([template] = "modifier") _OR_ ([template] =
 ELSEIF = [template] = "site"
     IF= [game_text_width] <> ""
         IF= "thin_space" @ {tags?§}
-            HTMLTEXT=,[card_full_text],<site_game_text>,,270,BE,100,gametext
+            HTMLTEXT=,[card_full_text],<site_game_text>,,270,BE,100,thin
         ELSE
             HTMLTEXT=,[card_full_text],<site_game_text>,,270,BE,100,gametext
         ENDIF
     ELSE
         IF= "thin_space" @ {tags?§}
-            HTMLTEXT=,[card_full_text],<site_game_text_default>,,270,BE,100,gametext
+            HTMLTEXT=,[card_full_text],<site_game_text_default>,,270,BE,100,thin
         ELSE
             HTMLTEXT=,[card_full_text],<site_game_text_default>,,270,BE,100,gametext
         ENDIF
