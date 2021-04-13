@@ -908,7 +908,7 @@ ENDIF
 
 
 ;; Culture Icon
-IF= ("full_art" @ {tags?§}) _AND_ ("onering" # {template?§}) _AND_ ("disable_culture" # {tags?§}) _AND_ ( ([card_type] <> "modifier") _OR_ ("artifact_overlay" # {tags?§}))
+IF= ("full_art" @ {tags?§}) _AND_ ("onering" # {template?§}) _AND_ ("disable_culture" # {tags?§}) _AND_ ( ([card_type] <> "modifier") _AND_ ("artifact_overlay" # {tags?§}))
     
     IF= ([force_mockup] = True) _OR_ ("mockup" @ {tags?§})
         IMAGE = , [mockup_culture_overlay], <card_background>, 0, PN
