@@ -309,7 +309,12 @@ SETFONT= gametext,[game_text_font],[custom_game_text_font_size],[default_game_te
 SETFONT= thin,[game_text_thin_font],[custom_game_text_font_size],[default_game_text_font_size],D,{game_text_color?§},[default_game_text_color],,LEFT
 SETFONT= textsymbol,[game_text_font],[custom_text_symbol_font_size],[default_text_symbol_font_size],D,{game_text_color?§},[default_game_text_color]
 SETFONT= helper,[game_text_font],[custom_helper_text_font_size],[default_helper_text_font_size],DI,{game_text_color?§},[default_game_text_color]
-SETFONT= lore,[lore_font],[custom_lore_font_size],[default_lore_font_size],D,{game_text_color?§},[default_game_text_color],,LEFT
+
+IF= "thinlore" @ {tags?§}
+    SETFONT= lore,[lore_thin_font],[custom_lore_font_size],[default_lore_font_size],D,{game_text_color?§},[default_game_text_color],,LEFT
+ELSE
+    SETFONT= lore,[lore_font],[custom_lore_font_size],[default_lore_font_size],D,{game_text_color?§},[default_game_text_color],,LEFT
+ENDIF
 
 SETFONT= promo,[promo_font],[custom_promo_font_size],[default_promo_font_size],BDAR,{game_text_color?§},[default_game_text_color],,CENTER
 SETFONT= promocap,[promo_font],[custom_promo_cap_font_size],[default_promo_cap_font_size],BDAR,{game_text_color?§},[default_game_text_color]

@@ -64,6 +64,9 @@
 ;; lore_font is used for lore
 [lore_font] = "LOTR_TCG-Lore"
 
+;; lore_font is used for lore
+[lore_thin_font] = "LOTR_TCG-Lore-Space"
+
 ;; promo_font is used for bold promo info
 [promo_font] = "LOTR_TCG_Promo"
 
