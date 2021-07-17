@@ -3,7 +3,7 @@ echo Running nanDECK...
 
 
 
-nanDECK\1.25.3\nanDECK .\lotr-tcg_virtual_cards.nde /exec
+nanDECK\1.26\nanDECK .\lotr-tcg_virtual_cards.nde /exec
 
 
 
