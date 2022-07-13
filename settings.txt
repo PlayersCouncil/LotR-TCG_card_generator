@@ -35,7 +35,7 @@
 ;; characters to use as well.
 ;; May not be one of the following characters: [ ] ( ) |
 ;; Examples: "_", "\b", "[nb]"
-[nbspace_char] = "_"
+[nbspace_char] = "/_"
 
 
 ;; These are the names of the installed fonts in your system that cards will

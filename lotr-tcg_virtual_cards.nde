@@ -64,6 +64,7 @@ CARDSIZE=2.5,3.5
 [game_text_color] = ""
 [game_text_scale] = ""
 [game_text_spacing] = ""
+[lore_gap] = ""
 [lore_spacing] = ""
 [title_area_scale] = ""
 [title_text_scale] = ""
@@ -88,9 +89,10 @@ RECTANGLE=,<full_card_portrait>,#000000
 
 ;; Spacing and customizable width defaults
 [default_game_text_spacing] = 98
+[default_lore_gap] = 1.5%
 [default_lore_spacing] = 98
 [default_game_text_width] = 69%
-[default_site_game_text_width] = 74%
+[default_site_game_text_width] = 76.2%
 [default_mod_title_text_width] = 38%
 
 
@@ -155,6 +157,7 @@ RECTANGLE=,<full_card_portrait>,#000000
 
 [custom_lore_spacing] = {[default_lore_spacing] * {lore_spacing?§}}
 [custom_game_text_spacing] = {[default_game_text_spacing] * {game_text_spacing?§}}
+[custom_lore_gap] = {[default_lore_gap] * {lore_gap?§}}
 
 [default_coll_info_font_size] = {3.7* [font_scale_factor]}
 [default_coll_symbol_font_size] = {3.2* [font_scale_factor]}
@@ -193,7 +196,16 @@ RECTANGLE=,<full_card_portrait>,#000000
 
 
 ;; Some site processing to get us the non-block site number
-[sitenum] = [site:1,1]
+
+;[first]=[site:1,1]
+;[hasregion]="R1" @ [site]
+;
+;[sitenum] = [first]
+;[sitenum]%[hasregion] = [site:1,2]
+[siteone] = [site:1,1]
+[sitetwo] = [site:1,2]
+
+
 
 
 
@@ -274,8 +286,8 @@ RECTANGLE=,<full_card_portrait>,#000000
 
 <game_text> = 22.8%,66.4%,{{game_text_width?§} * [default_game_text_width]},26.5%
 <game_text_default> = 22.8%,66.4%,[default_game_text_width],26.5%
-<site_game_text> = 77.5%,12.5%,9%,{{game_text_width?§} * [default_site_game_text_width]}
-<site_game_text_default> = 77.5%,12.5%,9%,[default_site_game_text_width]
+<site_game_text> = 77.5%,11.8%,9%,{{game_text_width?§} * [default_site_game_text_width]}
+<site_game_text_default> = 77.5%,11.8%,9%,[default_site_game_text_width]
 
 <collectors_info> = 84.8%,91.8%,10%,2%
 
@@ -370,10 +382,18 @@ ELSE
     HTMLMARGINS=helper,0,0,0,0,,[default_game_text_spacing]
 ENDIF
 
-IF= {lore_spacing?§} <> ""
-    HTMLMARGINS=lore,1.5%,0,0,0,,[lore_spacing]
+IF= {lore_gap?§} <> ""
+    IF= {lore_spacing?§} <> ""
+        HTMLMARGINS=lore,[custom_lore_gap],0,0,0,,[lore_spacing]
+    ELSE
+        HTMLMARGINS=lore,[custom_lore_gap],0,0,0,,[default_lore_spacing]
+    ENDIF
 ELSE
-    HTMLMARGINS=lore,1.5%,0,0,0,,[default_lore_spacing]
+    IF= {lore_spacing?§} <> ""
+        HTMLMARGINS=lore,[default_lore_gap],0,0,0,,[lore_spacing]
+    ELSE
+        HTMLMARGINS=lore,[default_lore_gap],0,0,0,,[default_lore_spacing]
+    ENDIF
 ENDIF
 
 
@@ -791,7 +811,7 @@ ELSEIF= {template?§} = "site"
 
     ;;RECTANGLE=,<site_card_portrait>,#FF00FF
 
-    ;;RECTANGLE=,<site_twilight_cost_icon>,#ff00FF
+    ;;RECTANGLE=,<site_site_number_icon>,#ff00FF
 
     ;; Site Compass Icon / Site Number
     IF= "T" @ [site]
@@ -800,21 +820,29 @@ ELSEIF= {template?§} = "site"
         ELSE
             IMAGE = , JOIN([positioned_icon_path],site_block_tower_position_,[card_size],.png), <card_background>, 270, PN
         ENDIF
-        HTMLTEXT=,"[sitenum]",<site_tower_site_number_icon>,,270,BE,100,numbers
+        IF= "R" @ [site]
+            HTMLTEXT=,"[sitetwo]",<site_tower_site_number_icon>,,270,BE,100,numbers
+        ELSE
+            HTMLTEXT=,"[siteone]",<site_tower_site_number_icon>,,270,BE,100,numbers
+        ENDIF
     ELSEIF= "K" @ [site]
         IF= ([force_mockup] = True) _OR_ ("mockup" @ {tags?§})
             IMAGE = , JOIN([mockup_positioned_icon_path]site_block_king_mockup_position_,[card_size],.png), <card_background>, 270, PN
         ELSE
             IMAGE = , JOIN([positioned_icon_path],site_block_king_position_,[card_size],.png), <card_background>, 270, PN
         ENDIF
-        HTMLTEXT=,"[sitenum]",<site_king_site_number_icon>,,270,BE,100,numbers
+        IF="R" @ [site]
+            HTMLTEXT=,"[sitetwo]",<site_king_site_number_icon>,,270,BE,100,numbers
+        ELSE
+            HTMLTEXT=,"[siteone]",<site_king_site_number_icon>,,270,BE,100,numbers
+        ENDIF
     ELSEIF= [site] <> ""
         IF= ([force_mockup] = True) _OR_ ("mockup" @ {tags?§})
             IMAGE = , JOIN([mockup_positioned_icon_path]site_block_fellowship_mockup_position_,[card_size],.png), <card_background>, 270, PN
         ELSE
             IMAGE = , JOIN([positioned_icon_path],site_block_fellowship_position_,[card_size],.png), <card_background>, 270, PN
         ENDIF
-        HTMLTEXT=,"[sitenum]",<site_site_number_icon>,,270,BE,100,numbers
+        HTMLTEXT=,"[site]",<site_site_number_icon>,,270,BE,100,numbers
     ELSE
         IF= ([force_mockup] = True) _OR_ ("mockup" @ {tags?§})
             IMAGE = , JOIN([mockup_positioned_icon_path]site_block_shadows_mockup_position_,[card_size],.png), <card_background>, 270, PN
@@ -1082,6 +1110,7 @@ INCLUDE=game_text_replacements.txt
 
 ;;[card_full_text] = CONCAT1({game_text_replaced?§},<lore>,{lore_replaced?§},</lore><promo>,{promo_replaced?§},</promo>)
 [card_full_text] = JOIN([game_text_replaced],<lore>,[lore_replaced],</lore><promo>,[promo_replaced],</promo>)
+
 [card_full_text] = REPLACE([card_full_text],<lore></lore>,)
 [card_full_text] = REPLACE([card_full_text],<promo></promo>,)
 
@@ -1121,11 +1150,12 @@ ENDIF
 ;;RECTANGLE=,<full_card_portrait>,#FF00FF
 
 
-
-IF= "disclaimer_light" @ {tags?§}
-    IMAGE = , JOIN([positioned_icon_path],disclaimer_light_position_,[card_size],.png), <card_background>, 0, PN
-ELSEIF= ([template] = "onering") _OR_ ("disclaimer_dark" @ {tags?§}) _OR_ ("full_art" @ {tags?§})
-    IMAGE = , JOIN([positioned_icon_path],disclaimer_dark_position_,[card_size],.png), <card_background>, 0, PN
+IF= "no_disclaimer" # {tags?§}
+    IF= "disclaimer_light" @ {tags?§}
+        IMAGE = , JOIN([positioned_icon_path],disclaimer_light_position_,[card_size],.png), <card_background>, 0, PN
+    ELSEIF= ([template] = "onering") _OR_ ("disclaimer_dark" @ {tags?§}) _OR_ ("full_art" @ {tags?§})
+        IMAGE = , JOIN([positioned_icon_path],disclaimer_dark_position_,[card_size],.png), <card_background>, 0, PN
+    ENDIF
 ENDIF
 
 
