@@ -93,6 +93,7 @@ RECTANGLE=,<full_card_portrait>,#000000
 [default_lore_spacing] = 98
 [default_game_text_width] = 69%
 [default_site_game_text_width] = 76.2%
+[default_race_game_text_width] = 75%
 [default_mod_title_text_width] = 38%
 
 
@@ -236,6 +237,9 @@ RECTANGLE=,<full_card_portrait>,#000000
 [custom_site_standard_template] = JOIN([full_template_path],[culture],_standard_,[card_size],.png)
 [custom_site_sanctuary_template] = JOIN([full_template_path],[culture],_sanctuary_,[card_size],.png)
 
+[site_race_template] = JOIN([full_template_path],site_race_,[card_size],.png)
+[mockup_site_race_template] = JOIN([full_template_path],mockups/,site_race_mockup_,[card_size],.png)
+[custom_site_race_template] = JOIN([full_template_path],[culture],_race_,[card_size],.png)
 
 
 
@@ -260,6 +264,7 @@ RECTANGLE=,<full_card_portrait>,#000000
 <character_card_portrait> = 10.5%, 14.5%, 78.5%, 42%
 <modifier_card_portrait> = 21.2%, 11.9%, 69.7%, 37%
 <site_card_portrait> = 12%, 10%, 64.2%, 79.4%
+<race_card_portrait> = 14.6%, 8.6%, 70.6%, 64.1%
 <full_card_portrait> = 4.3%,3.1%,91.4%,93.8%
 
 ;;RECTANGLE=,<card_portrait>,#00FFFF
@@ -270,6 +275,7 @@ RECTANGLE=,<full_card_portrait>,#000000
 <modifier_title> = 6.5%, 15.7%, 9.6%, {{title_area_scale?§} * [default_mod_title_text_width]}
 <modifier_title_default> = 6.5%, 15.7%, 9.6%, [default_mod_title_text_width]
 <site_title> = 7.5%, 24.9%, 4.5%, 50%
+<race_title> = 21%, 6.5%, 57%, 3%
 
 <character_type_panel> = 15%,58.4%,70%,3.8%
 <modifier_type_panel> = 25%,58.5%,65%,3.8%
@@ -279,6 +285,8 @@ RECTANGLE=,<full_card_portrait>,#000000
 <site_site_number_icon> = 8.4%,85.9%,10%,10%
 <site_tower_site_number_icon> = 23.2%,85.9%,10%,10%
 <site_king_site_number_icon> = 23.2%,85.9%,10%,10%
+<race_region_icon> = 9%,32%,10%,5%
+
 <strength_icon> = 7.5%,62.5%,10%,10%
 <vitality_icon> = 7.5%,74%,10%,10%
 <third_icon> = 7.5%,84.5%,10%,10%
@@ -288,6 +296,8 @@ RECTANGLE=,<full_card_portrait>,#000000
 <game_text_default> = 22.8%,66.4%,[default_game_text_width],26.5%
 <site_game_text> = 77.5%,11.8%,9%,{{game_text_width?§} * [default_site_game_text_width]}
 <site_game_text_default> = 77.5%,11.8%,9%,[default_site_game_text_width]
+<race_game_text> = 12.5%,75%,{{game_text_width?§} * [default_race_game_text_width]},16%
+<race_game_text_default> = 12.8%,75.5%,[default_race_game_text_width],16%
 
 <collectors_info> = 84.8%,91.8%,10%,2%
 
@@ -707,7 +717,7 @@ ELSEIF= ({template?§} = "modifier") _OR_ ({template?§} = "support")
         HTMLTEXT=,"[site]",<third_icon>,,0,BE,100,numbers
     ENDIF
 
-ELSEIF= {template?§} = "site"
+ELSEIF= ({template?§} = "site") _OR_ ({template?§} = "sanctuary")
 
     ;; Debug printing is used to put a full-sized card in the background for
     ;; the purposes of checking exact alignment of text, etc
@@ -882,6 +892,96 @@ ELSEIF= {template?§} = "site"
             ENDIF
         ENDIF
     ENDIF
+
+ELSEIF= {template?§} = "race"
+
+    ;; Debug printing is used to put a full-sized card in the background for
+    ;; the purposes of checking exact alignment of text, etc
+    IF= [debug_print] = True
+        IMAGE = , JOIN([debug_image_path],[debug_image_name]), <card_background>, 270, PN
+    ELSE
+        ;; Full art means we are not using a template
+        IF= "full_art" @ {tags?§}
+            IF= "full_portrait" @ {tags?§}
+                IMAGE = , JOIN([card_image_path],/,[image_name]), <card_background>, 0, PN
+            ELSE
+                IMAGE = , JOIN([card_image_path],/,[image_name]), <full_card_portrait>, 0, PN
+            ENDIF
+        ELSE
+            ;; Insert the card portrait, since this is "beneath" everything else
+
+            ;; full portraits are intended to take up the whole card size, so
+            ;; that lower res card images can just be slotted in without needing to
+            ;; cut out the portrait.
+            IF= "full_portrait" @ {tags?§}
+                IMAGE = , JOIN([card_image_path],/,[image_name]), <card_background>, 0, PN
+            ELSE
+                IMAGE = , JOIN([card_image_path],/,[image_name]), <race_card_portrait>, 0, PN
+            ENDIF
+
+            ;;RECTANGLE=,<race_card_portrait>,#FF00FF
+
+            ;; Now for the actual card template
+            ;; If the culture is set, use that to look up a custom template name
+            IF= [culture] <> ""
+                IMAGE = , [custom_site_race_template], <card_background>, 0, PN
+            ELSE
+                IF= ([force_mockup] = True) _OR_ ("mockup" @ {tags?§})
+                    IMAGE = , [mockup_site_race_template], <card_background>, 0, PN
+                ELSE
+                    IMAGE = , [site_race_template], <card_background>, 0, PN
+                ENDIF
+            ENDIF
+        ENDIF
+    ENDIF
+
+    ;; Debug drawing the title/subtitle area, before the drawing of the text so it remains visible
+    IF= [debug_regions] = "True"
+        RECTANGLE=,<race_title>,#00FFFF
+    ENDIF
+
+    ;; Site Title
+    HTMLTEXT=,"[title]",<race_title>,,0,BE,100,sitetitle
+
+    
+
+    ;;RECTANGLE=,<race_region_icon>,#00FFFF
+
+    ;; Site Compass Icon
+    IF= "T" @ [site]
+        IF= ([force_mockup] = True) _OR_ ("mockup" @ {tags?§})
+            IMAGE = , JOIN([mockup_positioned_icon_path]race_region_towers_mockup_position_,[card_size],.png), <card_background>, 0, PN
+        ELSE
+            IMAGE = , JOIN([positioned_icon_path],race_region_towers_position_,[card_size],.png), <card_background>, 0, PN
+        ENDIF
+    ELSEIF= "K" @ [site]
+        IF= ([force_mockup] = True) _OR_ ("mockup" @ {tags?§})
+            IMAGE = , JOIN([mockup_positioned_icon_path]race_region_king_mockup_position_,[card_size],.png), <card_background>, 0, PN
+        ELSE
+            IMAGE = , JOIN([positioned_icon_path],race_region_king_position_,[card_size],.png), <card_background>, 0, PN
+        ENDIF
+    ELSEIF= [site] <> ""
+        IF= ([force_mockup] = True) _OR_ ("mockup" @ {tags?§})
+            IMAGE = , JOIN([mockup_positioned_icon_path]race_region_fellowship_mockup_position_,[card_size],.png), <card_background>, 0, PN
+        ELSE
+            IMAGE = , JOIN([positioned_icon_path],race_region_fellowship_position_,[card_size],.png), <card_background>, 0, PN
+        ENDIF
+    ELSE
+        ;;draw nothing if site is blank
+    ENDIF
+
+
+    ;; Site number text
+    IF= [site] <> ""
+        IF= "R" @ [site]
+            HTMLTEXT=,"[sitetwo]",<race_region_icon>,,0,BE,100,numbers
+        ELSE
+            HTMLTEXT=,"[siteone]",<race_region_icon>,,0,BE,100,numbers
+        ENDIF
+    ELSE
+        ;;draw nothing if site is blank
+    ENDIF
+
 
 ELSEIF= {template?§} = "onering"
 
@@ -1078,6 +1178,12 @@ IF= [debug_regions] = "True"
         ELSE
             RECTANGLE=,<site_game_text_default>,#ff00ff
         ENDIF
+    ELSEIF= [template] = "race"
+        IF= [game_text_width] <> ""
+            RECTANGLE=,<race_game_text>,#ff00ff
+        ELSE
+            RECTANGLE=,<race_game_text_default>,#ff00ff
+        ENDIF
     ELSE
         IF= [game_text_width] <> ""
             RECTANGLE=,<game_text>,#ff00ff
@@ -1142,6 +1248,20 @@ ELSEIF = [template] = "site"
             HTMLTEXT=,[card_full_text],<site_game_text_default>,,270,BE,100,thin
         ELSE
             HTMLTEXT=,[card_full_text],<site_game_text_default>,,270,BE,100,gametext
+        ENDIF
+    ENDIF
+ELSEIF = [template] = "race"
+    IF= [game_text_width] <> ""
+        IF= "thin_space" @ {tags?§}
+            HTMLTEXT=,[card_full_text],<race_game_text>,,0,BE,100,thin
+        ELSE
+            HTMLTEXT=,[card_full_text],<race_game_text>,,0,BE,100,gametext
+        ENDIF
+    ELSE
+        IF= "thin_space" @ {tags?§}
+            HTMLTEXT=,[card_full_text],<race_game_text_default>,,0,BE,100,thin
+        ELSE
+            HTMLTEXT=,[card_full_text],<race_game_text_default>,,0,BE,100,gametext
         ENDIF
     ENDIF
 ENDIF
