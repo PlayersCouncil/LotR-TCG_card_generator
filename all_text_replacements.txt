@@ -91,6 +91,9 @@ Text_Replace |Enqu&#235a
 Text_Find    |Eomer
 Text_Replace |&#201omer
 
+Text_Find    |Eomund
+Text_Replace |&#201omund
+
 Text_Find    |Eored
 Text_Replace |&#201ored
 
