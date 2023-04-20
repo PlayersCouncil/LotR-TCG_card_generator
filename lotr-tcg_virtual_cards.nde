@@ -1,6 +1,6 @@
-'#####################################
-'Standard cards 2.5 x 3.5 - 750 x 1050
-'#####################################
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Standard cards 2.5 x 3.5 - 750 x 1050
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 INCLUDE= settings.txt
 INCLUDE= macros.nde
@@ -262,7 +262,7 @@ RECTANGLE=,<full_card_portrait>,#000000
 ;;RECTANGLE=,<card_background>,#00FFFF
 
 <character_card_portrait> = 10.5%, 14.5%, 78.5%, 42%
-<modifier_card_portrait> = 21.2%, 11.9%, 69.7%, 37%
+<modifier_card_portrait> = 21.2%, 11.9%, 71%, 38%
 <site_card_portrait> = 12%, 10%, 64.2%, 79.4%
 <race_card_portrait> = 14.6%, 8.6%, 70.6%, 64.1%
 <full_card_portrait> = 4.3%,3.1%,91.4%,93.8%
@@ -531,8 +531,10 @@ IF= {template?§} = "character"
     IF= [debug_regions] = "True"
         ;;RECTANGLE=,<character_unique>,#00FF00
         RECTANGLE=,<character_title>,#00FFFF
+        RECTANGLE=,<character_card_portrait>,#FFFF00
+        RECTANGLE=,<character_type_panel>,#00FFFF
 
-        RECTANGLE=,<character_subtitle>,#00FFFF
+        RECTANGLE=,<character_subtitle>,#FF00FF
     ENDIF
 
     IF=([unique] = T) _OR_ ([unique] = Y)
@@ -625,6 +627,7 @@ ELSEIF= ({template?§} = "modifier") _OR_ ({template?§} = "support")
                 IMAGE = , JOIN([card_image_path],/,[image_name]), <modifier_card_portrait>, 0, PN
             ENDIF
 
+            ;;RECTANGLE=,<modifier_card_portrait>,#FF00FF
             ;; Now for the actual card template
             
             IF= ([force_mockup] = True) _OR_ ("mockup" @ {tags?§})
@@ -632,6 +635,7 @@ ELSEIF= ({template?§} = "modifier") _OR_ ({template?§} = "support")
             ELSE
                 IMAGE = , [modifier_template], <card_background>, 0, PN
             ENDIF
+            ;;RECTANGLE=,<modifier_card_portrait>,#00FFFF
         ENDIF
     ENDIF
 
@@ -1077,7 +1081,7 @@ IF= [twilight] <> ""
         ELSE
             IMAGE = , JOIN([positioned_icon_path],site_twilight_number_position_,[card_size],.png), <card_background>, 270, PN
         ENDIF
-    ELSEIF= ("full_art" @ {tags?§}) _AND_ ("disable_twilight" # {tags?§})
+    ELSEIF= ([template] <> "onering") _AND_ ("full_art" @ {tags?§}) _AND_ ("disable_twilight" # {tags?§})
         IF= ("free_peoples" @ {tags?§}) _OR_ ("shadow" # {tags?§})
             IF= ([force_mockup] = True) _OR_ ("mockup" @ {tags?§})
                 IMAGE = , [mockup_freeps_twilight_overlay], <card_background>, 0, PN
@@ -1106,7 +1110,7 @@ ENDIF
 ;;Strength
 
 IF= [strength] <> ""
-    IF= "disable_strength" # {tags?§}
+    IF= ("disable_strength" # {tags?§}) _AND_ ("no_icons" # {tags?§})
         
         IF= ([force_mockup] = True) _OR_ ("mockup" @ {tags?§})
             IMAGE = , JOIN([mockup_positioned_icon_path],strength_mockup_position_,[card_size],.png), <card_background>, 0, PN
@@ -1119,7 +1123,7 @@ ENDIF
 
 ;;Vitality
 IF= [vitality] <> ""
-    IF= "disable_vitality" # {tags?§}
+    IF= ("disable_vitality" # {tags?§}) _AND_ ("no_icons" # {tags?§})
 
         IF= ([force_mockup] = True) _OR_ ("mockup" @ {tags?§})
             IMAGE = , JOIN([mockup_positioned_icon_path],vitality_mockup_position_,[card_size],.png), <card_background>, 0, PN
@@ -1131,7 +1135,7 @@ IF= [vitality] <> ""
 ENDIF
 
 ;; Signets
-IF= ([signet] <> "") _AND_ _NOT_ ("disable_signet" @ {tags?§})
+IF= ([signet] <> "") _AND_ ("disable_signet" # {tags?§}) _AND_ ("no_icons" # {tags?§})
     
     IF= ([force_mockup] = True) _OR_ ("mockup" @ {tags?§})
         IMAGE = , JOIN([mockup_positioned_icon_path],signet_,[signet],_mockup_position_,[card_size],.png), <card_background>, 0, PN
@@ -1142,7 +1146,7 @@ ENDIF
 
 ;; Resistance and ring-bearer
 IF= ([card_type] <> Minion) _AND_ ([resistance] <> "")
-    IF= "disable_resistance" # {tags?§}
+    IF= ("disable_resistance" # {tags?§}) _AND_ ("no_icons" # {tags?§})
         IF= ([force_mockup] = True) _OR_ ("mockup" @ {tags?§})
             IMAGE = , JOIN([mockup_positioned_icon_path],resistance_mockup_position_,[card_size],.png), <card_background>, 0, PN
         ELSE
@@ -1216,6 +1220,7 @@ INCLUDE=game_text_replacements.txt
 
 ;;[card_full_text] = CONCAT1({game_text_replaced?§},<lore>,{lore_replaced?§},</lore><promo>,{promo_replaced?§},</promo>)
 [card_full_text] = JOIN([game_text_replaced],<lore>,[lore_replaced],</lore><promo>,[promo_replaced],</promo>)
+;;[card_full_text] = JOIN("<div style='padding-top:3px'>",[game_text_replaced],"</div>",<lore>,[lore_replaced],</lore><promo>,[promo_replaced],</promo>)
 
 [card_full_text] = REPLACE([card_full_text],<lore></lore>,)
 [card_full_text] = REPLACE([card_full_text],<promo></promo>,)
