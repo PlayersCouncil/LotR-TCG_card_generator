@@ -1,6 +1,6 @@
-;;#####################################
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; nanDeck LotR-TCG Settings
-;;#####################################
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; A path pointing to the location to use for card template images.
 ;; Can be the name of a folder in the same folder as this script, or
