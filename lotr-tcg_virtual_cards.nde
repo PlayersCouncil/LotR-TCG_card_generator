@@ -94,6 +94,7 @@ RECTANGLE=,<full_card_portrait>,#000000
 [default_game_text_width] = 69%
 [default_site_game_text_width] = 76.2%
 [default_race_game_text_width] = 75%
+[default_map_game_text_width] = 71%
 [default_mod_title_text_width] = 38%
 
 
@@ -151,10 +152,10 @@ RECTANGLE=,<full_card_portrait>,#000000
 [custom_helper_text_font_size] = {[default_helper_text_font_size] * {game_text_scale?§}}
 [default_lore_font_size] = {7.5* [font_scale_factor]}
 [custom_lore_font_size] = {[default_lore_font_size] * {game_text_scale?§}}
-[default_promo_font_size] = {7.1* [font_scale_factor]}
-[custom_promo_font_size] = {[default_promo_font_size] * {game_text_scale?§}}
-[default_promo_cap_font_size] = {[default_promo_font_size] * [promo_cap_factor]}
-[custom_promo_cap_font_size] = {[default_promo_cap_font_size] * {game_text_scale?§}}
+[default_promo_font_size] = {7.1* [font_scale_factor] * 1.3}
+[custom_promo_font_size] = {[default_promo_font_size] * {game_text_scale?§} * 1.3}
+[default_promo_cap_font_size] = {[default_promo_font_size] * [promo_cap_factor] }
+[custom_promo_cap_font_size] = {[default_promo_cap_font_size] * {game_text_scale?§} }
 
 [custom_lore_spacing] = {[default_lore_spacing] * {lore_spacing?§}}
 [custom_game_text_spacing] = {[default_game_text_spacing] * {game_text_spacing?§}}
@@ -241,6 +242,10 @@ RECTANGLE=,<full_card_portrait>,#000000
 [mockup_site_race_template] = JOIN([full_template_path],mockups/,site_race_mockup_,[card_size],.png)
 [custom_site_race_template] = JOIN([full_template_path],[culture],_race_,[card_size],.png)
 
+[map_template] = JOIN([full_template_path],map_,[card_size],.png)
+[mockup_map_template] = JOIN([full_template_path],mockups/,map_mockup_,[card_size],.png)
+[custom_map_template] = JOIN([full_template_path],[culture],_map_,[card_size],.png)
+
 
 
 
@@ -265,9 +270,10 @@ RECTANGLE=,<full_card_portrait>,#000000
 <modifier_card_portrait> = 21.2%, 11.9%, 71%, 38%
 <site_card_portrait> = 12%, 10%, 64.2%, 79.4%
 <race_card_portrait> = 14.6%, 8.6%, 70.6%, 64.1%
+<map_card_portrait> = 9.7%, 9%, 80%, 83.3%
 <full_card_portrait> = 4.3%,3.1%,91.4%,93.8%
 
-;;RECTANGLE=,<card_portrait>,#00FFFF
+;;RECTANGLE=,<map_card_portrait>,#00FFFF
 
 <character_unique> = 19.5%, 4.2%, 3%, 5%
 <character_title> = 19.5%, 4.6%, 58%, 4%
@@ -276,6 +282,7 @@ RECTANGLE=,<full_card_portrait>,#000000
 <modifier_title_default> = 6.5%, 15.7%, 9.6%, [default_mod_title_text_width]
 <site_title> = 7.5%, 24.9%, 4.5%, 50%
 <race_title> = 21%, 6.5%, 57%, 3%
+<map_title> = 21%, 9.5%, 57%, 3%
 
 <character_type_panel> = 15%,58.4%,70%,3.8%
 <modifier_type_panel> = 25%,58.5%,65%,3.8%
@@ -298,6 +305,9 @@ RECTANGLE=,<full_card_portrait>,#000000
 <site_game_text_default> = 77.5%,11.8%,9%,[default_site_game_text_width]
 <race_game_text> = 12.5%,75%,{{game_text_width?§} * [default_race_game_text_width]},16%
 <race_game_text_default> = 12.8%,75.5%,[default_race_game_text_width],16%
+
+<map_game_text> = 15%,15%,{{game_text_width?§} * [default_race_game_text_width]},50%
+<map_game_text_default> = 15%,15%,[default_map_game_text_width],50%
 
 <collectors_info> = 84.8%,91.8%,10%,2%
 
@@ -328,7 +338,7 @@ SETFONT= typeplatecap,[title_font],[custom_type_plate_cap_font_size],[default_ty
 SETFONT= typesymbol,[game_text_font],[custom_type_symbol_font_size],[default_type_symbol_font_size],D,{game_text_color?§},[default_game_text_color],{type_color_override?§}
 
 SETFONT= gametext,[game_text_font],[custom_game_text_font_size],[default_game_text_font_size],D,{game_text_color?§},[default_game_text_color],,LEFT
-SETFONT= thin,[game_text_thin_font],[custom_game_text_font_size],[default_game_text_font_size],D,{game_text_color?§},[default_game_text_color],,LEFT
+SETFONT= thin,[game_text_thin_font],[custom_game_text_font_size],[default_game_text_font_size],D,{game_text_color?§},[default_game_text_color],,
 SETFONT= textsymbol,[game_text_font],[custom_text_symbol_font_size],[default_text_symbol_font_size],D,{game_text_color?§},[default_game_text_color]
 SETFONT= helper,[game_text_font],[custom_helper_text_font_size],[default_helper_text_font_size],DI,{game_text_color?§},[default_game_text_color]
 
@@ -338,8 +348,8 @@ ELSE
     SETFONT= lore,[lore_font],[custom_lore_font_size],[default_lore_font_size],D,{game_text_color?§},[default_game_text_color],,LEFT
 ENDIF
 
-SETFONT= promo,[promo_font],[custom_promo_font_size],[default_promo_font_size],BDAR,{game_text_color?§},[default_game_text_color],,CENTER
-SETFONT= promocap,[promo_font],[custom_promo_cap_font_size],[default_promo_cap_font_size],BDAR,{game_text_color?§},[default_game_text_color]
+SETFONT= promo,[promo_font],[custom_promo_font_size],[default_promo_font_size],BDAR,#ffcd38,[default_game_text_color],,CENTER
+SETFONT= promocap,[promo_font],[custom_promo_cap_font_size],[default_promo_cap_font_size],BDAR,#ffcd38,[default_game_text_color]
 
 SETFONT= collinfo, [number_font],,[default_coll_info_font_size],D, {game_text_color?§},[default_game_text_color],,CENTER
 SETFONT= colltext, [game_text_font],,[default_coll_symbol_font_size],D, {game_text_color?§},[default_game_text_color]
@@ -987,6 +997,59 @@ ELSEIF= {template?§} = "race"
     ENDIF
 
 
+ELSEIF= {template?§} = "map"
+
+    ;; Debug printing is used to put a full-sized card in the background for
+    ;; the purposes of checking exact alignment of text, etc
+    IF= [debug_print] = True
+        IMAGE = , JOIN([debug_image_path],[debug_image_name]), <card_background>, 270, PN
+    ELSE
+        ;; Full art means we are not using a template
+        IF= "full_art" @ {tags?§}
+            IF= "full_portrait" @ {tags?§}
+                IMAGE = , JOIN([card_image_path],/,[image_name]), <card_background>, 0, PN
+            ELSE
+                IMAGE = , JOIN([card_image_path],/,[image_name]), <full_card_portrait>, 0, PN
+            ENDIF
+        ELSE
+            ;; Insert the card portrait, since this is "beneath" everything else
+
+            ;; full portraits are intended to take up the whole card size, so
+            ;; that lower res card images can just be slotted in without needing to
+            ;; cut out the portrait.
+            IF= "full_portrait" @ {tags?§}
+                IMAGE = , JOIN([card_image_path],/,[image_name]), <card_background>, 0, PN
+            ELSE
+                IMAGE = , JOIN([card_image_path],/,[image_name]), <map_card_portrait>, 0, PN
+            ENDIF
+
+            ;;RECTANGLE=,<race_card_portrait>,#FF00FF
+
+            ;; Now for the actual card template
+            ;; If the culture is set, use that to look up a custom template name
+            IF= [culture] <> ""
+                IMAGE = , [custom_map_template], <card_background>, 0, PN
+            ELSE
+                IF= ([force_mockup] = True) _OR_ ("mockup" @ {tags?§})
+                    IMAGE = , [mockup_map_template], <card_background>, 0, PN
+                ELSE
+                    IMAGE = , [map_template], <card_background>, 0, PN
+                ENDIF
+            ENDIF
+        ENDIF
+    ENDIF
+
+    ;; Debug drawing the title/subtitle area, before the drawing of the text so it remains visible
+    IF= [debug_regions] = "True"
+        RECTANGLE=,<map_title>,#00FFFF
+    ENDIF
+
+    ;; Map Title
+    HTMLTEXT=,"[title]",<map_title>,,0,BE,100,sitetitle
+
+    ;;RECTANGLE=,<map_card_portrait>,#00FFFF
+
+
 ELSEIF= {template?§} = "onering"
 
     ;; Debug printing is used to put a full-sized card in the background for
@@ -1045,7 +1108,7 @@ ENDIF
 
 
 ;; Culture Icon
-IF= ("full_art" @ {tags?§}) _AND_ ("onering" # {template?§}) _AND_ ("full_portrait" # {tags?§}) _AND_ ("disable_culture" # {tags?§}) _AND_ ("site" # {template?§}) _AND_ ( ([card_type] <> "Artifact") _OR_ ("artifact_overlay" # {tags?§}) )
+IF= ("full_art" @ {tags?§}) _AND_ ("full_portrait" # {tags?§}) _AND_ ("disable_culture" # {tags?§}) _AND_ ("onering" # {template?§}) _AND_ ("site" # {template?§}) _AND_ ("map" # {template?§}) _AND_ ( ([card_type] <> "Artifact") _OR_ ("artifact_overlay" # {tags?§}) )
     
     IF= ([force_mockup] = True) _OR_ ("mockup" @ {tags?§})
         IMAGE = , [mockup_culture_overlay], <card_background>, 0, PN
@@ -1253,6 +1316,20 @@ ELSEIF = [template] = "site"
             HTMLTEXT=,[card_full_text],<site_game_text_default>,,270,BE,100,thin
         ELSE
             HTMLTEXT=,[card_full_text],<site_game_text_default>,,270,BE,100,gametext
+        ENDIF
+    ENDIF
+ELSEIF = [template] = "map"
+    IF= [game_text_width] <> ""
+        IF= "thin_space" @ {tags?§}
+            HTMLTEXT=,[card_full_text],<map_game_text>,,0,BE,100,thin
+        ELSE
+            HTMLTEXT=,[card_full_text],<map_game_text>,,0,BE,100,gametext
+        ENDIF
+    ELSE
+        IF= "thin_space" @ {tags?§}
+            HTMLTEXT=,[card_full_text],<map_game_text_default>,,0,BE,100,thin
+        ELSE
+            HTMLTEXT=,[card_full_text],<map_game_text_default>,,0,BE,100,gametext
         ENDIF
     ENDIF
 ELSEIF = [template] = "race"

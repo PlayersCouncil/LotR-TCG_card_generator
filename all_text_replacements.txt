@@ -124,6 +124,9 @@ Text_Replace |Grishn&#225kh
 Text_Find    |Guthlaf
 Text_Replace |Guthl&#225f
 
+Text_Find    |Guthwine
+Text_Replace |G&#250thwin&#235
+
 Text_Find    |Hama
 Text_Replace |H&#225ma
 
